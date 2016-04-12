@@ -1,0 +1,287 @@
+# MiSIT (Modified Simon Interference Task) Practice Trials
+# ----------------------------------------------------------------------
+#
+# required files:
+#     input\practice_inputfile.txt    # events file
+#     stim1 PNGs in the stimuli\ folder
+#         green_left.png, green_right.png
+#         blue_left.png, blue_right.png
+#         pink_left.png, pink_right.png
+#         purple_left.png, purple_right.png
+#     stim2 PNGs in the stimuli\ folder
+#         green_left_color_left.png, green_left_direction_left.png
+#         green_right_color_right.png, green_right_direction_left.png
+#         blue_left_color_left.png, blue_left_direction_left.png
+#         blue_right_color_right.png, blue_right_direction_left.png
+#         pink_left_color_left.png, pink_left_direction_right.png
+#         pink_right_color_right.png, pink_right_direction_right.png
+#         purple_left_color_left.png, purple_left_direction_right.png
+#         purple_right_color_right.png, purple_right_direction_right.png
+#
+# version 0.1 - 2016, Laura Waite
+########################################################################
+
+response_matching = simple_matching;
+active_buttons = 2;
+
+begin;
+
+#
+# Stimulus Pairs
+#
+array {
+    bitmap {filename = "green_left.png"; description = "green_left";} green_left;
+    bitmap {filename = "green_left_color_left.png"; description = "green_left_color_left";} color_left;
+} green_left_color_left;
+
+array {
+    bitmap {filename = "green_left.png"; description = "green_left";};
+    bitmap {filename = "green_left_direction_left.png"; description = "green_left_direc_left";};
+} green_left_direction_left;
+
+array {
+    bitmap {filename = "green_right.png"; description = "green_right";};
+    bitmap {filename = "green_right_color_right.png"; description = "green_right_color_right";};
+} green_right_color_right;
+
+array {
+    bitmap {filename = "green_right.png"; description = "green_right";};
+    bitmap {filename = "green_right_direction_left.png"; description = "green_right_direc_left";};
+} green_right_direction_left;
+
+array {
+    bitmap {filename = "blue_left.png"; description = "blue_left";};
+    bitmap {filename = "blue_left_color_left.png"; description = "blue_left_color_left";};
+} blue_left_color_left;
+
+array {
+    bitmap {filename = "blue_left.png"; description = "blue_left";};
+    bitmap {filename = "blue_left_direction_left.png"; description = "blue_left_direc_left";};
+} blue_left_direction_left;
+
+array {
+    bitmap {filename = "blue_right.png"; description = "blue_right";};
+    bitmap {filename = "blue_right_color_right.png"; description = "blue_right_color_right";};
+} blue_right_color_right;
+
+array {
+    bitmap {filename = "blue_right.png"; description = "blue_right";};
+    bitmap {filename = "blue_right_direction_left.png"; description = "blue_right_direc_left";};
+} blue_right_direction_left;
+
+array {
+    bitmap {filename = "pink_left.png"; description = "pink_left";};
+    bitmap {filename = "pink_left_color_left.png"; description = "pink_left_color_left";};
+} pink_left_color_left;
+
+array {
+    bitmap {filename = "pink_left.png"; description = "pink_left";};
+    bitmap {filename = "pink_left_direction_right.png"; description = "pink_left_direc_right";};
+} pink_left_direction_right;
+
+array {
+    bitmap {filename = "pink_right.png"; description = "pink_right";};
+    bitmap {filename = "pink_right_color_right.png"; description = "pink_right_color_right";};
+} pink_right_color_right;
+
+array {
+    bitmap {filename = "pink_right.png"; description = "pink_right";};
+    bitmap {filename = "pink_right_direction_right.png"; description = "pink_right_direc_right";};
+} pink_right_direction_right;
+
+array {
+    bitmap {filename = "purple_left.png"; description = "purp_left";};
+    bitmap {filename = "purple_left_color_left.png"; description = "purp_left_color_left";};
+} purple_left_color_left;
+
+array {
+    bitmap {filename = "purple_left.png"; description = "purp_left";};
+    bitmap {filename = "purple_left_direction_right.png"; description = "purp_left_direc_right";};
+} purple_left_direction_right;
+
+array {
+    bitmap {filename = "purple_right.png"; description = "purp_right";};
+    bitmap {filename = "purple_right_color_right.png"; description = "purp_right_color_right";};
+} purple_right_color_right;
+
+array {
+    bitmap {filename = "purple_right.png"; description = "purp_right";};
+    bitmap {filename = "purple_right_direction_right.png"; description = "purp_right_direc_right";};
+} purple_right_direction_right;
+
+#
+# feedback stims
+#
+bitmap {filename = "happy.png"; height = 150; scale_factor = scale_to_height;} happy;
+bitmap {filename = "sad.png"; height = 150; scale_factor = scale_to_height;} sad;
+
+#
+# feedback
+#
+trial {
+    trial_duration = 1000;
+    picture {bitmap happy; x=0; y=0;} feedback_pic;
+} feedback_trial;
+
+#
+# main trial
+#
+trial {
+    trial_type = first_response;
+    all_responses = false;
+
+    stimulus_event {
+        picture {bitmap green_left; x=0; y=0;} stim1;
+        time = 0;
+        code = "stim1";
+    } stim_event1;
+
+    stimulus_event {
+        picture {bitmap color_left; x=0; y=0;} stim2;
+        duration = 1000;
+        code = "stim2";
+        response_active = true;
+    } stim_event2;
+} main_trial;
+
+#
+# PCL
+#
+begin_pcl;
+
+#
+# load stimuli pair arrays into a single array
+#
+array<bitmap> avail_stims[16][0];
+avail_stims[1].assign(green_left_color_left);
+avail_stims[2].assign(green_left_direction_left);
+avail_stims[3].assign(green_right_color_right);
+avail_stims[4].assign(green_right_direction_left);
+avail_stims[5].assign(blue_left_color_left);
+avail_stims[6].assign(blue_left_direction_left);
+avail_stims[7].assign(blue_right_color_right);
+avail_stims[8].assign(blue_right_direction_left);
+avail_stims[9].assign(pink_left_color_left);
+avail_stims[10].assign(pink_left_direction_right);
+avail_stims[11].assign(pink_right_color_right);
+avail_stims[12].assign(pink_right_direction_right);
+avail_stims[13].assign(purple_left_color_left);
+avail_stims[14].assign(purple_left_direction_right);
+avail_stims[15].assign(purple_right_color_right);
+avail_stims[16].assign(purple_right_direction_right);
+
+#
+# read input file
+#
+string eventfile = "input\\practice_inputfile.txt";
+input_file events = new input_file;
+events.open(eventfile);
+
+array<int> trial_num[1000];
+array<int> block_num[1000];
+array<int> stimuli[1000];    # avail_stims array number
+array<int> jitter[1000];
+array<string> block_type[1000];
+array<string> color[1000];
+array<string> direction[1000];
+array<string> relevant_feature[1000];
+array<string> congruency[1000];
+array<string> correct_resp[1000];
+
+loop int i=1 until events.end_of_file()
+begin
+    stimuli[i] = events.get_int();
+    color[i] = events.get_string();               # used only for output file
+    direction[i] = events.get_string();           # used only for output file
+    relevant_feature[i] = events.get_string();    # used only for output file
+    congruency[i] = events.get_string();          # used only for output file
+    correct_resp[i] = events.get_string();        # used only for output file
+    jitter[i] = events.get_int();
+    block_type[i] = events.get_string();          # used only for output file
+    block_num[i] = events.get_int();
+    trial_num[i] = events.get_int();
+    i=i+1;
+end;
+events.close();
+
+#
+# Set-up output file
+#
+string fdouble = "%10.3f";  # output format double
+string fint = "%8d";        # output format int
+
+string subject = logfile.filename();
+output_file data = new output_file;
+data.open(subject + ".txt");
+# (headers) trial  block  block_type  stim1  onset_stim1  stim2  onset_stim2  response  correct_response  reaction_time  color  direction  congruency  relevant_feature
+data.print("trial\tblock\tblock_type\tstim1\tonset_stim1\tstim2\tonset_stim2\tresponse\tcorrect_response\treaction_time\tcolor\tdirection\tcongruency\trelevant_feature\n");
+
+
+#
+# Main
+#
+loop int i=1 until i > trial_num[i]
+begin
+    # set event code for stim1
+    stim_event1.set_event_code(avail_stims[stimuli[i]][1].description());
+    # set picture part for stim1
+    stim1.set_part(1, avail_stims[stimuli[i]][1]);
+
+    # set event code for stim2
+    stim_event2.set_event_code(avail_stims[stimuli[i]][2].description());
+    # set picture part for stim2
+    stim2.set_part(1, avail_stims[stimuli[i]][2]);
+    # set jitter before stim2 onset
+    stim_event2.set_time(jitter[i]);
+
+    main_trial.present();
+
+    # set feedback
+    bitmap new_pic;
+    stimulus_data last = stimulus_manager.last_stimulus_data();
+    if (correct_resp[i] == "left") && (last.button() == 1) then       # correct left button press
+        new_pic = happy;
+    elseif (correct_resp[i] == "right") && (last.button() == 2) then  # correct right button press
+        new_pic = happy;
+    elseif (correct_resp[i] == "left") && (last.button() != 1) then   # incorrect left button press
+        new_pic = sad;
+    elseif (correct_resp[i] == "right") && (last.button() != 2) then  # incorrect right button press
+        new_pic = sad;
+    end;
+    feedback_pic.set_part (1, new_pic);
+    feedback_trial.present();
+
+    # pull stimulus data for stim1
+    stimulus_data timing_stim1 = stimulus_manager.get_stimulus_data((i*2)-1);
+
+    # pull stimulus data for stim2
+    stimulus_data info_stim2 = stimulus_manager.get_stimulus_data(i*2);
+
+    # pull response data
+    #response_data response_info = response_manager.get_response_data();
+
+    # print to output file
+    data.print(printf(trial_num[i], fint) + "\t");
+    data.print(printf(block_num[i], fint) + "\t");
+    data.print(block_type[i] + "\t");
+    data.print(stim_event1.event_code() + "\t");
+    data.print(printf(timing_stim1.time(), fint) + "\t");     # stim1 onset
+    data.print(stim_event2.event_code() + "\t");
+    data.print(printf(info_stim2.time(), fint) + "\t");     # stim2 onset
+    if (info_stim2.button() == 1) then
+        data.print("left" + "\t");
+    elseif (info_stim2.button() == 2) then
+        data.print("right" + "\t");
+    elseif (info_stim2.button() == 0) then
+        data.print("none" + "\t");
+    end;
+    data.print(correct_resp[i] + "\t");
+    data.print(printf(info_stim2.reaction_time(), fint) + "\t");    # reaction time
+    data.print(color[i] + "\t");
+    data.print(direction[i] + "\t");
+    data.print(congruency[i] + "\t");
+    data.print(relevant_feature[i] + "\t");
+    data.print( "\n" );
+
+    i=i+1;
+end;

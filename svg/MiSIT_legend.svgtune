@@ -1,0 +1,16 @@
+# Load the file we should use
+%file MiSIT_layers_v2.svg
+
+# Make all layers invisible
+layers style=display:none
+
+layer label=black_background style=display:inline
+layer label=left_1_green style=display:inline
+layer label=left_2_blue style=display:inline
+layer label=left_3_grey style=display:inline
+layer label=left_3_SENW style=display:inline
+layer label=right_1_pink style=display:inline
+layer label=right_2_violet style=display:inline
+layer label=right_3_grey style=display:inline
+layer label=right_3_SWNE style=display:inline
+%save gbw_pve

@@ -1,0 +1,21 @@
+##Naming Scheme##
+
+stimuli filenames:(array#)_(color)-(direction)_(relevant feature)-(cue location)
+    ex: 1_green-SENW_farbe-left
+
+array#: 1-16
+
+color: green = g
+       blue = b
+       pink = p
+       violet = v
+
+direction: SENW & SWNE
+S = bottom
+N = top
+W = left
+E = right
+
+The parts of a compass are used to describe the direction. "S"/South (bottom) and
+"N"/North (top) are used to distinguish the rules. Should the subject pay attention
+to the top of the circle or the bottom. 

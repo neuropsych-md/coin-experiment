@@ -1,0 +1,427 @@
+# Load the file we should use
+%file MiSIT_layers.svg
+
+# Make all layers invisible
+layers style=display:none
+
+layer label=black_background style=display:inline
+layer label=fixation style=display:inline
+layer label=hatching_SENW style=display:inline
+layer label=blue_circle style=display:inline
+%save blue-SENW
+
+# Make all layers invisible
+layers style=display:none
+
+layer label=black_background style=display:inline
+layer label=fixation style=display:inline
+layer label=hatching_SENW style=display:inline
+layer label=pink_circle style=display:inline
+%save pink-SENW
+
+# Make all layers invisible
+layers style=display:none
+
+layer label=black_background style=display:inline
+layer label=fixation style=display:inline
+layer label=hatching_SENW style=display:inline
+layer label=green_circle style=display:inline
+%save green-SENW
+
+# Make all layers invisible
+layers style=display:none
+
+layer label=black_background style=display:inline
+layer label=fixation style=display:inline
+layer label=hatching_SENW style=display:inline
+layer label=violet_circle style=display:inline
+%save violet-SENW
+
+# Make all layers invisible
+#layers style=display:none
+
+#layer label=black_background style=display:inline
+#layer label=fixation style=display:inline
+#layer label=hatching_SENW style=display:inline
+#layer label=blue_circle style=display:inline
+#layer label=right_black_circle style=display:inline
+#layer label=L_right style=display:inline
+#%save blue-SENW_linie-right
+
+# Make all layers invisible
+layers style=display:none
+
+layer label=black_background style=display:inline
+layer label=fixation style=display:inline
+layer label=hatching_SENW style=display:inline
+layer label=pink_circle style=display:inline
+layer label=right_black_circle style=display:inline
+layer label=L_right style=display:inline
+%save 10_pink-SENW_linie-right
+
+# Make all layers invisible
+#layers style=display:none
+
+#layer label=black_background style=display:inline
+#layer label=fixation style=display:inline
+#layer label=hatching_SENW style=display:inline
+#layer label=green_circle style=display:inline
+#layer label=right_black_circle style=display:inline
+#layer label=L_right style=display:inline
+#%save green-SENW_linie-right
+
+# Make all layers invisible
+layers style=display:none
+
+layer label=black_background style=display:inline
+layer label=fixation style=display:inline       
+layer label=hatching_SENW style=display:inline  
+layer label=violet_circle style=display:inline
+layer label=right_black_circle style=display:inline
+layer label=L_right style=display:inline
+%save 14_violet-SENW_linie-right
+
+# Make all layers invisible
+#layers style=display:none
+
+#layer label=black_background style=display:inline
+#layer label=fixation style=display:inline
+#layer label=hatching_SENW style=display:inline
+#layer label=blue_circle style=display:inline
+#layer label=right_black_circle style=display:inline
+#layer label=F_right style=display:inline
+#%save blue-SENW_farbe-right
+
+# Make all layers invisible
+#layers style=display:none
+
+#layer label=black_background style=display:inline
+#layer label=fixation style=display:inline
+#layer label=hatching_SENW style=display:inline
+#layer label=pink_circle style=display:inline
+#layer label=right_black_circle style=display:inline
+#layer label=F_right style=display:inline
+#%save pink-SENW_farbe-right
+
+# Make all layers invisible
+#layers style=display:none
+
+#layer label=black_background style=display:inline
+#layer label=fixation style=display:inline
+#layer label=hatching_SENW style=display:inline
+#layer label=green_circle style=display:inline
+#layer label=right_black_circle style=display:inline
+#layer label=F_right style=display:inline
+#%save green-SENW_farbe-right
+
+# Make all layers invisible
+#layers style=display:none
+
+#layer label=black_background style=display:inline
+#layer label=fixation style=display:inline       
+#layer label=hatching_SENW style=display:inline  
+#layer label=violet_circle style=display:inline
+#layer label=right_black_circle style=display:inline
+#layer label=F_right style=display:inline
+#%save violet-SENW_farbe-right
+
+# Make all layers invisible
+layers style=display:none
+
+layer label=black_background style=display:inline
+layer label=fixation style=display:inline
+layer label=hatching_SENW style=display:inline
+layer label=blue_circle style=display:inline
+layer label=left_black_circle style=display:inline
+layer label=L_left style=display:inline
+%save 06_blue-SENW_linie-left
+
+# Make all layers invisible
+#layers style=display:none
+
+#layer label=black_background style=display:inline
+#layer label=fixation style=display:inline
+#layer label=hatching_SENW style=display:inline
+#layer label=pink_circle style=display:inline
+#layer label=left_black_circle style=display:inline
+#layer label=L_left style=display:inline
+#%save pink-SENW_linie-left
+
+# Make all layers invisible
+layers style=display:none
+
+layer label=black_background style=display:inline
+layer label=fixation style=display:inline
+layer label=hatching_SENW style=display:inline
+layer label=green_circle style=display:inline
+layer label=left_black_circle style=display:inline
+layer label=L_left style=display:inline
+%save 02_green-SENW_linie-left
+
+# Make all layers invisible
+#layers style=display:none
+
+#layer label=black_background style=display:inline
+#layer label=fixation style=display:inline
+#layer label=hatching_SENW style=display:inline
+#layer label=violet_circle style=display:inline
+#layer label=left_black_circle style=display:inline
+#layer label=L_left style=display:inline
+#%save violet-SENW_linie-left
+
+# Make all layers invisible
+layers style=display:none
+
+layer label=black_background style=display:inline
+layer label=fixation style=display:inline
+layer label=hatching_SENW style=display:inline
+layer label=blue_circle style=display:inline
+layer label=left_black_circle style=display:inline
+layer label=F_left style=display:inline
+%save 05_blue-SENW_farbe-left
+
+# Make all layers invisible
+layers style=display:none
+
+layer label=black_background style=display:inline
+layer label=fixation style=display:inline
+layer label=hatching_SENW style=display:inline
+layer label=pink_circle style=display:inline
+layer label=left_black_circle style=display:inline
+layer label=F_left style=display:inline
+%save 09_pink-SENW_farbe-left
+
+# Make all layers invisible
+layers style=display:none
+
+layer label=black_background style=display:inline
+layer label=fixation style=display:inline
+layer label=hatching_SENW style=display:inline
+layer label=green_circle style=display:inline
+layer label=left_black_circle style=display:inline
+layer label=F_left style=display:inline
+%save 01_green-SENW_farbe-left
+
+# Make all layers invisible
+layers style=display:none
+
+layer label=black_background style=display:inline
+layer label=fixation style=display:inline
+layer label=hatching_SENW style=display:inline
+layer label=violet_circle style=display:inline
+layer label=left_black_circle style=display:inline
+layer label=F_left style=display:inline
+%save 13_violet-SENW_farbe-left
+
+# Make all layers invisible
+layers style=display:none
+
+layer label=black_background style=display:inline
+layer label=fixation style=display:inline
+layer label=hatching_SWNE style=display:inline
+layer label=blue_circle style=display:inline
+%save blue-SWNE
+
+# Make all layers invisible
+layers style=display:none
+
+layer label=black_background style=display:inline
+layer label=fixation style=display:inline
+layer label=hatching_SWNE style=display:inline
+layer label=pink_circle style=display:inline
+%save pink-SWNE
+
+# Make all layers invisible
+layers style=display:none
+
+layer label=black_background style=display:inline
+layer label=fixation style=display:inline
+layer label=hatching_SWNE style=display:inline
+layer label=green_circle style=display:inline
+%save green-SWNE
+
+# Make all layers invisible
+layers style=display:none
+
+layer label=black_background style=display:inline
+layer label=fixation style=display:inline
+layer label=hatching_SWNE style=display:inline
+layer label=violet_circle style=display:inline
+%save violet-SWNE
+
+# Make all layers invisible
+#layers style=display:none
+
+#layer label=black_background style=display:inline
+#layer label=fixation style=display:inline
+#layer label=hatching_SWNE style=display:inline
+#layer label=blue_circle style=display:inline
+#layer label=right_black_circle style=display:inline
+#layer label=L_right style=display:inline
+#%save blue-SWNE_linie-right
+
+# Make all layers invisible
+layers style=display:none
+
+layer label=black_background style=display:inline
+layer label=fixation style=display:inline
+layer label=hatching_SWNE style=display:inline
+layer label=pink_circle style=display:inline
+layer label=right_black_circle style=display:inline
+layer label=L_right style=display:inline
+%save 12_pink-SWNE_linie-right
+
+# Make all layers invisible
+#layers style=display:none
+
+#layer label=black_background style=display:inline
+#layer label=fixation style=display:inline
+#layer label=hatching_SWNE style=display:inline
+#layer label=green_circle style=display:inline
+#layer label=right_black_circle style=display:inline
+#layer label=L_right style=display:inline
+#%save green-SWNE_linie-right
+
+# Make all layers invisible
+layers style=display:none
+
+layer label=black_background style=display:inline
+layer label=fixation style=display:inline
+layer label=hatching_SWNE style=display:inline
+layer label=violet_circle style=display:inline
+layer label=right_black_circle style=display:inline
+layer label=L_right style=display:inline
+%save 16_violet-SWNE_linie-right
+
+# Make all layers invisible
+layers style=display:none
+
+layer label=black_background style=display:inline
+layer label=fixation style=display:inline
+layer label=hatching_SWNE style=display:inline
+layer label=blue_circle style=display:inline
+layer label=right_black_circle style=display:inline
+layer label=F_right style=display:inline
+%save 07_blue-SWNE_farbe-right
+
+# Make all layers invisible
+layers style=display:none
+
+layer label=black_background style=display:inline
+layer label=fixation style=display:inline
+layer label=hatching_SWNE style=display:inline
+layer label=pink_circle style=display:inline
+layer label=right_black_circle style=display:inline
+layer label=F_right style=display:inline
+%save 11_pink-SWNE_farbe-right
+
+# Make all layers invisible
+layers style=display:none
+
+layer label=black_background style=display:inline
+layer label=fixation style=display:inline
+layer label=hatching_SWNE style=display:inline
+layer label=green_circle style=display:inline
+layer label=right_black_circle style=display:inline
+layer label=F_right style=display:inline
+%save 03_green-SWNE_farbe-right
+
+# Make all layers invisible
+layers style=display:none
+
+layer label=black_background style=display:inline
+layer label=fixation style=display:inline
+layer label=hatching_SWNE style=display:inline
+layer label=violet_circle style=display:inline
+layer label=right_black_circle style=display:inline
+layer label=F_right style=display:inline
+%save 15_violet-SWNE_farbe-right
+
+# Make all layers invisible
+layers style=display:none
+
+layer label=black_background style=display:inline
+layer label=fixation style=display:inline
+layer label=hatching_SWNE style=display:inline
+layer label=blue_circle style=display:inline
+layer label=left_black_circle style=display:inline
+layer label=L_left style=display:inline
+%save 08_blue-SWNE_linie-left
+
+# Make all layers invisible
+#layers style=display:none
+
+#layer label=black_background style=display:inline
+#layer label=fixation style=display:inline
+#layer label=hatching_SWNE style=display:inline
+#layer label=pink_circle style=display:inline
+#layer label=left_black_circle style=display:inline
+#layer label=L_left style=display:inline
+#%save pink-SWNE_linie-left
+
+# Make all layers invisible
+layers style=display:none
+
+layer label=black_background style=display:inline
+layer label=fixation style=display:inline
+layer label=hatching_SWNE style=display:inline
+layer label=green_circle style=display:inline
+layer label=left_black_circle style=display:inline
+layer label=L_left style=display:inline
+%save 04_green-SWNE_linie-left
+
+# Make all layers invisible
+#layers style=display:none
+
+#layer label=black_background style=display:inline
+#layer label=fixation style=display:inline
+#layer label=hatching_SWNE style=display:inline
+#layer label=violet_circle style=display:inline
+#layer label=left_black_circle style=display:inline
+#layer label=L_left style=display:inline
+#%save violet-SWNE_linie-left
+
+# Make all layers invisible
+#layers style=display:none
+
+#layer label=black_background style=display:inline
+#layer label=fixation style=display:inline
+#layer label=hatching_SWNE style=display:inline
+#layer label=blue_circle style=display:inline
+#layer label=left_black_circle style=display:inline
+#layer label=F_left style=display:inline
+#%save blue-SWNE_farbe-left
+
+# Make all layers invisible
+#layers style=display:none
+
+#layer label=black_background style=display:inline
+#layer label=fixation style=display:inline
+#layer label=hatching_SWNE style=display:inline
+#layer label=pink_circle style=display:inline
+#layer label=left_black_circle style=display:inline
+#layer label=F_left style=display:inline
+#%save pink-SWNE_farbe-left
+
+# Make all layers invisible
+#layers style=display:none
+
+#layer label=black_background style=display:inline
+#layer label=fixation style=display:inline
+#layer label=hatching_SWNE style=display:inline
+#layer label=green_circle style=display:inline
+#layer label=left_black_circle style=display:inline
+#layer label=F_left style=display:inline
+#%save green-SWNE_farbe-left
+
+# Make all layers invisible
+#layers style=display:none
+
+#layer label=black_background style=display:inline
+#layer label=fixation style=display:inline
+#layer label=hatching_SWNE style=display:inline
+#layer label=violet_circle style=display:inline
+#layer label=left_black_circle style=display:inline
+#layer label=F_left style=display:inline
+#%save violet-SWNE_farbe-left
+
