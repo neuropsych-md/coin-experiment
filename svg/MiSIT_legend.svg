@@ -10,43 +10,53 @@
    xmlns:xlink="http://www.w3.org/1999/xlink"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="640"
-   height="640"
-   viewBox="0 0 640 640"
+   width="300"
+   height="100"
+   viewBox="0 0.139 1920 640.139"
    id="svg2"
    version="1.1"
    inkscape:version="0.91 r13725"
    sodipodi:docname="MiSIT_legend.svg"
-   inkscape:export-filename="C:\Users\neuro\Desktop\laura\legend_gbw.png"
-   inkscape:export-xdpi="45"
-   inkscape:export-ydpi="45">
+   inkscape:export-filename="C:\Users\captain\Desktop\laura\Studies\MiSIT\svg\legend_gbe.png"
+   inkscape:export-xdpi="14.0625"
+   inkscape:export-ydpi="14.0625">
   <defs
      id="defs4">
     <pattern
        inkscape:collect="always"
-       xlink:href="#pattern5636"
+       xlink:href="#pattern5644"
        id="pattern5650"
-       patternTransform="matrix(10,0,0,10,1222.946,-1292.046)" />
+       patternTransform="matrix(10,0,0,10,-54.389291,-772.71737)" />
     <pattern
        inkscape:collect="always"
-       xlink:href="#pattern5636"
-       id="pattern5642"
-       patternTransform="matrix(10,0,0,10,-1043.6061,-2092.612)" />
+       xlink:href="#Strips1_5"
+       id="pattern5644"
+       patternTransform="matrix(10,0,0,10,-507.93465,584.85273)" />
     <pattern
        inkscape:collect="always"
-       xlink:href="#Strips1_1"
-       id="pattern5636"
-       patternTransform="matrix(10,0,0,10,310.5273,-394.90428)" />
+       xlink:href="#pattern5622"
+       id="pattern5630"
+       patternTransform="matrix(10,0,0,10,133.19212,-319.85575)" />
     <pattern
-       inkscape:stockid="Stripes 1:1"
-       id="Strips1_1"
+       inkscape:collect="always"
+       xlink:href="#pattern5622"
+       id="pattern5628"
+       patternTransform="matrix(10,0,0,10,1.200976,-640.20897)" />
+    <pattern
+       inkscape:collect="always"
+       xlink:href="#Strips1_5"
+       id="pattern5622"
+       patternTransform="matrix(10,0,0,10,-320.35324,131.99113)" />
+    <pattern
+       inkscape:stockid="Stripes 1:5"
+       id="Strips1_5"
        patternTransform="translate(0,0) scale(10,10)"
        height="1"
-       width="2"
+       width="6"
        patternUnits="userSpaceOnUse"
        inkscape:collect="always">
       <rect
-         id="rect5432"
+         id="rect4932"
          height="2"
          width="1"
          y="-0.5"
@@ -61,11 +71,11 @@
      borderopacity="1.0"
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.64"
-     inkscape:cx="852.8125"
-     inkscape:cy="250.65044"
+     inkscape:zoom="0.45254834"
+     inkscape:cx="939.02761"
+     inkscape:cy="313.15044"
      inkscape:document-units="px"
-     inkscape:current-layer="layer7"
+     inkscape:current-layer="g5664"
      showgrid="false"
      showborder="false"
      showguides="false"
@@ -123,7 +133,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -144,20 +154,33 @@
        rx="0" />
   </g>
   <g
+     inkscape:label="circle1_green"
+     id="g4705"
      inkscape:groupmode="layer"
-     id="layer2"
-     inkscape:label="circle_blue"
      style="display:none"
      transform="translate(-1.4279853,-252.43054)">
     <circle
-       style="opacity:0.994;fill:#7bb2d0;fill-opacity:1"
-       id="path4689"
+       r="290"
+       cy="573.1355"
+       cx="320.93198"
+       id="circle4707"
+       style="opacity:0.994;fill:#8fbf35;fill-opacity:1" />
+  </g>
+  <g
+     style="display:none"
+     inkscape:groupmode="layer"
+     id="g4701"
+     inkscape:label="circle1_pink"
+     transform="translate(-1.4279853,-252.43054)">
+    <circle
+       style="opacity:0.994;fill:#d9989e;fill-opacity:1"
+       id="circle4703"
        cx="320.93198"
        cy="573.1355"
        r="290" />
   </g>
   <g
-     inkscape:label="circle_violet"
+     inkscape:label="circle1_violet"
      id="g4697"
      inkscape:groupmode="layer"
      style="display:none"
@@ -170,30 +193,62 @@
        style="opacity:0.994;fill:#ae98c6;fill-opacity:1" />
   </g>
   <g
-     style="display:none"
      inkscape:groupmode="layer"
-     id="g4701"
-     inkscape:label="circle_pink"
+     id="layer2"
+     inkscape:label="circle1_blue"
+     style="display:none"
      transform="translate(-1.4279853,-252.43054)">
     <circle
-       style="opacity:0.994;fill:#d9989e;fill-opacity:1"
-       id="circle4703"
+       style="opacity:0.994;fill:#7bb2d0;fill-opacity:1"
+       id="path4689"
        cx="320.93198"
        cy="573.1355"
        r="290" />
   </g>
   <g
-     inkscape:label="circle_green"
-     id="g4705"
-     inkscape:groupmode="layer"
+     transform="translate(-1.4279853,-252.43054)"
      style="display:inline"
-     transform="translate(-1.4279853,-252.43054)">
+     inkscape:groupmode="layer"
+     id="g4180"
+     inkscape:label="circle1_grey">
     <circle
-       r="290"
-       cy="573.1355"
+       style="opacity:0.994;fill:#808080;fill-opacity:1"
+       id="circle4182"
        cx="320.93198"
-       id="circle4707"
-       style="opacity:0.994;fill:#8fbf35;fill-opacity:1" />
+       cy="573.1355"
+       r="290" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer3"
+     inkscape:label="circle1_SENW"
+     style="display:none">
+    <rect
+       style="opacity:0.994;fill:url(#pattern5628);fill-opacity:1"
+       id="rect4901"
+       width="580"
+       height="580"
+       x="30.704992"
+       y="-609.50397"
+       rx="280.63019"
+       ry="291.20117"
+       transform="matrix(0,1,-1,0,0,0)" />
+  </g>
+  <g
+     inkscape:label="circle1_SWNE"
+     id="g5624"
+     inkscape:groupmode="layer"
+     style="display:inline">
+    <rect
+       ry="291.20117"
+       rx="280.63019"
+       y="-289.15076"
+       x="162.69612"
+       height="580"
+       width="580"
+       id="rect5626"
+       style="opacity:0.994;fill:url(#pattern5630);fill-opacity:1"
+       transform="matrix(0.70710678,0.70710678,-0.70710678,0.70710678,0,0)" />
   </g>
   <g
      inkscape:groupmode="layer"
@@ -218,7 +273,7 @@
      inkscape:label="circle2_pink"
      id="g4285"
      inkscape:groupmode="layer"
-     style="display:none">
+     style="display:inline">
     <ellipse
        ry="150"
        rx="120"
@@ -256,7 +311,7 @@
      inkscape:label="circle2_blue"
      id="g4297"
      inkscape:groupmode="layer"
-     style="display:inline">
+     style="display:none">
     <ellipse
        ry="150"
        rx="120"
@@ -272,10 +327,113 @@
        style="fill:#7bb2d0;fill-opacity:1" />
   </g>
   <g
+     style="display:none"
+     inkscape:groupmode="layer"
+     id="g5632"
+     inkscape:label="circle2_grey">
+    <ellipse
+       style="fill:#000000;fill-opacity:1"
+       id="ellipse5634"
+       cx="838.57202"
+       cy="249.93166"
+       rx="120"
+       ry="150" />
+    <circle
+       style="fill:#808080;fill-opacity:1"
+       id="circle5636"
+       cx="959.94702"
+       cy="320.70499"
+       r="290" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer5"
+     inkscape:label="circle2_SENW"
+     style="display:none">
+    <rect
+       style="opacity:0.994;fill:url(#pattern5644);fill-opacity:1"
+       id="rect5639"
+       width="580"
+       height="580"
+       x="162.01237"
+       y="615.55774"
+       rx="263.0686"
+       ry="319.80698"
+       transform="matrix(0.70710678,-0.70710678,0.70710678,0.70710678,0,0)" />
+  </g>
+  <g
+     inkscape:label="circle2_SWNE"
+     id="g5646"
+     inkscape:groupmode="layer"
+     style="display:none">
+    <rect
+       ry="319.80698"
+       rx="263.0686"
+       y="-742.01239"
+       x="615.55774"
+       height="580"
+       width="580"
+       id="rect5648"
+       style="opacity:0.994;fill:url(#pattern5650);fill-opacity:1"
+       transform="matrix(0.70710678,0.70710678,-0.70710678,0.70710678,0,0)" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="g5664"
+     inkscape:label="circle3_green"
+     style="display:none">
+    <circle
+       transform="translate(-1.4279853,-252.43054)"
+       style="display:inline;fill:#8fbf35;fill-opacity:1"
+       id="circle5666"
+       cx="1600"
+       cy="573.13556"
+       r="290" />
+  </g>
+  <g
+     style="display:none"
+     inkscape:label="circle3_pink"
+     id="g5660"
+     inkscape:groupmode="layer">
+    <circle
+       r="290"
+       cy="573.13556"
+       cx="1600"
+       id="circle5662"
+       style="display:inline;fill:#d9989e;fill-opacity:1"
+       transform="translate(-1.4279853,-252.43054)" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="g5656"
+     inkscape:label="circle3_violet"
+     style="display:inline">
+    <circle
+       transform="translate(-1.4279853,-252.43054)"
+       style="display:inline;fill:#ae98c6;fill-opacity:1"
+       id="circle5658"
+       cx="1600"
+       cy="573.13556"
+       r="290" />
+  </g>
+  <g
+     style="display:none"
+     inkscape:label="circle3_blue"
+     id="g5652"
+     inkscape:groupmode="layer">
+    <circle
+       r="290"
+       cy="573.13556"
+       cx="1600"
+       id="circle5654"
+       style="display:inline;fill:#7bb2d0;fill-opacity:1"
+       transform="translate(-1.4279853,-252.43054)" />
+  </g>
+  <g
      inkscape:groupmode="layer"
      id="layer7"
-     inkscape:label="circle3_linie"
-     style="display:inline">
+     inkscape:label="circle3_grey"
+     style="display:none">
     <circle
        transform="translate(-1.4279853,-252.43054)"
        style="display:inline;fill:#808080;fill-opacity:1"
@@ -285,14 +443,14 @@
        r="290" />
   </g>
   <g
-     inkscape:label="hatching_SENW"
+     inkscape:label="circle3_SENW"
      inkscape:groupmode="layer"
      id="g5638"
      style="display:none"
      transform="translate(-1.4279853,-252.43054)">
     <rect
        transform="matrix(-0.70710678,0.70710678,-0.70710678,-0.70710678,0,0)"
-       style="opacity:0.994;fill:url(#pattern5642);fill-opacity:1"
+       style="opacity:0.994;fill:url(#Strips1_5);fill-opacity:1"
        id="rect5640"
        width="601.04083"
        height="615.18286"
@@ -306,8 +464,8 @@
   <g
      id="g4197"
      inkscape:groupmode="layer"
-     inkscape:label="hatching_SWNE"
-     style="display:inline"
+     inkscape:label="circle3_SWNE"
+     style="display:none"
      transform="translate(-1.4279853,-252.43054)">
     <rect
        rx="307.10941"
@@ -317,20 +475,7 @@
        height="615.18292"
        width="615.18286"
        id="rect4199"
-       style="opacity:0.994;fill:url(#pattern5650);fill-opacity:1"
+       style="opacity:0.994;fill:url(#Strips1_5);fill-opacity:1"
        transform="matrix(0.70710678,0.70710678,-0.70710678,0.70710678,0,0)" />
-  </g>
-  <g
-     inkscape:groupmode="layer"
-     id="layer4"
-     inkscape:label="fixation"
-     style="display:none"
-     transform="translate(-1.4279853,-252.43054)">
-    <circle
-       style="opacity:0.994;fill:#ffffff;fill-opacity:1"
-       id="path6173"
-       cx="321.43661"
-       cy="572.26898"
-       r="5" />
   </g>
 </svg>
