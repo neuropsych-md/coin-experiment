@@ -67,7 +67,7 @@ OPTIONS:
   -s, --block-size  = number of trials in a block
 
 EXAMPLE:
-  $SCRIPT_NAME -d candy/ -r gbw_pve -s 50 -b linie farbe -j 1000 1500 -f pngs/*.png
+  $SCRIPT_NAME -d candy/ -r gbNW_pvNE -s 50 -b linie farbe -j 1000 1500 -f pngs/*.png
 
 EOF
 }

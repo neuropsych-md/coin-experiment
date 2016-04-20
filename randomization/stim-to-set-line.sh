@@ -42,7 +42,7 @@ OPTIONS:
   -f, --filename   = stimulus filename
 
 EXAMPLE:
-  $SCRIPT_NAME --rule-set gbw_pve --filename 02_green-SENW_farbe-left.png
+  $SCRIPT_NAME --rule-set gbNW_pvNE --filename 02_green-SENW_farbe-left.png
 
 EOF
 }
@@ -92,7 +92,7 @@ CSIDE=${FILE%%.*} && FILE="${FILE#${CSIDE}.}" # cue side e.g. left or right
 
 ANSWER='OOPS' # in case there's a foul-up in the rule-sets
 case "$RULE_SET" in
-  'gbw_pve') # green,blue,west = left ; pink,violet,east = right
+  'gbNW_pvNE') # green,blue,northwest = left ; pink,violet,northeast = right
     case "$FEATR" in
          'farbe')
             case "$COLOR" in
