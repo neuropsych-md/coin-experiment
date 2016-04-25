@@ -1,0 +1,479 @@
+# MiSIT (Modified Simon Interference Task)
+# --------------------------------------------------------------------------
+#
+# required files:
+#     events files in the input\ folder
+#         gbNW_pvNE_1.txt
+#         gbNW_pvNE_2.txt
+#     stim1 PNGs in the stimuli\ folder
+#         green-SENW.png, green-SWNE.png
+#         blue-SENW.png, blue-SWNE.png
+#         pink-SENW.png, pink-SWNE.png
+#         violet-SENW.png, violet-SWNE.png
+#     stim2 PNGs in the stimuli\ folder
+#         01_green-SENW_farbe-left.png, 02_green-SENW_linie-left.png
+#         03_green-SWNE_farbe-right.png, 04_green-SWNE_linie-left.png
+#         05_blue-SENW_farbe-left.png, 06_blue-SENW_linie-left.png
+#         07_blue-SWNE_farbe-right.png, 08_blue-SWNE_linie-left.png
+#         09_pink-SENW_farbe-left.png, 10_pink-SENW_linie-right.png
+#         11_pink-SWNE_farbe-right.png, 12_pink-SWNE_linie-right.png
+#         13_violet-SENW_farbe-left.png, 14_violet-SENW_linie-right.png
+#         15_violet-SWNE_farbe-right.png, 16_violet-SWNE_linie-right.png
+#         17_green-SENW_farbe-right.png, 18_green-SENW_linie-right.png
+#         19_green-SWNE_farbe-left.png, 20_green-SWNE_linie-right.png
+#         21_blue-SENW_farbe-right.png, 22_blue-SENW_linie-right.png
+#         23_blue-SWNE_farbe-left.png, 24_blue-SWNE_linie-right.png
+#         25_pink-SENW_farbe-right.png, 26_pink-SENW_linie-left.png
+#         27_pink-SWNE_farbe-left.png, 28_pink-SWNE_linie-left.png
+#         29_violet-SENW_farbe-right.png, 30_violet-SENW_linie-left.png
+#         31_violet-SWNE_farbe-left.png, 32_violet-SWNE_linie-left.png
+#     legend PNGs in the stimuli\ folder
+#         legend_gbNW.png, legend_pvNE.png
+#
+# version 0.6 - 2016, Laura Waite
+############################################################################
+
+response_matching = simple_matching;
+active_buttons = 2;
+
+begin;
+
+#
+# Stimulus Pairs
+#
+array {
+    bitmap {filename = "green-SENW.png"; description = "green-SENW";} green_SENW;
+    bitmap {filename = "01_green-SENW_farbe-left.png"; description = "01_green-SENW_farbe-left";} farbe_left;
+} green_SENW_farbe_left;
+
+array {
+    bitmap {filename = "green-SENW.png"; description = "green-SENW";};
+    bitmap {filename = "02_green-SENW_linie-left.png"; description = "02_green-SENW_linie-left";};
+} green_SENW_linie_left;
+
+array {
+    bitmap {filename = "green-SWNE.png"; description = "green-SWNE";};
+    bitmap {filename = "03_green-SWNE_farbe-right.png"; description = "03_green-SWNE_farbe-right";};
+} green_SWNE_farbe_right;
+
+array {
+    bitmap {filename = "green-SWNE.png"; description = "green-SWNE";};
+    bitmap {filename = "04_green-SWNE_linie-left.png"; description = "04_green-SWNE_linie-left";};
+} green_SWNE_linie_left;
+
+array {
+    bitmap {filename = "blue-SENW.png"; description = "blue-SENW";};
+    bitmap {filename = "05_blue-SENW_farbe-left.png"; description = "05_blue-SENW_farbe-left";};
+} blue_SENW_farbe_left;
+
+array {
+    bitmap {filename = "blue-SENW.png"; description = "blue-SENW";};
+    bitmap {filename = "06_blue-SENW_linie-left.png"; description = "06_blue-SENW_linie-left";};
+} blue_SENW_linie_left;
+
+array {
+    bitmap {filename = "blue-SWNE.png"; description = "blue-SWNE";};
+    bitmap {filename = "07_blue-SWNE_farbe-right.png"; description = "07_blue-SWNE_farbe-right";};
+} blue_SWNE_farbe_right;
+
+array {
+    bitmap {filename = "blue-SWNE.png"; description = "blue-SWNE";};
+    bitmap {filename = "08_blue-SWNE_linie-left.png"; description = "08_blue-SWNE_linie-left";};
+} blue_SWNE_linie_left;
+
+array {
+    bitmap {filename = "pink-SENW.png"; description = "pink-SENW";};
+    bitmap {filename = "09_pink-SENW_farbe-left.png"; description = "09_pink-SENW_farbe-left";};
+} pink_SENW_farbe_left;
+
+array {
+    bitmap {filename = "pink-SENW.png"; description = "pink-SENW";};
+    bitmap {filename = "10_pink-SENW_linie-right.png"; description = "10_pink-SENW_linie-right";};
+} pink_SENW_linie_right;
+
+array {
+    bitmap {filename = "pink-SWNE.png"; description = "pink-SWNE";};
+    bitmap {filename = "11_pink-SWNE_farbe-right.png"; description = "11_pink-SWNE_farbe-right";};
+} pink_SWNE_farbe_right;
+
+array {
+    bitmap {filename = "pink-SWNE.png"; description = "pink-SWNE";};
+    bitmap {filename = "12_pink-SWNE_linie-right.png"; description = "12_pink-SWNE_linie-right";};
+} pink_SWNE_linie_right;
+
+array {
+    bitmap {filename = "violet-SENW.png"; description = "violet-SENW";};
+    bitmap {filename = "13_violet-SENW_farbe-left.png"; description = "13_violet-SENW_farbe-left";};
+} violet_SENW_farbe_left;
+
+array {
+    bitmap {filename = "violet-SENW.png"; description = "violet-SENW";};
+    bitmap {filename = "14_violet-SENW_linie-right.png"; description = "14_violet-SENW_linie-right";};
+} violet_SENW_linie_right;
+
+array {
+    bitmap {filename = "violet-SWNE.png"; description = "violet-SWNE";};
+    bitmap {filename = "15_violet-SWNE_farbe-right.png"; description = "15_violet-SWNE_farbe-right";};
+} violet_SWNE_farbe_right;
+
+array {
+    bitmap {filename = "violet-SWNE.png"; description = "violet-SWNE";};
+    bitmap {filename = "16_violet-SWNE_linie-right.png"; description = "16_violet-SWNE_linie-right";};
+} violet_SWNE_linie_right;
+
+array {
+    bitmap {filename = "green-SENW.png"; description = "green-SENW";};
+    bitmap {filename = "17_green-SENW_farbe-right.png"; description = "17_green-SENW_farbe-right";};
+} green_SENW_farbe_right;
+
+array {
+    bitmap {filename = "green-SENW.png"; description = "green-SENW";};
+    bitmap {filename = "18_green-SENW_linie-right.png"; description = "18_green-SENW_linie-right";};
+} green_SENW_linie_right;
+
+array {
+    bitmap {filename = "green-SWNE.png"; description = "green-SWNE";};
+    bitmap {filename = "19_green-SWNE_farbe-left.png"; description = "19_green-SWNE_farbe-left";};
+} green_SWNE_farbe_left;
+
+array {
+    bitmap {filename = "green-SWNE.png"; description = "green-SWNE";};
+    bitmap {filename = "20_green-SWNE_linie-right.png"; description = "20_green-SWNE_linie-right";};
+} green_SWNE_linie_right;
+
+array {
+    bitmap {filename = "blue-SENW.png"; description = "blue-SENW";};
+    bitmap {filename = "21_blue-SENW_farbe-right.png"; description = "21_blue-SENW_farbe-right";};
+} blue_SENW_farbe_right;
+
+array {
+    bitmap {filename = "blue-SENW.png"; description = "blue-SENW";};
+    bitmap {filename = "22_blue-SENW_linie-right.png"; description = "22_blue-SENW_linie-right";};
+} blue_SENW_linie_right;
+
+array {
+    bitmap {filename = "blue-SWNE.png"; description = "blue-SWNE";};
+    bitmap {filename = "23_blue-SWNE_farbe-left.png"; description = "23_blue-SWNE_farbe-left";};
+} blue_SWNE_farbe_left;
+
+array {
+    bitmap {filename = "blue-SWNE.png"; description = "blue-SWNE";};
+    bitmap {filename = "24_blue-SWNE_linie-right.png"; description = "24_blue-SWNE_linie-right";};
+} blue_SWNE_linie_right;
+
+array {
+    bitmap {filename = "pink-SENW.png"; description = "pink-SENW";};
+    bitmap {filename = "25_pink-SENW_farbe-right.png"; description = "25_pink-SENW_farbe-right";};
+} pink_SENW_farbe_right;
+
+array {
+    bitmap {filename = "pink-SENW.png"; description = "pink-SENW";};
+    bitmap {filename = "26_pink-SENW_linie-left.png"; description = "26_pink-SENW_linie-left";};
+} pink_SENW_linie_left;
+
+array {
+    bitmap {filename = "pink-SWNE.png"; description = "pink-SWNE";};
+    bitmap {filename = "27_pink-SWNE_farbe-left.png"; description = "27_pink-SWNE_farbe-left";};
+} pink_SWNE_farbe_left;
+
+array {
+    bitmap {filename = "pink-SWNE.png"; description = "pink-SWNE";};
+    bitmap {filename = "28_pink-SWNE_linie-left.png"; description = "28_pink-SWNE_linie-left";};
+} pink_SWNE_linie_left;
+
+array {
+    bitmap {filename = "violet-SENW.png"; description = "violet-SENW";};
+    bitmap {filename = "29_violet-SENW_farbe-right.png"; description = "29_violet-SENW_farbe-right";};
+} violet_SENW_farbe_right;
+
+array {
+    bitmap {filename = "violet-SENW.png"; description = "violet-SENW";};
+    bitmap {filename = "30_violet-SENW_linie-left.png"; description = "30_violet-SENW_linie-left";};
+} violet_SENW_linie_left;
+
+array {
+    bitmap {filename = "violet-SWNE.png"; description = "violet-SWNE";};
+    bitmap {filename = "31_violet-SWNE_farbe-left.png"; description = "31_violet-SWNE_farbe-left";};
+} violet_SWNE_farbe_left;
+
+array {
+    bitmap {filename = "violet-SWNE.png"; description = "violet-SWNE";};
+    bitmap {filename = "32_violet-SWNE_linie-left.png"; description = "32_violet-SWNE_linie-left";};
+} violet_SWNE_linie_left;
+
+#
+# legend
+#
+array {
+    bitmap {filename = "legend_gbNW.png";} left;
+    bitmap {filename = "legend_pvNE.png";} right;
+} gbNW_pvNE;
+
+#array {
+#    bitmap {filename = "legend_pvw.png";};
+#    bitmap {filename = "legend_gbe.png";};
+#} pvw_gbe;
+
+#
+# pause
+#
+trial {
+    trial_duration = forever;
+    trial_type = first_response;
+    picture {
+        text {caption = "Continue with SPACE or quit with ESC"; font_size = 48;} warn_txt;
+        x=0; y=0;
+    };
+} pause;
+
+#
+# finish
+#
+trial {
+    trial_duration = forever;
+    trial_type = first_response;
+    picture {
+        text {caption = "Vielen Dank!"; font_size = 48;};
+        x=0; y=0;
+    };
+} finish;
+
+#
+# main trial
+#
+trial {
+    trial_type = first_response;
+    all_responses = false;
+
+    stimulus_event {
+        picture {
+            bitmap green_SENW; x=0; y=0;
+            bitmap left; x=-300; y=-350;
+            bitmap right; x=300; y=-350;
+        } stim1;
+        time = 0;
+        code = "stim1";
+    } stim_event1;
+
+    stimulus_event {
+        picture {
+            bitmap farbe_left; x=0; y=0;
+            bitmap left; x=-300; y=-350;
+            bitmap right; x=300; y=-350;
+        } stim2;
+        duration = 1000;
+        code = "stim2";
+        response_active = true;
+    } stim_event2;
+} main_trial;
+
+#
+# PCL
+#
+begin_pcl;
+
+#
+# read input file
+#
+preset string rule = "gbNW_pvNE";
+preset string version;
+string eventfile = "input\\" + rule + "_" + version + ".txt";
+input_file events = new input_file;
+events.open(eventfile);
+
+array<int> event_num[1000];
+array<int> stimuli[1000];    # avail_stims array number
+array<int> jitter[1000];
+array<string> block_type[1000];
+array<string> color[1000];
+array<string> direction[1000];
+array<string> relevant_feature[1000];
+array<string> congruency[1000];
+array<string> answer[1000];
+array<string> legend[1000];
+array<int> total_trials[0];
+
+loop int i=1 until events.end_of_file()
+begin
+    event_num[i] = events.get_int();              # used only for input file
+    stimuli[i] = events.get_int();
+    color[i] = events.get_string();               # used only for output file
+    direction[i] = events.get_string();           # used only for output file
+    relevant_feature[i] = events.get_string();    # used only for output file
+    congruency[i] = events.get_string();          # used only for output file
+    answer[i] = events.get_string();              # used only for output file
+    jitter[i] = events.get_int();
+    block_type[i] = events.get_string();
+    legend[i] = events.get_string();
+    total_trials.add(i);
+    i=i+1;
+end;
+events.close();
+
+#
+# Set-up output file
+#
+string fdouble = "%10.3f";  # output format double
+string fint = "%8d";        # output format int
+
+string subject = logfile.filename();
+output_file data = new output_file;
+data.open(subject + ".txt");
+# (headers) rule  trial  block  stim1  stim1_onset  stim2  stim2_onset  response  reaction_time  featr  congruency  color  direc
+data.print("rule\ttrial\tblock\tstim1\tstim1_onset\tstim2\tstim2_onset\tresponse\treaction_time\tfeatr\tcongruency\tcolor\tdirec\n");
+#
+# load stimuli pair arrays into a single array
+#
+array<bitmap> avail_stims[32][0];
+avail_stims[1].assign(green_SENW_farbe_left);
+avail_stims[2].assign(green_SENW_linie_left);
+avail_stims[3].assign(green_SWNE_farbe_right);
+avail_stims[4].assign(green_SWNE_linie_left);
+avail_stims[5].assign(blue_SENW_farbe_left);
+avail_stims[6].assign(blue_SENW_linie_left);
+avail_stims[7].assign(blue_SWNE_farbe_right);
+avail_stims[8].assign(blue_SWNE_linie_left);
+avail_stims[9].assign(pink_SENW_farbe_left);
+avail_stims[10].assign(pink_SENW_linie_right);
+avail_stims[11].assign(pink_SWNE_farbe_right);
+avail_stims[12].assign(pink_SWNE_linie_right);
+avail_stims[13].assign(violet_SENW_farbe_left);
+avail_stims[14].assign(violet_SENW_linie_right);
+avail_stims[15].assign(violet_SWNE_farbe_right);
+avail_stims[16].assign(violet_SWNE_linie_right);
+avail_stims[17].assign(green_SENW_farbe_right);
+avail_stims[18].assign(green_SENW_linie_right);
+avail_stims[19].assign(green_SWNE_farbe_left);
+avail_stims[20].assign(green_SWNE_linie_right);
+avail_stims[21].assign(blue_SENW_farbe_right);
+avail_stims[22].assign(blue_SENW_linie_right);
+avail_stims[23].assign(blue_SWNE_farbe_left);
+avail_stims[24].assign(blue_SWNE_linie_right);
+avail_stims[25].assign(pink_SENW_farbe_right);
+avail_stims[26].assign(pink_SENW_linie_left);
+avail_stims[27].assign(pink_SWNE_farbe_left);
+avail_stims[28].assign(pink_SWNE_linie_left);
+avail_stims[29].assign(violet_SENW_farbe_right);
+avail_stims[30].assign(violet_SENW_linie_left);
+avail_stims[31].assign(violet_SWNE_farbe_left);
+avail_stims[32].assign(violet_SWNE_linie_left);
+
+#
+# load legend pair arrays into a single array
+#
+array<bitmap> avail_legends[1][0];
+avail_legends[1].assign(gbNW_pvNE);
+#avail_legends[2].assign(pvw_gbe);
+
+#
+# declare which legend from avail_legends to be used
+#
+int which_legend;
+if (rule == "gbNW_pvNE") then
+	 which_legend = 1;
+#elseif (rule == "pvw_gbe") then
+#	 which_legend = 2;
+end;
+
+#
+# Feedback variables
+#
+int correctcounter = 0;
+int incorrectcounter = 0;
+int misscounter = 0;
+
+#
+# Main
+#
+loop int i=1 until i > total_trials.count()
+begin
+    # pause between blocks
+    if (i != 1) then # but don't pause before the first trial
+        if (block_type[i] != block_type[i-1]) then
+	         if (misscounter > 10) || (incorrectcounter < 10) then
+		          warn_txt.set_caption("Pause\n" + "Bitte schneller drücken!");
+	         else
+		          warn_txt.set_caption("Pause");
+	         end;
+	         warn_txt.redraw();
+            pause.present();
+        end;
+    end;
+
+    # set event code for stim1
+    stim_event1.set_event_code(avail_stims[stimuli[i]][1].description());
+    # set stimulus for stim1
+    stim1.set_part(1, avail_stims[stimuli[i]][1]);
+    # set legend for stim1
+    stim1.set_part(2, avail_legends[which_legend][1]);
+    stim1.set_part(3, avail_legends[which_legend][2]);
+
+    # set event code for stim2
+    stim_event2.set_event_code(avail_stims[stimuli[i]][2].description());
+    # set stimulus for stim2
+    stim2.set_part(1, avail_stims[stimuli[i]][2]);
+    # set legend for stim1
+    stim2.set_part(2, avail_legends[which_legend][1]);
+    stim2.set_part(3, avail_legends[which_legend][2]);
+    # set jitter before stim2 onset
+    stim_event2.set_time(jitter[i]);
+
+    main_trial.present();
+
+    # pull stimulus data for stim1
+    stimulus_data timing_stim1 = stimulus_manager.get_stimulus_data((i*2)-1);
+
+    # pull stimulus data for stim2
+    stimulus_data info_stim2 = stimulus_manager.get_stimulus_data(i*2);
+
+    # print to output file
+    data.print(legend[i] + "\t");
+    data.print(printf(i, fint) + "\t");                     # trial number
+    data.print(block_type[i] + "\t");
+    data.print(stim_event1.event_code() + "\t");
+    data.print(printf(timing_stim1.time(), fint) + "\t");   # stim1 onset
+    data.print(stim_event2.event_code() + "\t");
+    data.print(printf(info_stim2.time(), fint) + "\t");     # stim2 onset
+    
+    # Block-wise Feedback
+    if (answer[i] == "left") then
+	     if (info_stim2.button() == 1) then
+		      correctcounter = correctcounter + 1;
+		      data.print("correct" + "\t");
+	     elseif(info_stim2.button() == 0) then
+            misscounter = misscounter + 1;
+	         data.print("nan" + "\t");
+	     else
+		      incorrectcounter = incorrectcounter + 1;
+		      data.print("incorrect" + "\t");
+	     end;
+    elseif (answer[i] == "right") then
+	     if (info_stim2.button() == 2) then
+		      correctcounter = correctcounter + 1;
+		      data.print("correct" + "\t");
+	     elseif(info_stim2.button() == 0) then
+            misscounter = misscounter + 1;
+	         data.print("nan" + "\t");
+	     else
+		      incorrectcounter = incorrectcounter + 1;
+		      data.print("incorrect" + "\t");
+	     end;
+	 end;
+
+    # print to output file
+    if (info_stim2.button() == 0) then    # if no reponse or late reponse
+        data.print("nan" + "\t");
+    else
+        data.print(printf(info_stim2.reaction_time(), fint) + "\t");    # reaction time
+    end;
+    data.print(relevant_feature[i] + "\t");
+    data.print(congruency[i] + "\t");
+    data.print(color[i] + "\t");
+    data.print(direction[i] + "\t");
+    data.print( "\n" );
+
+    i=i+1;
+end;
+
+data.close(); # close output file
+finish.present();
