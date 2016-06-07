@@ -1,0 +1,271 @@
+# MiSIT (Modified Simon Interference Task)
+# --------------------------------------------------------------------------
+#
+# required files:
+#     MiSIT.pcl
+#     events files in the input\ folder
+#         gbNW_pvNE_1.txt
+#         gbNW_pvNE_2.txt
+#     stim1 PNGs in the stimuli\ folder
+#         green-SENW.png, green-SWNE.png
+#         blue-SENW.png, blue-SWNE.png
+#         pink-SENW.png, pink-SWNE.png
+#         violet-SENW.png, violet-SWNE.png
+#     stim2 PNGs in the stimuli\ folder
+#         01_green-SENW_farbe-left.png, 02_green-SENW_linie-left.png
+#         03_green-SWNE_farbe-right.png, 04_green-SWNE_linie-left.png
+#         05_blue-SENW_farbe-left.png, 06_blue-SENW_linie-left.png
+#         07_blue-SWNE_farbe-right.png, 08_blue-SWNE_linie-left.png
+#         09_pink-SENW_farbe-left.png, 10_pink-SENW_linie-right.png
+#         11_pink-SWNE_farbe-right.png, 12_pink-SWNE_linie-right.png
+#         13_violet-SENW_farbe-left.png, 14_violet-SENW_linie-right.png
+#         15_violet-SWNE_farbe-right.png, 16_violet-SWNE_linie-right.png
+#         17_green-SENW_farbe-right.png, 18_green-SENW_linie-right.png
+#         19_green-SWNE_farbe-left.png, 20_green-SWNE_linie-right.png
+#         21_blue-SENW_farbe-right.png, 22_blue-SENW_linie-right.png
+#         23_blue-SWNE_farbe-left.png, 24_blue-SWNE_linie-right.png
+#         25_pink-SENW_farbe-right.png, 26_pink-SENW_linie-left.png
+#         27_pink-SWNE_farbe-left.png, 28_pink-SWNE_linie-left.png
+#         29_violet-SENW_farbe-right.png, 30_violet-SENW_linie-left.png
+#         31_violet-SWNE_farbe-left.png, 32_violet-SWNE_linie-left.png
+#     legend PNGs in the stimuli\ folder
+#         legend_gbNW.png, legend_pvNE.png
+#
+# version 0.6.2 - 2016, Laura Waite
+############################################################################
+
+pcl_file = "MiSIT.pcl";
+
+response_matching = simple_matching;
+active_buttons = 2;
+
+begin;
+
+#
+# Stimulus Pairs
+#
+array {
+    bitmap {filename = "green-SENW.png"; description = "green-SENW";} green_SENW;
+    bitmap {filename = "01_green-SENW_farbe-left.png"; description = "01_green-SENW_farbe-left";} farbe_left;
+} green_SENW_farbe_left;
+
+array {
+    bitmap {filename = "green-SENW.png"; description = "green-SENW";};
+    bitmap {filename = "02_green-SENW_linie-left.png"; description = "02_green-SENW_linie-left";};
+} green_SENW_linie_left;
+
+array {
+    bitmap {filename = "green-SWNE.png"; description = "green-SWNE";};
+    bitmap {filename = "03_green-SWNE_farbe-right.png"; description = "03_green-SWNE_farbe-right";};
+} green_SWNE_farbe_right;
+
+array {
+    bitmap {filename = "green-SWNE.png"; description = "green-SWNE";};
+    bitmap {filename = "04_green-SWNE_linie-left.png"; description = "04_green-SWNE_linie-left";};
+} green_SWNE_linie_left;
+
+array {
+    bitmap {filename = "blue-SENW.png"; description = "blue-SENW";};
+    bitmap {filename = "05_blue-SENW_farbe-left.png"; description = "05_blue-SENW_farbe-left";};
+} blue_SENW_farbe_left;
+
+array {
+    bitmap {filename = "blue-SENW.png"; description = "blue-SENW";};
+    bitmap {filename = "06_blue-SENW_linie-left.png"; description = "06_blue-SENW_linie-left";};
+} blue_SENW_linie_left;
+
+array {
+    bitmap {filename = "blue-SWNE.png"; description = "blue-SWNE";};
+    bitmap {filename = "07_blue-SWNE_farbe-right.png"; description = "07_blue-SWNE_farbe-right";};
+} blue_SWNE_farbe_right;
+
+array {
+    bitmap {filename = "blue-SWNE.png"; description = "blue-SWNE";};
+    bitmap {filename = "08_blue-SWNE_linie-left.png"; description = "08_blue-SWNE_linie-left";};
+} blue_SWNE_linie_left;
+
+array {
+    bitmap {filename = "pink-SENW.png"; description = "pink-SENW";};
+    bitmap {filename = "09_pink-SENW_farbe-left.png"; description = "09_pink-SENW_farbe-left";};
+} pink_SENW_farbe_left;
+
+array {
+    bitmap {filename = "pink-SENW.png"; description = "pink-SENW";};
+    bitmap {filename = "10_pink-SENW_linie-right.png"; description = "10_pink-SENW_linie-right";};
+} pink_SENW_linie_right;
+
+array {
+    bitmap {filename = "pink-SWNE.png"; description = "pink-SWNE";};
+    bitmap {filename = "11_pink-SWNE_farbe-right.png"; description = "11_pink-SWNE_farbe-right";};
+} pink_SWNE_farbe_right;
+
+array {
+    bitmap {filename = "pink-SWNE.png"; description = "pink-SWNE";};
+    bitmap {filename = "12_pink-SWNE_linie-right.png"; description = "12_pink-SWNE_linie-right";};
+} pink_SWNE_linie_right;
+
+array {
+    bitmap {filename = "violet-SENW.png"; description = "violet-SENW";};
+    bitmap {filename = "13_violet-SENW_farbe-left.png"; description = "13_violet-SENW_farbe-left";};
+} violet_SENW_farbe_left;
+
+array {
+    bitmap {filename = "violet-SENW.png"; description = "violet-SENW";};
+    bitmap {filename = "14_violet-SENW_linie-right.png"; description = "14_violet-SENW_linie-right";};
+} violet_SENW_linie_right;
+
+array {
+    bitmap {filename = "violet-SWNE.png"; description = "violet-SWNE";};
+    bitmap {filename = "15_violet-SWNE_farbe-right.png"; description = "15_violet-SWNE_farbe-right";};
+} violet_SWNE_farbe_right;
+
+array {
+    bitmap {filename = "violet-SWNE.png"; description = "violet-SWNE";};
+    bitmap {filename = "16_violet-SWNE_linie-right.png"; description = "16_violet-SWNE_linie-right";};
+} violet_SWNE_linie_right;
+
+array {
+    bitmap {filename = "green-SENW.png"; description = "green-SENW";};
+    bitmap {filename = "17_green-SENW_farbe-right.png"; description = "17_green-SENW_farbe-right";};
+} green_SENW_farbe_right;
+
+array {
+    bitmap {filename = "green-SENW.png"; description = "green-SENW";};
+    bitmap {filename = "18_green-SENW_linie-right.png"; description = "18_green-SENW_linie-right";};
+} green_SENW_linie_right;
+
+array {
+    bitmap {filename = "green-SWNE.png"; description = "green-SWNE";};
+    bitmap {filename = "19_green-SWNE_farbe-left.png"; description = "19_green-SWNE_farbe-left";};
+} green_SWNE_farbe_left;
+
+array {
+    bitmap {filename = "green-SWNE.png"; description = "green-SWNE";};
+    bitmap {filename = "20_green-SWNE_linie-right.png"; description = "20_green-SWNE_linie-right";};
+} green_SWNE_linie_right;
+
+array {
+    bitmap {filename = "blue-SENW.png"; description = "blue-SENW";};
+    bitmap {filename = "21_blue-SENW_farbe-right.png"; description = "21_blue-SENW_farbe-right";};
+} blue_SENW_farbe_right;
+
+array {
+    bitmap {filename = "blue-SENW.png"; description = "blue-SENW";};
+    bitmap {filename = "22_blue-SENW_linie-right.png"; description = "22_blue-SENW_linie-right";};
+} blue_SENW_linie_right;
+
+array {
+    bitmap {filename = "blue-SWNE.png"; description = "blue-SWNE";};
+    bitmap {filename = "23_blue-SWNE_farbe-left.png"; description = "23_blue-SWNE_farbe-left";};
+} blue_SWNE_farbe_left;
+
+array {
+    bitmap {filename = "blue-SWNE.png"; description = "blue-SWNE";};
+    bitmap {filename = "24_blue-SWNE_linie-right.png"; description = "24_blue-SWNE_linie-right";};
+} blue_SWNE_linie_right;
+
+array {
+    bitmap {filename = "pink-SENW.png"; description = "pink-SENW";};
+    bitmap {filename = "25_pink-SENW_farbe-right.png"; description = "25_pink-SENW_farbe-right";};
+} pink_SENW_farbe_right;
+
+array {
+    bitmap {filename = "pink-SENW.png"; description = "pink-SENW";};
+    bitmap {filename = "26_pink-SENW_linie-left.png"; description = "26_pink-SENW_linie-left";};
+} pink_SENW_linie_left;
+
+array {
+    bitmap {filename = "pink-SWNE.png"; description = "pink-SWNE";};
+    bitmap {filename = "27_pink-SWNE_farbe-left.png"; description = "27_pink-SWNE_farbe-left";};
+} pink_SWNE_farbe_left;
+
+array {
+    bitmap {filename = "pink-SWNE.png"; description = "pink-SWNE";};
+    bitmap {filename = "28_pink-SWNE_linie-left.png"; description = "28_pink-SWNE_linie-left";};
+} pink_SWNE_linie_left;
+
+array {
+    bitmap {filename = "violet-SENW.png"; description = "violet-SENW";};
+    bitmap {filename = "29_violet-SENW_farbe-right.png"; description = "29_violet-SENW_farbe-right";};
+} violet_SENW_farbe_right;
+
+array {
+    bitmap {filename = "violet-SENW.png"; description = "violet-SENW";};
+    bitmap {filename = "30_violet-SENW_linie-left.png"; description = "30_violet-SENW_linie-left";};
+} violet_SENW_linie_left;
+
+array {
+    bitmap {filename = "violet-SWNE.png"; description = "violet-SWNE";};
+    bitmap {filename = "31_violet-SWNE_farbe-left.png"; description = "31_violet-SWNE_farbe-left";};
+} violet_SWNE_farbe_left;
+
+array {
+    bitmap {filename = "violet-SWNE.png"; description = "violet-SWNE";};
+    bitmap {filename = "32_violet-SWNE_linie-left.png"; description = "32_violet-SWNE_linie-left";};
+} violet_SWNE_linie_left;
+
+#
+# legend
+#
+array {
+    bitmap {filename = "legend_gbNW.png";} left;
+    bitmap {filename = "legend_pvNE.png";} right;
+} gbNW_pvNE;
+
+#array {
+#    bitmap {filename = "legend_pvw.png";};
+#    bitmap {filename = "legend_gbe.png";};
+#} pvw_gbe;
+
+#
+# pause
+#
+trial {
+    trial_duration = forever;
+    trial_type = first_response;
+    picture {
+        text {caption = "Continue with SPACE or quit with ESC"; font_size = 48;} warn_txt;
+        x=0; y=0;
+    };
+} pause;
+
+#
+# finish
+#
+trial {
+    trial_duration = forever;
+    trial_type = first_response;
+    picture {
+        text {caption = "Vielen Dank!"; font_size = 48;};
+        x=0; y=0;
+    };
+} finish;
+
+#
+# main trial
+#
+trial {
+    trial_type = first_response;
+    all_responses = false;
+
+    stimulus_event {
+        picture {
+            bitmap green_SENW; x=0; y=0;
+            bitmap left; x=-300; y=-450;
+            bitmap right; x=300; y=-450;
+        } stim1;
+        time = 0;
+        code = "stim1";
+    } stim_event1;
+
+    stimulus_event {
+        picture {
+            bitmap farbe_left; x=0; y=0;
+            bitmap left; x=-300; y=-450;
+            bitmap right; x=300; y=-450;
+        } stim2;
+        duration = 1000;
+        code = "stim2";
+        response_active = true;
+    } stim_event2;
+} main_trial;
