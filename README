@@ -1,3 +1,21 @@
+## Stimuli ##
+
+Inkscape used to create svg files for the stimuli(MiSIT_layers) and the
+legend(MiSIT_legend.svg).
+
+2 versions of the MiSIT_layers file. One with the hatching at 45° (MiSIT_layers_45.svg) and
+the other with the hatching at 30° and 60° (MiSIT_layers_30-60.svg)
+
+svgtune is used to turn on and off the layers to create the different variations of the stimuli needed.
+
+Each svg file has its own svgtune file:
+MiSIT_layers_45.svg = MiSIT_layers_45.svgtune
+MiSIT_layers_30-60.svg = MiSIT_layers_30-60.svgtune
+MiSIT_legend.svg = MiSIT_legend.svgtune
+
+To generate pngs with svgtune:
+generate_pngs.sh filename(MiSIT_layers_45).svgtune
+
 ##Naming Scheme##
 
 stimuli filenames:(array#)_(color)-(direction)_(relevant feature)-(cue location)
