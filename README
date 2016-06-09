@@ -1,39 +1,87 @@
-## Stimuli ##
+Stimuli
+-------
+There are 40 unique stimuli. 8 core-stimuli and 32 cue-stimuli. Each stimulus is
+640x640 pixels.
 
-Inkscape used to create svg files for the stimuli(MiSIT_layers) and the
-legend(MiSIT_legend.svg).
+The core-stimuli consists of a colored circle on a black background. The colored
+circle is overlaid by black hatching and contains a white fixation point in the
+center. The colored circle is 1 of 4 isoluminant colors. The isoluminant colors
+used are: blue(RGB:123, 178, 208), violet(RGB:174, 152, 198), pink(RGB:217, 152,
+158), and green(RGB:143, 191, 53). The black hatching is oriented vertically and
+then tilted 45° to the left or 45° to the right.
 
-2 versions of the MiSIT_layers file. One with the hatching at 45° (MiSIT_layers_45.svg) and
-the other with the hatching at 30° and 60° (MiSIT_layers_30-60.svg)
+The cue-stimuli are the same as the core-stimuli, but also have a cue that is
+located to the left or the right of the center fixation point. The cue indicates
+to the subject which stimulus feature is relevant for the response. The cue is a
+small black circle with a white letter "F" or "L" in the center. The "F" stand
+for "Farbe" and the "L" stands for "Linie", which are the two possible relevant
+features of the stimuli that the subject needs to pay attention to. The cue
+location is always on the side that matches the response required by the
+currently irrelevant stimulus feature. The currently relevant stimulus feature
+can map to the same or the opposite response as the irrelevant feature, thereby
+creating congruent and incongruent stimuli.
 
-svgtune is used to turn on and off the layers to create the different variations of the stimuli needed.
+Legend
+------
+A legend is used to inform the subject which rules are currently in
+effect. The rules indicate which response (left or right) is indicated for each
+color and each direction. ##TODO##explain more
+
+Naming Scheme
+-------------
+core-stimuli: (color)-(direction)
+  ex: green-SENW
+      green-SWNE
+
+cue-stimuli: (array#)_(color)-(direction)_(relevant feature)-(cue location)
+  ex: 01_green-SENW_farbe-left
+      02_green-SENW_linie-left
+
+legend: legend_(color)(color)(direction)
+  ex: legend_gbNW (the colors green and blue map to the left)
+      legend_pvNE (the colors pink and violet map to the right)
+
+rules: (color)(color)(direction)_(color)(color)(direction)
+  ex: gbNW_pvNE (green and blue map left; pink and violet map right)
+
+*****************************************************************************
+* array#: 1-32
+*
+* color: green = g
+*        blue = b
+*        pink = p
+*        violet = v
+*
+* hatching direction: SENW, SWNE
+* S = bottom
+* N = top
+* W = left
+* E = right
+*
+* The parts of a compass are used to describe the direction. "S"/South (bottom) and
+* "N"/North (top) are used to distinguish between the top and bottom of the
+* circle. "W"/West (left) and "E"/East (right) are used to distinguish between the
+* left and right of the circle. The rules will indicate if the subject should pay
+* attention to the top (NW & NE) or the bottom (SW & SE) of the circle to
+* determine if the hatching is tilted to the right (east) or to the left (west).
+*
+* cue location: left, right
+*******************************************************************************
+
+Generation of Stimuli & Legend
+--------------------------------
+Inkscape was used to create svgs for the stimuli(MiSIT_layers.sgv) and the
+legend(MiSIT_legend.svg). Each of the svgs have layers that can be turned on/off
+to generate the various stimuli and legends.
+
+svgtune is used to turn on and off the layers of the svg to create the
+variations of the stimuli and legend.
 
 Each svg file has its own svgtune file:
-MiSIT_layers_45.svg = MiSIT_layers_45.svgtune
-MiSIT_layers_30-60.svg = MiSIT_layers_30-60.svgtune
+MiSIT_layers.svg = MiSIT_layers.svgtune
 MiSIT_legend.svg = MiSIT_legend.svgtune
+##TODO##explain svgfile?
 
-To generate pngs with svgtune:
-generate_pngs.sh filename(MiSIT_layers_45).svgtune
+To generate pngs with svgtune, use the following script:
+generate_pngs.sh filename(MiSIT_layers.svgtune)
 
-##Naming Scheme##
-
-stimuli filenames:(array#)_(color)-(direction)_(relevant feature)-(cue location)
-    ex: 1_green-SENW_farbe-left
-
-array#: 1-16
-
-color: green = g
-       blue = b
-       pink = p
-       violet = v
-
-direction: SENW & SWNE
-S = bottom
-N = top
-W = left
-E = right
-
-The parts of a compass are used to describe the direction. "S"/South (bottom) and
-"N"/North (top) are used to distinguish the rules. Should the subject pay attention
-to the top of the circle or the bottom. 
