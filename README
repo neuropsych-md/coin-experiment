@@ -19,12 +19,12 @@ Execute:
     ex: trials_gen.sh -d sets/gbNW_pvNE_1 -r gbNW_pvNE -s 100 -b neutral farbe incongruent neutral linie congruent -j 1000 1500 2000 2500 -f pngs/*.png
     ex: trials_gen.sh -d sets/gbNW_pvNE_2 -r gbNW_pvNE -s 100 -b neutral congruent linie farbe incongruent neutral -j 1000 1500 2000 2500 -f pngs/*.png
 * Submit conan files to condor to generate trial results:
-  conan_submit_gen -c (config file) -s (set file) -d (directory) -r (#runs) -j (#results) | condor_submit
-    ex: conan_submit_gen -c cfgs/input_1.cfg -s sets/gbNW_pvNE_1/trials.set -d results/results_trials_gbNW_pvNE_1 -r 1000 -j 5 | condor_submit
-    ex: conan_submit_gen -c cfgs/input_2.cfg -s sets/gbNW_pvNE_2/trials.set -d results/results_trials_gbNW_pvNE_1 -r 1000 -j 5 | condor_submit
+  conan-submit-gen -c (config file) -s (set file) -d (directory) -r (#runs) -j (#results) | condor_submit
+    ex: conan-submit-gen -c cfgs/input_1.cfg -s sets/gbNW_pvNE_1/trials.set -d results/results_trials_gbNW_pvNE_1 -r 1000 -j 5 | condor_submit
+    ex: conan-submit-gen -c cfgs/input_2.cfg -s sets/gbNW_pvNE_2/trials.set -d results/results_trials_gbNW_pvNE_1 -r 1000 -j 5 | condor_submit
 * Submit conan files to condor to generate jitter results:
-  conan_submit_gen -c (config file) -s (set file) -d (directory) -r (#runs) -j (#results) | condor_submit
-    ex: conan_submit_gen -c cfgs/jitter.cfg -s sets/gbNW_pvNE_1/jitters.set -d results/results_jitter -r 1000 -j 1 | condor_submit
+  conan-submit-gen -c (config file) -s (set file) -d (directory) -r (#runs) -j (#results) | condor_submit
+    ex: conan-submit-gen -c cfgs/jitter.cfg -s sets/gbNW_pvNE_1/jitters.set -d results/results_jitter -r 1000 -j 1 | condor_submit
 * Join trial and jitter results for each input file using join:
     ex: join results/results_trials_gbNW_pvNE_1/0-0.438498.results results/results_jitter/0-0.438237.results >| input_files/gbNW_pvNE_1/trials_jitters
     ex: join results/results_trials_gbNW_pvNE_2/0-0.438250.results results/results_jitter/0-0.438237.results >| input_files/gbNW_pvNE_2/trials_jitters
@@ -124,6 +124,86 @@ generate_pngs.sh (filename).svgtune
     ex: generate_pngs.sh MiSIT_layers.svgtune
     ex: generate_pngs.sh MiSIT_legend.svgtune
 
-Conan cfg files
----------------
+Use Conan to randomize the input files
+--------------------------------------
+cfg files
+'''''''''
+See conan man page for how to set up a cfg file
 
+*Two different cfg files for the different input files (input_1 and input_2) that
+ have different block orders
+  input_1: neutral, farbe, incongruent, neutral, linie, congruent
+  input_2: neutral, congruent, linie, farbe, incongruent, neutral
+
+ The contraints for the randomization in each cfg file are as follows:
+
+ There are 6 blocks of 100 trials.
+  -2x neutral blocks: equal split (50/50) of congruent vs incongruent trials and
+  equal split (50/50) of the relevant feature (farbe vs linie).
+  -1x linie block: 80/20 split of farbe vs linie (80 linie and 20 farbe) and
+  equal split (50/50) of congruent vs incongruent
+  -1x farbe block: 80/20 split of farbe vs linie (80 farbe and 20 linie) and
+  equal split (50/50) of congruent vs incongruent
+  -1x congruent block: 80/20 split of congruent vs incongruent (80 congruent and
+  20 incongruent) and equal split (50/50) of farbe vs linie
+  -1x incongruent block: 80/20 split of congruent vs incongruent (80 incongruent
+  and 20 congruent) and equal split (50/50) of farbe vs linie
+
+ Across all blocks:
+  -There are no direct repeats of the same stimuli
+  -There is a maximum of 4 repeats for stimuli with the same response
+
+ In neutral blocks:
+  -There is maximum of 4 repeats for stimuli with the same congruency
+  -There is maximum of 4 repeats for stimuli with the same relevant feature
+
+ In linie and farbe blocks:
+  -There is a maximum of 4 repeats for stimuli with the same congruency
+
+ In congruent and incongruent blocks:
+  -There is a maximum of 4 repeats for stimuli with the same relevant feature
+
+*There is a seperate cfg file for the jitters with just one randomization
+ constraint:
+  -Maximum of 4 repeats for the same jitter value
+
+Set files
+'''''''''
+See conan man page for set file requirements.
+
+Use trials_gen.sh to generate a group of conan set files for each input file.
+This script will generate a set file for the trials and jitter, and a results
+file for blocks/rules.
+  ex: trials_gen.sh -d sets/gbNW_pvNE_1 -r gbNW_pvNE -s 100 -b neutral farbe incongruent neutral linie congruent -j 1000 1500 2000 2500 -f pngs/*.png
+  ex: trials_gen.sh -d sets/gbNW_pvNE_2 -r gbNW_pvNE -s 100 -b neutral congruent linie farbe incongruent neutral -j 1000 1500 2000 2500 -f pngs/*.png
+
+See the trials_gen.sh man page for more info.
+
+Send to condor
+''''''''''''''
+Submit conan files to condor to generate trial and jitter results using conan-submit-gen.
+  ex: conan-submit-gen -c cfgs/input_1.cfg -s sets/gbNW_pvNE_1/trials.set -d results/results_trials_gbNW_pvNE_1 -r 1000 -j 5 | condor_submit
+  ex: conan-submit-gen -c cfgs/input_2.cfg -s sets/gbNW_pvNE_2/trials.set -d results/results_trials_gbNW_pvNE_1 -r 1000 -j 5 | condor_submit
+  ex: conan-submit-gen -c cfgs/jitter.cfg -s sets/gbNW_pvNE_1/jitters.set -d results/results_jitter -r 1000 -j 1 | condor_submit
+
+See the man page for conan-submit-gen for more info.
+
+Join results files into one input file
+--------------------------------------
+Join trial and jitter results for each input file using join:
+  ex: join results/results_trials_gbNW_pvNE_1/0-0.438498.results results/results_jitter/0-0.438237.results >| input_files/gbNW_pvNE_1/trials_jitters
+  ex: join results/results_trials_gbNW_pvNE_2/0-0.438250.results results/results_jitter/0-0.438237.results >| input_files/gbNW_pvNE_2/trials_jitters
+Join the trials_jitters file just created with the block_rules results file
+for each input file:
+  ex: join input_files/gbNW_pvNE_1/trials_jitters sets/gbNW_pvNE_1/blocks_rules.results >| input_files/gbNW_pvNE_1/pre-sed_gbNW_pvNE_1
+  ex: join input_files/gbNW_pvNE_2/trials_jitters sets/gbNW_pvNE_2/blocks_rules.results >| input_files/gbNW_pvNE_2/pre-sed_gbNW_pvNE_2
+
+See man page for join for more info
+
+Sed results file into sane input file
+-------------------------------------
+Use sed to generate the finale version of each of the input files:
+  ex: sed -f conan2input.sed input_files/gbNW_pvNE_1/pre-sed_gbNW_pvNE_1 >| input_files/gbNW_pvNE_1/gbNW_pvNE_1.txt
+  ex: sed -f conan2input.sed input_files/gbNW_pvNE_2/pre-sed_gbNW_pvNE_2 >| input_files/gbNW_pvNE_2/gbNW_pvNE_2.txt
+
+See man page for sed for more info
