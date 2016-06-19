@@ -1,46 +1,6 @@
-Overview of Workflow
-####################
-
-Prep:
-* build svg for stimuli: MiSIT_layers.svg
-* build svg for legend: MiSIT_legend.svg
-* write svgtune file for stimuli: MiSIT_layers.svgtune
-* write svgtune file for legend: MiSIT_legend.svgtune
-* write conan config file for each input file: input_1.cfg, input_2.cfg
-* write conan config file for jitters: jitter.cfg
-
-Execute:
-* Generate PNGs: generate_pngs.sh (filename).svgtune
-    ex: generate_pngs.sh MiSIT_layers.svgtune
-    ex: generate_pngs.sh MiSIT_legend.svgtune
-* Generate a group of conan set files for each input file. This script will
-  generate a set file for trials and jitter, and results file for blocks/rules:
-  trials_gen.sh -d (directory) -r (rule-set) -s (block size) -b (block order) -j (jitters) -f (folder with pngs)
-    ex: trials_gen.sh -d sets/gbNW_pvNE_1 -r gbNW_pvNE -s 100 -b neutral farbe incongruent neutral linie congruent -j 1000 1500 2000 2500 -f pngs/*.png
-    ex: trials_gen.sh -d sets/gbNW_pvNE_2 -r gbNW_pvNE -s 100 -b neutral congruent linie farbe incongruent neutral -j 1000 1500 2000 2500 -f pngs/*.png
-* Submit conan files to condor to generate trial results:
-  conan-submit-gen -c (config file) -s (set file) -d (directory) -r (#runs) -j (#results) | condor_submit
-    ex: conan-submit-gen -c cfgs/input_1.cfg -s sets/gbNW_pvNE_1/trials.set -d results/results_trials_gbNW_pvNE_1 -r 1000 -j 5 | condor_submit
-    ex: conan-submit-gen -c cfgs/input_2.cfg -s sets/gbNW_pvNE_2/trials.set -d results/results_trials_gbNW_pvNE_1 -r 1000 -j 5 | condor_submit
-* Submit conan files to condor to generate jitter results:
-  conan-submit-gen -c (config file) -s (set file) -d (directory) -r (#runs) -j (#results) | condor_submit
-    ex: conan-submit-gen -c cfgs/jitter.cfg -s sets/gbNW_pvNE_1/jitters.set -d results/results_jitter -r 1000 -j 1 | condor_submit
-* Join trial and jitter results for each input file using join:
-    ex: join results/results_trials_gbNW_pvNE_1/0-0.438498.results results/results_jitter/0-0.438237.results >| input_files/gbNW_pvNE_1/trials_jitters
-    ex: join results/results_trials_gbNW_pvNE_2/0-0.438250.results results/results_jitter/0-0.438237.results >| input_files/gbNW_pvNE_2/trials_jitters
-* Join the trials_jitters file just created with the block_rules results file
-  for each input file:
-    ex: join input_files/gbNW_pvNE_1/trials_jitters sets/gbNW_pvNE_1/blocks_rules.results >| input_files/gbNW_pvNE_1/pre-sed_gbNW_pvNE_1
-    ex: join input_files/gbNW_pvNE_2/trials_jitters sets/gbNW_pvNE_2/blocks_rules.results >| input_files/gbNW_pvNE_2/pre-sed_gbNW_pvNE_2
-* Use sed to generate the finale version of each of the input files:
-    ex: sed -f conan2input.sed input_files/gbNW_pvNE_1/pre-sed_gbNW_pvNE_1 >| input_files/gbNW_pvNE_1/gbNW_pvNE_1.txt
-    ex: sed -f conan2input.sed input_files/gbNW_pvNE_2/pre-sed_gbNW_pvNE_2 >| input_files/gbNW_pvNE_2/gbNW_pvNE_2.txt
-
-Breakdown
-#########
-
 Stimuli
--------
+#######
+
 There are 40 unique stimuli. 8 core-stimuli and 32 cue-stimuli. Each stimulus is
 640x640 pixels.
 
@@ -64,9 +24,27 @@ creating congruent and incongruent stimuli.
 
 Legend
 ------
-A legend is used to inform the subject which rules are currently in
+A legend, which is located at the bottom of the screen underneath the stimulus
+in each trial, is used to inform the subject which rules are currently in
 effect. The rules indicate which response (left or right) is indicated for each
-color and each direction. ##TODO##explain more
+color and each direction.
+
+Generation of Stimuli & Legend
+------------------------------
+Inkscape was used to create the stimuli(MiSIT_layers.sgv) and the
+legend(MiSIT_legend.svg) svg files. The svgs for the stimuli and legend both
+have several layers which contain the unique features of the stimuli (color,
+hatching, etc). Each of these layers can be turned on/off to creat the different
+variations of stimuli and legends.
+
+svgtune is a script used to turn on and off the layers of the svg to create the
+variations of the stimuli and legend. For more information on how to use
+svgtune, see: https://github.com/yarikoptic/svgtune/blob/master/README.rst
+
+To generate pngs with svgtune, use the following script:
+generate_pngs.sh (filename).svgtune
+    ex: generate_pngs.sh MiSIT_layers.svgtune
+    ex: generate_pngs.sh MiSIT_legend.svgtune
 
 Naming Scheme
 -------------
@@ -109,27 +87,13 @@ rules: (color)(color)(direction)_(color)(color)(direction)
 * cue location: left, right
 *******************************************************************************
 
-Generation of Stimuli & Legend
---------------------------------
-Inkscape was used to create svgs for the stimuli(MiSIT_layers.sgv) and the
-legend(MiSIT_legend.svg). Each of the svgs have layers that can be turned on/off
-to generate the various stimuli and legends.
+Randomization and Generation of Input files
+###########################################
 
-svgtune is used to turn on and off the layers of the svg to create the
-variations of the stimuli and legend. For more information on how to use
-svgtune, see: https://github.com/yarikoptic/svgtune/blob/master/README.rst
+Conan was used for randomization. Refer to conan man page.
 
-To generate pngs with svgtune, use the following script:
-generate_pngs.sh (filename).svgtune
-    ex: generate_pngs.sh MiSIT_layers.svgtune
-    ex: generate_pngs.sh MiSIT_legend.svgtune
-
-Use Conan to randomize the input files
---------------------------------------
-cfg files
-'''''''''
-See conan man page for how to set up a cfg file
-
+Conan cfg files
+---------------
 *Two different cfg files for the different input files (input_1 and input_2) that
  have different block orders
   input_1: neutral, farbe, incongruent, neutral, linie, congruent
@@ -167,9 +131,9 @@ See conan man page for how to set up a cfg file
  constraint:
   -Maximum of 4 repeats for the same jitter value
 
-Set files
-'''''''''
-See conan man page for set file requirements.
+Conan set files
+---------------
+Refer to conan man page for set file requirements.
 
 Use trials_gen.sh to generate a group of conan set files for each input file.
 This script will generate a set file for the trials and jitter, and a results
@@ -180,7 +144,7 @@ file for blocks/rules.
 See the trials_gen.sh man page for more info.
 
 Send to condor
-''''''''''''''
+--------------
 Submit conan files to condor to generate trial and jitter results using conan-submit-gen.
   ex: conan-submit-gen -c cfgs/input_1.cfg -s sets/gbNW_pvNE_1/trials.set -d results/results_trials_gbNW_pvNE_1 -r 1000 -j 5 | condor_submit
   ex: conan-submit-gen -c cfgs/input_2.cfg -s sets/gbNW_pvNE_2/trials.set -d results/results_trials_gbNW_pvNE_1 -r 1000 -j 5 | condor_submit
@@ -207,3 +171,41 @@ Use sed to generate the finale version of each of the input files:
   ex: sed -f conan2input.sed input_files/gbNW_pvNE_2/pre-sed_gbNW_pvNE_2 >| input_files/gbNW_pvNE_2/gbNW_pvNE_2.txt
 
 See man page for sed for more info
+
+Overview of Workflow
+####################
+
+Prep:
+* build svg for stimuli: MiSIT_layers.svg
+* build svg for legend: MiSIT_legend.svg
+* write svgtune file for stimuli: MiSIT_layers.svgtune
+* write svgtune file for legend: MiSIT_legend.svgtune
+* write conan config file for each input file: input_1.cfg, input_2.cfg
+* write conan config file for jitters: jitter.cfg
+
+Execute:
+* Generate PNGs: generate_pngs.sh (filename).svgtune
+    ex: generate_pngs.sh MiSIT_layers.svgtune
+    ex: generate_pngs.sh MiSIT_legend.svgtune
+* Generate a group of conan set files for each input file. This script will
+  generate a set file for trials and jitter, and results file for blocks/rules:
+  trials_gen.sh -d (directory) -r (rule-set) -s (block size) -b (block order) -j (jitters) -f (folder with pngs)
+    ex: trials_gen.sh -d sets/gbNW_pvNE_1 -r gbNW_pvNE -s 100 -b neutral farbe incongruent neutral linie congruent -j 1000 1500 2000 2500 -f pngs/*.png
+    ex: trials_gen.sh -d sets/gbNW_pvNE_2 -r gbNW_pvNE -s 100 -b neutral congruent linie farbe incongruent neutral -j 1000 1500 2000 2500 -f pngs/*.png
+* Submit conan files to condor to generate trial results:
+  conan-submit-gen -c (config file) -s (set file) -d (directory) -r (#runs) -j (#results) | condor_submit
+    ex: conan-submit-gen -c cfgs/input_1.cfg -s sets/gbNW_pvNE_1/trials.set -d results/results_trials_gbNW_pvNE_1 -r 1000 -j 5 | condor_submit
+    ex: conan-submit-gen -c cfgs/input_2.cfg -s sets/gbNW_pvNE_2/trials.set -d results/results_trials_gbNW_pvNE_1 -r 1000 -j 5 | condor_submit
+* Submit conan files to condor to generate jitter results:
+  conan-submit-gen -c (config file) -s (set file) -d (directory) -r (#runs) -j (#results) | condor_submit
+    ex: conan-submit-gen -c cfgs/jitter.cfg -s sets/gbNW_pvNE_1/jitters.set -d results/results_jitter -r 1000 -j 1 | condor_submit
+* Join trial and jitter results for each input file using join:
+    ex: join results/results_trials_gbNW_pvNE_1/0-0.438498.results results/results_jitter/0-0.438237.results >| input_files/gbNW_pvNE_1/trials_jitters
+    ex: join results/results_trials_gbNW_pvNE_2/0-0.438250.results results/results_jitter/0-0.438237.results >| input_files/gbNW_pvNE_2/trials_jitters
+* Join the trials_jitters file just created with the block_rules results file
+  for each input file:
+    ex: join input_files/gbNW_pvNE_1/trials_jitters sets/gbNW_pvNE_1/blocks_rules.results >| input_files/gbNW_pvNE_1/pre-sed_gbNW_pvNE_1
+    ex: join input_files/gbNW_pvNE_2/trials_jitters sets/gbNW_pvNE_2/blocks_rules.results >| input_files/gbNW_pvNE_2/pre-sed_gbNW_pvNE_2
+* Use sed to generate the finale version of each of the input files:
+    ex: sed -f conan2input.sed input_files/gbNW_pvNE_1/pre-sed_gbNW_pvNE_1 >| input_files/gbNW_pvNE_1/gbNW_pvNE_1.txt
+    ex: sed -f conan2input.sed input_files/gbNW_pvNE_2/pre-sed_gbNW_pvNE_2 >| input_files/gbNW_pvNE_2/gbNW_pvNE_2.txt
