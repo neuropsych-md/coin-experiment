@@ -5,18 +5,18 @@
 layers style=display:none
 
 layer label=black_background style=display:inline
-layer label=circle_green style=display:inline
+layer label=circle1_green style=display:inline
 layer label=circle2_blue style=display:inline
-layer label=circle3_linie style=display:inline
-layer label=hatching_SENW style=display:inline
+layer label=circle3_grey style=display:inline
+layer label=circle3_SENW style=display:inline
 %save legend_gbNW
 
 # Make all layers invisible
 layers style=display:none
 
 layer label=black_background style=display:inline
-layer label=circle_pink style=display:inline
+layer label=circle1_pink style=display:inline
 layer label=circle2_violet style=display:inline
-layer label=circle3_linie style=display:inline
-layer label=hatching_SWNE style=display:inline
+layer label=circle3_grey style=display:inline
+layer label=circle3_SWNE style=display:inline
 %save legend_pvNE
