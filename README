@@ -20,7 +20,13 @@ features of the stimuli that the subject needs to pay attention to. The cue
 location is always on the side that matches the response required by the
 currently irrelevant stimulus feature. The currently relevant stimulus feature
 can map to the same or the opposite response as the irrelevant feature, thereby
-creating congruent and incongruent stimuli.
+creating congruent and incongruent stimuli. A stimuli is congruent if the
+currently relevant stimulus feature's answer is the same as the irrelevant
+feature's answer. The cue location is always on the side of the response
+indicated by the currently irrelevant stimulus feature. This means that not all
+32 stimuli will be used. The stimuli required will be determined by the rule
+set. Only 16 out of 32 stimuli will be used at one time because of the
+requirements for cue location.
 
 Legend
 ------
