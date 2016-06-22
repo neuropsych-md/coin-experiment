@@ -108,6 +108,57 @@ case "$RULE_SET" in
   *) Fatal "Invalid rule '$RULE_SET'"
 esac
 
+case "$RULE_SET" in
+  'pvNW_gbNE') # pink,violet,northwest = left ; green,blue,northeast = right
+    case "$FEATR" in
+         'farbe')
+            case "$COLOR" in
+              'pink'|'violet') ANSWER='f' ;; # left
+              'green'|'blue') ANSWER='j' ;; # right
+            esac ;;
+         'linie')
+            case "$DIREC" in # Hatching Direction
+              'SENW'|'NWSE') ANSWER='f' ;; # left
+              'SWNE'|'NESW') ANSWER='j' ;; # right
+            esac ;;
+    esac ;;
+  *) Fatal "Invalid rule '$RULE_SET'"
+esac
+
+case "$RULE_SET" in
+  'bpSW_gvSE') # blue,pink,southwest = left ; green,violet,southeast = right
+    case "$FEATR" in
+         'farbe')
+            case "$COLOR" in
+              'blue'|'pink') ANSWER='f' ;; # left
+              'green'|'violet') ANSWER='j' ;; # right
+            esac ;;
+         'linie')
+            case "$DIREC" in # Hatching Direction
+              'SWNE'|'NESW') ANSWER='f' ;; # left
+              'SENW'|'NWSE') ANSWER='j' ;; # right
+            esac ;;
+    esac ;;
+  *) Fatal "Invalid rule '$RULE_SET'"
+esac
+
+case "$RULE_SET" in
+  'gvSW_bpSE') # green,violet,southwest = left ; blue,pink,southeast = right
+    case "$FEATR" in
+         'farbe')
+            case "$COLOR" in
+              'green'|'violet') ANSWER='f' ;; # left
+              'blue'|'pink') ANSWER='j' ;; # right
+            esac ;;
+         'linie')
+            case "$DIREC" in # Hatching Direction
+              'SWNE'|'NESW') ANSWER='f' ;; # left
+              'SENW'|'NWSE') ANSWER='j' ;; # right
+            esac ;;
+    esac ;;
+  *) Fatal "Invalid rule '$RULE_SET'"
+esac
+
 # check in case there was a non-match
 [ "$ANSWER" = 'OOPS' ] && Fatal "'$COLOR' and/or '$DIREC' did not match in rule-set '$RULE_SET'."
 
