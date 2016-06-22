@@ -82,10 +82,10 @@
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.90509668"
-     inkscape:cx="127.52115"
+     inkscape:cx="-60.856516"
      inkscape:cy="309.65657"
      inkscape:document-units="px"
-     inkscape:current-layer="g4923"
+     inkscape:current-layer="g4917"
      showgrid="false"
      showborder="false"
      showguides="false"
@@ -250,7 +250,7 @@
        transform="matrix(0.5,0.8660254,-0.8660254,0.5,0,0)" />
   </g>
   <g
-     inkscape:label="hatching_SENW_320"
+     inkscape:label="hatching_SENW_330"
      inkscape:groupmode="layer"
      id="g5638"
      style="display:none"
@@ -273,7 +273,7 @@
      style="display:inline"
      id="g4923"
      inkscape:groupmode="layer"
-     inkscape:label="hatching_SENW_290">
+     inkscape:label="hatching_SENW_300">
     <rect
        inkscape:export-ydpi="89.918213"
        inkscape:export-xdpi="89.918213"
