@@ -16,7 +16,7 @@
    id="svg2"
    version="1.1"
    inkscape:version="0.91 r13725"
-   sodipodi:docname="MiSIT_layers_2.svg"
+   sodipodi:docname="MiSIT_layers.svg"
    inkscape:export-filename="C:\Users\captain\Desktop\laura\MoST_stims\most_layers.png"
    inkscape:export-xdpi="89.918213"
    inkscape:export-ydpi="89.918213">
@@ -82,7 +82,7 @@
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.90509668"
-     inkscape:cx="315.89882"
+     inkscape:cx="127.52115"
      inkscape:cy="309.65657"
      inkscape:document-units="px"
      inkscape:current-layer="g4923"
@@ -218,8 +218,8 @@
   <g
      id="g4197"
      inkscape:groupmode="layer"
-     inkscape:label="hatching_SWNE_30"
-     style="display:inline"
+     inkscape:label="hatching_SWNE_030"
+     style="display:none"
      transform="translate(-1.4279853,-252.43054)">
     <rect
        rx="307.10941"
@@ -235,7 +235,7 @@
   <g
      transform="translate(-1.4279853,-252.43054)"
      style="display:none"
-     inkscape:label="hatching_SWNE_60"
+     inkscape:label="hatching_SWNE_060"
      inkscape:groupmode="layer"
      id="g4917">
     <rect
@@ -250,7 +250,7 @@
        transform="matrix(0.5,0.8660254,-0.8660254,0.5,0,0)" />
   </g>
   <g
-     inkscape:label="hatching_SENW_30"
+     inkscape:label="hatching_SENW_320"
      inkscape:groupmode="layer"
      id="g5638"
      style="display:none"
@@ -270,10 +270,10 @@
   </g>
   <g
      transform="translate(-1.4279853,-252.43054)"
-     style="display:none"
+     style="display:inline"
      id="g4923"
      inkscape:groupmode="layer"
-     inkscape:label="hatching_SENW_60">
+     inkscape:label="hatching_SENW_290">
     <rect
        inkscape:export-ydpi="89.918213"
        inkscape:export-xdpi="89.918213"
