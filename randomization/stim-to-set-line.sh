@@ -179,9 +179,9 @@ SWNE_ANS=$(LookupAnswer "$RULE_SET" 'linie' 'SWNE')
 
 # determine (in)congruency of cue and answer
 CONGRUENCY=''
-if [ "$CSIDE" = 'left' ] && [ "$ANSWER" = 'f' ]; then
+if [ "$CSIDE" = 'left' ] && [ "$REAL_ANS" = 'f' ]; then
   CONGRUENCY='con' # congruent
-elif [ "$CSIDE" = 'right' ] && [ "$ANSWER" = 'j' ]; then
+elif [ "$CSIDE" = 'right' ] && [ "$REAL_ANS" = 'j' ]; then
   CONGRUENCY='con' # congruent
 else
   CONGRUENCY='incon' # incongruent
