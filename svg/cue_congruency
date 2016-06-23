@@ -29,7 +29,7 @@ stims/rules                    | gbNW_pvNE | pvNW_gbNE | bpSW_gvSE | gvSW_bpSE |
 27_blue-SWNE-030_linie-left     | yes       | no        | yes       | no        |
 28_blue-SWNE-030_linie-right    | no        | yes       | no        | yes       |
 29_blue-SWNE-060_farbe-left     | no        | no        | yes       | yes       |
-20_blue-SWNE-060_farbe-right    | yes       | yes       | no        | no        |
+30_blue-SWNE-060_farbe-right    | yes       | yes       | no        | no        |
 31_blue-SWNE-060_linie-left     | yes       | no        | yes       | no        |
 32_blue-SWNE-060_linie-right    | no        | yes       | no        | yes       |
 33_pink-SENW-330_farbe-left     | yes       | yes       | no        | no        |
