@@ -3,7 +3,8 @@
 #
 # required files:
 #     events files in the input\ folder
-#         gbw_pve_1.txt
+#         gbNW_pvNE_1.txt
+#         gbNW_pvNE_2.txt
 #     stim1 PNGs in the stimuli\ folder
 #         green-SENW.png, green-SWNE.png
 #         blue-SENW.png, blue-SWNE.png
@@ -27,9 +28,9 @@
 #         29_violet-SENW_farbe-right.png, 30_violet-SENW_linie-left.png
 #         31_violet-SWNE_farbe-left.png, 32_violet-SWNE_linie-left.png
 #     legend PNGs in the stimuli\ folder
-#         legend_gbw.png, legend_pve.png
+#         legend_gbNW.png, legend_pvNE.png
 #
-# version 0.5 - 2016, Laura Waite
+# version 0.6 - 2016, Laura Waite
 ############################################################################
 
 response_matching = simple_matching;
@@ -204,14 +205,14 @@ array {
 # legend
 #
 array {
-    bitmap {filename = "legend_gbw.png";} left;
-    bitmap {filename = "legend_pve.png";} right;
-} gbw_pve;
+    bitmap {filename = "legend_gbNW.png";} left;
+    bitmap {filename = "legend_pvNE.png";} right;
+} gbNW_pvNE;
 
-array {
-    bitmap {filename = "legend_pvw.png";};
-    bitmap {filename = "legend_gbe.png";};
-} pvw_gbe;
+#array {
+#    bitmap {filename = "legend_pvw.png";};
+#    bitmap {filename = "legend_gbe.png";};
+#} pvw_gbe;
 
 #
 # pause
@@ -220,7 +221,7 @@ trial {
     trial_duration = forever;
     trial_type = first_response;
     picture {
-        text {caption = "Pause"; font_size = 48;};
+        text {caption = "Continue with SPACE or quit with ESC"; font_size = 48;} warn_txt;
         x=0; y=0;
     };
 } pause;
@@ -247,8 +248,8 @@ trial {
     stimulus_event {
         picture {
             bitmap green_SENW; x=0; y=0;
-            bitmap left; x=-600; y=0;
-            bitmap right; x=600; y=0;
+            bitmap left; x=-300; y=-350;
+            bitmap right; x=300; y=-350;
         } stim1;
         time = 0;
         code = "stim1";
@@ -257,8 +258,8 @@ trial {
     stimulus_event {
         picture {
             bitmap farbe_left; x=0; y=0;
-            bitmap left; x=-600; y=0;
-            bitmap right; x=600; y=0;
+            bitmap left; x=-300; y=-350;
+            bitmap right; x=300; y=-350;
         } stim2;
         duration = 1000;
         code = "stim2";
@@ -274,7 +275,7 @@ begin_pcl;
 #
 # read input file
 #
-preset string rule;
+preset string rule = "gbNW_pvNE";
 preset string version;
 string eventfile = "input\\" + rule + "_" + version + ".txt";
 input_file events = new input_file;
@@ -318,9 +319,8 @@ string fint = "%8d";        # output format int
 string subject = logfile.filename();
 output_file data = new output_file;
 data.open(subject + ".txt");
-# (headers) rule  trial  block_type  stim1  onset_stim1  stim2  onset_stim2  response  answer  reaction_time  color  relevant_feature  direction  congruency
-data.print("rule\ttrial\tblock_type\tstim1\tonset_stim1\tstim2\tonset_stim2\tresponse\tanswer\treaction_time\tcolort\relevant_feature\tdirection\tcongruency\n");
-
+# (headers) rule  trial  block  stim1  stim1_onset  stim2  stim2_onset  response  reaction_time  featr  congruency  color  direc
+data.print("rule\ttrial\tblock\tstim1\tstim1_onset\tstim2\tstim2_onset\tresponse\treaction_time\tfeatr\tcongruency\tcolor\tdirec\n");
 #
 # load stimuli pair arrays into a single array
 #
@@ -361,19 +361,26 @@ avail_stims[32].assign(violet_SWNE_linie_left);
 #
 # load legend pair arrays into a single array
 #
-array<bitmap> avail_legends[2][0];
-avail_legends[1].assign(gbw_pve);
-avail_legends[2].assign(pvw_gbe);
+array<bitmap> avail_legends[1][0];
+avail_legends[1].assign(gbNW_pvNE);
+#avail_legends[2].assign(pvw_gbe);
 
 #
 # declare which legend from avail_legends to be used
 #
 int which_legend;
-if (rule == "gbw_pve") then
+if (rule == "gbNW_pvNE") then
 	 which_legend = 1;
-elseif (rule == "pvw_gbe") then
-	 which_legend = 2;
+#elseif (rule == "pvw_gbe") then
+#	 which_legend = 2;
 end;
+
+#
+# Feedback variables
+#
+int correctcounter = 0;
+int incorrectcounter = 0;
+int misscounter = 0;
 
 #
 # Main
@@ -383,6 +390,12 @@ begin
     # pause between blocks
     if (i != 1) then # but don't pause before the first trial
         if (block_type[i] != block_type[i-1]) then
+	         if (misscounter > 10) || (incorrectcounter < 10) then
+		          warn_txt.set_caption("Pause\n" + "Bitte schneller drücken!");
+	         else
+		          warn_txt.set_caption("Pause");
+	         end;
+	         warn_txt.redraw();
             pause.present();
         end;
     end;
@@ -414,27 +427,49 @@ begin
     stimulus_data info_stim2 = stimulus_manager.get_stimulus_data(i*2);
 
     # print to output file
-    data.print(printf(total_trials[i], fint) + "\t");
     data.print(legend[i] + "\t");
-    data.print(printf(i, fint) + "\t");
+    data.print(printf(i, fint) + "\t");                     # trial number
     data.print(block_type[i] + "\t");
     data.print(stim_event1.event_code() + "\t");
     data.print(printf(timing_stim1.time(), fint) + "\t");   # stim1 onset
     data.print(stim_event2.event_code() + "\t");
     data.print(printf(info_stim2.time(), fint) + "\t");     # stim2 onset
-    if (info_stim2.button() == 1) then
-        data.print("left" + "\t");
-    elseif (info_stim2.button() == 2) then
-        data.print("right" + "\t");
-    elseif (info_stim2.button() == 0) then
-        data.print("none" + "\t");
+    
+    # Block-wise Feedback
+    if (answer[i] == "left") then
+	     if (info_stim2.button() == 1) then
+		      correctcounter = correctcounter + 1;
+		      data.print("correct" + "\t");
+	     elseif(info_stim2.button() == 0) then
+            misscounter = misscounter + 1;
+	         data.print("nan" + "\t");
+	     else
+		      incorrectcounter = incorrectcounter + 1;
+		      data.print("incorrect" + "\t");
+	     end;
+    elseif (answer[i] == "right") then
+	     if (info_stim2.button() == 2) then
+		      correctcounter = correctcounter + 1;
+		      data.print("correct" + "\t");
+	     elseif(info_stim2.button() == 0) then
+            misscounter = misscounter + 1;
+	         data.print("nan" + "\t");
+	     else
+		      incorrectcounter = incorrectcounter + 1;
+		      data.print("incorrect" + "\t");
+	     end;
+	 end;
+
+    # print to output file
+    if (info_stim2.button() == 0) then    # if no reponse or late reponse
+        data.print("nan" + "\t");
+    else
+        data.print(printf(info_stim2.reaction_time(), fint) + "\t");    # reaction time
     end;
-    data.print(answer[i] + "\t");
-    data.print(printf(info_stim2.reaction_time(), fint) + "\t");    # reaction time
-    data.print(color[i] + "\t");
     data.print(relevant_feature[i] + "\t");
-    data.print(direction[i] + "\t");
     data.print(congruency[i] + "\t");
+    data.print(color[i] + "\t");
+    data.print(direction[i] + "\t");
     data.print( "\n" );
 
     i=i+1;
