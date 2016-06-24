@@ -3,7 +3,7 @@
 #
 # required files:
 #     events files in the input\ folder
-#         gbw_pve_1.txt
+#         practice_gbNW_pvNE_1.txt
 #     stim1 PNGs in the stimuli\ folder
 #         green-SENW.png, green-SWNE.png
 #         blue-SENW.png, blue-SWNE.png
@@ -27,9 +27,9 @@
 #         29_violet-SENW_farbe-right.png, 30_violet-SENW_linie-left.png
 #         31_violet-SWNE_farbe-left.png, 32_violet-SWNE_linie-left.png
 #     legend PNGs in the stimuli\ folder
-#         legend_gbw.png, legend_pve.png
+#         legend_gbNW.png, legend_pvNE.png
 #
-# version 0.5 - 2016, Laura Waite
+# version 0.6 - 2016, Laura Waite
 ############################################################################
 
 response_matching = simple_matching;
@@ -204,14 +204,14 @@ array {
 # legend
 #
 array {
-    bitmap {filename = "legend_gbw.png";} left;
-    bitmap {filename = "legend_pve.png";} right;
-} gbw_pve;
+    bitmap {filename = "legend_gbNW.png";} left;
+    bitmap {filename = "legend_pvNE.png";} right;
+} gbNW_pvNE;
 
-array {
-    bitmap {filename = "legend_pvw.png";};
-    bitmap {filename = "legend_gbe.png";};
-} pvw_gbe;
+#array {
+#    bitmap {filename = "legend_pvw.png";};
+#    bitmap {filename = "legend_gbe.png";};
+#} pvw_gbe;
 
 #
 # feedback stims
@@ -237,8 +237,8 @@ trial {
     stimulus_event {
         picture {
             bitmap green_SENW; x=0; y=0;
-            bitmap left; x=-600; y=0;
-            bitmap right; x=600; y=0;
+            bitmap left; x=-300; y=-350;
+            bitmap right; x=300; y=-350;
         } stim1;
         time = 0;
         code = "stim1";
@@ -247,8 +247,8 @@ trial {
     stimulus_event {
         picture {
             bitmap farbe_left; x=0; y=0;
-            bitmap left; x=-600; y=0;
-            bitmap right; x=600; y=0;
+            bitmap left; x=-300; y=-350;
+            bitmap right; x=300; y=-350;
         } stim2;
         duration = 1000;
         code = "stim2";
@@ -264,8 +264,8 @@ begin_pcl;
 #
 # read input file
 #
-preset string rule;
-preset string version;
+preset string rule = "gbNW_pvNE";
+preset string version = "1";
 string eventfile = "input\\practice_" + rule + "_" + version + ".txt";
 input_file events = new input_file;
 events.open(eventfile);
@@ -352,17 +352,17 @@ avail_stims[32].assign(violet_SWNE_linie_left);
 # load legend pair arrays into a single array
 #
 array<bitmap> avail_legends[2][0];
-avail_legends[1].assign(gbw_pve);
-avail_legends[2].assign(pvw_gbe);
+avail_legends[1].assign(gbNW_pvNE);
+#avail_legends[2].assign(pvw_gbe);
 
 #
 # declare which legend from avail_legends to be used
 #
 int which_legend;
-if (rule == "gbw_pve") then
+if (rule == "gbNW_pvNE") then
 	 which_legend = 1;
-elseif (rule == "pvw_gbe") then
-	 which_legend = 2;
+#elseif (rule == "pvw_gbe") then
+#	 which_legend = 2;
 end;
 
 #
