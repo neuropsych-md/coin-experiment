@@ -2,6 +2,7 @@
 # --------------------------------------------------------------------------
 #
 # required files:
+#     MiSIT.pcl
 #     events files in the input\ folder
 #         gbNW_pvNE_1.txt
 #         gbNW_pvNE_2.txt
@@ -30,8 +31,10 @@
 #     legend PNGs in the stimuli\ folder
 #         legend_gbNW.png, legend_pvNE.png
 #
-# version 0.6.1 - 2016, Laura Waite
+# version 0.6.2 - 2016, Laura Waite
 ############################################################################
+
+pcl_file = "MiSIT.pcl";
 
 response_matching = simple_matching;
 active_buttons = 2;
