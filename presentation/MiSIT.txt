@@ -18,7 +18,7 @@
 #         13_violet-SENW_farbe-left.png, 14_violet-SENW_linie-right.png
 #         15_violet-SWNE_farbe-right.png, 16_violet-SWNE_direction-right.png
 #
-# version 0.2 - 2016, Laura Waite
+# version 0.3 - 2016, Laura Waite
 ########################################################################
 
 response_matching = simple_matching;
@@ -194,12 +194,12 @@ avail_stims[16].assign(violet_SWNE_linie_right);
 #
 # read input file
 #
-string eventfile = "input\\pilot_input.txt";
+preset string version;
+string eventfile = "input\\input_" + version + ".txt";
 input_file events = new input_file;
 events.open(eventfile);
 
-array<int> trial_num[1000];
-array<int> block_num[1000];
+array<int> event_num[1000];
 array<int> stimuli[1000];    # avail_stims array number
 array<int> jitter[1000];
 array<string> block_type[1000];
@@ -207,20 +207,23 @@ array<string> color[1000];
 array<string> direction[1000];
 array<string> relevant_feature[1000];
 array<string> congruency[1000];
-array<string> correct_resp[1000];
+array<string> answer[1000];
+array<string> rules[1000];
+array<int> total_trials[0];
 
 loop int i=1 until events.end_of_file()
 begin
+    event_num[i] = events.get_int();              # used only for input file
     stimuli[i] = events.get_int();
     color[i] = events.get_string();               # used only for output file
     direction[i] = events.get_string();           # used only for output file
     relevant_feature[i] = events.get_string();    # used only for output file
     congruency[i] = events.get_string();          # used only for output file
-    correct_resp[i] = events.get_string();        # used only for output file
+    answer[i] = events.get_string();              # used only for output file
     jitter[i] = events.get_int();
-    block_type[i] = events.get_string();          # used only for output file
-    block_num[i] = events.get_int();
-    trial_num[i] = events.get_int();
+    block_type[i] = events.get_string();
+    rules[i] = events.get_string();
+    total_trials.add(i);
     i=i+1;
 end;
 events.close();
@@ -234,17 +237,17 @@ string fint = "%8d";        # output format int
 string subject = logfile.filename();
 output_file data = new output_file;
 data.open(subject + ".txt");
-# (headers) trial  block  block_type  stim1  onset_stim1  stim2  onset_stim2  response  correct_response  reaction_time  color  direction  congruency  relevant_feature
-data.print("trial\tblock\tblock_type\tstim1\tonset_stim1\tstim2\tonset_stim2\tresponse\tcorrect_response\treaction_time\tcolor\tdirection\tcongruency\trelevant_feature\n");
+# (headers) rules  trial  block_type  stim1  onset_stim1  stim2  onset_stim2  response  answer  reaction_time  color  relevant_feature  direction  congruency
+data.print("rules\ttrial\tblock_type\tstim1\tonset_stim1\tstim2\tonset_stim2\tresponse\tanswer\treaction_time\tcolort\relevant_feature\tdirection\tcongruency\n");
 
 #
 # Main
 #
-loop int i=1 until i > trial_num[i]
+loop int i=1 until i > total_trials.count()
 begin
     # pause between blocks
     if (i != 1) then # but don't pause before the first trial
-        if (block_num[i] != block_num[i-1]) then
+        if (block_type[i] != block_type[i-1]) then
             pause.present();
         end;
     end;
@@ -269,15 +272,13 @@ begin
     # pull stimulus data for stim2
     stimulus_data info_stim2 = stimulus_manager.get_stimulus_data(i*2);
 
-    # pull response data
-    #response_data response_info = response_manager.get_response_data();
-
     # print to output file
-    data.print(printf(trial_num[i], fint) + "\t");
-    data.print(printf(block_num[i], fint) + "\t");
+    data.print(printf(total_trials[i], fint) + "\t");
+    data.print(rules[i] + "\t");
+    data.print(printf(i, fint) + "\t");
     data.print(block_type[i] + "\t");
     data.print(stim_event1.event_code() + "\t");
-    data.print(printf(timing_stim1.time(), fint) + "\t");     # stim1 onset
+    data.print(printf(timing_stim1.time(), fint) + "\t");   # stim1 onset
     data.print(stim_event2.event_code() + "\t");
     data.print(printf(info_stim2.time(), fint) + "\t");     # stim2 onset
     if (info_stim2.button() == 1) then
@@ -287,12 +288,12 @@ begin
     elseif (info_stim2.button() == 0) then
         data.print("none" + "\t");
     end;
-    data.print(correct_resp[i] + "\t");
+    data.print(answer[i] + "\t");
     data.print(printf(info_stim2.reaction_time(), fint) + "\t");    # reaction time
     data.print(color[i] + "\t");
+    data.print(relevant_feature[i] + "\t");
     data.print(direction[i] + "\t");
     data.print(congruency[i] + "\t");
-    data.print(relevant_feature[i] + "\t");
     data.print( "\n" );
 
     i=i+1;
