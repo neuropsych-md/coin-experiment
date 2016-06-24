@@ -30,7 +30,7 @@
 #     legend PNGs in the stimuli\ folder
 #         legend_gbNW.png, legend_pvNE.png
 #
-# version 0.6 - 2016, Laura Waite
+# version 0.6.1 - 2016, Laura Waite
 ############################################################################
 
 response_matching = simple_matching;
@@ -248,8 +248,8 @@ trial {
     stimulus_event {
         picture {
             bitmap green_SENW; x=0; y=0;
-            bitmap left; x=-300; y=-350;
-            bitmap right; x=300; y=-350;
+            bitmap left; x=-300; y=-450;
+            bitmap right; x=300; y=-450;
         } stim1;
         time = 0;
         code = "stim1";
@@ -258,8 +258,8 @@ trial {
     stimulus_event {
         picture {
             bitmap farbe_left; x=0; y=0;
-            bitmap left; x=-300; y=-350;
-            bitmap right; x=300; y=-350;
+            bitmap left; x=-300; y=-450;
+            bitmap right; x=300; y=-450;
         } stim2;
         duration = 1000;
         code = "stim2";
@@ -319,8 +319,8 @@ string fint = "%8d";        # output format int
 string subject = logfile.filename();
 output_file data = new output_file;
 data.open(subject + ".txt");
-# (headers) rule  trial  block  stim1  stim1_onset  stim2  stim2_onset  response  reaction_time  featr  congruency  color  direc
-data.print("rule\ttrial\tblock\tstim1\tstim1_onset\tstim2\tstim2_onset\tresponse\treaction_time\tfeatr\tcongruency\tcolor\tdirec\n");
+# (headers) rule  trial  block  featr  congruency  color  direc  stim1_onset  stim2_onset  reaction_time  response
+data.print("rule\ttrial\tblock\tfeatr\tcongruency\tcolor\tdirec\tstim1_onset\tstim2_onset\treaction_time\tresponse\n");
 #
 # load stimuli pair arrays into a single array
 #
@@ -397,6 +397,8 @@ begin
 	         end;
 	         warn_txt.redraw();
             pause.present();
+		      misscounter = 0;
+		      incorrectcounter = 0;
         end;
     end;
 
@@ -430,11 +432,21 @@ begin
     data.print(legend[i] + "\t");
     data.print(printf(i, fint) + "\t");                     # trial number
     data.print(block_type[i] + "\t");
-    data.print(stim_event1.event_code() + "\t");
+    data.print(relevant_feature[i] + "\t");
+    data.print(congruency[i] + "\t");
+    data.print(color[i] + "\t");
+    data.print(direction[i] + "\t");
+    #data.print(stim_event1.event_code() + "\t");
     data.print(printf(timing_stim1.time(), fint) + "\t");   # stim1 onset
-    data.print(stim_event2.event_code() + "\t");
+    #data.print(stim_event2.event_code() + "\t");
     data.print(printf(info_stim2.time(), fint) + "\t");     # stim2 onset
-    
+
+    if (info_stim2.button() == 0) then    # if no reponse or late reponse
+        data.print("none" + "\t");
+    else
+        data.print(printf(info_stim2.reaction_time(), fint) + "\t");    # reaction time
+    end;
+
     # Block-wise Feedback
     if (answer[i] == "left") then
 	     if (info_stim2.button() == 1) then
@@ -442,7 +454,7 @@ begin
 		      data.print("correct" + "\t");
 	     elseif(info_stim2.button() == 0) then
             misscounter = misscounter + 1;
-	         data.print("nan" + "\t");
+	         data.print("none" + "\t");
 	     else
 		      incorrectcounter = incorrectcounter + 1;
 		      data.print("incorrect" + "\t");
@@ -453,23 +465,12 @@ begin
 		      data.print("correct" + "\t");
 	     elseif(info_stim2.button() == 0) then
             misscounter = misscounter + 1;
-	         data.print("nan" + "\t");
+	         data.print("none" + "\t");
 	     else
 		      incorrectcounter = incorrectcounter + 1;
 		      data.print("incorrect" + "\t");
 	     end;
-	 end;
-
-    # print to output file
-    if (info_stim2.button() == 0) then    # if no reponse or late reponse
-        data.print("nan" + "\t");
-    else
-        data.print(printf(info_stim2.reaction_time(), fint) + "\t");    # reaction time
     end;
-    data.print(relevant_feature[i] + "\t");
-    data.print(congruency[i] + "\t");
-    data.print(color[i] + "\t");
-    data.print(direction[i] + "\t");
     data.print( "\n" );
 
     i=i+1;
