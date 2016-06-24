@@ -1,8 +1,10 @@
 # MiSIT (Modified Simon Interference Task)
-# ----------------------------------------------------------------------
+# --------------------------------------------------------------------------
 #
 # required files:
-#     input\pilot_input.txt    # events file
+#     events files in the input\ folder
+#         gbw_pve_1.txt
+#         pvw_gbe_1.txt
 #     stim1 PNGs in the stimuli\ folder
 #         green-SENW.png, green-SWNE.png
 #         blue-SENW.png, blue-SWNE.png
@@ -17,9 +19,12 @@
 #         11_pink-SWNE_farbe-right.png, 12_pink-SWNE_linie-right.png
 #         13_violet-SENW_farbe-left.png, 14_violet-SENW_linie-right.png
 #         15_violet-SWNE_farbe-right.png, 16_violet-SWNE_direction-right.png
+#     legend PNGs in the stimuli\ folder
+#         legend_gbw.png, legend_pve.png
+#         legend_pvw.png, legend_gbe.png
 #
-# version 0.3 - 2016, Laura Waite
-########################################################################
+# version 0.4 - 2016, Laura Waite
+############################################################################
 
 response_matching = simple_matching;
 active_buttons = 2;
@@ -112,7 +117,15 @@ array {
 #
 # legend
 #
-bitmap {filename = "gbw_pve.png";} gbw_pve;
+array {
+    bitmap {filename = "legend_gbw.png";} left;
+    bitmap {filename = "legend_pve.png";} right;
+} gbw_pve;
+
+array {
+    bitmap {filename = "legend_pvw.png";};
+    bitmap {filename = "legend_gbe.png";};
+} pvw_gbe;
 
 #
 # pause
@@ -148,7 +161,8 @@ trial {
     stimulus_event {
         picture {
             bitmap green_SENW; x=0; y=0;
-            bitmap gbw_pve; x=-0; y=-400;
+            bitmap left; x=-600; y=0;
+            bitmap right; x=600; y=0;
         } stim1;
         time = 0;
         code = "stim1";
@@ -157,7 +171,8 @@ trial {
     stimulus_event {
         picture {
             bitmap farbe_left; x=0; y=0;
-            bitmap gbw_pve; x=0; y=-400;
+            bitmap left; x=-600; y=0;
+            bitmap right; x=600; y=0;
         } stim2;
         duration = 1000;
         code = "stim2";
@@ -169,6 +184,56 @@ trial {
 # PCL
 #
 begin_pcl;
+
+#
+# read input file
+#
+preset string rule;
+preset string version;
+string eventfile = "input\\" + rule + "_" + version + ".txt";
+input_file events = new input_file;
+events.open(eventfile);
+
+array<int> event_num[1000];
+array<int> stimuli[1000];    # avail_stims array number
+array<int> jitter[1000];
+array<string> block_type[1000];
+array<string> color[1000];
+array<string> direction[1000];
+array<string> relevant_feature[1000];
+array<string> congruency[1000];
+array<string> answer[1000];
+array<string> legend[1000];
+array<int> total_trials[0];
+
+loop int i=1 until events.end_of_file()
+begin
+    event_num[i] = events.get_int();              # used only for input file
+    stimuli[i] = events.get_int();
+    color[i] = events.get_string();               # used only for output file
+    direction[i] = events.get_string();           # used only for output file
+    relevant_feature[i] = events.get_string();    # used only for output file
+    congruency[i] = events.get_string();          # used only for output file
+    answer[i] = events.get_string();              # used only for output file
+    jitter[i] = events.get_int();
+    block_type[i] = events.get_string();
+    legend[i] = events.get_string();
+    total_trials.add(i);
+    i=i+1;
+end;
+events.close();
+
+#
+# Set-up output file
+#
+string fdouble = "%10.3f";  # output format double
+string fint = "%8d";        # output format int
+
+string subject = logfile.filename();
+output_file data = new output_file;
+data.open(subject + ".txt");
+# (headers) rule  trial  block_type  stim1  onset_stim1  stim2  onset_stim2  response  answer  reaction_time  color  relevant_feature  direction  congruency
+data.print("rule\ttrial\tblock_type\tstim1\tonset_stim1\tstim2\tonset_stim2\tresponse\tanswer\treaction_time\tcolort\relevant_feature\tdirection\tcongruency\n");
 
 #
 # load stimuli pair arrays into a single array
@@ -192,53 +257,21 @@ avail_stims[15].assign(violet_SWNE_farbe_right);
 avail_stims[16].assign(violet_SWNE_linie_right);
 
 #
-# read input file
+# load legend pair arrays into a single array
 #
-preset string version;
-string eventfile = "input\\input_" + version + ".txt";
-input_file events = new input_file;
-events.open(eventfile);
+array<bitmap> avail_legends[2][0];
+avail_legends[1].assign(gbw_pve);
+avail_legends[2].assign(pvw_gbe);
 
-array<int> event_num[1000];
-array<int> stimuli[1000];    # avail_stims array number
-array<int> jitter[1000];
-array<string> block_type[1000];
-array<string> color[1000];
-array<string> direction[1000];
-array<string> relevant_feature[1000];
-array<string> congruency[1000];
-array<string> answer[1000];
-array<string> rules[1000];
-array<int> total_trials[0];
-
-loop int i=1 until events.end_of_file()
-begin
-    event_num[i] = events.get_int();              # used only for input file
-    stimuli[i] = events.get_int();
-    color[i] = events.get_string();               # used only for output file
-    direction[i] = events.get_string();           # used only for output file
-    relevant_feature[i] = events.get_string();    # used only for output file
-    congruency[i] = events.get_string();          # used only for output file
-    answer[i] = events.get_string();              # used only for output file
-    jitter[i] = events.get_int();
-    block_type[i] = events.get_string();
-    rules[i] = events.get_string();
-    total_trials.add(i);
-    i=i+1;
+#
+# declare which legend from avail_legends to be used
+#
+int which_legend;
+if (rule == "gbw_pve") then
+	 which_legend = 1;
+elseif (rule == "pvw_gbe") then
+	 which_legend = 2;
 end;
-events.close();
-
-#
-# Set-up output file
-#
-string fdouble = "%10.3f";  # output format double
-string fint = "%8d";        # output format int
-
-string subject = logfile.filename();
-output_file data = new output_file;
-data.open(subject + ".txt");
-# (headers) rules  trial  block_type  stim1  onset_stim1  stim2  onset_stim2  response  answer  reaction_time  color  relevant_feature  direction  congruency
-data.print("rules\ttrial\tblock_type\tstim1\tonset_stim1\tstim2\tonset_stim2\tresponse\tanswer\treaction_time\tcolort\relevant_feature\tdirection\tcongruency\n");
 
 #
 # Main
@@ -254,13 +287,19 @@ begin
 
     # set event code for stim1
     stim_event1.set_event_code(avail_stims[stimuli[i]][1].description());
-    # set picture part for stim1
+    # set stimulus for stim1
     stim1.set_part(1, avail_stims[stimuli[i]][1]);
+    # set legend for stim1
+    stim1.set_part(2, avail_legends[which_legend][1]);
+    stim1.set_part(3, avail_legends[which_legend][2]);
 
     # set event code for stim2
     stim_event2.set_event_code(avail_stims[stimuli[i]][2].description());
-    # set picture part for stim2
+    # set stimulus for stim2
     stim2.set_part(1, avail_stims[stimuli[i]][2]);
+    # set legend for stim1
+    stim2.set_part(2, avail_legends[which_legend][1]);
+    stim2.set_part(3, avail_legends[which_legend][2]);
     # set jitter before stim2 onset
     stim_event2.set_time(jitter[i]);
 
@@ -274,7 +313,7 @@ begin
 
     # print to output file
     data.print(printf(total_trials[i], fint) + "\t");
-    data.print(rules[i] + "\t");
+    data.print(legend[i] + "\t");
     data.print(printf(i, fint) + "\t");
     data.print(block_type[i] + "\t");
     data.print(stim_event1.event_code() + "\t");
