@@ -1,6 +1,6 @@
 #!/bin/sh
 # This file is licensed under the BSD-3-Clause license.
-# Alex Waite 2016
+# Laura Waite 2016
 
 #
 # MiSIT project
