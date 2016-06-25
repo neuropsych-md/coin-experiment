@@ -9,22 +9,14 @@
 #         bpSW_gvSE_1.txt, bpSW_gvSE_2.txt, bpSW_gvSE_3.txt, bpSW_gvSE_4.txt
 #         gvSW_bpSNE_1.txt, gvSW_bpSE_2.txt, gvSW_bpSE_3.txt, gvSW_bpSE_4.txt
 #     stim1 PNGs in the stimuli\ folder
-#         green-SENW-330.png, green-SWNE-330.png
-#         green-SENW-300.png, green-SWNE-300.png
-#         green-SENW-030.png, green-SWNE-030.png
-#         green-SENW-060.png, green-SWNE-060.png
-#         blue-SENW-330.png, blue-SWNE-330.png
-#         blue-SENW-300.png, blue-SWNE-300.png
-#         blue-SENW-030.png, blue-SWNE-030.png
-#         blue-SENW-060.png, blue-SWNE-060.png
-#         pink-SENW-330.png, pink-SWNE-330.png
-#         pink-SENW-300.png, pink-SWNE-300.png
-#         pink-SENW-030.png, pink-SWNE-030.png
-#         pink-SENW-060.png, pink-SWNE-060.png
-#         violet-SENW-330.png, violet-SWNE-330.png
-#         violet-SENW-300.png, violet-SWNE-300.png
-#         violet-SENW-030.png, violet-SWNE-030.png
-#         violet-SENW-060.png, violet-SWNE-060.png
+#         green-SENW-330.png, green-SWNE-030.png
+#         green-SENW-300.png, green-SWNE-060.png
+#         blue-SENW-330.png, blue-SWNE-030.png
+#         blue-SENW-300.png, blue-SWNE-060.png
+#         pink-SENW-330.png, pink-SWNE-030.png
+#         pink-SENW-300.png, pink-SWNE-060.png
+#         violet-SENW-330.png, violet-SWNE-030.png
+#         violet-SENW-300.png, violet-SWNE-060.png
 #     stim2 PNGs in the stimuli\ folder
 #         01_green-SENW-330_farbe-left.png, 02_green-SENW-330_farbe-right.png
 #         03_green-SENW-330_linie-left.png, 04_green-SENW-330_linie-right.png
