@@ -216,13 +216,13 @@ avail_legends[4].assign(gvSW_bpSE);
 #
 int which_legend;
 if (rule == "gbNW_pvNE") then
-	 which_legend = 1;
+    which_legend = 1;
 elseif (rule == "pvNW_gbNE") then
     which_legend = 2;
 elseif (rule == "bpSW_gvSE") then
-	 which_legend = 3;
+    which_legend = 3;
 elseif (rule == "gvSW_bpSE") then
-	 which_legend = 4;
+    which_legend = 4;
 end;
 
 #
@@ -240,20 +240,20 @@ begin
     # pause between blocks
     if (i != 1) then # but don't pause before the first trial
         if (block_type[i] != block_type[i-1]) then
-	         if (misscounter > 10) || (incorrectcounter < 10) then
-		          warn_txt.set_caption("Pause\n" + "Bitte schneller drücken!");
-	         else
-		          warn_txt.set_caption("Pause");
-	         end;
-	         warn_txt.redraw();
+            if (misscounter > 10) || (incorrectcounter < 10) then
+                warn_txt.set_caption("Pause\n" + "Bitte schneller drücken!");
+            else
+                warn_txt.set_caption("Pause");
+            end;
+            warn_txt.redraw();
             pause.present();
-		      misscounter = 0;
-		      incorrectcounter = 0;
+            misscounter = 0;
+            incorrectcounter = 0;
         end;
     end;
 
     # set event code for stim1
-    #stim_event1.set_event_code(avail_stims[stimuli[i]][1].description());
+    # stim_event1.set_event_code(avail_stims[stimuli[i]][1].description());
     # set stimulus for stim1
     stim1.set_part(1, avail_stims[stimuli[i]][1]);
     # set legend for stim1
@@ -261,7 +261,7 @@ begin
     stim1.set_part(3, avail_legends[which_legend][2]);
 
     # set event code for stim2
-    #stim_event2.set_event_code(avail_stims[stimuli[i]][2].description());
+    # stim_event2.set_event_code(avail_stims[stimuli[i]][2].description());
     # set stimulus for stim2
     stim2.set_part(1, avail_stims[stimuli[i]][2]);
     # set legend for stim1
@@ -314,37 +314,37 @@ begin
     end;
 
     # Response
-	 if (info_stim2.button() == 1) then
-		  data.print(printf(-1, fint) + "\t");
-	 elseif(info_stim2.button() == 2) then
-		  data.print(printf(1, fint) + "\t");
-	 elseif(info_stim2.button() == 0) then
-		  data.print(printf(0, fint) + "\t");
-	 end;
+    if (info_stim2.button() == 1) then
+        data.print(printf(-1, fint) + "\t");
+    elseif(info_stim2.button() == 2) then
+        data.print(printf(1, fint) + "\t");
+    elseif(info_stim2.button() == 0) then
+        data.print(printf(0, fint) + "\t");
+    end;
 
     # Block-wise Feedback & Accuracy
     if (answer[i] == -1) then
-	     if (info_stim2.button() == 1) then
-		      correctcounter = correctcounter + 1;
-		      data.print(printf(1, fint) + "\t");
-	     elseif(info_stim2.button() == 0) then
+        if (info_stim2.button() == 1) then
+            correctcounter = correctcounter + 1;
+            data.print(printf(1, fint) + "\t");
+        elseif(info_stim2.button() == 0) then
             misscounter = misscounter + 1;
-	         data.print("NaN" + "\t");
-	     else
-		      incorrectcounter = incorrectcounter + 1;
-		      data.print(printf(-1, fint) + "\t");
-	     end;
+            data.print("NaN" + "\t");
+        else
+            incorrectcounter = incorrectcounter + 1;
+            data.print(printf(-1, fint) + "\t");
+        end;
     elseif (answer[i] == 1) then
-	     if (info_stim2.button() == 2) then
-		      correctcounter = correctcounter + 1;
-		      data.print(printf(1, fint) + "\t");
-	     elseif(info_stim2.button() == 0) then
+        if (info_stim2.button() == 2) then
+            correctcounter = correctcounter + 1;
+            data.print(printf(1, fint) + "\t");
+        elseif(info_stim2.button() == 0) then
             misscounter = misscounter + 1;
-	         data.print("NaN" + "\t");
-	     else
-		      incorrectcounter = incorrectcounter + 1;
-		      data.print(printf(-1, fint) + "\t");
-	     end;
+            data.print("NaN" + "\t");
+        else
+            incorrectcounter = incorrectcounter + 1;
+            data.print(printf(-1, fint) + "\t");
+        end;
     end;
     data.print( "\n" );
 
