@@ -38,16 +38,12 @@ Fatal() {
 # Main
 #
 
-# set-up directories
-[ -e "./sets/" ] && Fatal "./sets/ already exists! (please delete it)"
+# set-up directory
 [ -e "./results/" ] && Fatal "./results/ already exists! (please delete it)"
-[ -e "./infiles/" ] && Fatal "./infiles/ already exists! (please delete it)"
-mkdir -p "./sets/"
 mkdir -p "./results/"
-mkdir -p "./infiles/"
 
 # generate jitter set file
-./jitter-gen.sh --total 100 --jitters 800 1000 1200 1400 1600 1800 | shuf > "./sets/jitter.set"
+./jitter-gen.sh --total 100 --jitters 800 1000 1200 1400 1600 1800 | shuf > "./results/jitter.set"
 
 # loop over all ruleset and block combinations
 for ruleset in gbNW_pvNE pvNW_gbNE bpSW_gvSE gvSW_bpSE ; do
@@ -60,7 +56,7 @@ for ruleset in gbNW_pvNE pvNW_gbNE bpSW_gvSE gvSW_bpSE ; do
              'congruentA'|'congruentB')     mode='--con-incon 75 25'   ;;
         esac
         # generate conan set files
-        ./events-gen.sh --rule-set "$ruleset" $mode --pngs svg/MiSIT_layers_png/*.png > "./sets/${ruleset}_${block}.set"
+        ./events-gen.sh --rule-set "$ruleset" $mode --pngs svg/MiSIT_layers_png/*.png > "./results/${ruleset}_${block}.set"
 
         case "$block" in
              'neutralA'|'neutralB')         cfg_file='neutral.cfg'     ;;
@@ -70,8 +66,8 @@ for ruleset in gbNW_pvNE pvNW_gbNE bpSW_gvSE gvSW_bpSE ; do
              'congruentA'|'congruentB')     cfg_file='congruent.cfg'   ;;
         esac
         # generate result files for events and jitters
-        conan "./cfgs/${cfg_file}" "./sets/${ruleset}_${block}.set" > "./results/${ruleset}_${block}.results"
-        conan ./cfgs/jitter.cfg "./sets/jitter.set" > "./results/${ruleset}_${block}_jitter.results"
+        conan "./cfgs/${cfg_file}" "./results/${ruleset}_${block}.set" > "./results/${ruleset}_${block}.results"
+        conan ./cfgs/jitter.cfg "./results/jitter.set" > "./results/${ruleset}_${block}_jitter.results"
     done
 done
 
@@ -85,9 +81,8 @@ for KEY in "${!infiles[@]}"; do
     # convert into a presentation-ready format and join with jitter info and append block num
     join ./results/${RULE_SET}_${BLOCK}.results ./results/${RULE_SET}_${BLOCK}_jitter.results | \
       sed -f ./conan2input.sed | sed -f ./conan2input.sed | sed -e "1,\$ s/\$/ ${BLOCK_NUM}/" \
-      >> ./infiles/${KEY}.txt
+      >> ./results/${KEY}.txt
 
     BLOCK_NUM=$(( $BLOCK_NUM + 1 ))
   done
 done
-
