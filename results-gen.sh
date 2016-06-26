@@ -47,7 +47,7 @@ mkdir -p "./results/"
 mkdir -p "./infiles/"
 
 # generate jitter set file
-./jitter-gen.sh --total 100 --jitters 800 1000 1200 1400 1600 1800 > "./sets/jitter.set"
+./jitter-gen.sh --total 100 --jitters 800 1000 1200 1400 1600 1800 | shuf > "./sets/jitter.set"
 
 # loop over all ruleset and block combinations
 for ruleset in gbNW_pvNE pvNW_gbNE bpSW_gvSE gvSW_bpSE ; do
