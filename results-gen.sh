@@ -48,6 +48,7 @@ mkdir -p "./results/"
 # loop over all ruleset and block combinations
 for ruleset in gbNW_pvNE pvNW_gbNE bpSW_gvSE gvSW_bpSE ; do
     for block in neutralA neutralB farbeA farbeB linieA linieB incongruentA incongruentB congruentA congruentB; do
+        printf "Automagicating: $ruleset $block\n"
         case "$block" in
              'neutralA'|'neutralB')         mode='--farbe-linie 50 50' ;;
              'farbeA'|'farbeB')             mode='--farbe-linie 75 25' ;;
@@ -66,21 +67,23 @@ for ruleset in gbNW_pvNE pvNW_gbNE bpSW_gvSE gvSW_bpSE ; do
              'congruentA'|'congruentB')     cfg_file='congruent.cfg'   ;;
         esac
         # generate result files for events and jitters
-        conan "./cfgs/${cfg_file}" "./results/${ruleset}_${block}.set" > "./results/${ruleset}_${block}.results"
-        conan ./cfgs/jitter.cfg "./results/jitter.set" > "./results/${ruleset}_${block}_jitter.results"
+        conan "./cfgs/${cfg_file}" "./results/${ruleset}_${block}.set" 1> "./results/${ruleset}_${block}.results" 2> /dev/null
+        conan ./cfgs/jitter.cfg "./results/jitter.set" 1> "./results/${ruleset}_${block}_jitter.results" 2> /dev/null
     done
 done
 
 RULE_SET=''
 # build and output the final presentation "input" files
+printf "Assembling the following files:\n"
 for KEY in "${!infiles[@]}"; do
   RULE_SET=${KEY%_*}
 
   BLOCK_NUM=1
+  printf "${KEY}\n"
   for BLOCK in ${infiles[${KEY}]}; do
     # convert into a presentation-ready format and join with jitter info and append block num
     join ./results/${RULE_SET}_${BLOCK}.results ./results/${RULE_SET}_${BLOCK}_jitter.results | \
-      sed -f ./conan2input.sed | sed -f ./conan2input.sed | sed -e "1,\$ s/\$/ ${BLOCK_NUM}/" \
+      sed -f ./conan2input.sed | sed -e "1,\$ s/\$/ ${BLOCK_NUM}/" \
       >> ./results/${KEY}.txt
 
     BLOCK_NUM=$(( $BLOCK_NUM + 1 ))
