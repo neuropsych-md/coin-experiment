@@ -90,7 +90,6 @@ IsCongruent() {
   return 1 # incongruent
 }
 
-
 # What is the correct answer for a given rule-set, feature, and question
 #
 # Accepts a rule-set, relevant feature, and relevant feature's question
@@ -102,60 +101,19 @@ LookupAnswer() {
   local question=$3
 
   local answer='OOPS' # in case there's a foul-up in the rule-sets
-  case "$rule_set" in
-    'gbNW_pvNE') # green,blue,northwest = left ; pink,violet,northeast = right
-      case "$feature" in
-           'farbe')
-              case "$question" in # color
-                'green'|'blue') answer='f' ;; # left
-                'pink'|'violet') answer='j' ;; # right
-              esac ;;
-           'linie')
-              case "$question" in # Hatching Direction
-                'SENW'|'NWSE') answer='f' ;; # left
-                'SWNE'|'NESW') answer='j' ;; # right
-              esac ;;
-      esac ;;
-    'pvNW_gbNE') # pink,violet,northwest = left ; green,blue,northeast = right
-      case "$feature" in
-           'farbe')
-              case "$question" in # color
-                'pink'|'violet') answer='f' ;; # left
-                'green'|'blue') answer='j' ;; # right
-              esac ;;
-           'linie')
-              case "$question" in # Hatching Direction
-                'SENW'|'NWSE') answer='f' ;; # left
-                'SWNE'|'NESW') answer='j' ;; # right
-              esac ;;
-      esac ;;
-    'bpSW_gvSE') # blue,pink,southwest = left ; green,violet,southeast = right
-      case "$feature" in
-           'farbe')
-              case "$question" in # color
-                'blue'|'pink') answer='f' ;; # left
-                'green'|'violet') answer='j' ;; # right
-              esac ;;
-           'linie')
-              case "$question" in # Hatching Direction
-                'SWNE'|'NESW') answer='f' ;; # left
-                'SENW'|'NWSE') answer='j' ;; # right
-              esac ;;
-      esac ;;
-    'gvSW_bpSE') # green,violet,southwest = left ; blue,pink,southeast = right
-      case "$feature" in
-           'farbe')
-              case "$question" in # color
-                'green'|'violet') answer='f' ;; # left
-                'blue'|'pink') answer='j' ;; # right
-              esac ;;
-           'linie')
-              case "$question" in # Hatching Direction
-                'SWNE'|'NESW') answer='f' ;; # left
-                'SENW'|'NWSE') answer='j' ;; # right
-              esac ;;
-      esac ;;
-    *) Fatal "Invalid rule '$rule_set'"
+
+  case "$feature" in
+     'farbe')
+         local color_code=${question:0:1} # b/g/p/v
+         [ -z "${rule_set##*${color_code}*_*}" ] && answer='f' # left
+         [ -z "${rule_set##*_*${color_code}*}" ] && answer='j' # right
+         ;;
+     'linie')
+         local linie1=${question:0:2} # NE/SE/SW/NW
+         local linie2=${question:2:4} # NE/SE/SW/NW
+         [ -z "${rule_set##*${linie1}_*}" ] || [ -z "${rule_set##*${linie2}_*}" ] && answer='f' # left
+         [ -z "${rule_set##*_*${linie1}}" ] || [ -z "${rule_set##*_*${linie2}}" ] && answer='j' # right
+         ;;
   esac
 
   # check in case there was a non-match
@@ -296,8 +254,8 @@ LINIE_CON=$(Shuffle "$LINIE_CON") ; LINIE_INCON=$(Shuffle "$LINIE_INCON")
 # build a list of the PNG IDs according to the ratios provided by the user
 #   the ratio of the non-mode is 50/50 (so --farbe-linie 75 25 results in
 #   farbe=75, linie=25, congruent=50, incongruent=50)
-CLOCK='tick'
-for M in $MODE ; do # used the space in the mode-name for splitting
+CLOCK='tick' # ensure the non-mode's 50/50 ratio across both halves of the mode
+for M in $MODE ; do # e.g. 'farbe linie'
   case $M in
     'farbe') ARR1=$FARBE_CON   ; ARR2=$FARBE_INCON ; NUM=$NUM_FARBE ;;
     'linie') ARR1=$LINIE_CON   ; ARR2=$LINIE_INCON ; NUM=$NUM_LINIE ;;
@@ -307,18 +265,14 @@ for M in $MODE ; do # used the space in the mode-name for splitting
 
   I=0
   while [ $I -lt $NUM ]; do
-    if [ "$CLOCK" = 'tick' ]; then
-      ID=${ARR1%% *} # get first ID
-      ARR1="${ARR1#${ID} } ${ID}" # rotate first ID to end
-      CLOCK='tock'
-    else
-      ID=${ARR2%% *} # get first ID
-      ARR2="${ARR2#${ID} } ${ID}" # rotate first ID to end
-      CLOCK='tick'
-    fi
+    #                        get first ID      rotate first ID to end
+    [ "$CLOCK" = 'tick' ] && ID=${ARR1%% *} && ARR1="${ARR1#${ID} } ${ID}"
+    [ "$CLOCK" = 'tock' ] && ID=${ARR2%% *} && ARR2="${ARR2#${ID} } ${ID}"
 
     EVENTS="${EVENTS:+$EVENTS }${ID}"
 
+    # advance counters
+    [ "$CLOCK" = 'tick' ] && CLOCK='tock' || CLOCK='tick'
     I=$(( $I + 1 ))
   done
 done
@@ -329,7 +283,6 @@ if [ "$MODE" = 'farbe linie' ]; then
 else # con incon
   NUM_FARBE=$(( ( $NUM_CON + $NUM_INCON ) / 2 ))
 fi
-
 
 # now, finally, print out the events
 for ID in $EVENTS ; do
