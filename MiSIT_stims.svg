@@ -16,7 +16,7 @@
    id="svg2"
    version="1.1"
    inkscape:version="0.91 r13725"
-   sodipodi:docname="most_layers.svg"
+   sodipodi:docname="MiSIT_layers.svg"
    inkscape:export-filename="C:\Users\captain\Desktop\laura\MoST_stims\most_layers.png"
    inkscape:export-xdpi="89.918213"
    inkscape:export-ydpi="89.918213">
@@ -24,14 +24,34 @@
      id="defs4">
     <pattern
        inkscape:collect="always"
+       xlink:href="#pattern5642"
+       id="pattern4935"
+       patternTransform="matrix(10,0,0,10,-307.18564,-1231.0909)" />
+    <pattern
+       inkscape:collect="always"
+       xlink:href="#pattern5650"
+       id="pattern4933"
+       patternTransform="matrix(10,0,0,10,249.57143,-235.60608)" />
+    <pattern
+       inkscape:collect="always"
+       xlink:href="#pattern5642"
+       id="pattern4931"
+       patternTransform="matrix(10,0,0,10,19.851532,-1134.6845)" />
+    <pattern
+       inkscape:collect="always"
+       xlink:href="#pattern5650"
+       id="pattern4921"
+       patternTransform="matrix(10,0,0,10,341.51663,-565.58404)" />
+    <pattern
+       inkscape:collect="always"
        xlink:href="#pattern5636"
        id="pattern5650"
-       patternTransform="matrix(10,0,0,10,316.96539,-394.90428)" />
+       patternTransform="matrix(10,0,0,10,251.90398,-236.39463)" />
     <pattern
        inkscape:collect="always"
        xlink:href="#pattern5636"
        id="pattern5642"
-       patternTransform="matrix(10,0,0,10,-137.62549,-1210.9382)" />
+       patternTransform="matrix(10,0,0,10,-311.71533,-1235.9358)" />
     <pattern
        inkscape:collect="always"
        xlink:href="#Strips1_1"
@@ -62,10 +82,10 @@
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.90509668"
-     inkscape:cx="120.64317"
+     inkscape:cx="-60.856516"
      inkscape:cy="309.65657"
      inkscape:document-units="px"
-     inkscape:current-layer="layer1"
+     inkscape:current-layer="g4917"
      showgrid="false"
      showborder="false"
      showguides="false"
@@ -198,44 +218,80 @@
   <g
      id="g4197"
      inkscape:groupmode="layer"
-     inkscape:label="hatching_SWNE"
+     inkscape:label="hatching_SWNE_030"
      style="display:none"
      transform="translate(-1.4279853,-252.43054)">
     <rect
        rx="307.10941"
        ry="303.98438"
-       y="-139.75102"
-       x="326.93945"
+       y="19.547184"
+       x="259.5455"
        height="615.18292"
        width="615.18286"
        id="rect4199"
-       style="opacity:0.994;fill:url(#pattern5650);fill-opacity:1"
-       transform="matrix(0.70710678,0.70710678,-0.70710678,0.70710678,0,0)" />
+       style="opacity:0.994;fill:url(#pattern4933);fill-opacity:1"
+       transform="matrix(0.8660254,0.5,-0.5,0.8660254,0,0)" />
   </g>
   <g
-     inkscape:label="hatching_SENW"
+     transform="translate(-1.4279853,-252.43054)"
+     style="display:none"
+     inkscape:label="hatching_SWNE_060"
+     inkscape:groupmode="layer"
+     id="g4917">
+    <rect
+       style="opacity:0.994;fill:url(#pattern4921);fill-opacity:1"
+       id="rect4919"
+       width="615.18286"
+       height="615.18292"
+       x="351.49072"
+       y="-310.43079"
+       ry="303.98438"
+       rx="307.10941"
+       transform="matrix(0.5,0.8660254,-0.8660254,0.5,0,0)" />
+  </g>
+  <g
+     inkscape:label="hatching_SENW_330"
      inkscape:groupmode="layer"
      id="g5638"
-     style="display:inline"
+     style="display:none"
      transform="translate(-1.4279853,-252.43054)">
     <rect
-       transform="matrix(-0.70710678,0.70710678,-0.70710678,-0.70710678,0,0)"
-       style="opacity:0.994;fill:url(#pattern5642);fill-opacity:1"
+       transform="matrix(-0.8660254,0.5,-0.5,-0.8660254,0,0)"
+       style="opacity:0.994;fill:url(#pattern4935);fill-opacity:1"
        id="rect5640"
        width="601.04083"
        height="615.18286"
-       x="-118.53782"
-       y="-956.26447"
+       x="-288.09796"
+       y="-976.41711"
        ry="304.05582"
        rx="300.52042"
        inkscape:export-xdpi="89.918213"
        inkscape:export-ydpi="89.918213" />
   </g>
   <g
+     transform="translate(-1.4279853,-252.43054)"
+     style="display:inline"
+     id="g4923"
+     inkscape:groupmode="layer"
+     inkscape:label="hatching_SENW_300">
+    <rect
+       inkscape:export-ydpi="89.918213"
+       inkscape:export-xdpi="89.918213"
+       rx="300.52042"
+       ry="304.05582"
+       y="-880.01086"
+       x="38.939194"
+       height="615.18286"
+       width="601.04083"
+       id="rect4925"
+       style="opacity:0.994;fill:url(#pattern4931);fill-opacity:1"
+       transform="matrix(-0.5,0.8660254,-0.8660254,-0.5,0,0)" />
+  </g>
+  <g
      inkscape:label="left_black_circle"
      id="g6164"
      inkscape:groupmode="layer"
-     style="display:inline"
+     style="display:none"
      transform="translate(-1.4279853,-252.43054)">
     <circle
        r="50"
@@ -248,7 +304,7 @@
      inkscape:groupmode="layer"
      id="layer5"
      inkscape:label="F_left"
-     style="display:inline"
+     style="display:none"
      transform="translate(-1.4279853,-252.43054)">
     <flowRoot
        xml:space="preserve"
