@@ -1,5 +1,5 @@
 # Load the file we should use
-%file MiSIT_layers.svg
+%file MiSIT_stims.svg
 
 # Make all layers invisible
 layers style=display:none
