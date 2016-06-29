@@ -3,10 +3,10 @@
 #
 # required files:
 #     events files in the input\ folder
-#         practice_gbNW_pvNE_1.txt
-#         practice_pvNW_gbNE_1.txt
-#         practice_bpSW_gvSE_1.txt
-#         practice_gvSW_bpSNE_1.txt
+#         practice_gbNW_pvNE.txt
+#         practice_pvNW_gbNE.txt
+#         practice_bpSW_gvSE.txt
+#         practice_gvSW_bpSNE.txt
 #     stim1 PNGs in the stimuli\ folder
 #         green-SENW-330.png, green-SWNE-030.png
 #         green-SENW-300.png, green-SWNE-060.png
@@ -461,8 +461,8 @@ begin_pcl;
 # read input file
 #
 preset string rule ;
-preset string version;
-string eventfile = "input\\practice_" + rule + "_" + version + ".txt";
+#preset string version;
+string eventfile = "input\\practice_" + rule + ".txt";
 input_file events = new input_file;
 events.open(eventfile);
 
@@ -474,6 +474,8 @@ array<int> relevant_feature[2000];
 array<int> congruency[2000];
 array<int> answer[2000];
 array<int> degrees[2000];
+array<int> incon_freq[2000];
+array<int> color_freq[2000];
 array<int> color_answer[2000];
 array<int> direc_answer[2000];
 array<int> green_answer[2000];
@@ -484,10 +486,6 @@ array<int> SENW_answer[2000];
 array<int> SWNE_answer[2000];
 array<int> jitter[2000];
 array<int> block_num[2000];
-array<string> block_type[2000];
-array<int> incon_freq[2000];
-array<int> color_freq[2000];
-array<string> legend[2000];
 array<int> total_trials[0];
 
 loop int i=1 until events.end_of_file()
@@ -498,8 +496,10 @@ begin
     direction[i] = events.get_string();        # used only for output file
     relevant_feature[i] = events.get_int();    # used only for output file
     congruency[i] = events.get_int();          # used only for output file
-    answer[i] = events.get_int();              # used only for output file
+    answer[i] = events.get_int();
     degrees[i] = events.get_int();             # used only for output file
+    incon_freq[i] = events.get_int();          # used only for output file
+    color_freq[i] = events.get_int();          # used only for output file
     color_answer[i] = events.get_int();        # used only for output file
     direc_answer[i] = events.get_int();        # used only for output file
     green_answer[i] = events.get_int();        # used only for output file
@@ -510,10 +510,6 @@ begin
     SWNE_answer[i] = events.get_int();         # used only for output file
     jitter[i] = events.get_int();
     block_num[i] = events.get_int();
-    block_type[i] = events.get_string();
-    incon_freq[i] = events.get_int();
-    color_freq[i] = events.get_int();
-    legend[i] = events.get_string();
     total_trials.add(i);
     i=i+1;
 end;

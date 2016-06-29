@@ -76,6 +76,8 @@ array<int> relevant_feature[2000];
 array<int> congruency[2000];
 array<int> answer[2000];
 array<int> degrees[2000];
+array<int> incon_freq[2000];
+array<int> color_freq[2000];
 array<int> color_answer[2000];
 array<int> direc_answer[2000];
 array<int> green_answer[2000];
@@ -86,10 +88,6 @@ array<int> SENW_answer[2000];
 array<int> SWNE_answer[2000];
 array<int> jitter[2000];
 array<int> block_num[2000];
-array<string> block_type[2000];
-array<int> incon_freq[2000];
-array<int> color_freq[2000];
-array<string> legend[2000];
 array<int> total_trials[0];
 
 loop int i=1 until events.end_of_file()
@@ -100,8 +98,10 @@ begin
     direction[i] = events.get_string();        # used only for output file
     relevant_feature[i] = events.get_int();    # used only for output file
     congruency[i] = events.get_int();          # used only for output file
-    answer[i] = events.get_int();              # used only for output file
+    answer[i] = events.get_int();
     degrees[i] = events.get_int();             # used only for output file
+    incon_freq[i] = events.get_int();          # used only for output file
+    color_freq[i] = events.get_int();          # used only for output file
     color_answer[i] = events.get_int();        # used only for output file
     direc_answer[i] = events.get_int();        # used only for output file
     green_answer[i] = events.get_int();        # used only for output file
@@ -112,10 +112,6 @@ begin
     SWNE_answer[i] = events.get_int();         # used only for output file
     jitter[i] = events.get_int();
     block_num[i] = events.get_int();
-    block_type[i] = events.get_string();
-    incon_freq[i] = events.get_int();
-    color_freq[i] = events.get_int();
-    legend[i] = events.get_string();
     total_trials.add(i);
     i=i+1;
 end;
@@ -239,7 +235,7 @@ loop int i=1 until i > total_trials.count()
 begin
     # pause between blocks
     if (i != 1) then # but don't pause before the first trial
-        if (block_type[i] != block_type[i-1]) then
+        if (block_num[i] != block_num[i-1]) then
             if (misscounter > 10) || (incorrectcounter < 10) then
                 warn_txt.set_caption("Pause\n" + "Bitte schneller drücken!");
             else
