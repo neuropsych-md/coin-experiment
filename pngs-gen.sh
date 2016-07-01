@@ -55,3 +55,5 @@ for SVG_IN in ${TUNE_DIR}/*.svg ; do
 
     inkscape -z -f $SVG_IN -e "${PNG_DIR}/${PNG_OUT}"
 done
+
+mv "${TUNE_DIR}" "${PNG_DIR}/${TUNE_DIR}"
