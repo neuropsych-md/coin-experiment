@@ -17,7 +17,7 @@
    version="1.1"
    inkscape:version="0.91 r13725"
    sodipodi:docname="MiSIT_stims.svg"
-   inkscape:export-filename="C:\Users\captain\Desktop\laura\MoST_stims\most_layers.png"
+   inkscape:export-filename="/home/loj/laura_work/pink_new"
    inkscape:export-xdpi="89.918213"
    inkscape:export-ydpi="89.918213">
   <defs
@@ -81,20 +81,20 @@
      borderopacity="1.0"
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.90509668"
-     inkscape:cx="-60.856516"
+     inkscape:zoom="1.28"
+     inkscape:cx="321.22086"
      inkscape:cy="309.65657"
      inkscape:document-units="px"
-     inkscape:current-layer="g4917"
+     inkscape:current-layer="layer5"
      showgrid="false"
      showborder="false"
      showguides="false"
      inkscape:guide-bbox="true"
-     inkscape:window-width="1920"
-     inkscape:window-height="1018"
-     inkscape:window-x="-8"
-     inkscape:window-y="-8"
-     inkscape:window-maximized="1"
+     inkscape:window-width="1385"
+     inkscape:window-height="1296"
+     inkscape:window-x="1167"
+     inkscape:window-y="40"
+     inkscape:window-maximized="0"
      inkscape:snap-grids="true"
      fit-margin-top="0"
      fit-margin-left="0"
@@ -167,27 +167,33 @@
      inkscape:groupmode="layer"
      id="layer2"
      inkscape:label="blue_circle"
-     style="display:inline"
+     style="display:none"
      transform="translate(-1.4279853,-252.43054)">
     <circle
        style="opacity:0.994;fill:#7bb2d0;fill-opacity:1"
        id="path4689"
        cx="320.93198"
        cy="573.1355"
-       r="290" />
+       r="290"
+       inkscape:export-filename="/home/loj/laura_work/blue_org"
+       inkscape:export-xdpi="89.918213"
+       inkscape:export-ydpi="89.918213" />
   </g>
   <g
-     inkscape:label="violet_circle"
+     inkscape:label="orange_circle"
      id="g4697"
      inkscape:groupmode="layer"
-     style="display:none"
+     style="display:inline"
      transform="translate(-1.4279853,-252.43054)">
     <circle
        r="290"
        cy="573.1355"
        cx="320.93198"
        id="circle4699"
-       style="opacity:0.994;fill:#ae98c6;fill-opacity:1" />
+       style="opacity:0.994;fill:#cda277;fill-opacity:1"
+       inkscape:export-filename="/home/loj/laura_work/orange_new"
+       inkscape:export-xdpi="89.918213"
+       inkscape:export-ydpi="89.918213" />
   </g>
   <g
      style="display:none"
@@ -196,7 +202,7 @@
      inkscape:label="pink_circle"
      transform="translate(-1.4279853,-252.43054)">
     <circle
-       style="opacity:0.994;fill:#d9989e;fill-opacity:1"
+       style="opacity:0.994;fill:#d392b2;fill-opacity:1"
        id="circle4703"
        cx="320.93198"
        cy="573.1355"
@@ -213,7 +219,10 @@
        cy="573.1355"
        cx="320.93198"
        id="circle4707"
-       style="opacity:0.994;fill:#8fbf35;fill-opacity:1" />
+       style="opacity:0.994;fill:#d392b2;fill-opacity:1"
+       inkscape:export-filename="/home/loj/laura_work/green_org"
+       inkscape:export-xdpi="89.918213"
+       inkscape:export-ydpi="89.918213" />
   </g>
   <g
      id="g4197"
@@ -291,7 +300,7 @@
      inkscape:label="left_black_circle"
      id="g6164"
      inkscape:groupmode="layer"
-     style="display:none"
+     style="display:inline"
      transform="translate(-1.4279853,-252.43054)">
     <circle
        r="50"
@@ -331,8 +340,8 @@
          id="flowPara6200"
          style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:50.32199478px;font-family:'Open Sans';-inkscape-font-specification:'Open Sans Bold';text-align:center;text-anchor:middle">F</flowPara></flowRoot>  </g>
   <g
-     style="display:none"
-     inkscape:label="L_left"
+     style="display:inline"
+     inkscape:label="O_left"
      id="g6238"
      inkscape:groupmode="layer"
      transform="translate(-1.4279853,-252.43054)">
@@ -347,7 +356,7 @@
            width="23.046875"
            id="rect6244" /></flowRegion><flowPara
          id="flowPara6246" /></flowRoot>    <flowRoot
-       transform="matrix(1.4577114,0,0,1.3274215,-80.038032,-195.23232)"
+       transform="matrix(1.4577114,0,0,1.3274215,-78.038032,-195.23232)"
        style="font-style:normal;font-weight:normal;font-size:43.13313675px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        id="flowRoot6248"
        xml:space="preserve"><flowRegion
@@ -359,12 +368,12 @@
            width="72.38028"
            id="rect6252" /></flowRegion><flowPara
          style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:50.32199478px;font-family:'Open Sans';-inkscape-font-specification:'Open Sans Bold';text-align:center;text-anchor:middle"
-         id="flowPara6254">L</flowPara></flowRoot>  </g>
+         id="flowPara6254">O</flowPara></flowRoot>  </g>
   <g
      inkscape:groupmode="layer"
      id="layer3"
      inkscape:label="right_black_circle"
-     style="display:none"
+     style="display:inline"
      transform="translate(-1.4279853,-252.43054)">
     <circle
        style="opacity:0.994;fill:#000000;fill-opacity:1"
@@ -406,8 +415,8 @@
   <g
      inkscape:groupmode="layer"
      id="g6220"
-     inkscape:label="L_right"
-     style="display:none"
+     inkscape:label="O_right"
+     style="display:inline"
      transform="translate(-1.4279853,-252.43054)">
     <flowRoot
        xml:space="preserve"
@@ -423,7 +432,7 @@
        xml:space="preserve"
        id="flowRoot6230"
        style="font-style:normal;font-weight:normal;font-size:43.13313675px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       transform="matrix(1.4577114,0,0,1.3274215,260.61559,-195.18148)"><flowRegion
+       transform="matrix(1.4577114,0,0,1.3274215,262.61559,-195.18148)"><flowRegion
          id="flowRegion6232"><rect
            id="rect6234"
            width="72.38028"
@@ -432,7 +441,7 @@
            y="546.75531"
            style="font-size:43.13313675px;fill:#ffffff" /></flowRegion><flowPara
          id="flowPara6236"
-         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:50.32199478px;font-family:'Open Sans';-inkscape-font-specification:'Open Sans Bold';text-align:center;text-anchor:middle">L</flowPara></flowRoot>  </g>
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:50.32199478px;font-family:'Open Sans';-inkscape-font-specification:'Open Sans Bold';text-align:center;text-anchor:middle">O</flowPara></flowRoot>  </g>
   <g
      inkscape:groupmode="layer"
      id="layer4"
