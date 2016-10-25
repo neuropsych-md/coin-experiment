@@ -17,9 +17,9 @@
    version="1.1"
    inkscape:version="0.91 r13725"
    sodipodi:docname="MiSIT_legend.svg"
-   inkscape:export-filename="C:\Users\captain\Desktop\laura\Studies\MiSIT\svg\legend_pve.png"
-   inkscape:export-xdpi="14.0625"
-   inkscape:export-ydpi="14.0625">
+   inkscape:export-filename="C:\Users\captain\Desktop\laura\Studies\MiSIT\svg\MiSIT_legend_png\pvNW_gbNE\legend_poNW.png"
+   inkscape:export-xdpi="90.019547"
+   inkscape:export-ydpi="90.019547">
   <defs
      id="defs4">
     <pattern
@@ -71,11 +71,11 @@
      borderopacity="1.0"
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.45254834"
-     inkscape:cx="185.51695"
-     inkscape:cy="313.15044"
+     inkscape:zoom="1.8101934"
+     inkscape:cx="133.25502"
+     inkscape:cy="16.838347"
      inkscape:document-units="px"
-     inkscape:current-layer="layer3"
+     inkscape:current-layer="g4285"
      showgrid="false"
      showborder="false"
      showguides="false"
@@ -173,14 +173,14 @@
      inkscape:label="circle1_pink"
      transform="translate(-1.4279853,-252.43054)">
     <circle
-       style="opacity:0.994;fill:#d9989e;fill-opacity:1"
+       style="opacity:0.994;fill:#d392b2;fill-opacity:1"
        id="circle4703"
        cx="320.93198"
        cy="573.1355"
        r="290" />
   </g>
   <g
-     inkscape:label="circle1_violet"
+     inkscape:label="circle1_orange"
      id="g4697"
      inkscape:groupmode="layer"
      style="display:none"
@@ -190,7 +190,7 @@
        cy="573.1355"
        cx="320.93198"
        id="circle4699"
-       style="opacity:0.994;fill:#ae98c6;fill-opacity:1" />
+       style="opacity:0.994;fill:#cda277;fill-opacity:1" />
   </g>
   <g
      inkscape:groupmode="layer"
@@ -286,12 +286,12 @@
        cy="320.70499"
        cx="959.94702"
        id="circle4289"
-       style="fill:#d9989e;fill-opacity:1" />
+       style="fill:#d392b2;fill-opacity:1" />
   </g>
   <g
      inkscape:groupmode="layer"
      id="g4291"
-     inkscape:label="circle2_violet"
+     inkscape:label="circle2_orange"
      style="display:none">
     <ellipse
        style="fill:#000000;fill-opacity:1"
@@ -301,7 +301,7 @@
        rx="120"
        ry="150" />
     <circle
-       style="fill:#ae98c6;fill-opacity:1"
+       style="fill:#cda277;fill-opacity:1"
        id="circle4295"
        cx="959.94702"
        cy="320.70499"
@@ -400,17 +400,17 @@
        cy="573.13556"
        cx="1600"
        id="circle5662"
-       style="display:inline;fill:#d9989e;fill-opacity:1"
+       style="display:inline;fill:#d392b2;fill-opacity:1"
        transform="translate(-1.4279853,-252.43054)" />
   </g>
   <g
      inkscape:groupmode="layer"
      id="g5656"
-     inkscape:label="circle3_violet"
+     inkscape:label="circle3_orange"
      style="display:inline">
     <circle
        transform="translate(-1.4279853,-252.43054)"
-       style="display:inline;fill:#ae98c6;fill-opacity:1"
+       style="display:inline;fill:#cda277;fill-opacity:1"
        id="circle5658"
        cx="1600"
        cy="573.13556"
