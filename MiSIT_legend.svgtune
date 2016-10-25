@@ -16,10 +16,10 @@ layers style=display:none
 
 layer label=black_background style=display:inline
 layer label=circle1_pink style=display:inline
-layer label=circle2_violet style=display:inline
+layer label=circle2_orange style=display:inline
 layer label=circle3_grey style=display:inline
 layer label=circle3_SWNE style=display:inline
-%save legend_pvNE
+%save legend_poNE
 
 # Make all layers invisible
 layers style=display:none
@@ -28,8 +28,8 @@ layer label=black_background style=display:inline
 layer label=circle1_grey style=display:inline
 layer label=circle1_SENW style=display:inline
 layer label=circle2_pink style=display:inline
-layer label=circle3_violet style=display:inline
-%save legend_pvNW
+layer label=circle3_orange style=display:inline
+%save legend_poNW
 
 # Make all layers invisible
 layers style=display:none
@@ -42,41 +42,41 @@ layer label=circle3_SWNE style=display:inline
 %save legend_gbNE
 
 # Make all layers invisible
-layers style=display:none
+#layers style=display:none
 
-layer label=black_background style=display:inline
-layer label=circle1_grey style=display:inline
-layer label=circle1_SWNE style=display:inline
-layer label=circle2_blue style=display:inline
-layer label=circle3_pink style=display:inline
-%save legend_bpSW
-
-# Make all layers invisible
-layers style=display:none
-
-layer label=black_background style=display:inline
-layer label=circle1_green style=display:inline
-layer label=circle2_violet style=display:inline
-layer label=circle3_grey style=display:inline
-layer label=circle3_SENW style=display:inline
-%save legend_gvSE
+#layer label=black_background style=display:inline
+#layer label=circle1_grey style=display:inline
+#layer label=circle1_SWNE style=display:inline
+#layer label=circle2_blue style=display:inline
+#layer label=circle3_pink style=display:inline
+#%save legend_bpSW
 
 # Make all layers invisible
-layers style=display:none
+#layers style=display:none
 
-layer label=black_background style=display:inline
-layer label=circle1_grey style=display:inline
-layer label=circle1_SWNE style=display:inline
-layer label=circle2_green style=display:inline
-layer label=circle3_violet style=display:inline
-%save legend_gvSW
+#layer label=black_background style=display:inline
+#layer label=circle1_green style=display:inline
+#layer label=circle2_orange style=display:inline
+#layer label=circle3_grey style=display:inline
+#layer label=circle3_SENW style=display:inline
+#%save legend_goSE
 
 # Make all layers invisible
-layers style=display:none
+#layers style=display:none
 
-layer label=black_background style=display:inline
-layer label=circle1_blue style=display:inline
-layer label=circle2_pink style=display:inline
-layer label=circle3_grey style=display:inline
-layer label=circle3_SENW style=display:inline
-%save legend_bpSE
+#layer label=black_background style=display:inline
+#layer label=circle1_grey style=display:inline
+#layer label=circle1_SWNE style=display:inline
+#layer label=circle2_green style=display:inline
+#layer label=circle3_orange style=display:inline
+#%save legend_goSW
+
+# Make all layers invisible
+#layers style=display:none
+
+#layer label=black_background style=display:inline
+#layer label=circle1_blue style=display:inline
+#layer label=circle2_pink style=display:inline
+#layer label=circle3_grey style=display:inline
+#layer label=circle3_SENW style=display:inline
+#%save legend_bpSE
