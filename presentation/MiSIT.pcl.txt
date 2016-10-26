@@ -4,10 +4,8 @@
 # required files:
 #     MiSIT.pcl
 #     events files in the input\ folder
-#         gbNW_pvNE_1.txt, gbNW_pvNE_2.txt, gbNW_pvNE_3.txt, gbNW_pvNE_4.txt
-#         pvNW_gbNE_1.txt, pvNW_gbNE_2.txt, pvNW_gbNE_3.txt, pvNW_gbNE_4.txt
-#         bpSW_gvSE_1.txt, bpSW_gvSE_2.txt, bpSW_gvSE_3.txt, bpSW_gvSE_4.txt
-#         gvSW_bpSNE_1.txt, gvSW_bpSE_2.txt, gvSW_bpSE_3.txt, gvSW_bpSE_4.txt
+#         gbNW_poNE_1.txt, gbNW_poNE_2.txt
+#         poNW_gbNE_1.txt, poNW_gbNE_2.txt
 #     stim1 PNGs in the stimuli\ folder
 #         green-SENW-330.png, green-SWNE-030.png
 #         green-SENW-300.png, green-SWNE-060.png
@@ -15,48 +13,46 @@
 #         blue-SENW-300.png, blue-SWNE-060.png
 #         pink-SENW-330.png, pink-SWNE-030.png
 #         pink-SENW-300.png, pink-SWNE-060.png
-#         violet-SENW-330.png, violet-SWNE-030.png
-#         violet-SENW-300.png, violet-SWNE-060.png
+#         orange-SENW-330.png, orange-SWNE-030.png
+#         orange-SENW-300.png, orange-SWNE-060.png
 #     stim2 PNGs in the stimuli\ folder
 #         01_green-SENW-330_farbe-left.png, 02_green-SENW-330_farbe-right.png
-#         03_green-SENW-330_linie-left.png, 04_green-SENW-330_linie-right.png
+#         03_green-SENW-330_orient-left.png, 04_green-SENW-330_orient-right.png
 #         05_green-SENW-300_farbe-left.png, 06_green-SENW-300_farbe-right.png
-#         07_green-SENW-300_linie-left.png, 08_green-SENW-300_linie-right.png
+#         07_green-SENW-300_orient-left.png, 08_green-SENW-300_orient-right.png
 #         09_green-SWNE-030_farbe-left.png, 10_green-SWNE-030_farbe-right.png
-#         11_green-SWNE-030_linie-left.png, 12_green-SWNE-030_linie-right.png
+#         11_green-SWNE-030_orient-left.png, 12_green-SWNE-030_orient-right.png
 #         13_green-SWNE-060_farbe-left.png, 14_green-SWNE-060_farbe-right.png
-#         15_green-SWNE-060_linie-left.png, 16_green-SWNE-060_linie-right.png
+#         15_green-SWNE-060_orient-left.png, 16_green-SWNE-060_orient-right.png
 #         17_blue-SENW-330_farbe-left.png, 18_blue-SENW-330_farbe-right.png
-#         19_blue-SENW-330_linie-left.png, 20_blue-SENW-330_linie-right.png
+#         19_blue-SENW-330_orient-left.png, 20_blue-SENW-330_orient-right.png
 #         21_blue-SENW-300_farbe-left.png, 22_blue-SENW-300_farbe-right.png
-#         23_blue-SENW-300_linie-left.png, 24_blue-SENW-300_linie-right.png
+#         23_blue-SENW-300_orient-left.png, 24_blue-SENW-300_orient-right.png
 #         25_blue-SWNE-030_farbe-left.png, 26_blue-SWNE-030_farbe-right.png
-#         27_blue-SWNE-030_linie-left.png, 28_blue-SWNE-030_linie-right.png
+#         27_blue-SWNE-030_orient-left.png, 28_blue-SWNE-030_orient-right.png
 #         29_blue-SWNE-060_farbe-left.png, 30_blue-SWNE-060_farbe-right.png
-#         31_blue-SWNE-060_linie-left.png, 32_blue-SWNE-060_linie-right.png
+#         31_blue-SWNE-060_orient-left.png, 32_blue-SWNE-060_orient-right.png
 #         33_pink-SENW-330_farbe-left.png, 34_pink-SENW-330_farbe-right.png
-#         35_pink-SENW-330_linie-left.png, 36_pink-SENW-330_linie-right.png
+#         35_pink-SENW-330_orient-left.png, 36_pink-SENW-330_orient-right.png
 #         37_pink-SENW-300_farbe-left.png, 38_pink-SENW-300_farbe-right.png
-#         39_pink-SENW-300_linie-left.png, 40_pink-SENW-300_linie-right.png
+#         39_pink-SENW-300_orient-left.png, 40_pink-SENW-300_orient-right.png
 #         41_pink-SWNE-030_farbe-left.png, 42_pink-SWNE-030_farbe-right.png
-#         43_pink-SWNE-030_linie-left.png, 44_pink-SWNE-030_linie-right.png
+#         43_pink-SWNE-030_orient-left.png, 44_pink-SWNE-030_orient-right.png
 #         45_pink-SWNE-060_farbe-left.png, 46_pink-SWNE-060_farbe-right.png
-#         47_pink-SWNE-060_linie-left.png, 48_pink-SWNE-060_linie-right.png
-#         49_violet-SENW-330_farbe-left.png, 50_violet-SENW-330_farbe-right.png
-#         51_violet-SENW-330_linie-left.png, 52_violet-SENW-330_linie-right.png
-#         53_violet-SENW-300_farbe-left.png, 54_violet-SENW-300_farbe-right.png
-#         55_violet-SENW-300_linie-left.png, 56_violet-SENW-300_linie-right.png
-#         57_violet-SWNE-030_farbe-left.png, 58_violet-SWNE-030_farbe-right.png
-#         59_violet-SWNE-030_linie-left.png, 60_violet-SWNE-030_linie-right.png
-#         61_violet-SWNE-060_farbe-left.png, 62_violet-SWNE-060_farbe-right.png
-#         63_violet-SWNE-060_linie-left.png, 64_violet-SWNE-060_linie-right.png
+#         47_pink-SWNE-060_orient-left.png, 48_pink-SWNE-060_orient-right.png
+#         49_orange-SENW-330_farbe-left.png, 50_orange-SENW-330_farbe-right.png
+#         51_orange-SENW-330_orient-left.png, 52_orange-SENW-330_orient-right.png
+#         53_orange-SENW-300_farbe-left.png, 54_orange-SENW-300_farbe-right.png
+#         55_orange-SENW-300_orient-left.png, 56_orange-SENW-300_orient-right.png
+#         57_orange-SWNE-030_farbe-left.png, 58_orange-SWNE-030_farbe-right.png
+#         59_orange-SWNE-030_orient-left.png, 60_orange-SWNE-030_orient-right.png
+#         61_orange-SWNE-060_farbe-left.png, 62_orange-SWNE-060_farbe-right.png
+#         63_orange-SWNE-060_orient-left.png, 64_orange-SWNE-060_orient-right.png
 #     legend PNGs in the stimuli\ folder
-#         legend_gbNW.png, legend_pvNE.png
-#         legend_pvNW.png, legend_gbNE.png
-#         legend_bpSW.png, legend_gvSE.png
-#         legend_gvSW.png, legend_bpSE.png
+#         legend_gbNW.png, legend_poNE.png
+#         legend_poNW.png, legend_gbNE.png
 #
-# version 1.0.0 - 2016, Laura Waite
+# version 2.0.0 - 2016, Laura Waite
 ############################################################################
 
 #
@@ -101,7 +97,7 @@ array<int> direc_answer[2000];
 array<int> green_answer[2000];
 array<int> blue_answer[2000];
 array<int> pink_answer[2000];
-array<int> violet_answer[2000];
+array<int> orange_answer[2000];
 array<int> SENW_answer[2000];
 array<int> SWNE_answer[2000];
 array<int> jitter[2000];
@@ -125,7 +121,7 @@ begin
     green_answer[i] = events.get_int();        # used only for output file
     blue_answer[i] = events.get_int();         # used only for output file
     pink_answer[i] = events.get_int();         # used only for output file
-    violet_answer[i] = events.get_int();       # used only for output file
+    orange_answer[i] = events.get_int();       # used only for output file
     SENW_answer[i] = events.get_int();         # used only for output file
     SWNE_answer[i] = events.get_int();         # used only for output file
     jitter[i] = events.get_int();
@@ -144,8 +140,8 @@ string fint = "%8d";        # output format int
 string subject = logfile.filename();
 output_file data = new output_file;
 data.open(subject + ".txt");
-# (headers) grn_ans  blu_ans  pnk_ans  vlt_ans  SENW_ans  SWNE_ans  trial  block  incon_freq  color_freq  congrueny   featr  color  color_ans  degrees  direc_ans  answer  stim1_onset  stim2_onset  reation_time  response   accuracy
-data.print("grn_ans\tblu_ans\tpnk_ans\tvlt_ans\tSENW_ans\tSWNE_ans\ttrial\tblock\tincon_freq\tcolor_freq\tcongruency\tfeatr\tcolor\tcolor_ans\tdegrees\tdirec_ans\tanswer\tstim1_onset\tstim2_onset\treaction_time\tresponse\taccuracy\n");
+# (headers) grn_ans  blu_ans  pnk_ans  org_ans  SENW_ans  SWNE_ans  trial  block  incon_freq  color_freq  congrueny   featr  color  color_ans  degrees  direc_ans  answer  stim1_onset  stim2_onset  reation_time  response   accuracy
+data.print("grn_ans\tblu_ans\tpnk_ans\torg_ans\tSENW_ans\tSWNE_ans\ttrial\tblock\tincon_freq\tcolor_freq\tcongruency\tfeatr\tcolor\tcolor_ans\tdegrees\tdirec_ans\tanswer\tstim1_onset\tstim2_onset\treaction_time\tresponse\taccuracy\n");
 
 #
 # load stimuli pair arrays into a single array
@@ -153,90 +149,84 @@ data.print("grn_ans\tblu_ans\tpnk_ans\tvlt_ans\tSENW_ans\tSWNE_ans\ttrial\tblock
 array<bitmap> avail_stims[64][0];
 avail_stims[1].assign(green_SENW_330_farbe_left);
 avail_stims[2].assign(green_SENW_330_farbe_right);
-avail_stims[3].assign(green_SENW_330_linie_left);
-avail_stims[4].assign(green_SENW_330_linie_right);
+avail_stims[3].assign(green_SENW_330_orient_left);
+avail_stims[4].assign(green_SENW_330_orient_right);
 avail_stims[5].assign(green_SENW_300_farbe_left);
 avail_stims[6].assign(green_SENW_300_farbe_right);
-avail_stims[7].assign(green_SENW_300_linie_left);
-avail_stims[8].assign(green_SENW_300_linie_right);
+avail_stims[7].assign(green_SENW_300_orient_left);
+avail_stims[8].assign(green_SENW_300_orient_right);
 avail_stims[9].assign(green_SWNE_030_farbe_left);
 avail_stims[10].assign(green_SWNE_030_farbe_right);
-avail_stims[11].assign(green_SWNE_030_linie_left);
-avail_stims[12].assign(green_SWNE_030_linie_right);
+avail_stims[11].assign(green_SWNE_030_orient_left);
+avail_stims[12].assign(green_SWNE_030_orient_right);
 avail_stims[13].assign(green_SWNE_060_farbe_left);
 avail_stims[14].assign(green_SWNE_060_farbe_right);
-avail_stims[15].assign(green_SWNE_060_linie_left);
-avail_stims[16].assign(green_SWNE_060_linie_right);
+avail_stims[15].assign(green_SWNE_060_orient_left);
+avail_stims[16].assign(green_SWNE_060_orient_right);
 avail_stims[17].assign(blue_SENW_330_farbe_left);
 avail_stims[18].assign(blue_SENW_330_farbe_right);
-avail_stims[19].assign(blue_SENW_330_linie_left);
-avail_stims[20].assign(blue_SENW_330_linie_right);
+avail_stims[19].assign(blue_SENW_330_orient_left);
+avail_stims[20].assign(blue_SENW_330_orient_right);
 avail_stims[21].assign(blue_SENW_300_farbe_left);
 avail_stims[22].assign(blue_SENW_300_farbe_right);
-avail_stims[23].assign(blue_SENW_300_linie_left);
-avail_stims[24].assign(blue_SENW_300_linie_right);
+avail_stims[23].assign(blue_SENW_300_orient_left);
+avail_stims[24].assign(blue_SENW_300_orient_right);
 avail_stims[25].assign(blue_SWNE_030_farbe_left);
 avail_stims[26].assign(blue_SWNE_030_farbe_right);
-avail_stims[27].assign(blue_SWNE_030_linie_left);
-avail_stims[28].assign(blue_SWNE_030_linie_right);
+avail_stims[27].assign(blue_SWNE_030_orient_left);
+avail_stims[28].assign(blue_SWNE_030_orient_right);
 avail_stims[29].assign(blue_SWNE_060_farbe_left);
 avail_stims[30].assign(blue_SWNE_060_farbe_right);
-avail_stims[31].assign(blue_SWNE_060_linie_left);
-avail_stims[32].assign(blue_SWNE_060_linie_right);
+avail_stims[31].assign(blue_SWNE_060_orient_left);
+avail_stims[32].assign(blue_SWNE_060_orient_right);
 avail_stims[33].assign(pink_SENW_330_farbe_left);
 avail_stims[34].assign(pink_SENW_330_farbe_right);
-avail_stims[35].assign(pink_SENW_330_linie_left);
-avail_stims[36].assign(pink_SENW_330_linie_right);
+avail_stims[35].assign(pink_SENW_330_orient_left);
+avail_stims[36].assign(pink_SENW_330_orient_right);
 avail_stims[37].assign(pink_SENW_300_farbe_left);
 avail_stims[38].assign(pink_SENW_300_farbe_right);
-avail_stims[39].assign(pink_SENW_300_linie_left);
-avail_stims[40].assign(pink_SENW_300_linie_right);
+avail_stims[39].assign(pink_SENW_300_orient_left);
+avail_stims[40].assign(pink_SENW_300_orient_right);
 avail_stims[41].assign(pink_SWNE_030_farbe_left);
 avail_stims[42].assign(pink_SWNE_030_farbe_right);
-avail_stims[43].assign(pink_SWNE_030_linie_left);
-avail_stims[44].assign(pink_SWNE_030_linie_right);
+avail_stims[43].assign(pink_SWNE_030_orient_left);
+avail_stims[44].assign(pink_SWNE_030_orient_right);
 avail_stims[45].assign(pink_SWNE_060_farbe_left);
 avail_stims[46].assign(pink_SWNE_060_farbe_right);
-avail_stims[47].assign(pink_SWNE_060_linie_left);
-avail_stims[48].assign(pink_SWNE_060_linie_right);
-avail_stims[49].assign(violet_SENW_330_farbe_left);
-avail_stims[50].assign(violet_SENW_330_farbe_right);
-avail_stims[51].assign(violet_SENW_330_linie_left);
-avail_stims[52].assign(violet_SENW_330_linie_right);
-avail_stims[53].assign(violet_SENW_300_farbe_left);
-avail_stims[54].assign(violet_SENW_300_farbe_right);
-avail_stims[55].assign(violet_SENW_300_linie_left);
-avail_stims[56].assign(violet_SENW_300_linie_right);
-avail_stims[57].assign(violet_SWNE_030_farbe_left);
-avail_stims[58].assign(violet_SWNE_030_farbe_right);
-avail_stims[59].assign(violet_SWNE_030_linie_left);
-avail_stims[60].assign(violet_SWNE_030_linie_right);
-avail_stims[61].assign(violet_SWNE_060_farbe_left);
-avail_stims[62].assign(violet_SWNE_060_farbe_right);
-avail_stims[63].assign(violet_SWNE_060_linie_left);
-avail_stims[64].assign(violet_SWNE_060_linie_right);
+avail_stims[47].assign(pink_SWNE_060_orient_left);
+avail_stims[48].assign(pink_SWNE_060_orient_right);
+avail_stims[49].assign(orange_SENW_330_farbe_left);
+avail_stims[50].assign(orange_SENW_330_farbe_right);
+avail_stims[51].assign(orange_SENW_330_orient_left);
+avail_stims[52].assign(orange_SENW_330_orient_right);
+avail_stims[53].assign(orange_SENW_300_farbe_left);
+avail_stims[54].assign(orange_SENW_300_farbe_right);
+avail_stims[55].assign(orange_SENW_300_orient_left);
+avail_stims[56].assign(orange_SENW_300_orient_right);
+avail_stims[57].assign(orange_SWNE_030_farbe_left);
+avail_stims[58].assign(orange_SWNE_030_farbe_right);
+avail_stims[59].assign(orange_SWNE_030_orient_left);
+avail_stims[60].assign(orange_SWNE_030_orient_right);
+avail_stims[61].assign(orange_SWNE_060_farbe_left);
+avail_stims[62].assign(orange_SWNE_060_farbe_right);
+avail_stims[63].assign(orange_SWNE_060_orient_left);
+avail_stims[64].assign(orange_SWNE_060_orient_right);
 
 #
 # load legend pair arrays into a single array
 #
 array<bitmap> avail_legends[4][0];
-avail_legends[1].assign(gbNW_pvNE);
-avail_legends[2].assign(pvNW_gbNE);
-avail_legends[3].assign(bpSW_gvSE);
-avail_legends[4].assign(gvSW_bpSE);
+avail_legends[1].assign(gbNW_poNE);
+avail_legends[2].assign(poNW_gbNE);
 
 #
 # declare which legend from avail_legends to be used
 #
 int which_legend;
-if (rule == "gbNW_pvNE") then
+if (rule == "gbNW_poNE") then
     which_legend = 1;
-elseif (rule == "pvNW_gbNE") then
+elseif (rule == "poNW_gbNE") then
     which_legend = 2;
-elseif (rule == "bpSW_gvSE") then
-    which_legend = 3;
-elseif (rule == "gvSW_bpSE") then
-    which_legend = 4;
 end;
 
 #
@@ -262,15 +252,15 @@ begin
 
     #Setup Portcodes
 #    if (degrees[i] == 330) then
-#	     deg_trg = 3;
+#        deg_trg = 3;
 #    elseif (degrees[i] == 300) then
 #        deg_trg = 6;
 #    elseif (degrees[i] == 30) then
-#	     deg_trg = 3;
+#        deg_trg = 3;
 #    elseif (degrees[i] == 60) then
 #        deg_trg = 6;
 #    end;
-    
+
 #    pcode_stim1 = (direction[i]*100) + (color[i]*10) + deg_trg;
 #    pcode_stim2 = (relevant_feature[i]*100) + (congruency[i]*10) + answer[i];
 #    term.print(printf(pcode_stim1, fint) + "\n");
@@ -310,9 +300,9 @@ begin
     # give feedback
     feedback_pic.set_part(1, avail_stims[stimuli[i]][1]);
     if (info_stim2.button() == 0) then
-	     beep_event.set_stimulus(sounds[2]);
+        beep_event.set_stimulus(sounds[2]);
     else
-	     beep_event.set_stimulus(sounds[1]);
+        beep_event.set_stimulus(sounds[1]);
     end;
     feedback_trial.present();
 
@@ -326,7 +316,7 @@ begin
     data.print(printf(green_answer[i], fint) + "\t");
     data.print(printf(blue_answer[i], fint) + "\t");
     data.print(printf(pink_answer[i], fint) + "\t");
-    data.print(printf(violet_answer[i], fint) + "\t");
+    data.print(printf(orange_answer[i], fint) + "\t");
     data.print(printf(SENW_answer[i], fint) + "\t");
     data.print(printf(SWNE_answer[i], fint) + "\t");
 
@@ -397,9 +387,9 @@ begin
     perc_miss = (misscounter * 100) / block_trl_num;
 
     if ((perc_incorrect < 10) && (resp_cutoff > 249)) then
-	     resp_cutoff = resp_cutoff - 10;
+        resp_cutoff = resp_cutoff - 10;
     elseif ((perc_incorrect > 15) && (resp_cutoff < 1400)) then
-	     resp_cutoff = resp_cutoff + 10;
+        resp_cutoff = resp_cutoff + 10;
     end;
 
     if ((perc_miss > 10) && (resp_cutoff < 1400)) then
@@ -413,7 +403,7 @@ begin
     term.print("\n" + "block_trl_num=" + string(block_trl_num));
     term.print("\n" + "perc_incorrect=" + string(perc_incorrect));
     term.print("\n" + "perc_miss=" + string(perc_miss));
-    
+
     data.print( "\n" );
 
     i=i+1;
