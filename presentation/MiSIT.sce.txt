@@ -63,6 +63,14 @@ pcl_file = "MiSIT.pcl";
 
 response_matching = simple_matching;
 active_buttons = 2;
+#button_codes = 1,2;    # 1 = left; 2 = right
+
+#
+# EEG Triggers
+#
+#default_output_port = 1;
+#write_codes = true;
+#pulse_width = 5; 
 
 begin;
 
@@ -150,7 +158,7 @@ array {
 } green_SWNE_060_linie_right;
 
 array {
-    bitmap {filename = "blue-SENW-330.png"; description = "blue-SENW-330";};
+    bitmap {filename = "blue-SENW-330.png"; description = "blue-SENW-330";} blue_SENW;
     bitmap {filename = "17_blue-SENW-330_farbe-left.png"; description = "17_blue-SENW-330_farbe-left";};
 } blue_SENW_330_farbe_left;
 
@@ -413,6 +421,14 @@ array {
 } gvSW_bpSE;
 
 #
+# sound feedback
+#
+array {
+    sound { wavefile { filename = "no_sound.wav"; }; } no_sound;
+    sound { wavefile { filename = "too_slow.wav"; }; } too_slow;
+} sounds;
+
+#
 # pause
 #
 trial {
@@ -422,6 +438,8 @@ trial {
         text {caption = "Continue with SPACE or quit with ESC"; font_size = 48;} warn_txt;
         x=0; y=0;
     };
+    code = "pause";
+    port_code = 99;
 } pause;
 
 #
@@ -434,6 +452,8 @@ trial {
         text {caption = "Vielen Dank!"; font_size = 48;};
         x=0; y=0;
     };
+    code = "finish";
+    port_code = 99;
 } finish;
 
 #
@@ -464,3 +484,27 @@ trial {
         response_active = true;
     } stim_event2;
 } main_trial;
+
+#
+# feedback trial
+#
+trial {
+    trial_type = fixed;
+    all_responses = false;
+    trial_duration = stimuli_length;
+    stimulus_event {       
+        picture {
+           bitmap green_SENW; x=0; y=0;
+           bitmap left; x=-300; y=-450;
+           bitmap right; x=300; y=-450;
+       } feedback_pic;
+       duration = 700;
+       code = "wait";
+    } wait_event;
+
+    stimulus_event {
+        sound no_sound;
+        time = 0;
+        code = "feedback";
+    } beep_event;
+} feedback_trial;

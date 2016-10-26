@@ -60,6 +60,24 @@
 ############################################################################
 
 #
+# Variables
+#
+int block_trl_num = 0;                     # Trial number of the current block
+int resp_cutoff = 1400;                    # Duration of stim2
+int correctcounter = 0;                    # Number of correct responses in the current block
+int incorrectcounter = 0;                  # Number of errors in the current block
+int misscounter = 0;                       # Number of misses in the current block
+int perc_incorrect = 0;                    # Percent errors in the current block
+int perc_miss = 0;                         # Percent misses in the current block
+
+#
+# Portcode variables
+#
+#int deg_trg;
+#int pcode_stim1;
+#int pcode_stim2;
+
+#
 # read input file
 #
 preset string rule ;
@@ -222,13 +240,6 @@ elseif (rule == "gvSW_bpSE") then
 end;
 
 #
-# Feedback variables
-#
-int correctcounter = 0;
-int incorrectcounter = 0;
-int misscounter = 0;
-
-#
 # Main
 #
 loop int i=1 until i > total_trials.count()
@@ -245,8 +256,25 @@ begin
             pause.present();
             misscounter = 0;
             incorrectcounter = 0;
+            correctcounter = 0;
         end;
     end;
+
+    #Setup Portcodes
+#    if (degrees[i] == 330) then
+#	     deg_trg = 3;
+#    elseif (degrees[i] == 300) then
+#        deg_trg = 6;
+#    elseif (degrees[i] == 30) then
+#	     deg_trg = 3;
+#    elseif (degrees[i] == 60) then
+#        deg_trg = 6;
+#    end;
+    
+#    pcode_stim1 = (direction[i]*100) + (color[i]*10) + deg_trg;
+#    pcode_stim2 = (relevant_feature[i]*100) + (congruency[i]*10) + answer[i];
+#    term.print(printf(pcode_stim1, fint) + "\n");
+#    term.print(printf(pcode_stim2, fint) + "\n");
 
     # set event code for stim1
     # stim_event1.set_event_code(avail_stims[stimuli[i]][1].description());
@@ -255,6 +283,8 @@ begin
     # set legend for stim1
     stim1.set_part(2, avail_legends[which_legend][1]);
     stim1.set_part(3, avail_legends[which_legend][2]);
+    # set portcode for stim1
+#    stim_event1.set_port_code(pcode_stim1);
 
     # set event code for stim2
     # stim_event2.set_event_code(avail_stims[stimuli[i]][2].description());
@@ -265,14 +295,32 @@ begin
     stim2.set_part(3, avail_legends[which_legend][2]);
     # set jitter before stim2 onset
     stim_event2.set_time(jitter[i]);
+    # set duration of stim2
+    stim_event2.set_duration(resp_cutoff);
+    # set portcode stim2
+#    stim_event2.set_port_code(pcode_stim2);
 
     main_trial.present();
 
     # pull stimulus data for stim1
-    stimulus_data timing_stim1 = stimulus_manager.get_stimulus_data((i*2)-1);
-
+    stimulus_data timing_stim1 = stimulus_manager.get_stimulus_data((i*4)-3);
     # pull stimulus data for stim2
-    stimulus_data info_stim2 = stimulus_manager.get_stimulus_data(i*2);
+    stimulus_data info_stim2 = stimulus_manager.get_stimulus_data((i*4)-2);
+
+    # give feedback
+    feedback_pic.set_part(1, avail_stims[stimuli[i]][1]);
+    if (info_stim2.button() == 0) then
+	     beep_event.set_stimulus(sounds[2]);
+    else
+	     beep_event.set_stimulus(sounds[1]);
+    end;
+    feedback_trial.present();
+
+    # pull stimulus data for wait event
+    stimulus_data info_stim3 = stimulus_manager.get_stimulus_data((i*4)-1);
+
+    # pull stimulus data for beep event
+    stimulus_data info_sound = stimulus_manager.get_stimulus_data(i*4);
 
     # print to output file
     data.print(printf(green_answer[i], fint) + "\t");
@@ -318,7 +366,7 @@ begin
         data.print(printf(0, fint) + "\t");
     end;
 
-    # Block-wise Feedback & Accuracy
+    # Evaluate Response
     if (answer[i] == -1) then
         if (info_stim2.button() == 1) then
             correctcounter = correctcounter + 1;
@@ -342,6 +390,30 @@ begin
             data.print(printf(-1, fint) + "\t");
         end;
     end;
+
+    block_trl_num = block_trl_num +1;
+
+    perc_incorrect = (incorrectcounter * 100) / block_trl_num;
+    perc_miss = (misscounter * 100) / block_trl_num;
+
+    if ((perc_incorrect < 10) && (resp_cutoff > 249)) then
+	     resp_cutoff = resp_cutoff - 10;
+    elseif ((perc_incorrect > 15) && (resp_cutoff < 1400)) then
+	     resp_cutoff = resp_cutoff + 10;
+    end;
+
+    if ((perc_miss > 10) && (resp_cutoff < 1400)) then
+        resp_cutoff = resp_cutoff + 10;
+    end;
+
+    term.print("\n" + "resp_cutoff=" + string(resp_cutoff));
+    term.print("\n" + "incorrect_counter=" + string(incorrectcounter));
+    term.print("\n" + "correct_counter=" + string(correctcounter));
+    term.print("\n" + "miss_counter=" + string(misscounter));
+    term.print("\n" + "block_trl_num=" + string(block_trl_num));
+    term.print("\n" + "perc_incorrect=" + string(perc_incorrect));
+    term.print("\n" + "perc_miss=" + string(perc_miss));
+    
     data.print( "\n" );
 
     i=i+1;
