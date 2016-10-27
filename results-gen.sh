@@ -22,23 +22,15 @@ PNGS=''
 declare -A infiles
 infiles[gbNW_poNE_1]='neutralA farbeA incongruentA orientA congruentA incongruentB neutralB farbeB orientB congruentB'
 infiles[poNW_gbNE_1]='neutralA farbeA incongruentA orientA congruentA incongruentB neutralB farbeB orientB congruentB'
-infiles[bpSW_goSE_1]='neutralA farbeA incongruentA orientA congruentA incongruentB neutralB farbeB orientB congruentB'
-infiles[goSW_bpSE_1]='neutralA farbeA incongruentA orientA congruentA incongruentB neutralB farbeB orientB congruentB'
 
 infiles[gbNW_poNE_2]='neutralA congruentA orientA farbeA incongruentA orientB congruentB neutralB farbeB incongruentB'
 infiles[poNW_gbNE_2]='neutralA congruentA orientA farbeA incongruentA orientB congruentB neutralB farbeB incongruentB'
-infiles[bpSW_goSE_2]='neutralA congruentA orientA farbeA incongruentA orientB congruentB neutralB farbeB incongruentB'
-infiles[goSW_bpSE_2]='neutralA congruentA orientA farbeA incongruentA orientB congruentB neutralB farbeB incongruentB'
 
 infiles[gbNW_poNE_3]='neutralA orientA incongruentA farbeA congruentA neutralB incongruentB farbeB congruentB orientB'
 infiles[poNW_gbNE_3]='neutralA orientA incongruentA farbeA congruentA neutralB incongruentB farbeB congruentB orientB'
-infiles[bpSW_goSE_3]='neutralA orientA incongruentA farbeA congruentA neutralB incongruentB farbeB congruentB orientB'
-infiles[goSW_bpSE_3]='neutralA orientA incongruentA farbeA congruentA neutralB incongruentB farbeB congruentB orientB'
 
 infiles[gbNW_poNE_4]='neutralA incongruentA congruentA orientA farbeA congruentB farbeB incongruentB orientB neutralB'
 infiles[poNW_gbNE_4]='neutralA incongruentA congruentA orientA farbeA congruentB farbeB incongruentB orientB neutralB'
-infiles[bpSW_goSE_4]='neutralA incongruentA congruentA orientA farbeA congruentB farbeB incongruentB orientB neutralB'
-infiles[goSW_bpSE_4]='neutralA incongruentA congruentA orientA farbeA congruentB farbeB incongruentB orientB neutralB'
 
 
 #
@@ -117,7 +109,7 @@ mkdir -p "${TMP}"
 ./jitter-gen.sh --total 100 --jitters 800 1000 1200 1400 1600 1800 | shuf > "${TMP}/jitter.set"
 
 # loop over all ruleset and block combinations
-for ruleset in gbNW_poNE poNW_gbNE bpSW_goSE goSW_bpSE ; do
+for ruleset in gbNW_poNE poNW_gbNE ; do
     for block in neutralA neutralB farbeA farbeB orientA orientB incongruentA incongruentB congruentA congruentB; do
         printf "Automagicating: $ruleset $block\n"
         case "$block" in
