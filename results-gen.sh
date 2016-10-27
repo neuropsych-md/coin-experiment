@@ -20,11 +20,11 @@ PNGS=''
 # a horrible name for output files, I know, but they've long been referred to as
 # "presentation input files" and they are so thusly dubbed.
 declare -A infiles
-infiles[gbNW_poNE_1]='neutralA farbeA incongruentA orientA congruentA incongruentB neutralB farbeB orientB congruentB'
-infiles[poNW_gbNE_1]='neutralA farbeA incongruentA orientA congruentA incongruentB neutralB farbeB orientB congruentB'
+infiles[gbNW_poNE_1]='neutralA incongruentA congruentA incongruentB congruentB congruentC neutralB incongruentC incongruentD congruentD'
+infiles[poNW_gbNE_1]='neutralA incongruentA congruentA incongruentB congruentB congruentC neutralB incongruentC incongruentD congruentD'
 
-infiles[gbNW_poNE_2]='neutralA congruentA orientA farbeA incongruentA orientB congruentB neutralB farbeB incongruentB'
-infiles[poNW_gbNE_2]='neutralA congruentA orientA farbeA incongruentA orientB congruentB neutralB farbeB incongruentB'
+infiles[gbNW_poNE_2]='neutralA congruentA incongruentA congruentB incongruentB incongruentC neutralB congruentC congruentD incongruentD'
+infiles[poNW_gbNE_2]='neutralA congruentA incongruentA congruentB incongruentB incongruentC neutralB congruentC congruentD incongruentD'
 
 #
 # Functions
@@ -106,21 +106,17 @@ for ruleset in gbNW_poNE poNW_gbNE ; do
     for block in neutralA neutralB farbeA farbeB orientA orientB incongruentA incongruentB congruentA congruentB; do
         printf "Automagicating: $ruleset $block\n"
         case "$block" in
-             'neutralA'|'neutralB')         mode='--farbe-orient 50 50' ;;
-             'farbeA'|'farbeB')             mode='--farbe-orient 75 25' ;;
-             'orientA'|'orientB')           mode='--farbe-orient 25 75' ;;
-             'incongruentA'|'incongruentB') mode='--con-incon 25 75'   ;;
-             'congruentA'|'congruentB')     mode='--con-incon 75 25'   ;;
+             'neutralA'|'neutralB')                                       mode='--farbe-orient 50 50' ;;
+             'incongruentA'|'incongruentB'|'incongruentC'|'incongruentD') mode='--con-incon 25 75'   ;;
+             'congruentA'|'congruentB'|'congruentC'|'congruentD')         mode='--con-incon 75 25'   ;;
         esac
         # generate conan set files
         ./events-gen.sh --rule-set "$ruleset" $mode --pngs "${PNGS}" > "${TMP}/${ruleset}_${block}.set"
 
         case "$block" in
-             'neutralA'|'neutralB')         cfg_file='neutral.cfg'     ;;
-             'farbeA'|'farbeB')             cfg_file='farbe.cfg'       ;;
-             'orientA'|'orientB')           cfg_file='orient.cfg'       ;;
-             'incongruentA'|'incongruentB') cfg_file='incongruent.cfg' ;;
-             'congruentA'|'congruentB')     cfg_file='congruent.cfg'   ;;
+             'neutralA'|'neutralB')                                       cfg_file='neutral.cfg'     ;;
+             'incongruentA'|'incongruentB'|'incongruentC'|'incongruentD') cfg_file='incongruent.cfg' ;;
+             'congruentA'|'congruentB'|'congruentC'|'congruentD')         cfg_file='congruent.cfg'   ;;
         esac
         # generate result files for events and jitters
         # TODO: this should probably be written as conan blah || Fatal WTF
