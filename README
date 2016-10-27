@@ -1,76 +1,99 @@
 Stimuli
-#######
+-------
 
-There are 40 unique stimuli. 8 core-stimuli and 32 cue-stimuli. Each stimulus is
-640x640 pixels.
+There are 40 unique stimuli: 16 core-stimuli and 64 cue-stimuli. Each stimulus
+is 640x640 pixels.
 
 The core-stimuli consists of a colored circle on a black background. The colored
 circle is overlaid by black hatching and contains a white fixation point in the
 center. The colored circle is 1 of 4 isoluminant colors. The isoluminant colors
 used are: blue(RGB:123, 178, 208), violet(RGB:174, 152, 198), pink(RGB:217, 152,
 158), and green(RGB:143, 191, 53). The black hatching is oriented vertically and
-then tilted 45° to the left or 45° to the right.
+then tilted 30° or 60° to the left or 30° or 60° to the right.
 
 The cue-stimuli are the same as the core-stimuli, but also have a cue that is
 located to the left or the right of the center fixation point. The cue indicates
 to the subject which stimulus feature is relevant for the response. The cue is a
-small black circle with a white letter "F" or "L" in the center. The "F" stand
-for "Farbe" and the "L" stands for "Linie", which are the two possible relevant
-features of the stimuli that the subject needs to pay attention to. The cue
-location is always on the side that matches the response required by the
-currently irrelevant stimulus feature. The currently relevant stimulus feature
-can map to the same or the opposite response as the irrelevant feature, thereby
-creating congruent and incongruent stimuli. A stimuli is congruent if the
-currently relevant stimulus feature's answer is the same as the irrelevant
-feature's answer. The cue location is always on the side of the response
-indicated by the currently irrelevant stimulus feature. This means that not all
-32 stimuli will be used. The stimuli required will be determined by the rule
-set. Only 16 out of 32 stimuli will be used at one time because of the
-requirements for cue location.
+small black circle with a white letter "F" or "L" in the center. The "F" stands
+for "Farbe" (color) and the "L" stands for "Linie" (direction), which are the
+two possible relevant features of the stimuli that the subject needs to pay
+attention to. The currently relevant stimulus feature can map to the same or the
+opposite response as the irrelevant feature, thereby creating congruent and
+incongruent stimuli. A stimuli is congruent if the currently relevant stimulus
+feature's answer is the same as the irrelevant feature's answer.
+
+The cue location is always on the side of the correct response for the currently
+irrelevant stimulus feature. This means that only 32 out of the 64 stimuli will
+be used for a given rule-set. The events-gen.sh script filters for the
+appropriate stimuli for a given rule-set according to this condition.
 
 Legend
 ------
 A legend, which is located at the bottom of the screen underneath the stimulus
-in each trial, is used to inform the subject which rules are currently in
-effect. The rules indicate which response (left or right) is indicated for each
-color and each direction.
+in each trial, is used to inform the subject what the rules are. While the
+rule-set varies from subject to subject, it does /not/ change within a given
+experiment-run. The rules indicate which response (left or right) is associated
+with each of the colors, either direction of the tilted hatching, and whether
+the top or the bottom of the hatching indicates the direction.
 
 Generation of Stimuli & Legend
 ------------------------------
-Inkscape was used to create the stimuli(MiSIT_layers.sgv) and the
+Inkscape was used to create the stimuli(MiSIT_stims.sgv) and the
 legend(MiSIT_legend.svg) svg files. The svgs for the stimuli and legend both
 have several layers which contain the unique features of the stimuli (color,
-hatching, etc). Each of these layers can be turned on/off to creat the different
-variations of stimuli and legends.
+hatching, etc). Each of these layers can be individually enabled and disabled to
+create all needed variations of the stimuli and legends.
 
-svgtune is a script used to turn on and off the layers of the svg to create the
-variations of the stimuli and legend. For more information on how to use
-svgtune, see: https://github.com/yarikoptic/svgtune/blob/master/README.rst
+svgtune is used to enable and disable the layers of the svg to create
+the variations of the stimuli and legend. For more information about svgtune,
+see: https://github.com/yarikoptic/svgtune/
 
-To generate pngs with svgtune, use the following script:
-generate_pngs.sh (filename).svgtune
-    ex: generate_pngs.sh MiSIT_layers.svgtune
-    ex: generate_pngs.sh MiSIT_legend.svgtune
+TODO: explain that the .svgtune files are (aptly) written in an svgtune format.
+And thus refer to that project. Though, don't imply that only the format is
+used; the actually utility is used as well.
+TODO: make sure svgtune is listed in your dependencies list (utilities used, or
+whatever)
+
+To generate the pngs, use the following script:
+pngs-gen.sh <filename>.svgtune
+    ex: pngs-gen.sh MiSIT_stims.svgtune
+    ex: pngs-gen.sh MiSIT_legend.svgtune
 
 Naming Scheme
 -------------
-core-stimuli: (color)-(direction)
-  ex: green-SENW
-      green-SWNE
+core-stimuli: <color>-<direction>-<degrees>
+  ex: green-SENW-330
+      green-SENW-300
+      green-SWNE-030
+      green-SWNE-060
 
-cue-stimuli: (array#)_(color)-(direction)_(relevant feature)-(cue location)
-  ex: 01_green-SENW_farbe-left
-      02_green-SENW_linie-left
+cue-stimuli: <index>_<color>-<direction>-<degrees>_<relevant feature>-<cue location>
+  ex: 01_green-SENW-330_farbe-left
+      02_green-SENW-330_farbe-right
+      03_green-SENW-330_linie-left
+      04_green-SENW-330_linie-right
 
-legend: legend_(color)(color)(direction)
+TODO: cleanup the descriptions below to match the first pair
+
+rules: <color><color><direction>_<color><color><direction>
+  ex: gbNW_pvNE green, blue, and hatching tilted north-west
+                pink, violet, and hatching tilted north-east
+
+      pvNW_gbNE pink, violet, and the hatching tilted to the north-west map left
+                green, blue, and the hatching tilted to the north-east map right
+
+      bpSW_gvSE blue, pink, and the hatching tilted to the south-west map left
+                green, violet, and the hatching tilted to the south-east map right
+
+      gvSW_bpSE green, violet, and the hatching tilted to the south-west map left
+                blue, pink, and the hatching tilted to the south-east map right
+
+legend: legend_<color><color><direction>
   ex: legend_gbNW (the colors green and blue map to the left)
       legend_pvNE (the colors pink and violet map to the right)
 
-rules: (color)(color)(direction)_(color)(color)(direction)
-  ex: gbNW_pvNE (green and blue map left; pink and violet map right)
-
-*****************************************************************************
-* array#: 1-32
+********************************************************************************
+* index: 01-64
 *
 * color: green = g
 *        blue = b
@@ -78,140 +101,112 @@ rules: (color)(color)(direction)_(color)(color)(direction)
 *        violet = v
 *
 * hatching direction: SENW, SWNE
-* S = bottom
 * N = top
-* W = left
+* S = bottom
 * E = right
+* W = left
 *
-* The parts of a compass are used to describe the direction. "S"/South (bottom) and
-* "N"/North (top) are used to distinguish between the top and bottom of the
-* circle. "W"/West (left) and "E"/East (right) are used to distinguish between the
-* left and right of the circle. The rules will indicate if the subject should pay
-* attention to the top (NW & NE) or the bottom (SW & SE) of the circle to
-* determine if the hatching is tilted to the right (east) or to the left (west).
+* The points of a compass are used to describe the direction. "S"/South (bottom)
+* and "N"/North (top) are used to distinguish between the top and bottom of the
+* circle. "W"/West (left) and "E"/East (right) are used to distinguish between
+* the left and right of the circle. The rules will indicate if the subject
+* should pay attention to the top (NW & NE) or the bottom (SW & SE) of the
+* circle to determine if the hatching is tilted to the right (east) or to the
+* left (west).
+*
+# TODO: explain that the different angles is merely just to further confuse the
+# subject. There's no different between 030 and 060. They're the same, but
+# visually look different, which is precicely the point.
+*
+* degrees: 030 = hatching tilted 30° to the right
+*          060 = hatching tilted 60° to the right
+*          330 = hatching tilted 30° to the left
+*          300 = hatching tilted 60° to the left
+*
+* relevant feature: farbe = color
+*                   linie = direction
 *
 * cue location: left, right
-*******************************************************************************
+********************************************************************************
 
 Randomization and Generation of Input files
 ###########################################
+Tools used: results-gen.sh
+            jitter-gen.sh
+            events-gen.sh
+            conan
+            join
+            sed
 
-Conan was used for randomization. Refer to conan man page.
+#TODO: write a "shit used" section, saying that presentation is used for the
+experiment, png shit for pngs, etc, etc
+
+#TODO: enhance png-gen script to check for both svgtune and inkscape and fail if
+they don't exist in path.
+# TODO: also add a check for conan in results gen. Be clear where/how to get
+# conan. Do not imply it is a widely available program like the above two.
+
+results-gen.sh is the top-level script used to generate the input files for
+Presentation. See results-gen.sh --help for more info.
+
+Conan is used to complete the randomization. Although conan isn't the most
+convenient tool, it works well enough for us and provides reliable results. To
+better understand conan and its... peculiarities, refer to its man page.
 
 Conan cfg files
 ---------------
-*Two different cfg files for the different input files (input_1 and input_2) that
- have different block orders
-  input_1: neutral, farbe, incongruent, neutral, linie, congruent
-  input_2: neutral, congruent, linie, farbe, incongruent, neutral
+There are 6 different cfg files: one for each of the different block types
+(neutral, congruent, incongruent, farbe, and linie) and one for the jitter. The
+randomization constraints for each cfg file are as follows:
 
- The contraints for the randomization in each cfg file are as follows:
+neutral:     no direct repeats of the same stimulus
+             max of 4 repeats for stimuli with the same response
+             no direct repeats of stimuli with the same degrees
+             max of 5 repeats for stimuli with the same relevant feature
+             max of 4 repeats for stimuli with the same congruency
 
- There are 6 blocks of 100 trials.
-  -2x neutral blocks: equal split (50/50) of congruent vs incongruent trials and
-  equal split (50/50) of the relevant feature (farbe vs linie).
-  -1x linie block: 80/20 split of farbe vs linie (80 linie and 20 farbe) and
-  equal split (50/50) of congruent vs incongruent
-  -1x farbe block: 80/20 split of farbe vs linie (80 farbe and 20 linie) and
-  equal split (50/50) of congruent vs incongruent
-  -1x congruent block: 80/20 split of congruent vs incongruent (80 congruent and
-  20 incongruent) and equal split (50/50) of farbe vs linie
-  -1x incongruent block: 80/20 split of congruent vs incongruent (80 incongruent
-  and 20 congruent) and equal split (50/50) of farbe vs linie
+congruent/   no direct repeats of the same stimulus
+incongruent: max of 4 repeats for stimuli with the same response
+             no direct repeats of stimuli with the same degrees
+             max of 5 repeats for stimuli with the same relevant feature
 
- Across all blocks:
-  -There are no direct repeats of the same stimuli
-  -There is a maximum of 4 repeats for stimuli with the same response
+farbe/linie: no direct repeats of the same stimulus
+             max of 4 repeats for stimuli with the same response
+             no direct repeats of stimuli with the same degrees
+             max of 4 repeats for stimuli with the same congruency
 
- In neutral blocks:
-  -There is maximum of 4 repeats for stimuli with the same congruency
-  -There is maximum of 4 repeats for stimuli with the same relevant feature
+jitter:      max of 4 repeats of the same duration (in ms) of the core-stimuli
 
- In linie and farbe blocks:
-  -There is a maximum of 4 repeats for stimuli with the same congruency
-
- In congruent and incongruent blocks:
-  -There is a maximum of 4 repeats for stimuli with the same relevant feature
-
-*There is a seperate cfg file for the jitters with just one randomization
- constraint:
-  -Maximum of 4 repeats for the same jitter value
+TODO: explain jitter in detail somewhere
 
 Conan set files
 ---------------
-Refer to conan man page for set file requirements.
+jitter-gen.sh generates 1 conan set file for the jitters.
+  See jitter-gen.sh --help for more info.
 
-Use trials_gen.sh to generate a group of conan set files for each input file.
-This script will generate a set file for the trials and jitter, and a results
-file for blocks/rules.
-  ex: trials_gen.sh -d sets/gbNW_pvNE_1 -r gbNW_pvNE -s 100 -b neutral farbe incongruent neutral linie congruent -j 1000 1500 2000 2500 -f pngs/*.png
-  ex: trials_gen.sh -d sets/gbNW_pvNE_2 -r gbNW_pvNE -s 100 -b neutral congruent linie farbe incongruent neutral -j 1000 1500 2000 2500 -f pngs/*.png
+events-gen.sh generates 40 unique conan set files for the events. The 40 event
+set files consist of a unique file for each block across each rule-set. In the
+current experiment, there are 4 different rule-sets and 5 blocks types that are
+each repeated once for a total of 10 blocks. Each of the 5 block types has a
+different ratio of incongruent vs congruent and farbe vs linie trials. Below is
+a breakdown of the ratios for each block type:
 
-See the trials_gen.sh man page for more info.
+             incongruent vs congruent        farbe vs linie
+             ------------------------        --------------
+neutral:               50/50                      50/50
+congruent:             25/75                      50/50
+incongruent:           75/25                      50/50
+farbe:                 50/50                      75/50
+linie:                 50/50                      25/75
 
-Send to condor
---------------
-Submit conan files to condor to generate trial and jitter results using conan-submit-gen.
-  ex: conan-submit-gen -c cfgs/input_1.cfg -s sets/gbNW_pvNE_1/trials.set -d results/results_trials_gbNW_pvNE_1 -r 1000 -j 5 | condor_submit
-  ex: conan-submit-gen -c cfgs/input_2.cfg -s sets/gbNW_pvNE_2/trials.set -d results/results_trials_gbNW_pvNE_1 -r 1000 -j 5 | condor_submit
-  ex: conan-submit-gen -c cfgs/jitter.cfg -s sets/gbNW_pvNE_1/jitters.set -d results/results_jitter -r 1000 -j 1 | condor_submit
-
-See the man page for conan-submit-gen for more info.
-
-Join results files into one input file
---------------------------------------
-Join trial and jitter results for each input file using join:
-  ex: join results/results_trials_gbNW_pvNE_1/0-0.438498.results results/results_jitter/0-0.438237.results >| input_files/gbNW_pvNE_1/trials_jitters
-  ex: join results/results_trials_gbNW_pvNE_2/0-0.438250.results results/results_jitter/0-0.438237.results >| input_files/gbNW_pvNE_2/trials_jitters
-Join the trials_jitters file just created with the block_rules results file
-for each input file:
-  ex: join input_files/gbNW_pvNE_1/trials_jitters sets/gbNW_pvNE_1/blocks_rules.results >| input_files/gbNW_pvNE_1/pre-sed_gbNW_pvNE_1
-  ex: join input_files/gbNW_pvNE_2/trials_jitters sets/gbNW_pvNE_2/blocks_rules.results >| input_files/gbNW_pvNE_2/pre-sed_gbNW_pvNE_2
-
-See man page for join for more info
-
-Sed results file into sane input file
--------------------------------------
-Use sed to generate the finale version of each of the input files:
-  ex: sed -f conan2input.sed input_files/gbNW_pvNE_1/pre-sed_gbNW_pvNE_1 >| input_files/gbNW_pvNE_1/gbNW_pvNE_1.txt
-  ex: sed -f conan2input.sed input_files/gbNW_pvNE_2/pre-sed_gbNW_pvNE_2 >| input_files/gbNW_pvNE_2/gbNW_pvNE_2.txt
-
-See man page for sed for more info
+See events-gen.sh --help for more info.
 
 Overview of Workflow
 ####################
 
-Prep:
-* build svg for stimuli: MiSIT_layers.svg
-* build svg for legend: MiSIT_legend.svg
-* write svgtune file for stimuli: MiSIT_layers.svgtune
-* write svgtune file for legend: MiSIT_legend.svgtune
-* write conan config file for each input file: input_1.cfg, input_2.cfg
-* write conan config file for jitters: jitter.cfg
-
 Execute:
-* Generate PNGs: generate_pngs.sh (filename).svgtune
-    ex: generate_pngs.sh MiSIT_layers.svgtune
-    ex: generate_pngs.sh MiSIT_legend.svgtune
-* Generate a group of conan set files for each input file. This script will
-  generate a set file for trials and jitter, and results file for blocks/rules:
-  trials_gen.sh -d (directory) -r (rule-set) -s (block size) -b (block order) -j (jitters) -f (folder with pngs)
-    ex: trials_gen.sh -d sets/gbNW_pvNE_1 -r gbNW_pvNE -s 100 -b neutral farbe incongruent neutral linie congruent -j 1000 1500 2000 2500 -f pngs/*.png
-    ex: trials_gen.sh -d sets/gbNW_pvNE_2 -r gbNW_pvNE -s 100 -b neutral congruent linie farbe incongruent neutral -j 1000 1500 2000 2500 -f pngs/*.png
-* Submit conan files to condor to generate trial results:
-  conan-submit-gen -c (config file) -s (set file) -d (directory) -r (#runs) -j (#results) | condor_submit
-    ex: conan-submit-gen -c cfgs/input_1.cfg -s sets/gbNW_pvNE_1/trials.set -d results/results_trials_gbNW_pvNE_1 -r 1000 -j 5 | condor_submit
-    ex: conan-submit-gen -c cfgs/input_2.cfg -s sets/gbNW_pvNE_2/trials.set -d results/results_trials_gbNW_pvNE_1 -r 1000 -j 5 | condor_submit
-* Submit conan files to condor to generate jitter results:
-  conan-submit-gen -c (config file) -s (set file) -d (directory) -r (#runs) -j (#results) | condor_submit
-    ex: conan-submit-gen -c cfgs/jitter.cfg -s sets/gbNW_pvNE_1/jitters.set -d results/results_jitter -r 1000 -j 1 | condor_submit
-* Join trial and jitter results for each input file using join:
-    ex: join results/results_trials_gbNW_pvNE_1/0-0.438498.results results/results_jitter/0-0.438237.results >| input_files/gbNW_pvNE_1/trials_jitters
-    ex: join results/results_trials_gbNW_pvNE_2/0-0.438250.results results/results_jitter/0-0.438237.results >| input_files/gbNW_pvNE_2/trials_jitters
-* Join the trials_jitters file just created with the block_rules results file
-  for each input file:
-    ex: join input_files/gbNW_pvNE_1/trials_jitters sets/gbNW_pvNE_1/blocks_rules.results >| input_files/gbNW_pvNE_1/pre-sed_gbNW_pvNE_1
-    ex: join input_files/gbNW_pvNE_2/trials_jitters sets/gbNW_pvNE_2/blocks_rules.results >| input_files/gbNW_pvNE_2/pre-sed_gbNW_pvNE_2
-* Use sed to generate the finale version of each of the input files:
-    ex: sed -f conan2input.sed input_files/gbNW_pvNE_1/pre-sed_gbNW_pvNE_1 >| input_files/gbNW_pvNE_1/gbNW_pvNE_1.txt
-    ex: sed -f conan2input.sed input_files/gbNW_pvNE_2/pre-sed_gbNW_pvNE_2 >| input_files/gbNW_pvNE_2/gbNW_pvNE_2.txt
+* pngs-gen.sh MiSIT_layers.svgtune
+* pngs-gen.sh MiSIT_legend.svgtune
+* results-gen.sh --directory --pngs
+
+#TODO: make results-gen line actually correct
