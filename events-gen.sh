@@ -16,7 +16,7 @@ PNG_FILES=''
 VERBOSE='false'
 MODE=''
 NUM_FARBE=''
-NUM_LINIE=''
+NUM_ORIENT=''
 NUM_CON=''
 NUM_INCON=''
 
@@ -26,8 +26,8 @@ declare -A PNGS
 # lists of png IDs for each category
 FARBE_CON=''
 FARBE_INCON=''
-LINIE_CON=''
-LINIE_INCON=''
+ORIENT_CON=''
+ORIENT_INCON=''
 
 # Final events list consisting of the PNG ID for each event
 EVENTS=''
@@ -60,17 +60,17 @@ Syntax:
 $SCRIPT_NAME [-h] [-V] | [-v] -r rule_set -ci|-fl int int -p file [...]
 
 OPTIONS:
-  -h,  --help        = print this help and exit
-  -V,  --version     = print the version number and exit
+  -h,  --help         = print this help and exit
+  -V,  --version      = print the version number and exit
 
-  -ci, --con-incon   = number of congruent and incongruent events. Cannot be used
-                       with --farbe-linie --- for which it'll use a 50/50 ratio.
-  -fl, --farbe-linie = number of farbe and linie events. Cannot be used with
-                       --con-incon --- for which it will use a 50/50 ratio.
+  -ci, --con-incon    = number of congruent and incongruent events. Cannot be used
+                        with --farbe-orient --- for which it'll use a 50/50 ratio.
+  -fl, --farbe-orient = number of farbe and orient events. Cannot be used with
+                        --con-incon --- for which it will use a 50/50 ratio.
 
-  -p,  --pngs        = stimulus images to be used
-  -r,  --rule-set    = rule-set to evaluate PNGs' characteristics against
-  -v,  --verbose     = print to stderr about accepted vs rejected PNGs
+  -p,  --pngs         = stimulus images to be used
+  -r,  --rule-set     = rule-set to evaluate PNGs' characteristics against
+  -v,  --verbose      = print to stderr about accepted vs rejected PNGs
 
 EXAMPLE:
   $SCRIPT_NAME --rule-set gbNW_pvNE --con-incon 75 25 --pngs pngs/*.png
@@ -93,7 +93,7 @@ IsCongruent() {
 # What is the correct answer for a given rule-set, feature, and question
 #
 # Accepts a rule-set, relevant feature, and relevant feature's question
-#  e.g. LookupAnswer 'gbNW_pvNE' 'farbe' 'green'
+#  e.g. LookupAnswer 'gbNW_poNE' 'farbe' 'green'
 # Echos the answer in the format of  'f' (left) or 'j' (right)
 LookupAnswer() {
   local rule_set=$1
@@ -104,15 +104,15 @@ LookupAnswer() {
 
   case "$feature" in
      'farbe')
-         local color_code=${question:0:1} # b/g/p/v
+         local color_code=${question:0:1} # b/g/p/o
          [ -z "${rule_set##*${color_code}*_*}" ] && answer='f' # left
          [ -z "${rule_set##*_*${color_code}*}" ] && answer='j' # right
          ;;
-     'linie')
-         local linie1=${question:0:2} # NE/SE/SW/NW
-         local linie2=${question:2:4} # NE/SE/SW/NW
-         [ -z "${rule_set##*${linie1}_*}" ] || [ -z "${rule_set##*${linie2}_*}" ] && answer='f' # left
-         [ -z "${rule_set##*_*${linie1}}" ] || [ -z "${rule_set##*_*${linie2}}" ] && answer='j' # right
+     'orient')
+         local orient1=${question:0:2} # NE/SE/SW/NW
+         local orient2=${question:2:4} # NE/SE/SW/NW
+         [ -z "${rule_set##*${orient1}_*}" ] || [ -z "${rule_set##*${orient2}_*}" ] && answer='f' # left
+         [ -z "${rule_set##*_*${orient1}}" ] || [ -z "${rule_set##*_*${orient2}}" ] && answer='j' # right
          ;;
   esac
 
@@ -148,11 +148,11 @@ while [ -n "$1" ]; do
         NUM_INCON=$3
         shift 2
         ;;
-    '-fl'|'--farbe-linie')
+    '-fl'|'--farbe-orient')
         IsInt "$2" && IsInt "$3" || Fatal "'$1' requires two integers."
-        MODE='farbe linie'
+        MODE='farbe orient'
         NUM_FARBE=$2
-        NUM_LINIE=$3
+        NUM_ORIENT=$3
         shift 2
         ;;
     '-p'|'--pngs')
@@ -198,21 +198,21 @@ for PNG in $PNG_FILES; do
     ID=${FILE%%_*} && FILE=${FILE#${ID}_} # stim index (in Presentation) e.g. 01
     PNGS[$ID,file]=$PNG
     PNGS[$ID,farbe]=${FILE%%-*}   && FILE=${FILE#*-} # color of stim e.g. green
-    PNGS[$ID,linie]=${FILE%%-*}   && FILE=${FILE#*-} # hatching dir (cardinal directions) e.g. SWNE
+    PNGS[$ID,orient]=${FILE%%-*}  && FILE=${FILE#*-} # hatching dir (cardinal directions) e.g. SWNE
     PNGS[$ID,degrees]=${FILE%%_*} && FILE=${FILE#*_} # degrees of origin of hatching (redundant to above, but more specific)
-    PNGS[$ID,feature]=${FILE%%-*} && FILE=${FILE#*-} # relevant feature e.g. farbe or linie
+    PNGS[$ID,feature]=${FILE%%-*} && FILE=${FILE#*-} # relevant feature e.g. farbe or orient
     PNGS[$ID,cue]=${FILE%%.*}     && FILE=${FILE#*.} # cue side e.g. left or right
 
     # get answers for both features
     PNGS[$ID,ans_farbe]=$(LookupAnswer "$RULE_SET" 'farbe' "${PNGS[$ID,farbe]}")
-    PNGS[$ID,ans_linie]=$(LookupAnswer "$RULE_SET" 'linie' "${PNGS[$ID,linie]}")
+    PNGS[$ID,ans_orient]=$(LookupAnswer "$RULE_SET" 'orient' "${PNGS[$ID,orient]}")
 
     # answer for both relevant and irrelevant features
     if [ "${PNGS[$ID,feature]}" = 'farbe' ]; then
       PNGS[$ID,ans_rel]=${PNGS[$ID,ans_farbe]}
-      PNGS[$ID,ans_irrel]=${PNGS[$ID,ans_linie]}
+      PNGS[$ID,ans_irrel]=${PNGS[$ID,ans_orient]}
     else
-      PNGS[$ID,ans_rel]=${PNGS[$ID,ans_linie]}
+      PNGS[$ID,ans_rel]=${PNGS[$ID,ans_orient]}
       PNGS[$ID,ans_irrel]=${PNGS[$ID,ans_farbe]}
     fi
 
@@ -220,10 +220,10 @@ for PNG in $PNG_FILES; do
     PNGS[$ID,ans_green]=$(LookupAnswer  "$RULE_SET" 'farbe' 'green')
     PNGS[$ID,ans_blue]=$(LookupAnswer   "$RULE_SET" 'farbe' 'blue')
     PNGS[$ID,ans_pink]=$(LookupAnswer   "$RULE_SET" 'farbe' 'pink')
-    PNGS[$ID,ans_violet]=$(LookupAnswer "$RULE_SET" 'farbe' 'violet')
+    PNGS[$ID,ans_orange]=$(LookupAnswer "$RULE_SET" 'farbe' 'orange')
     # and directions...
-    PNGS[$ID,ans_SENW]=$(LookupAnswer "$RULE_SET" 'linie' 'SENW')
-    PNGS[$ID,ans_SWNE]=$(LookupAnswer "$RULE_SET" 'linie' 'SWNE')
+    PNGS[$ID,ans_SENW]=$(LookupAnswer "$RULE_SET" 'orient' 'SENW')
+    PNGS[$ID,ans_SWNE]=$(LookupAnswer "$RULE_SET" 'orient' 'SWNE')
 
     # congruency of answer vs cue for both the relevant and irrelevant features
     IsCongruent "${PNGS[$ID,cue]}" "${PNGS[$ID,ans_rel]}"   && PNGS[$ID,con_rel]='c'   || PNGS[$ID,con_rel]='i'
@@ -235,10 +235,10 @@ for PNG in $PNG_FILES; do
       # categorize the PNG; it helps us easily match the user specified ratios
       # while not falling into really gnarly corner-cases
       case "${PNGS[$ID,feature]}-${PNGS[$ID,con_rel]}" in
-        'farbe-c') FARBE_CON="${FARBE_CON:+$FARBE_CON }${ID}" ;;
-        'farbe-i') FARBE_INCON="${FARBE_INCON:+$FARBE_INCON }${ID}" ;;
-        'linie-c') LINIE_CON="${LINIE_CON:+$LINIE_CON }${ID}" ;;
-        'linie-i') LINIE_INCON="${LINIE_INCON:+$LINIE_INCON }${ID}" ;;
+        'farbe-c')  FARBE_CON="${FARBE_CON:+$FARBE_CON }${ID}" ;;
+        'farbe-i')  FARBE_INCON="${FARBE_INCON:+$FARBE_INCON }${ID}" ;;
+        'orient-c') ORIENT_CON="${ORIENT_CON:+$ORIENT_CON }${ID}" ;;
+        'orient-i') ORIENT_INCON="${ORIENT_INCON:+$ORIENT_INCON }${ID}" ;;
       esac
     else # we're not interested in this PNG
       continue
@@ -249,18 +249,18 @@ done
 # statistical problems when invoking this script multiple times to eventually
 # concatenate into a larger whole
 FARBE_CON=$(Shuffle "$FARBE_CON") ; FARBE_INCON=$(Shuffle "$FARBE_INCON")
-LINIE_CON=$(Shuffle "$LINIE_CON") ; LINIE_INCON=$(Shuffle "$LINIE_INCON")
+ORIENT_CON=$(Shuffle "$ORIENT_CON") ; ORIENT_INCON=$(Shuffle "$ORIENT_INCON")
 
 # build a list of the PNG IDs according to the ratios provided by the user
-#   the ratio of the non-mode is 50/50 (so --farbe-linie 75 25 results in
-#   farbe=75, linie=25, congruent=50, incongruent=50)
+#   the ratio of the non-mode is 50/50 (so --farbe-orient 75 25 results in
+#   farbe=75, orient=25, congruent=50, incongruent=50)
 CLOCK='tick' # ensure the non-mode's 50/50 ratio across both halves of the mode
-for M in $MODE ; do # e.g. 'farbe linie'
+for M in $MODE ; do # e.g. 'farbe orient'
   case $M in
-    'farbe') ARR1=$FARBE_CON   ; ARR2=$FARBE_INCON ; NUM=$NUM_FARBE ;;
-    'linie') ARR1=$LINIE_CON   ; ARR2=$LINIE_INCON ; NUM=$NUM_LINIE ;;
-    'con')   ARR1=$LINIE_CON   ; ARR2=$FARBE_CON   ; NUM=$NUM_CON   ;;
-    'incon') ARR1=$LINIE_INCON ; ARR2=$FARBE_INCON ; NUM=$NUM_INCON ;;
+    'farbe')  ARR1=$FARBE_CON    ; ARR2=$FARBE_INCON  ; NUM=$NUM_FARBE ;;
+    'orient') ARR1=$ORIENT_CON   ; ARR2=$ORIENT_INCON ; NUM=$NUM_ORIENT ;;
+    'con')    ARR1=$ORIENT_CON   ; ARR2=$FARBE_CON    ; NUM=$NUM_CON   ;;
+    'incon')  ARR1=$ORIENT_INCON ; ARR2=$FARBE_INCON  ; NUM=$NUM_INCON ;;
   esac
 
   I=0
@@ -278,8 +278,8 @@ for M in $MODE ; do # e.g. 'farbe linie'
 done
 
 # generate number of events for the unspecified mode --- for printing purposes
-if [ "$MODE" = 'farbe linie' ]; then
-  NUM_INCON=$(( ( $NUM_FARBE + $NUM_LINIE ) / 2 ))
+if [ "$MODE" = 'farbe orient' ]; then
+  NUM_INCON=$(( ( $NUM_FARBE + $NUM_ORIENT ) / 2 ))
 else # con incon
   NUM_FARBE=$(( ( $NUM_CON + $NUM_INCON ) / 2 ))
 fi
@@ -290,7 +290,7 @@ for ID in $EVENTS ; do
     printf '%s %s %s %s %s %s %s %s %s %s %s %s %s %s %s %s %s \n' \
       "$ID" \
       "${PNGS[$ID,farbe]:0:1}" \
-      "${PNGS[$ID,linie]}" \
+      "${PNGS[$ID,orient]}" \
       "${PNGS[$ID,feature]}" \
       "${PNGS[$ID,con_rel]}" \
       "${PNGS[$ID,ans_rel]}" \
@@ -298,11 +298,11 @@ for ID in $EVENTS ; do
       "$NUM_INCON" \
       "$NUM_FARBE" \
       "${PNGS[$ID,ans_farbe]}" \
-      "${PNGS[$ID,ans_linie]}" \
+      "${PNGS[$ID,ans_orient]}" \
       "${PNGS[$ID,ans_green]}" \
       "${PNGS[$ID,ans_blue]}" \
       "${PNGS[$ID,ans_pink]}" \
-      "${PNGS[$ID,ans_violet]}" \
+      "${PNGS[$ID,ans_orange]}" \
       "${PNGS[$ID,ans_SENW]}" \
       "${PNGS[$ID,ans_SWNE]}"
 done
@@ -315,7 +315,7 @@ done
 # print stats to stderr
 if [ "$VERBOSE" = 'true' ]; then
   NUM_PNGS=`printf '%s' "$PNG_FILES" | wc -w`
-  NUM_RLVNT_PNGS=`printf '%s' "$FARBE_CON $FARBE_INCON $LINIE_CON $LINIE_INCON" | wc -w`
+  NUM_RLVNT_PNGS=`printf '%s' "$FARBE_CON $FARBE_INCON $ORIENT_CON $ORIENT_INCON" | wc -w`
   BOLD_TEXT='\033[1;32m%s\033[0m'
 
   printf '\n'
@@ -326,7 +326,7 @@ if [ "$VERBOSE" = 'true' ]; then
     ID=${FILE%%_*}
     # I'm tired; so I'm just going to brute-force this. Don't judge me
     if [ -z "${FARBE_CON##*${ID}*}" -o -z "${FARBE_INCON##*${ID}*}" -o \
-         -z "${LINIE_CON##*${ID}*}" -o -z "${LINIE_INCON##*${ID}*}" ]; then
+         -z "${ORIENT_CON##*${ID}*}" -o -z "${ORIENT_INCON##*${ID}*}" ]; then
       printf "✓  ${BOLD_TEXT}\n" "$FILE" >&2
     else
       printf "✗  %s\n" "$FILE" >&2
