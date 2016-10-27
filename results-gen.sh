@@ -2,7 +2,22 @@
 # This file is licensed under the BSD-3-Clause license.
 # Laura Waite 2016
 
-# horrible name for output files, I know, but they've long been referred to as
+#
+# MiSIT project
+#   generate conan set files, conan results files, and presentation input files
+#
+# TODO: invert the above descirption so that it's more correct from the user's
+# perspective
+
+#
+# Vars
+#
+readonly VERSION='1.0.0'
+readonly SCRIPT_NAME=${0##*/}
+RESULTS_DIR=''
+PNGS=''
+
+# a horrible name for output files, I know, but they've long been referred to as
 # "presentation input files" and they are so thusly dubbed.
 declare -A infiles
 infiles[gbNW_pvNE_1]='neutralA farbeA incongruentA linieA congruentA incongruentB neutralB farbeB linieB congruentB'
@@ -34,16 +49,72 @@ Fatal() {
   exit 1
 }
 
+Help() {
+# TODO: also fix help's description so it's intuitive for the user
+  cat << EOF
+$SCRIPT_NAME v${VERSION}
+generate conan set files, conan results files, and presentation input files
+
+Syntax:
+$SCRIPT_NAME [-h] [-V] | -d directory -p pngs
+
+OPTIONS:
+  -h, --help      = print this help and exit
+  -V, --version   = print the version number and exit
+
+  -d, --directory = results directory
+  -p, --pngs      = pngs
+EXAMPLE:
+  $SCRIPT_NAME --directory BH_input --pngs MiSIT_stims_png/*.png
+
+EOF
+}
+
+#
+# Parse Arguments
+#
+
+# help out if there are no arguments
+[ -n "$1" ] || { Help; exit 1; }
+
+while [ -n "$1" ]; do
+  case "$1" in
+    '-h'|'--help') Help; exit 0;;
+    '-V'|'--version') printf '%s v%s\n' "$SCRIPT_NAME" "$VERSION"; exit 0;;
+
+    '-d'|'--directory')
+       [ -n "${2##-*}" ] || Fatal "'$1' requires at least one argument."
+       RESULTS_DIR=$2
+       [ -e "${RESULTS_DIR}" ] && Fatal "${RESULTS_DIR} already exists! (please delete it)"
+       mkdir -p "${RESULTS_DIR}"
+       shift 1
+       ;;
+    '-p'|'--pngs')
+      [ -n "${2##-*}" ] || Fatal "'$1' requires at least one argument."
+
+      while [ -n "${2##-*}" ]; do
+        PNGS="${PNGS:+$PNGS }${2##*/}"
+        shift 1
+      done
+      ;;
+    *) Fatal "'$1' is not a valid '$SCRIPT_NAME' option.";;
+  esac
+  [ -n "$1" ] && shift 1 # only shift if there's anything left to shift
+done
+
+# Check if any required arguments are missing
+[ -z "$RESULTS_DIR" ] && Fatal "-d/--directory is required"
+[ -z "$PNGS" ] && "-p/--pngs is required"
+
+TMP="${RESULTS_DIR}/tmp/"
+mkdir -p "${TMP}"
+
 #
 # Main
 #
 
-# set-up directory
-[ -e "./results/" ] && Fatal "./results/ already exists! (please delete it)"
-mkdir -p "./results/"
-
 # generate jitter set file
-./jitter-gen.sh --total 100 --jitters 800 1000 1200 1400 1600 1800 | shuf > "./results/jitter.set"
+./jitter-gen.sh --total 100 --jitters 800 1000 1200 1400 1600 1800 | shuf > "${TMP}/jitter.set"
 
 # loop over all ruleset and block combinations
 for ruleset in gbNW_pvNE pvNW_gbNE bpSW_gvSE gvSW_bpSE ; do
@@ -57,7 +128,7 @@ for ruleset in gbNW_pvNE pvNW_gbNE bpSW_gvSE gvSW_bpSE ; do
              'congruentA'|'congruentB')     mode='--con-incon 75 25'   ;;
         esac
         # generate conan set files
-        ./events-gen.sh --rule-set "$ruleset" $mode --pngs svg/MiSIT_layers_png/*.png > "./results/${ruleset}_${block}.set"
+        ./events-gen.sh --rule-set "$ruleset" $mode --pngs "${PNGS}" > "${TMP}/${ruleset}_${block}.set"
 
         case "$block" in
              'neutralA'|'neutralB')         cfg_file='neutral.cfg'     ;;
@@ -67,10 +138,13 @@ for ruleset in gbNW_pvNE pvNW_gbNE bpSW_gvSE gvSW_bpSE ; do
              'congruentA'|'congruentB')     cfg_file='congruent.cfg'   ;;
         esac
         # generate result files for events and jitters
-        conan "./cfgs/${cfg_file}" "./results/${ruleset}_${block}.set" 1> "./results/${ruleset}_${block}.results" 2> /dev/null
-        conan ./cfgs/jitter.cfg "./results/jitter.set" 1> "./results/${ruleset}_${block}_jitter.results" 2> /dev/null
+        # TODO: this should probably be written as conan blah || Fatal WTF
+        conan "./cfgs/${cfg_file}" "${TMP}/${ruleset}_${block}.set" 1> "${TMP}/${ruleset}_${block}.results" 2> /dev/null
+        conan ./cfgs/jitter.cfg "${TMP}/jitter.set" 1> "${TMP}/${ruleset}_${block}_jitter.results" 2> /dev/null
     done
 done
+
+# TODO: ruleset vs RULE_SET block vs BLOCK? danger
 
 RULE_SET=''
 # build and output the final presentation "input" files
@@ -82,9 +156,9 @@ for KEY in "${!infiles[@]}"; do
   printf "${KEY}\n"
   for BLOCK in ${infiles[${KEY}]}; do
     # convert into a presentation-ready format and join with jitter info and append block num
-    join ./results/${RULE_SET}_${BLOCK}.results ./results/${RULE_SET}_${BLOCK}_jitter.results | \
+    join "${TMP}/${RULE_SET}_${BLOCK}.results" "${TMP}/${RULE_SET}_${BLOCK}_jitter.results" | \
       sed -f ./conan2input.sed | sed -e "1,\$ s/\$/ ${BLOCK_NUM}/" \
-      >> ./results/${KEY}.txt
+      >> "${RESULTS_DIR}/${KEY}.txt"
 
     BLOCK_NUM=$(( $BLOCK_NUM + 1 ))
   done
