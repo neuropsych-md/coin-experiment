@@ -7,15 +7,15 @@ is 640x640 pixels.
 The core-stimuli consists of a colored circle on a black background. The colored
 circle is overlaid by black hatching and contains a white fixation point in the
 center. The colored circle is 1 of 4 isoluminant colors. The isoluminant colors
-used are: blue(RGB:123, 178, 208), violet(RGB:174, 152, 198), pink(RGB:217, 152,
-158), and green(RGB:143, 191, 53). The black hatching is oriented vertically and
+used are: blue(RGB:123, 178, 208), orange(RGB:205, 162, 119), pink(RGB:211, 146,
+178), and green(RGB:143, 191, 53). The black hatching is oriented vertically and
 then tilted 30° or 60° to the left or 30° or 60° to the right.
 
 The cue-stimuli are the same as the core-stimuli, but also have a cue that is
 located to the left or the right of the center fixation point. The cue indicates
 to the subject which stimulus feature is relevant for the response. The cue is a
-small black circle with a white letter "F" or "L" in the center. The "F" stands
-for "Farbe" (color) and the "L" stands for "Linie" (direction), which are the
+small black circle with a white letter "F" or "O" in the center. The "F" stands
+for "Farbe" (color) and the "O" stands for "Orient" (direction), which are the
 two possible relevant features of the stimuli that the subject needs to pay
 attention to. The currently relevant stimulus feature can map to the same or the
 opposite response as the irrelevant feature, thereby creating congruent and
@@ -70,27 +70,27 @@ core-stimuli: <color>-<direction>-<degrees>
 cue-stimuli: <index>_<color>-<direction>-<degrees>_<relevant feature>-<cue location>
   ex: 01_green-SENW-330_farbe-left
       02_green-SENW-330_farbe-right
-      03_green-SENW-330_linie-left
-      04_green-SENW-330_linie-right
+      03_green-SENW-330_orient-left
+      04_green-SENW-330_orient-right
 
 TODO: cleanup the descriptions below to match the first pair
 
 rules: <color><color><direction>_<color><color><direction>
-  ex: gbNW_pvNE green, blue, and hatching tilted north-west
-                pink, violet, and hatching tilted north-east
+  ex: gbNW_poNE green, blue, and hatching tilted north-west
+                pink, orange, and hatching tilted north-east
 
-      pvNW_gbNE pink, violet, and the hatching tilted to the north-west map left
+      poNW_gbNE pink, orange, and the hatching tilted to the north-west map left
                 green, blue, and the hatching tilted to the north-east map right
 
-      bpSW_gvSE blue, pink, and the hatching tilted to the south-west map left
-                green, violet, and the hatching tilted to the south-east map right
+      bpSW_goSE blue, pink, and the hatching tilted to the south-west map left
+                green, orange, and the hatching tilted to the south-east map right
 
-      gvSW_bpSE green, violet, and the hatching tilted to the south-west map left
+      goSW_bpSE green, orange, and the hatching tilted to the south-west map left
                 blue, pink, and the hatching tilted to the south-east map right
 
 legend: legend_<color><color><direction>
   ex: legend_gbNW (the colors green and blue map to the left)
-      legend_pvNE (the colors pink and violet map to the right)
+      legend_poNE (the colors pink and orange map to the right)
 
 ********************************************************************************
 * index: 01-64
@@ -98,7 +98,7 @@ legend: legend_<color><color><direction>
 * color: green = g
 *        blue = b
 *        pink = p
-*        violet = v
+*        orange = o
 *
 * hatching direction: SENW, SWNE
 * N = top
@@ -124,7 +124,7 @@ legend: legend_<color><color><direction>
 *          300 = hatching tilted 60° to the left
 *
 * relevant feature: farbe = color
-*                   linie = direction
+*                   orient = direction
 *
 * cue location: left, right
 ********************************************************************************
@@ -156,7 +156,7 @@ better understand conan and its... peculiarities, refer to its man page.
 Conan cfg files
 ---------------
 There are 6 different cfg files: one for each of the different block types
-(neutral, congruent, incongruent, farbe, and linie) and one for the jitter. The
+(neutral, congruent, incongruent, farbe, and orient) and one for the jitter. The
 randomization constraints for each cfg file are as follows:
 
 neutral:     no direct repeats of the same stimulus
@@ -170,7 +170,7 @@ incongruent: max of 4 repeats for stimuli with the same response
              no direct repeats of stimuli with the same degrees
              max of 5 repeats for stimuli with the same relevant feature
 
-farbe/linie: no direct repeats of the same stimulus
+farbe/orient: no direct repeats of the same stimulus
              max of 4 repeats for stimuli with the same response
              no direct repeats of stimuli with the same degrees
              max of 4 repeats for stimuli with the same congruency
@@ -188,16 +188,16 @@ events-gen.sh generates 40 unique conan set files for the events. The 40 event
 set files consist of a unique file for each block across each rule-set. In the
 current experiment, there are 4 different rule-sets and 5 blocks types that are
 each repeated once for a total of 10 blocks. Each of the 5 block types has a
-different ratio of incongruent vs congruent and farbe vs linie trials. Below is
+different ratio of incongruent vs congruent and farbe vs orient trials. Below is
 a breakdown of the ratios for each block type:
 
-             incongruent vs congruent        farbe vs linie
+             incongruent vs congruent        farbe vs orient
              ------------------------        --------------
 neutral:               50/50                      50/50
 congruent:             25/75                      50/50
 incongruent:           75/25                      50/50
 farbe:                 50/50                      75/50
-linie:                 50/50                      25/75
+orient:                50/50                      25/75
 
 See events-gen.sh --help for more info.
 
