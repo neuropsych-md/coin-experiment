@@ -26,13 +26,6 @@ infiles[poNW_gbNE_1]='neutralA farbeA incongruentA orientA congruentA incongruen
 infiles[gbNW_poNE_2]='neutralA congruentA orientA farbeA incongruentA orientB congruentB neutralB farbeB incongruentB'
 infiles[poNW_gbNE_2]='neutralA congruentA orientA farbeA incongruentA orientB congruentB neutralB farbeB incongruentB'
 
-infiles[gbNW_poNE_3]='neutralA orientA incongruentA farbeA congruentA neutralB incongruentB farbeB congruentB orientB'
-infiles[poNW_gbNE_3]='neutralA orientA incongruentA farbeA congruentA neutralB incongruentB farbeB congruentB orientB'
-
-infiles[gbNW_poNE_4]='neutralA incongruentA congruentA orientA farbeA congruentB farbeB incongruentB orientB neutralB'
-infiles[poNW_gbNE_4]='neutralA incongruentA congruentA orientA farbeA congruentB farbeB incongruentB orientB neutralB'
-
-
 #
 # Functions
 #
