@@ -20,25 +20,25 @@ PNGS=''
 # a horrible name for output files, I know, but they've long been referred to as
 # "presentation input files" and they are so thusly dubbed.
 declare -A infiles
-infiles[gbNW_pvNE_1]='neutralA farbeA incongruentA linieA congruentA incongruentB neutralB farbeB linieB congruentB'
-infiles[pvNW_gbNE_1]='neutralA farbeA incongruentA linieA congruentA incongruentB neutralB farbeB linieB congruentB'
-infiles[bpSW_gvSE_1]='neutralA farbeA incongruentA linieA congruentA incongruentB neutralB farbeB linieB congruentB'
-infiles[gvSW_bpSE_1]='neutralA farbeA incongruentA linieA congruentA incongruentB neutralB farbeB linieB congruentB'
+infiles[gbNW_poNE_1]='neutralA farbeA incongruentA orientA congruentA incongruentB neutralB farbeB orientB congruentB'
+infiles[poNW_gbNE_1]='neutralA farbeA incongruentA orientA congruentA incongruentB neutralB farbeB orientB congruentB'
+infiles[bpSW_goSE_1]='neutralA farbeA incongruentA orientA congruentA incongruentB neutralB farbeB orientB congruentB'
+infiles[goSW_bpSE_1]='neutralA farbeA incongruentA orientA congruentA incongruentB neutralB farbeB orientB congruentB'
 
-infiles[gbNW_pvNE_2]='neutralA congruentA linieA farbeA incongruentA linieB congruentB neutralB farbeB incongruentB'
-infiles[pvNW_gbNE_2]='neutralA congruentA linieA farbeA incongruentA linieB congruentB neutralB farbeB incongruentB'
-infiles[bpSW_gvSE_2]='neutralA congruentA linieA farbeA incongruentA linieB congruentB neutralB farbeB incongruentB'
-infiles[gvSW_bpSE_2]='neutralA congruentA linieA farbeA incongruentA linieB congruentB neutralB farbeB incongruentB'
+infiles[gbNW_poNE_2]='neutralA congruentA orientA farbeA incongruentA orientB congruentB neutralB farbeB incongruentB'
+infiles[poNW_gbNE_2]='neutralA congruentA orientA farbeA incongruentA orientB congruentB neutralB farbeB incongruentB'
+infiles[bpSW_goSE_2]='neutralA congruentA orientA farbeA incongruentA orientB congruentB neutralB farbeB incongruentB'
+infiles[goSW_bpSE_2]='neutralA congruentA orientA farbeA incongruentA orientB congruentB neutralB farbeB incongruentB'
 
-infiles[gbNW_pvNE_3]='neutralA linieA incongruentA farbeA congruentA neutralB incongruentB farbeB congruentB linieB'
-infiles[pvNW_gbNE_3]='neutralA linieA incongruentA farbeA congruentA neutralB incongruentB farbeB congruentB linieB'
-infiles[bpSW_gvSE_3]='neutralA linieA incongruentA farbeA congruentA neutralB incongruentB farbeB congruentB linieB'
-infiles[gvSW_bpSE_3]='neutralA linieA incongruentA farbeA congruentA neutralB incongruentB farbeB congruentB linieB'
+infiles[gbNW_poNE_3]='neutralA orientA incongruentA farbeA congruentA neutralB incongruentB farbeB congruentB orientB'
+infiles[poNW_gbNE_3]='neutralA orientA incongruentA farbeA congruentA neutralB incongruentB farbeB congruentB orientB'
+infiles[bpSW_goSE_3]='neutralA orientA incongruentA farbeA congruentA neutralB incongruentB farbeB congruentB orientB'
+infiles[goSW_bpSE_3]='neutralA orientA incongruentA farbeA congruentA neutralB incongruentB farbeB congruentB orientB'
 
-infiles[gbNW_pvNE_4]='neutralA incongruentA congruentA linieA farbeA congruentB farbeB incongruentB linieB neutralB'
-infiles[pvNW_gbNE_4]='neutralA incongruentA congruentA linieA farbeA congruentB farbeB incongruentB linieB neutralB'
-infiles[bpSW_gvSE_4]='neutralA incongruentA congruentA linieA farbeA congruentB farbeB incongruentB linieB neutralB'
-infiles[gvSW_bpSE_4]='neutralA incongruentA congruentA linieA farbeA congruentB farbeB incongruentB linieB neutralB'
+infiles[gbNW_poNE_4]='neutralA incongruentA congruentA orientA farbeA congruentB farbeB incongruentB orientB neutralB'
+infiles[poNW_gbNE_4]='neutralA incongruentA congruentA orientA farbeA congruentB farbeB incongruentB orientB neutralB'
+infiles[bpSW_goSE_4]='neutralA incongruentA congruentA orientA farbeA congruentB farbeB incongruentB orientB neutralB'
+infiles[goSW_bpSE_4]='neutralA incongruentA congruentA orientA farbeA congruentB farbeB incongruentB orientB neutralB'
 
 
 #
@@ -117,13 +117,13 @@ mkdir -p "${TMP}"
 ./jitter-gen.sh --total 100 --jitters 800 1000 1200 1400 1600 1800 | shuf > "${TMP}/jitter.set"
 
 # loop over all ruleset and block combinations
-for ruleset in gbNW_pvNE pvNW_gbNE bpSW_gvSE gvSW_bpSE ; do
-    for block in neutralA neutralB farbeA farbeB linieA linieB incongruentA incongruentB congruentA congruentB; do
+for ruleset in gbNW_poNE poNW_gbNE bpSW_goSE goSW_bpSE ; do
+    for block in neutralA neutralB farbeA farbeB orientA orientB incongruentA incongruentB congruentA congruentB; do
         printf "Automagicating: $ruleset $block\n"
         case "$block" in
-             'neutralA'|'neutralB')         mode='--farbe-linie 50 50' ;;
-             'farbeA'|'farbeB')             mode='--farbe-linie 75 25' ;;
-             'linieA'|'linieB')             mode='--farbe-linie 25 75' ;;
+             'neutralA'|'neutralB')         mode='--farbe-orient 50 50' ;;
+             'farbeA'|'farbeB')             mode='--farbe-orient 75 25' ;;
+             'orientA'|'orientB')           mode='--farbe-orient 25 75' ;;
              'incongruentA'|'incongruentB') mode='--con-incon 25 75'   ;;
              'congruentA'|'congruentB')     mode='--con-incon 75 25'   ;;
         esac
@@ -133,7 +133,7 @@ for ruleset in gbNW_pvNE pvNW_gbNE bpSW_gvSE gvSW_bpSE ; do
         case "$block" in
              'neutralA'|'neutralB')         cfg_file='neutral.cfg'     ;;
              'farbeA'|'farbeB')             cfg_file='farbe.cfg'       ;;
-             'linieA'|'linieB')             cfg_file='linie.cfg'       ;;
+             'orientA'|'orientB')           cfg_file='orient.cfg'       ;;
              'incongruentA'|'incongruentB') cfg_file='incongruent.cfg' ;;
              'congruentA'|'congruentB')     cfg_file='congruent.cfg'   ;;
         esac
