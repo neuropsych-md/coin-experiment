@@ -103,7 +103,7 @@ mkdir -p "${TMP}"
 
 # loop over all ruleset and block combinations
 for ruleset in gbNW_poNE poNW_gbNE ; do
-    for block in neutralA neutralB farbeA farbeB orientA orientB incongruentA incongruentB congruentA congruentB; do
+    for block in neutralA neutralB incongruentA incongruentB incongruentC incongruentD congruentA congruentB congruentC congruentD; do
         printf "Automagicating: $ruleset $block\n"
         case "$block" in
              'neutralA'|'neutralB')                                       mode='--farbe-orient 50 50' ;;
