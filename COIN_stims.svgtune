@@ -16,10 +16,9 @@ layers style=display:none
 layer label=black_background style=display:inline
 layer label=green_circle style=display:inline
 layer label=hatching_SENW_330 style=display:inline
-layer label=left_black_circle style=display:inline
-layer label=F_left style=display:inline
-layer label=fixation style=display:inline
-%save 01_green-SENW-330_farbe-left
+layer label=black_circle style=display:inline
+layer label=F style=display:inline
+%save 01_green-SENW-330_farbe
 
 # Make all layers invisible
 layers style=display:none
@@ -27,32 +26,9 @@ layers style=display:none
 layer label=black_background style=display:inline
 layer label=green_circle style=display:inline
 layer label=hatching_SENW_330 style=display:inline
-layer label=right_black_circle style=display:inline
-layer label=F_right style=display:inline
-layer label=fixation style=display:inline
-%save 02_green-SENW-330_farbe-right
-
-# Make all layers invisible
-layers style=display:none
-
-layer label=black_background style=display:inline
-layer label=green_circle style=display:inline
-layer label=hatching_SENW_330 style=display:inline
-layer label=left_black_circle style=display:inline
-layer label=O_left style=display:inline
-layer label=fixation style=display:inline
-%save 03_green-SENW-330_orient-left
-
-# Make all layers invisible
-layers style=display:none
-
-layer label=black_background style=display:inline
-layer label=green_circle style=display:inline
-layer label=hatching_SENW_330 style=display:inline
-layer label=right_black_circle style=display:inline
-layer label=O_right style=display:inline
-layer label=fixation style=display:inline
-%save 04_green-SENW-330_orient-right
+layer label=black_circle style=display:inline
+layer label=O style=display:inline
+%save 02_green-SENW-330_orient
 
 # Make all layers invisible
 layers style=display:none
@@ -69,10 +45,9 @@ layers style=display:none
 layer label=black_background style=display:inline
 layer label=green_circle style=display:inline
 layer label=hatching_SENW_300 style=display:inline
-layer label=left_black_circle style=display:inline
-layer label=F_left style=display:inline
-layer label=fixation style=display:inline
-%save 05_green-SENW-300_farbe-left
+layer label=black_circle style=display:inline
+layer label=F style=display:inline
+%save 03_green-SENW-300_farbe
 
 # Make all layers invisible
 layers style=display:none
@@ -80,32 +55,9 @@ layers style=display:none
 layer label=black_background style=display:inline
 layer label=green_circle style=display:inline
 layer label=hatching_SENW_300 style=display:inline
-layer label=right_black_circle style=display:inline
-layer label=F_right style=display:inline
-layer label=fixation style=display:inline
-%save 06_green-SENW-300_farbe-right
-
-# Make all layers invisible
-layers style=display:none
-
-layer label=black_background style=display:inline
-layer label=green_circle style=display:inline
-layer label=hatching_SENW_300 style=display:inline
-layer label=left_black_circle style=display:inline
-layer label=O_left style=display:inline
-layer label=fixation style=display:inline
-%save 07_green-SENW-300_orient-left
-
-# Make all layers invisible
-layers style=display:none
-
-layer label=black_background style=display:inline
-layer label=green_circle style=display:inline
-layer label=hatching_SENW_300 style=display:inline
-layer label=right_black_circle style=display:inline
-layer label=O_right style=display:inline
-layer label=fixation style=display:inline
-%save 08_green-SENW-300_orient-right
+layer label=black_circle style=display:inline
+layer label=O style=display:inline
+%save 04_green-SENW-300_orient
 
 # Make all layers invisible
 layers style=display:none
@@ -122,10 +74,9 @@ layers style=display:none
 layer label=black_background style=display:inline
 layer label=green_circle style=display:inline
 layer label=hatching_SWNE_030 style=display:inline
-layer label=left_black_circle style=display:inline
-layer label=F_left style=display:inline
-layer label=fixation style=display:inline
-%save 09_green-SWNE-030_farbe-left
+layer label=black_circle style=display:inline
+layer label=F style=display:inline
+%save 05_green-SWNE-030_farbe
 
 # Make all layers invisible
 layers style=display:none
@@ -133,32 +84,9 @@ layers style=display:none
 layer label=black_background style=display:inline
 layer label=green_circle style=display:inline
 layer label=hatching_SWNE_030 style=display:inline
-layer label=right_black_circle style=display:inline
-layer label=F_right style=display:inline
-layer label=fixation style=display:inline
-%save 10_green-SWNE-030_farbe-right
-
-# Make all layers invisible
-layers style=display:none
-
-layer label=black_background style=display:inline
-layer label=green_circle style=display:inline
-layer label=hatching_SWNE_030 style=display:inline
-layer label=left_black_circle style=display:inline
-layer label=O_left style=display:inline
-layer label=fixation style=display:inline
-%save 11_green-SWNE-030_orient-left
-
-# Make all layers invisible
-layers style=display:none
-
-layer label=black_background style=display:inline
-layer label=green_circle style=display:inline
-layer label=hatching_SWNE_030 style=display:inline
-layer label=right_black_circle style=display:inline
-layer label=O_right style=display:inline
-layer label=fixation style=display:inline
-%save 12_green-SWNE-030_orient-right
+layer label=black_circle style=display:inline
+layer label=O style=display:inline
+%save 06_green-SWNE-030_orient
 
 # Make all layers invisible
 layers style=display:none
@@ -175,10 +103,9 @@ layers style=display:none
 layer label=black_background style=display:inline
 layer label=green_circle style=display:inline
 layer label=hatching_SWNE_060 style=display:inline
-layer label=left_black_circle style=display:inline
-layer label=F_left style=display:inline
-layer label=fixation style=display:inline
-%save 13_green-SWNE-060_farbe-left
+layer label=black_circle style=display:inline
+layer label=F style=display:inline
+%save 07_green-SWNE-060_farbe
 
 # Make all layers invisible
 layers style=display:none
@@ -186,32 +113,9 @@ layers style=display:none
 layer label=black_background style=display:inline
 layer label=green_circle style=display:inline
 layer label=hatching_SWNE_060 style=display:inline
-layer label=right_black_circle style=display:inline
-layer label=F_right style=display:inline
-layer label=fixation style=display:inline
-%save 14_green-SWNE-060_farbe-right
-
-# Make all layers invisible
-layers style=display:none
-
-layer label=black_background style=display:inline
-layer label=green_circle style=display:inline
-layer label=hatching_SWNE_060 style=display:inline
-layer label=left_black_circle style=display:inline
-layer label=O_left style=display:inline
-layer label=fixation style=display:inline
-%save 15_green-SWNE-060_orient-left
-
-# Make all layers invisible
-layers style=display:none
-
-layer label=black_background style=display:inline
-layer label=green_circle style=display:inline
-layer label=hatching_SWNE_060 style=display:inline
-layer label=right_black_circle style=display:inline
-layer label=O_right style=display:inline
-layer label=fixation style=display:inline
-%save 16_green-SWNE-060_orient-right
+layer label=black_circle style=display:inline
+layer label=O style=display:inline
+%save 08_green-SWNE-060_orient
 
 # Make all layers invisible
 layers style=display:none
@@ -228,10 +132,9 @@ layers style=display:none
 layer label=black_background style=display:inline
 layer label=blue_circle style=display:inline
 layer label=hatching_SENW_330 style=display:inline
-layer label=left_black_circle style=display:inline
-layer label=F_left style=display:inline
-layer label=fixation style=display:inline
-%save 17_blue-SENW-330_farbe-left
+layer label=black_circle style=display:inline
+layer label=F style=display:inline
+%save 09_blue-SENW-330_farbe
 
 # Make all layers invisible
 layers style=display:none
@@ -239,32 +142,9 @@ layers style=display:none
 layer label=black_background style=display:inline
 layer label=blue_circle style=display:inline
 layer label=hatching_SENW_330 style=display:inline
-layer label=right_black_circle style=display:inline
-layer label=F_right style=display:inline
-layer label=fixation style=display:inline
-%save 18_blue-SENW-330_farbe-right
-
-# Make all layers invisible
-layers style=display:none
-
-layer label=black_background style=display:inline
-layer label=blue_circle style=display:inline
-layer label=hatching_SENW_330 style=display:inline
-layer label=left_black_circle style=display:inline
-layer label=O_left style=display:inline
-layer label=fixation style=display:inline
-%save 19_blue-SENW-330_orient-left
-
-# Make all layers invisible
-layers style=display:none
-
-layer label=black_background style=display:inline
-layer label=blue_circle style=display:inline
-layer label=hatching_SENW_330 style=display:inline
-layer label=right_black_circle style=display:inline
-layer label=O_right style=display:inline
-layer label=fixation style=display:inline
-%save 20_blue-SENW-330_orient-right
+layer label=black_circle style=display:inline
+layer label=O style=display:inline
+%save 10_blue-SENW-330_orient
 
 # Make all layers invisible
 layers style=display:none
@@ -281,10 +161,9 @@ layers style=display:none
 layer label=black_background style=display:inline
 layer label=blue_circle style=display:inline
 layer label=hatching_SENW_300 style=display:inline
-layer label=left_black_circle style=display:inline
-layer label=F_left style=display:inline
-layer label=fixation style=display:inline
-%save 21_blue-SENW-300_farbe-left
+layer label=black_circle style=display:inline
+layer label=F style=display:inline
+%save 11_blue-SENW-300_farbe
 
 # Make all layers invisible
 layers style=display:none
@@ -292,32 +171,9 @@ layers style=display:none
 layer label=black_background style=display:inline
 layer label=blue_circle style=display:inline
 layer label=hatching_SENW_300 style=display:inline
-layer label=right_black_circle style=display:inline
-layer label=F_right style=display:inline
-layer label=fixation style=display:inline
-%save 22_blue-SENW-300_farbe-right
-
-# Make all layers invisible
-layers style=display:none
-
-layer label=black_background style=display:inline
-layer label=blue_circle style=display:inline
-layer label=hatching_SENW_300 style=display:inline
-layer label=left_black_circle style=display:inline
-layer label=O_left style=display:inline
-layer label=fixation style=display:inline
-%save 23_blue-SENW-300_orient-left
-
-# Make all layers invisible
-layers style=display:none
-
-layer label=black_background style=display:inline
-layer label=blue_circle style=display:inline
-layer label=hatching_SENW_300 style=display:inline
-layer label=right_black_circle style=display:inline
-layer label=O_right style=display:inline
-layer label=fixation style=display:inline
-%save 24_blue-SENW-300_orient-right
+layer label=black_circle style=display:inline
+layer label=O style=display:inline
+%save 12_blue-SENW-300_orient
 
 # Make all layers invisible
 layers style=display:none
@@ -334,10 +190,9 @@ layers style=display:none
 layer label=black_background style=display:inline
 layer label=blue_circle style=display:inline
 layer label=hatching_SWNE_030 style=display:inline
-layer label=left_black_circle style=display:inline
-layer label=F_left style=display:inline
-layer label=fixation style=display:inline
-%save 25_blue-SWNE-030_farbe-left
+layer label=black_circle style=display:inline
+layer label=F style=display:inline
+%save 13_blue-SWNE-030_farbe
 
 # Make all layers invisible
 layers style=display:none
@@ -345,32 +200,9 @@ layers style=display:none
 layer label=black_background style=display:inline
 layer label=blue_circle style=display:inline
 layer label=hatching_SWNE_030 style=display:inline
-layer label=right_black_circle style=display:inline
-layer label=F_right style=display:inline
-layer label=fixation style=display:inline
-%save 26_blue-SWNE-030_farbe-right
-
-# Make all layers invisible
-layers style=display:none
-
-layer label=black_background style=display:inline
-layer label=blue_circle style=display:inline
-layer label=hatching_SWNE_030 style=display:inline
-layer label=left_black_circle style=display:inline
-layer label=O_left style=display:inline
-layer label=fixation style=display:inline
-%save 27_blue-SWNE-030_orient-left
-
-# Make all layers invisible
-layers style=display:none
-
-layer label=black_background style=display:inline
-layer label=blue_circle style=display:inline
-layer label=hatching_SWNE_030 style=display:inline
-layer label=right_black_circle style=display:inline
-layer label=O_right style=display:inline
-layer label=fixation style=display:inline
-%save 28_blue-SWNE-030_orient-right
+layer label=black_circle style=display:inline
+layer label=O style=display:inline
+%save 14_blue-SWNE-030_orient
 
 # Make all layers invisible
 layers style=display:none
@@ -387,10 +219,9 @@ layers style=display:none
 layer label=black_background style=display:inline
 layer label=blue_circle style=display:inline
 layer label=hatching_SWNE_060 style=display:inline
-layer label=left_black_circle style=display:inline
-layer label=F_left style=display:inline
-layer label=fixation style=display:inline
-%save 29_blue-SWNE-060_farbe-left
+layer label=black_circle style=display:inline
+layer label=F style=display:inline
+%save 15_blue-SWNE-060_farbe
 
 # Make all layers invisible
 layers style=display:none
@@ -398,32 +229,9 @@ layers style=display:none
 layer label=black_background style=display:inline
 layer label=blue_circle style=display:inline
 layer label=hatching_SWNE_060 style=display:inline
-layer label=right_black_circle style=display:inline
-layer label=F_right style=display:inline
-layer label=fixation style=display:inline
-%save 30_blue-SWNE-060_farbe-right
-
-# Make all layers invisible
-layers style=display:none
-
-layer label=black_background style=display:inline
-layer label=blue_circle style=display:inline
-layer label=hatching_SWNE_060 style=display:inline
-layer label=left_black_circle style=display:inline
-layer label=O_left style=display:inline
-layer label=fixation style=display:inline
-%save 31_blue-SWNE-060_orient-left
-
-# Make all layers invisible
-layers style=display:none
-
-layer label=black_background style=display:inline
-layer label=blue_circle style=display:inline
-layer label=hatching_SWNE_060 style=display:inline
-layer label=right_black_circle style=display:inline
-layer label=O_right style=display:inline
-layer label=fixation style=display:inline
-%save 32_blue-SWNE-060_orient-right
+layer label=black_circle style=display:inline
+layer label=O style=display:inline
+%save 16_blue-SWNE-060_orient
 
 # Make all layers invisible
 layers style=display:none
@@ -440,10 +248,9 @@ layers style=display:none
 layer label=black_background style=display:inline
 layer label=pink_circle style=display:inline
 layer label=hatching_SENW_330 style=display:inline
-layer label=left_black_circle style=display:inline
-layer label=F_left style=display:inline
-layer label=fixation style=display:inline
-%save 33_pink-SENW-330_farbe-left
+layer label=black_circle style=display:inline
+layer label=F style=display:inline
+%save 17_pink-SENW-330_farbe
 
 # Make all layers invisible
 layers style=display:none
@@ -451,32 +258,9 @@ layers style=display:none
 layer label=black_background style=display:inline
 layer label=pink_circle style=display:inline
 layer label=hatching_SENW_330 style=display:inline
-layer label=right_black_circle style=display:inline
-layer label=F_right style=display:inline
-layer label=fixation style=display:inline
-%save 34_pink-SENW-330_farbe-right
-
-# Make all layers invisible
-layers style=display:none
-
-layer label=black_background style=display:inline
-layer label=pink_circle style=display:inline
-layer label=hatching_SENW_330 style=display:inline
-layer label=left_black_circle style=display:inline
-layer label=O_left style=display:inline
-layer label=fixation style=display:inline
-%save 35_pink-SENW-330_orient-left
-
-# Make all layers invisible
-layers style=display:none
-
-layer label=black_background style=display:inline
-layer label=pink_circle style=display:inline
-layer label=hatching_SENW_330 style=display:inline
-layer label=right_black_circle style=display:inline
-layer label=O_right style=display:inline
-layer label=fixation style=display:inline
-%save 36_pink-SENW-330_orient-right
+layer label=black_circle style=display:inline
+layer label=O style=display:inline
+%save 18_pink-SENW-330_orient
 
 # Make all layers invisible
 layers style=display:none
@@ -493,10 +277,9 @@ layers style=display:none
 layer label=black_background style=display:inline
 layer label=pink_circle style=display:inline
 layer label=hatching_SENW_300 style=display:inline
-layer label=left_black_circle style=display:inline
-layer label=F_left style=display:inline
-layer label=fixation style=display:inline
-%save 37_pink-SENW-300_farbe-left
+layer label=black_circle style=display:inline
+layer label=F style=display:inline
+%save 19_pink-SENW-300_farbe
 
 # Make all layers invisible
 layers style=display:none
@@ -504,32 +287,9 @@ layers style=display:none
 layer label=black_background style=display:inline
 layer label=pink_circle style=display:inline
 layer label=hatching_SENW_300 style=display:inline
-layer label=right_black_circle style=display:inline
-layer label=F_right style=display:inline
-layer label=fixation style=display:inline
-%save 38_pink-SENW-300_farbe-right
-
-# Make all layers invisible
-layers style=display:none
-
-layer label=black_background style=display:inline
-layer label=pink_circle style=display:inline
-layer label=hatching_SENW_300 style=display:inline
-layer label=left_black_circle style=display:inline
-layer label=O_left style=display:inline
-layer label=fixation style=display:inline
-%save 39_pink-SENW-300_orient-left
-
-# Make all layers invisible
-layers style=display:none
-
-layer label=black_background style=display:inline
-layer label=pink_circle style=display:inline
-layer label=hatching_SENW_300 style=display:inline
-layer label=right_black_circle style=display:inline
-layer label=O_right style=display:inline
-layer label=fixation style=display:inline
-%save 40_pink-SENW-300_orient-right
+layer label=black_circle style=display:inline
+layer label=O style=display:inline
+%save 20_pink-SENW-300_orient
 
 # Make all layers invisible
 layers style=display:none
@@ -546,10 +306,9 @@ layers style=display:none
 layer label=black_background style=display:inline
 layer label=pink_circle style=display:inline
 layer label=hatching_SWNE_030 style=display:inline
-layer label=left_black_circle style=display:inline
-layer label=F_left style=display:inline
-layer label=fixation style=display:inline
-%save 41_pink-SWNE-030_farbe-left
+layer label=black_circle style=display:inline
+layer label=F style=display:inline
+%save 21_pink-SWNE-030_farbe
 
 # Make all layers invisible
 layers style=display:none
@@ -557,32 +316,9 @@ layers style=display:none
 layer label=black_background style=display:inline
 layer label=pink_circle style=display:inline
 layer label=hatching_SWNE_030 style=display:inline
-layer label=right_black_circle style=display:inline
-layer label=F_right style=display:inline
-layer label=fixation style=display:inline
-%save 42_pink-SWNE-030_farbe-right
-
-# Make all layers invisible
-layers style=display:none
-
-layer label=black_background style=display:inline
-layer label=pink_circle style=display:inline
-layer label=hatching_SWNE_030 style=display:inline
-layer label=left_black_circle style=display:inline
-layer label=O_left style=display:inline
-layer label=fixation style=display:inline
-%save 43_pink-SWNE-030_orient-left
-
-# Make all layers invisible
-layers style=display:none
-
-layer label=black_background style=display:inline
-layer label=pink_circle style=display:inline
-layer label=hatching_SWNE_030 style=display:inline
-layer label=right_black_circle style=display:inline
-layer label=O_right style=display:inline
-layer label=fixation style=display:inline
-%save 44_pink-SWNE-030_orient-right
+layer label=black_circle style=display:inline
+layer label=O style=display:inline
+%save 22_pink-SWNE-030_orient
 
 # Make all layers invisible
 layers style=display:none
@@ -599,10 +335,9 @@ layers style=display:none
 layer label=black_background style=display:inline
 layer label=pink_circle style=display:inline
 layer label=hatching_SWNE_060 style=display:inline
-layer label=left_black_circle style=display:inline
-layer label=F_left style=display:inline
-layer label=fixation style=display:inline
-%save 45_pink-SWNE-060_farbe-left
+layer label=black_circle style=display:inline
+layer label=F style=display:inline
+%save 23_pink-SWNE-060_farbe
 
 # Make all layers invisible
 layers style=display:none
@@ -610,32 +345,9 @@ layers style=display:none
 layer label=black_background style=display:inline
 layer label=pink_circle style=display:inline
 layer label=hatching_SWNE_060 style=display:inline
-layer label=right_black_circle style=display:inline
-layer label=F_right style=display:inline
-layer label=fixation style=display:inline
-%save 46_pink-SWNE-060_farbe-right
-
-# Make all layers invisible
-layers style=display:none
-
-layer label=black_background style=display:inline
-layer label=pink_circle style=display:inline
-layer label=hatching_SWNE_060 style=display:inline
-layer label=left_black_circle style=display:inline
-layer label=O_left style=display:inline
-layer label=fixation style=display:inline
-%save 47_pink-SWNE-060_orient-left
-
-# Make all layers invisible
-layers style=display:none
-
-layer label=black_background style=display:inline
-layer label=pink_circle style=display:inline
-layer label=hatching_SWNE_060 style=display:inline
-layer label=right_black_circle style=display:inline
-layer label=O_right style=display:inline
-layer label=fixation style=display:inline
-%save 48_pink-SWNE-060_orient-right
+layer label=black_circle style=display:inline
+layer label=O style=display:inline
+%save 24_pink-SWNE-060_orient
 
 # Make all layers invisible
 layers style=display:none
@@ -652,10 +364,9 @@ layers style=display:none
 layer label=black_background style=display:inline
 layer label=orange_circle style=display:inline
 layer label=hatching_SENW_330 style=display:inline
-layer label=left_black_circle style=display:inline
-layer label=F_left style=display:inline
-layer label=fixation style=display:inline
-%save 49_orange-SENW-330_farbe-left
+layer label=black_circle style=display:inline
+layer label=F style=display:inline
+%save 25_orange-SENW-330_farbe
 
 # Make all layers invisible
 layers style=display:none
@@ -663,32 +374,9 @@ layers style=display:none
 layer label=black_background style=display:inline
 layer label=orange_circle style=display:inline
 layer label=hatching_SENW_330 style=display:inline
-layer label=right_black_circle style=display:inline
-layer label=F_right style=display:inline
-layer label=fixation style=display:inline
-%save 50_orange-SENW-330_farbe-right
-
-# Make all layers invisible
-layers style=display:none
-
-layer label=black_background style=display:inline
-layer label=orange_circle style=display:inline
-layer label=hatching_SENW_330 style=display:inline
-layer label=left_black_circle style=display:inline
-layer label=O_left style=display:inline
-layer label=fixation style=display:inline
-%save 51_orange-SENW-330_orient-left
-
-# Make all layers invisible
-layers style=display:none
-
-layer label=black_background style=display:inline
-layer label=orange_circle style=display:inline
-layer label=hatching_SENW_330 style=display:inline
-layer label=right_black_circle style=display:inline
-layer label=O_right style=display:inline
-layer label=fixation style=display:inline
-%save 52_orange-SENW-330_orient-right
+layer label=black_circle style=display:inline
+layer label=O style=display:inline
+%save 26_orange-SENW-330_orient
 
 # Make all layers invisible
 layers style=display:none
@@ -705,10 +393,9 @@ layers style=display:none
 layer label=black_background style=display:inline
 layer label=orange_circle style=display:inline
 layer label=hatching_SENW_300 style=display:inline
-layer label=left_black_circle style=display:inline
-layer label=F_left style=display:inline
-layer label=fixation style=display:inline
-%save 53_orange-SENW-300_farbe-left
+layer label=black_circle style=display:inline
+layer label=F style=display:inline
+%save 27_orange-SENW-300_farbe
 
 # Make all layers invisible
 layers style=display:none
@@ -716,32 +403,9 @@ layers style=display:none
 layer label=black_background style=display:inline
 layer label=orange_circle style=display:inline
 layer label=hatching_SENW_300 style=display:inline
-layer label=right_black_circle style=display:inline
-layer label=F_right style=display:inline
-layer label=fixation style=display:inline
-%save 54_orange-SENW-300_farbe-right
-
-# Make all layers invisible
-layers style=display:none
-
-layer label=black_background style=display:inline
-layer label=orange_circle style=display:inline
-layer label=hatching_SENW_300 style=display:inline
-layer label=left_black_circle style=display:inline
-layer label=O_left style=display:inline
-layer label=fixation style=display:inline
-%save 55_orange-SENW-300_orient-left
-
-# Make all layers invisible
-layers style=display:none
-
-layer label=black_background style=display:inline
-layer label=orange_circle style=display:inline
-layer label=hatching_SENW_300 style=display:inline
-layer label=right_black_circle style=display:inline
-layer label=O_right style=display:inline
-layer label=fixation style=display:inline
-%save 56_orange-SENW-300_orient-right
+layer label=black_circle style=display:inline
+layer label=O style=display:inline
+%save 28_orange-SENW-300_orient
 
 # Make all layers invisible
 layers style=display:none
@@ -758,10 +422,9 @@ layers style=display:none
 layer label=black_background style=display:inline
 layer label=orange_circle style=display:inline
 layer label=hatching_SWNE_030 style=display:inline
-layer label=left_black_circle style=display:inline
-layer label=F_left style=display:inline
-layer label=fixation style=display:inline
-%save 57_orange-SWNE-030_farbe-left
+layer label=black_circle style=display:inline
+layer label=F style=display:inline
+%save 29_orange-SWNE-030_farbe
 
 # Make all layers invisible
 layers style=display:none
@@ -769,32 +432,9 @@ layers style=display:none
 layer label=black_background style=display:inline
 layer label=orange_circle style=display:inline
 layer label=hatching_SWNE_030 style=display:inline
-layer label=right_black_circle style=display:inline
-layer label=F_right style=display:inline
-layer label=fixation style=display:inline
-%save 58_orange-SWNE-030_farbe-right
-
-# Make all layers invisible
-layers style=display:none
-
-layer label=black_background style=display:inline
-layer label=orange_circle style=display:inline
-layer label=hatching_SWNE_030 style=display:inline
-layer label=left_black_circle style=display:inline
-layer label=O_left style=display:inline
-layer label=fixation style=display:inline
-%save 59_orange-SWNE-030_orient-left
-
-# Make all layers invisible
-layers style=display:none
-
-layer label=black_background style=display:inline
-layer label=orange_circle style=display:inline
-layer label=hatching_SWNE_030 style=display:inline
-layer label=right_black_circle style=display:inline
-layer label=O_right style=display:inline
-layer label=fixation style=display:inline
-%save 60_orange-SWNE-030_orient-right
+layer label=black_circle style=display:inline
+layer label=O style=display:inline
+%save 30_orange-SWNE-030_orient
 
 # Make all layers invisible
 layers style=display:none
@@ -811,10 +451,9 @@ layers style=display:none
 layer label=black_background style=display:inline
 layer label=orange_circle style=display:inline
 layer label=hatching_SWNE_060 style=display:inline
-layer label=left_black_circle style=display:inline
-layer label=F_left style=display:inline
-layer label=fixation style=display:inline
-%save 61_orange-SWNE-060_farbe-left
+layer label=black_circle style=display:inline
+layer label=F style=display:inline
+%save 31_orange-SWNE-060_farbe
 
 # Make all layers invisible
 layers style=display:none
@@ -822,29 +461,6 @@ layers style=display:none
 layer label=black_background style=display:inline
 layer label=orange_circle style=display:inline
 layer label=hatching_SWNE_060 style=display:inline
-layer label=right_black_circle style=display:inline
-layer label=F_right style=display:inline
-layer label=fixation style=display:inline
-%save 62_orange-SWNE-060_farbe-right
-
-# Make all layers invisible
-layers style=display:none
-
-layer label=black_background style=display:inline
-layer label=orange_circle style=display:inline
-layer label=hatching_SWNE_060 style=display:inline
-layer label=left_black_circle style=display:inline
-layer label=O_left style=display:inline
-layer label=fixation style=display:inline
-%save 63_orange-SWNE-060_orient-left
-
-# Make all layers invisible
-layers style=display:none
-
-layer label=black_background style=display:inline
-layer label=orange_circle style=display:inline
-layer label=hatching_SWNE_060 style=display:inline
-layer label=right_black_circle style=display:inline
-layer label=O_right style=display:inline
-layer label=fixation style=display:inline
-%save 64_orange-SWNE-060_orient-right
+layer label=black_circle style=display:inline
+layer label=O style=display:inline
+%save 32_orange-SWNE-060_orient
