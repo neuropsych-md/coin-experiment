@@ -82,10 +82,10 @@
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
      inkscape:zoom="1.28"
-     inkscape:cx="302.32313"
+     inkscape:cx="422.45817"
      inkscape:cy="308.09407"
      inkscape:document-units="px"
-     inkscape:current-layer="g4701"
+     inkscape:current-layer="layer5"
      showgrid="false"
      showborder="false"
      showguides="false"
@@ -291,7 +291,7 @@
      inkscape:label="black_circle"
      id="g6164"
      inkscape:groupmode="layer"
-     style="display:none"
+     style="display:inline"
      transform="translate(-1.4279853,-252.43054)">
     <circle
        r="50"
@@ -303,7 +303,7 @@
   <g
      inkscape:groupmode="layer"
      id="layer5"
-     inkscape:label="F_left"
+     inkscape:label="F"
      style="display:none"
      transform="translate(-1.4279853,-252.43054)">
     <flowRoot
@@ -332,7 +332,7 @@
          style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:50.32199478px;font-family:'Open Sans';-inkscape-font-specification:'Open Sans Bold';text-align:center;text-anchor:middle">F</flowPara></flowRoot>  </g>
   <g
      style="display:none"
-     inkscape:label="O_left"
+     inkscape:label="O"
      id="g6238"
      inkscape:groupmode="layer"
      transform="translate(-1.4279853,-252.43054)">
