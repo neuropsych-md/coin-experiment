@@ -1,5 +1,5 @@
 # Load the file we should use
-%file MiSIT_legend.svg
+%file COIN_legend.svg
 
 # Make all layers invisible
 layers style=display:none

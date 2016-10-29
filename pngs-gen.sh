@@ -3,7 +3,7 @@
 # Laura Waite 2016
 
 #
-# MiSIT project
+# COIN project
 #   generate pngs for a given svgtune file
 #
 
