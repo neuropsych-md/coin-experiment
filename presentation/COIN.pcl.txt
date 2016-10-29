@@ -1,8 +1,8 @@
-# MiSIT (Modified Simon Interference Task)
+# COIN (Color Orientation INterference Task)
 # --------------------------------------------------------------------------
 #
 # required files:
-#     MiSIT.pcl
+#     COIN.pcl
 #     events files in the input\ folder
 #         gbNW_poNE_1.txt, gbNW_poNE_2.txt
 #         poNW_gbNE_1.txt, poNW_gbNE_2.txt
@@ -16,38 +16,38 @@
 #         orange-SENW-330.png, orange-SWNE-030.png
 #         orange-SENW-300.png, orange-SWNE-060.png
 #     stim2 PNGs in the stimuli\ folder
-#         01_green-SENW-330_farbe-left.png, 02_green-SENW-330_farbe-right.png
-#         03_green-SENW-330_orient-left.png, 04_green-SENW-330_orient-right.png
-#         05_green-SENW-300_farbe-left.png, 06_green-SENW-300_farbe-right.png
-#         07_green-SENW-300_orient-left.png, 08_green-SENW-300_orient-right.png
-#         09_green-SWNE-030_farbe-left.png, 10_green-SWNE-030_farbe-right.png
-#         11_green-SWNE-030_orient-left.png, 12_green-SWNE-030_orient-right.png
-#         13_green-SWNE-060_farbe-left.png, 14_green-SWNE-060_farbe-right.png
-#         15_green-SWNE-060_orient-left.png, 16_green-SWNE-060_orient-right.png
-#         17_blue-SENW-330_farbe-left.png, 18_blue-SENW-330_farbe-right.png
-#         19_blue-SENW-330_orient-left.png, 20_blue-SENW-330_orient-right.png
-#         21_blue-SENW-300_farbe-left.png, 22_blue-SENW-300_farbe-right.png
-#         23_blue-SENW-300_orient-left.png, 24_blue-SENW-300_orient-right.png
-#         25_blue-SWNE-030_farbe-left.png, 26_blue-SWNE-030_farbe-right.png
-#         27_blue-SWNE-030_orient-left.png, 28_blue-SWNE-030_orient-right.png
-#         29_blue-SWNE-060_farbe-left.png, 30_blue-SWNE-060_farbe-right.png
-#         31_blue-SWNE-060_orient-left.png, 32_blue-SWNE-060_orient-right.png
-#         33_pink-SENW-330_farbe-left.png, 34_pink-SENW-330_farbe-right.png
-#         35_pink-SENW-330_orient-left.png, 36_pink-SENW-330_orient-right.png
-#         37_pink-SENW-300_farbe-left.png, 38_pink-SENW-300_farbe-right.png
-#         39_pink-SENW-300_orient-left.png, 40_pink-SENW-300_orient-right.png
-#         41_pink-SWNE-030_farbe-left.png, 42_pink-SWNE-030_farbe-right.png
-#         43_pink-SWNE-030_orient-left.png, 44_pink-SWNE-030_orient-right.png
-#         45_pink-SWNE-060_farbe-left.png, 46_pink-SWNE-060_farbe-right.png
-#         47_pink-SWNE-060_orient-left.png, 48_pink-SWNE-060_orient-right.png
-#         49_orange-SENW-330_farbe-left.png, 50_orange-SENW-330_farbe-right.png
-#         51_orange-SENW-330_orient-left.png, 52_orange-SENW-330_orient-right.png
-#         53_orange-SENW-300_farbe-left.png, 54_orange-SENW-300_farbe-right.png
-#         55_orange-SENW-300_orient-left.png, 56_orange-SENW-300_orient-right.png
-#         57_orange-SWNE-030_farbe-left.png, 58_orange-SWNE-030_farbe-right.png
-#         59_orange-SWNE-030_orient-left.png, 60_orange-SWNE-030_orient-right.png
-#         61_orange-SWNE-060_farbe-left.png, 62_orange-SWNE-060_farbe-right.png
-#         63_orange-SWNE-060_orient-left.png, 64_orange-SWNE-060_orient-right.png
+#         01_green-SENW-330_farbe.png
+#         02_green-SENW-330_orient.png
+#         03_green-SENW-300_farbe.png
+#         04_green-SENW-300_orient.png
+#         05_green-SWNE-030_farbe.png
+#         06_green-SWNE-030_orient.png
+#         07_green-SWNE-060_farbe.png
+#         08_green-SWNE-060_orient.png
+#         09_blue-SENW-330_farbe.png
+#         10_blue-SENW-330_orient.png
+#         11_blue-SENW-300_farbe.png
+#         12_blue-SENW-300_orient.png
+#         13_blue-SWNE-030_farbe.png
+#         14_blue-SWNE-030_orient.png
+#         15_blue-SWNE-060_farbe.png
+#         16_blue-SWNE-060_orient.png
+#         17_pink-SENW-330_farbe.png
+#         18_pink-SENW-330_orient.png
+#         19_pink-SENW-300_farbe.png
+#         20_pink-SENW-300_orient.png
+#         21_pink-SWNE-030_farbe.png
+#         22_pink-SWNE-030_orient.png
+#         23_pink-SWNE-060_farbe.png
+#         24_pink-SWNE-060_orient.png
+#         25_orange-SENW-330_farbe.png
+#         26_orange-SENW-330_orient.png
+#         27_orange-SENW-300_farbe.png
+#         28_orange-SENW-300_orient.png
+#         29_orange-SWNE-030_farbe.png
+#         30_orange-SWNE-030_orient.png
+#         31_orange-SWNE-060_farbe.png
+#         32_orange-SWNE-060_orient.png
 #     legend PNGs in the stimuli\ folder
 #         legend_gbNW.png, legend_poNE.png
 #         legend_poNW.png, legend_gbNE.png
@@ -69,9 +69,9 @@ int perc_miss = 0;                         # Percent misses in the current block
 #
 # Portcode variables
 #
-#int deg_trg;
-#int pcode_stim1;
-#int pcode_stim2;
+int deg_trg;
+int pcode_stim1;
+int pcode_stim2;
 
 #
 # read input file
@@ -147,70 +147,38 @@ data.print("grn_ans\tblu_ans\tpnk_ans\torg_ans\tSENW_ans\tSWNE_ans\ttrial\tblock
 # load stimuli pair arrays into a single array
 #
 array<bitmap> avail_stims[64][0];
-avail_stims[1].assign(green_SENW_330_farbe_left);
-avail_stims[2].assign(green_SENW_330_farbe_right);
-avail_stims[3].assign(green_SENW_330_orient_left);
-avail_stims[4].assign(green_SENW_330_orient_right);
-avail_stims[5].assign(green_SENW_300_farbe_left);
-avail_stims[6].assign(green_SENW_300_farbe_right);
-avail_stims[7].assign(green_SENW_300_orient_left);
-avail_stims[8].assign(green_SENW_300_orient_right);
-avail_stims[9].assign(green_SWNE_030_farbe_left);
-avail_stims[10].assign(green_SWNE_030_farbe_right);
-avail_stims[11].assign(green_SWNE_030_orient_left);
-avail_stims[12].assign(green_SWNE_030_orient_right);
-avail_stims[13].assign(green_SWNE_060_farbe_left);
-avail_stims[14].assign(green_SWNE_060_farbe_right);
-avail_stims[15].assign(green_SWNE_060_orient_left);
-avail_stims[16].assign(green_SWNE_060_orient_right);
-avail_stims[17].assign(blue_SENW_330_farbe_left);
-avail_stims[18].assign(blue_SENW_330_farbe_right);
-avail_stims[19].assign(blue_SENW_330_orient_left);
-avail_stims[20].assign(blue_SENW_330_orient_right);
-avail_stims[21].assign(blue_SENW_300_farbe_left);
-avail_stims[22].assign(blue_SENW_300_farbe_right);
-avail_stims[23].assign(blue_SENW_300_orient_left);
-avail_stims[24].assign(blue_SENW_300_orient_right);
-avail_stims[25].assign(blue_SWNE_030_farbe_left);
-avail_stims[26].assign(blue_SWNE_030_farbe_right);
-avail_stims[27].assign(blue_SWNE_030_orient_left);
-avail_stims[28].assign(blue_SWNE_030_orient_right);
-avail_stims[29].assign(blue_SWNE_060_farbe_left);
-avail_stims[30].assign(blue_SWNE_060_farbe_right);
-avail_stims[31].assign(blue_SWNE_060_orient_left);
-avail_stims[32].assign(blue_SWNE_060_orient_right);
-avail_stims[33].assign(pink_SENW_330_farbe_left);
-avail_stims[34].assign(pink_SENW_330_farbe_right);
-avail_stims[35].assign(pink_SENW_330_orient_left);
-avail_stims[36].assign(pink_SENW_330_orient_right);
-avail_stims[37].assign(pink_SENW_300_farbe_left);
-avail_stims[38].assign(pink_SENW_300_farbe_right);
-avail_stims[39].assign(pink_SENW_300_orient_left);
-avail_stims[40].assign(pink_SENW_300_orient_right);
-avail_stims[41].assign(pink_SWNE_030_farbe_left);
-avail_stims[42].assign(pink_SWNE_030_farbe_right);
-avail_stims[43].assign(pink_SWNE_030_orient_left);
-avail_stims[44].assign(pink_SWNE_030_orient_right);
-avail_stims[45].assign(pink_SWNE_060_farbe_left);
-avail_stims[46].assign(pink_SWNE_060_farbe_right);
-avail_stims[47].assign(pink_SWNE_060_orient_left);
-avail_stims[48].assign(pink_SWNE_060_orient_right);
-avail_stims[49].assign(orange_SENW_330_farbe_left);
-avail_stims[50].assign(orange_SENW_330_farbe_right);
-avail_stims[51].assign(orange_SENW_330_orient_left);
-avail_stims[52].assign(orange_SENW_330_orient_right);
-avail_stims[53].assign(orange_SENW_300_farbe_left);
-avail_stims[54].assign(orange_SENW_300_farbe_right);
-avail_stims[55].assign(orange_SENW_300_orient_left);
-avail_stims[56].assign(orange_SENW_300_orient_right);
-avail_stims[57].assign(orange_SWNE_030_farbe_left);
-avail_stims[58].assign(orange_SWNE_030_farbe_right);
-avail_stims[59].assign(orange_SWNE_030_orient_left);
-avail_stims[60].assign(orange_SWNE_030_orient_right);
-avail_stims[61].assign(orange_SWNE_060_farbe_left);
-avail_stims[62].assign(orange_SWNE_060_farbe_right);
-avail_stims[63].assign(orange_SWNE_060_orient_left);
-avail_stims[64].assign(orange_SWNE_060_orient_right);
+avail_stims[1].assign(green_SENW_330_farbe);
+avail_stims[2].assign(green_SENW_330_orient);
+avail_stims[3].assign(green_SENW_300_farbe);
+avail_stims[4].assign(green_SENW_300_orient);
+avail_stims[5].assign(green_SWNE_030_farbe);
+avail_stims[6].assign(green_SWNE_030_orient);
+avail_stims[7].assign(green_SWNE_060_farbe);
+avail_stims[8].assign(green_SWNE_060_orient);
+avail_stims[9].assign(blue_SENW_330_farbe);
+avail_stims[10].assign(blue_SENW_330_orient);
+avail_stims[11].assign(blue_SENW_300_farbe);
+avail_stims[12].assign(blue_SENW_300_orient);
+avail_stims[13].assign(blue_SWNE_030_farbe);
+avail_stims[14].assign(blue_SWNE_030_orient);
+avail_stims[15].assign(blue_SWNE_060_farbe);
+avail_stims[16].assign(blue_SWNE_060_orient);
+avail_stims[17].assign(pink_SENW_330_farbe);
+avail_stims[18].assign(pink_SENW_330_orient);
+avail_stims[19].assign(pink_SENW_300_farbe);
+avail_stims[20].assign(pink_SENW_300_orient);
+avail_stims[21].assign(pink_SWNE_030_farbe);
+avail_stims[22].assign(pink_SWNE_030_orient);
+avail_stims[23].assign(pink_SWNE_060_farbe);
+avail_stims[24].assign(pink_SWNE_060_orient);
+avail_stims[25].assign(orange_SENW_330_farbe);
+avail_stims[26].assign(orange_SENW_330_orient);
+avail_stims[27].assign(orange_SENW_300_farbe);
+avail_stims[28].assign(orange_SENW_300_orient);
+avail_stims[29].assign(orange_SWNE_030_farbe);
+avail_stims[30].assign(orange_SWNE_030_orient);
+avail_stims[31].assign(orange_SWNE_060_farbe);
+avail_stims[32].assign(orange_SWNE_060_orient);
 
 #
 # load legend pair arrays into a single array
@@ -251,20 +219,20 @@ begin
     end;
 
     #Setup Portcodes
-#    if (degrees[i] == 330) then
-#        deg_trg = 3;
-#    elseif (degrees[i] == 300) then
-#        deg_trg = 6;
-#    elseif (degrees[i] == 30) then
-#        deg_trg = 3;
-#    elseif (degrees[i] == 60) then
-#        deg_trg = 6;
-#    end;
+    if (degrees[i] == 330) then
+        deg_trg = 3;
+    elseif (degrees[i] == 300) then
+        deg_trg = 6;
+    elseif (degrees[i] == 30) then
+        deg_trg = 3;
+    elseif (degrees[i] == 60) then
+        deg_trg = 6;
+    end;
 
-#    pcode_stim1 = (direction[i]*100) + (color[i]*10) + deg_trg;
-#    pcode_stim2 = (relevant_feature[i]*100) + (congruency[i]*10) + answer[i];
-#    term.print(printf(pcode_stim1, fint) + "\n");
-#    term.print(printf(pcode_stim2, fint) + "\n");
+    pcode_stim1 = (direction[i]*100) + (color[i]*10) + deg_trg;
+    pcode_stim2 = (relevant_feature[i]*100) + (congruency[i]*10) + answer[i];
+    term.print(printf(pcode_stim1, fint) + "\n");
+    term.print(printf(pcode_stim2, fint) + "\n");
 
     # set event code for stim1
     # stim_event1.set_event_code(avail_stims[stimuli[i]][1].description());
@@ -274,7 +242,7 @@ begin
     stim1.set_part(2, avail_legends[which_legend][1]);
     stim1.set_part(3, avail_legends[which_legend][2]);
     # set portcode for stim1
-#    stim_event1.set_port_code(pcode_stim1);
+    stim_event1.set_port_code(pcode_stim1);
 
     # set event code for stim2
     # stim_event2.set_event_code(avail_stims[stimuli[i]][2].description());
@@ -288,7 +256,7 @@ begin
     # set duration of stim2
     stim_event2.set_duration(resp_cutoff);
     # set portcode stim2
-#    stim_event2.set_port_code(pcode_stim2);
+    stim_event2.set_port_code(pcode_stim2);
 
     main_trial.present();
 

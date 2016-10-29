@@ -1,8 +1,8 @@
-# MiSIT (Modified Simon Interference Task)
+# COIN (Color Orientation INterference Task)
 # --------------------------------------------------------------------------
 #
 # required files:
-#     MiSIT.pcl
+#     COIN.pcl
 #     events files in the input\ folder
 #         gbNW_poNE_1.txt, gbNW_poNE_2.txt
 #         poNW_gbNE_1.txt, poNW_gbNE_2.txt
@@ -16,38 +16,38 @@
 #         orange-SENW-330.png, orange-SWNE-030.png
 #         orange-SENW-300.png, orange-SWNE-060.png
 #     stim2 PNGs in the stimuli\ folder
-#         01_green-SENW-330_farbe-left.png, 02_green-SENW-330_farbe-right.png
-#         03_green-SENW-330_orient-left.png, 04_green-SENW-330_orient-right.png
-#         05_green-SENW-300_farbe-left.png, 06_green-SENW-300_farbe-right.png
-#         07_green-SENW-300_orient-left.png, 08_green-SENW-300_orient-right.png
-#         09_green-SWNE-030_farbe-left.png, 10_green-SWNE-030_farbe-right.png
-#         11_green-SWNE-030_orient-left.png, 12_green-SWNE-030_orient-right.png
-#         13_green-SWNE-060_farbe-left.png, 14_green-SWNE-060_farbe-right.png
-#         15_green-SWNE-060_orient-left.png, 16_green-SWNE-060_orient-right.png
-#         17_blue-SENW-330_farbe-left.png, 18_blue-SENW-330_farbe-right.png
-#         19_blue-SENW-330_orient-left.png, 20_blue-SENW-330_orient-right.png
-#         21_blue-SENW-300_farbe-left.png, 22_blue-SENW-300_farbe-right.png
-#         23_blue-SENW-300_orient-left.png, 24_blue-SENW-300_orient-right.png
-#         25_blue-SWNE-030_farbe-left.png, 26_blue-SWNE-030_farbe-right.png
-#         27_blue-SWNE-030_orient-left.png, 28_blue-SWNE-030_orient-right.png
-#         29_blue-SWNE-060_farbe-left.png, 30_blue-SWNE-060_farbe-right.png
-#         31_blue-SWNE-060_orient-left.png, 32_blue-SWNE-060_orient-right.png
-#         33_pink-SENW-330_farbe-left.png, 34_pink-SENW-330_farbe-right.png
-#         35_pink-SENW-330_orient-left.png, 36_pink-SENW-330_orient-right.png
-#         37_pink-SENW-300_farbe-left.png, 38_pink-SENW-300_farbe-right.png
-#         39_pink-SENW-300_orient-left.png, 40_pink-SENW-300_orient-right.png
-#         41_pink-SWNE-030_farbe-left.png, 42_pink-SWNE-030_farbe-right.png
-#         43_pink-SWNE-030_orient-left.png, 44_pink-SWNE-030_orient-right.png
-#         45_pink-SWNE-060_farbe-left.png, 46_pink-SWNE-060_farbe-right.png
-#         47_pink-SWNE-060_orient-left.png, 48_pink-SWNE-060_orient-right.png
-#         49_orange-SENW-330_farbe-left.png, 50_orange-SENW-330_farbe-right.png
-#         51_orange-SENW-330_orient-left.png, 52_orange-SENW-330_orient-right.png
-#         53_orange-SENW-300_farbe-left.png, 54_orange-SENW-300_farbe-right.png
-#         55_orange-SENW-300_orient-left.png, 56_orange-SENW-300_orient-right.png
-#         57_orange-SWNE-030_farbe-left.png, 58_orange-SWNE-030_farbe-right.png
-#         59_orange-SWNE-030_orient-left.png, 60_orange-SWNE-030_orient-right.png
-#         61_orange-SWNE-060_farbe-left.png, 62_orange-SWNE-060_farbe-right.png
-#         63_orange-SWNE-060_orient-left.png, 64_orange-SWNE-060_orient-right.png
+#         01_green-SENW-330_farbe.png
+#         02_green-SENW-330_orient.png
+#         03_green-SENW-300_farbe.png
+#         04_green-SENW-300_orient.png
+#         05_green-SWNE-030_farbe.png
+#         06_green-SWNE-030_orient.png
+#         07_green-SWNE-060_farbe.png
+#         08_green-SWNE-060_orient.png
+#         09_blue-SENW-330_farbe.png
+#         10_blue-SENW-330_orient.png
+#         11_blue-SENW-300_farbe.png
+#         12_blue-SENW-300_orient.png
+#         13_blue-SWNE-030_farbe.png
+#         14_blue-SWNE-030_orient.png
+#         15_blue-SWNE-060_farbe.png
+#         16_blue-SWNE-060_orient.png
+#         17_pink-SENW-330_farbe.png
+#         18_pink-SENW-330_orient.png
+#         19_pink-SENW-300_farbe.png
+#         20_pink-SENW-300_orient.png
+#         21_pink-SWNE-030_farbe.png
+#         22_pink-SWNE-030_orient.png
+#         23_pink-SWNE-060_farbe.png
+#         24_pink-SWNE-060_orient.png
+#         25_orange-SENW-330_farbe.png
+#         26_orange-SENW-330_orient.png
+#         27_orange-SENW-300_farbe.png
+#         28_orange-SENW-300_orient.png
+#         29_orange-SWNE-030_farbe.png
+#         30_orange-SWNE-030_orient.png
+#         31_orange-SWNE-060_farbe.png
+#         32_orange-SWNE-060_orient.png
 #     legend PNGs in the stimuli\ folder
 #         legend_gbNW.png, legend_poNE.png
 #         legend_poNW.png, legend_gbNE.png
@@ -55,18 +55,18 @@
 # version 2.0.0 - 2016, Laura Waite
 #################################################################################
 
-pcl_file = "MiSIT.pcl";
+pcl_file = "COIN.pcl";
 
 response_matching = simple_matching;
 active_buttons = 2;
-#button_codes = 1,2;    # 1 = left; 2 = right
+button_codes = 1,2;    # 1 = left; 2 = right
 
 #
 # EEG Triggers
 #
-#default_output_port = 1;
-#write_codes = true;
-#pulse_width = 5;
+default_output_port = 1;
+write_codes = true;
+pulse_width = 5;
 
 begin;
 
@@ -75,323 +75,163 @@ begin;
 #
 array {
     bitmap {filename = "green-SENW-330.png"; description = "green-SENW-330";} green_SENW;
-    bitmap {filename = "01_green-SENW-330_farbe-left.png"; description = "01_green-SENW-330_farbe-left";} farbe_left;
-} green_SENW_330_farbe_left;
+    bitmap {filename = "01_green-SENW-330_farbe.png"; description = "01_green-SENW-330_farbe";} farbe;
+} green_SENW_330_farbe;
 
 array {
     bitmap {filename = "green-SENW-330.png"; description = "green-SENW-330";};
-    bitmap {filename = "02_green-SENW-330_farbe-right.png"; description = "02_green-SENW-330_farbe-right";};
-} green_SENW_330_farbe_right;
-
-array {
-    bitmap {filename = "green-SENW-330.png"; description = "green-SENW-330";};
-    bitmap {filename = "03_green-SENW-330_orient-left.png"; description = "03_green-SENW-330_orient-left";};
-} green_SENW_330_orient_left;
-
-array {
-    bitmap {filename = "green-SENW-330.png"; description = "green-SENW-330";};
-    bitmap {filename = "04_green-SENW-330_orient-right.png"; description = "04_green-SENW-330_orient-right";};
-} green_SENW_330_orient_right;
+    bitmap {filename = "02_green-SENW-330_orient.png"; description = "02_green-SENW-330_orient";};
+} green_SENW_330_orient;
 
 array {
     bitmap {filename = "green-SENW-300.png"; description = "green-SENW-300";};
-    bitmap {filename = "05_green-SENW-300_farbe-left.png"; description = "05_green-SENW-300_farbe-left";};
-} green_SENW_300_farbe_left;
+    bitmap {filename = "03_green-SENW-300_farbe.png"; description = "03_green-SENW-300_farbe";};
+} green_SENW_300_farbe;
 
 array {
     bitmap {filename = "green-SENW-300.png"; description = "green-SENW-300";};
-    bitmap {filename = "06_green-SENW-300_farbe-right.png"; description = "06_green-SENW-300_farbe-right";};
-} green_SENW_300_farbe_right;
-
-array {
-    bitmap {filename = "green-SENW-300.png"; description = "green-SENW-300";};
-    bitmap {filename = "07_green-SENW-300_orient-left.png"; description = "07_green-SENW-300_orient-left";};
-} green_SENW_300_orient_left;
-
-array {
-    bitmap {filename = "green-SENW-300.png"; description = "green-SENW-300";};
-    bitmap {filename = "08_green-SENW-300_orient-right.png"; description = "08_green-SENW-300_orient-right";};
-} green_SENW_300_orient_right;
+    bitmap {filename = "04_green-SENW-300_orient.png"; description = "04_green-SENW-300_orient";};
+} green_SENW_300_orient;
 
 array {
     bitmap {filename = "green-SWNE-030.png"; description = "green-SWNE-030";};
-    bitmap {filename = "09_green-SWNE-030_farbe-left.png"; description = "09_green-SWNE-030_farbe-left";};
-} green_SWNE_030_farbe_left;
+    bitmap {filename = "05_green-SWNE-030_farbe.png"; description = "05_green-SWNE-030_farbe";};
+} green_SWNE_030_farbe;
 
 array {
     bitmap {filename = "green-SWNE-030.png"; description = "green-SWNE-030";};
-    bitmap {filename = "10_green-SWNE-030_farbe-right.png"; description = "10_green-SWNE-030_farbe-right";};
-} green_SWNE_030_farbe_right;
-
-array {
-    bitmap {filename = "green-SWNE-030.png"; description = "green-SWNE-030";};
-    bitmap {filename = "11_green-SWNE-030_orient-left.png"; description = "11_green-SWNE-030_orient-left";};
-} green_SWNE_030_orient_left;
-
-array {
-    bitmap {filename = "green-SWNE-030.png"; description = "green-SWNE-030";};
-    bitmap {filename = "12_green-SWNE-030_orient-right.png"; description = "12_green-SWNE-030_orient-right";};
-} green_SWNE_030_orient_right;
+    bitmap {filename = "06_green-SWNE-030_orient.png"; description = "06_green-SWNE-030_orient";};
+} green_SWNE_030_orient;
 
 array {
     bitmap {filename = "green-SWNE-060.png"; description = "green-SWNE-060";};
-    bitmap {filename = "13_green-SWNE-060_farbe-left.png"; description = "13_green-SWNE-060_farbe-left";};
-} green_SWNE_060_farbe_left;
+    bitmap {filename = "07_green-SWNE-060_farbe.png"; description = "07_green-SWNE-060_farbe";};
+} green_SWNE_060_farbe;
 
 array {
     bitmap {filename = "green-SWNE-060.png"; description = "green-SWNE-060";};
-    bitmap {filename = "14_green-SWNE-060_farbe-right.png"; description = "14_green-SWNE-060_farbe-right";};
-} green_SWNE_060_farbe_right;
-
-array {
-    bitmap {filename = "green-SWNE-060.png"; description = "green-SWNE-060";};
-    bitmap {filename = "15_green-SWNE-060_orient-left.png"; description = "15_green-SWNE-060_orient-left";};
-} green_SWNE_060_orient_left;
-
-array {
-    bitmap {filename = "green-SWNE-060.png"; description = "green-SWNE-060";};
-    bitmap {filename = "16_green-SWNE-060_orient-right.png"; description = "16_green-SWNE-060_orient-right";};
-} green_SWNE_060_orient_right;
+    bitmap {filename = "08_green-SWNE-060_orient.png"; description = "08_green-SWNE-060_orient";};
+} green_SWNE_060_orient;
 
 array {
     bitmap {filename = "blue-SENW-330.png"; description = "blue-SENW-330";} blue_SENW;
-    bitmap {filename = "17_blue-SENW-330_farbe-left.png"; description = "17_blue-SENW-330_farbe-left";};
-} blue_SENW_330_farbe_left;
+    bitmap {filename = "09_blue-SENW-330_farbe.png"; description = "09_blue-SENW-330_farbe";};
+} blue_SENW_330_farbe;
 
 array {
     bitmap {filename = "blue-SENW-330.png"; description = "blue-SENW-330";};
-    bitmap {filename = "18_blue-SENW-330_farbe-right.png"; description = "18_blue-SENW-330_farbe-right";};
-} blue_SENW_330_farbe_right;
-
-array {
-    bitmap {filename = "blue-SENW-330.png"; description = "blue-SENW-330";};
-    bitmap {filename = "19_blue-SENW-330_orient-left.png"; description = "19_blue-SENW-330_orient-left";};
-} blue_SENW_330_orient_left;
-
-array {
-    bitmap {filename = "blue-SENW-330.png"; description = "blue-SENW-330";};
-    bitmap {filename = "20_blue-SENW-330_orient-right.png"; description = "20_blue-SENW-330_orient-right";};
-} blue_SENW_330_orient_right;
+    bitmap {filename = "10_blue-SENW-330_orient.png"; description = "10_blue-SENW-330_orient";};
+} blue_SENW_330_orient;
 
 array {
     bitmap {filename = "blue-SENW-300.png"; description = "blue-SENW-300";};
-    bitmap {filename = "21_blue-SENW-300_farbe-left.png"; description = "21_blue-SENW-300_farbe-left";};
-} blue_SENW_300_farbe_left;
+    bitmap {filename = "11_blue-SENW-300_farbe.png"; description = "11_blue-SENW-300_farbe";};
+} blue_SENW_300_farbe;
 
 array {
     bitmap {filename = "blue-SENW-300.png"; description = "blue-SENW-300";};
-    bitmap {filename = "22_blue-SENW-300_farbe-right.png"; description = "22_blue-SENW-300_farbe-right";};
-} blue_SENW_300_farbe_right;
-
-array {
-    bitmap {filename = "blue-SENW-300.png"; description = "blue-SENW-300";};
-    bitmap {filename = "23_blue-SENW-300_orient-left.png"; description = "23_blue-SENW-300_orient-left";};
-} blue_SENW_300_orient_left;
-
-array {
-    bitmap {filename = "blue-SENW-300.png"; description = "blue-SENW-300";};
-    bitmap {filename = "24_blue-SENW-300_orient-right.png"; description = "24_blue-SENW-300_orient-right";};
-} blue_SENW_300_orient_right;
+    bitmap {filename = "12_blue-SENW-300_orient.png"; description = "12_blue-SENW-300_orient";};
+} blue_SENW_300_orient;
 
 array {
     bitmap {filename = "blue-SWNE-030.png"; description = "blue-SWNE-030";};
-    bitmap {filename = "25_blue-SWNE-030_farbe-left.png"; description = "25_blue-SWNE-030_farbe-left";};
-} blue_SWNE_030_farbe_left;
+    bitmap {filename = "13_blue-SWNE-030_farbe.png"; description = "13_blue-SWNE-030_farbe";};
+} blue_SWNE_030_farbe;
 
 array {
     bitmap {filename = "blue-SWNE-030.png"; description = "blue-SWNE-030";};
-    bitmap {filename = "26_blue-SWNE-030_farbe-right.png"; description = "26_blue-SWNE-030_farbe-right";};
-} blue_SWNE_030_farbe_right;
-
-array {
-    bitmap {filename = "blue-SWNE-030.png"; description = "blue-SWNE-030";};
-    bitmap {filename = "27_blue-SWNE-030_orient-left.png"; description = "27_blue-SWNE-030_orient-left";};
-} blue_SWNE_030_orient_left;
-
-array {
-    bitmap {filename = "blue-SWNE-030.png"; description = "blue-SWNE-030";};
-    bitmap {filename = "28_blue-SWNE-030_orient-right.png"; description = "28_blue-SWNE-030_orient-right";};
-} blue_SWNE_030_orient_right;
+    bitmap {filename = "14_blue-SWNE-030_orient.png"; description = "14_blue-SWNE-030_orient";};
+} blue_SWNE_030_orient;
 
 array {
     bitmap {filename = "blue-SWNE-060.png"; description = "blue-SWNE-060";};
-    bitmap {filename = "29_blue-SWNE-060_farbe-left.png"; description = "29_blue-SWNE-060_farbe-left";};
-} blue_SWNE_060_farbe_left;
+    bitmap {filename = "15_blue-SWNE-060_farbe.png"; description = "15_blue-SWNE-060_farbe";};
+} blue_SWNE_060_farbe;
 
 array {
     bitmap {filename = "blue-SWNE-060.png"; description = "blue-SWNE-060";};
-    bitmap {filename = "30_blue-SWNE-060_farbe-right.png"; description = "30_blue-SWNE-060_farbe-right";};
-} blue_SWNE_060_farbe_right;
-
-array {
-    bitmap {filename = "blue-SWNE-060.png"; description = "blue-SWNE-060";};
-    bitmap {filename = "31_blue-SWNE-060_orient-left.png"; description = "31_blue-SWNE-060_orient-left";};
-} blue_SWNE_060_orient_left;
-
-array {
-    bitmap {filename = "blue-SWNE-060.png"; description = "blue-SWNE-060";};
-    bitmap {filename = "32_blue-SWNE-060_orient-right.png"; description = "32_blue-SWNE-060_orient-right";};
-} blue_SWNE_060_orient_right;
+    bitmap {filename = "16_blue-SWNE-060_orient.png"; description = "16_blue-SWNE-060_orient";};
+} blue_SWNE_060_orient;
 
 array {
     bitmap {filename = "pink-SENW-330.png"; description = "pink-SENW-330";};
-    bitmap {filename = "33_pink-SENW-330_farbe-left.png"; description = "33_pink-SENW-330_farbe-left";};
-} pink_SENW_330_farbe_left;
+    bitmap {filename = "17_pink-SENW-330_farbe.png"; description = "17_pink-SENW-330_farbe";};
+} pink_SENW_330_farbe;
 
 array {
     bitmap {filename = "pink-SENW-330.png"; description = "pink-SENW-330";};
-    bitmap {filename = "34_pink-SENW-330_farbe-right.png"; description = "34_pink-SENW-330_farbe-right";};
-} pink_SENW_330_farbe_right;
-
-array {
-    bitmap {filename = "pink-SENW-330.png"; description = "pink-SENW-330";};
-    bitmap {filename = "35_pink-SENW-330_orient-left.png"; description = "35_pink-SENW-330_orient-left";};
-} pink_SENW_330_orient_left;
-
-array {
-    bitmap {filename = "pink-SENW-330.png"; description = "pink-SENW-330";};
-    bitmap {filename = "36_pink-SENW-330_orient-right.png"; description = "36_pink-SENW-330_orient-right";};
-} pink_SENW_330_orient_right;
+    bitmap {filename = "18_pink-SENW-330_orient.png"; description = "18_pink-SENW-330_orient";};
+} pink_SENW_330_orient;
 
 array {
     bitmap {filename = "pink-SENW-300.png"; description = "pink-SENW-300";};
-    bitmap {filename = "37_pink-SENW-300_farbe-left.png"; description = "37_pink-SENW-300_farbe-left";};
-} pink_SENW_300_farbe_left;
+    bitmap {filename = "19_pink-SENW-300_farbe.png"; description = "19_pink-SENW-300_farbe";};
+} pink_SENW_300_farbe;
 
 array {
     bitmap {filename = "pink-SENW-300.png"; description = "pink-SENW-300";};
-    bitmap {filename = "38_pink-SENW-300_farbe-right.png"; description = "38_pink-SENW-300_farbe-right";};
-} pink_SENW_300_farbe_right;
-
-array {
-    bitmap {filename = "pink-SENW-300.png"; description = "pink-SENW-300";};
-    bitmap {filename = "39_pink-SENW-300_orient-left.png"; description = "39_pink-SENW-300_orient-left";};
-} pink_SENW_300_orient_left;
-
-array {
-    bitmap {filename = "pink-SENW-300.png"; description = "pink-SENW-300";};
-    bitmap {filename = "40_pink-SENW-300_orient-right.png"; description = "40_pink-SENW-300_orient-right";};
-} pink_SENW_300_orient_right;
+    bitmap {filename = "20_pink-SENW-300_orient.png"; description = "20_pink-SENW-300_orient";};
+} pink_SENW_300_orient;
 
 array {
     bitmap {filename = "pink-SWNE-030.png"; description = "pink-SWNE-030";};
-    bitmap {filename = "41_pink-SWNE-030_farbe-left.png"; description = "41_pink-SWNE-030_farbe-left";};
-} pink_SWNE_030_farbe_left;
+    bitmap {filename = "21_pink-SWNE-030_farbe.png"; description = "21_pink-SWNE-030_farbe";};
+} pink_SWNE_030_farbe;
 
 array {
     bitmap {filename = "pink-SWNE-030.png"; description = "pink-SWNE-030";};
-    bitmap {filename = "42_pink-SWNE-030_farbe-right.png"; description = "42_pink-SWNE-030_farbe-right";};
-} pink_SWNE_030_farbe_right;
-
-array {
-    bitmap {filename = "pink-SWNE-030.png"; description = "pink-SWNE-030";};
-    bitmap {filename = "43_pink-SWNE-030_orient-left.png"; description = "43_pink-SWNE-030_orient-left";};
-} pink_SWNE_030_orient_left;
-
-array {
-    bitmap {filename = "pink-SWNE-030.png"; description = "pink-SWNE-030";};
-    bitmap {filename = "44_pink-SWNE-030_orient-right.png"; description = "44_pink-SWNE-030_orient-right";};
-} pink_SWNE_030_orient_right;
+    bitmap {filename = "22_pink-SWNE-030_orient.png"; description = "22_pink-SWNE-030_orient";};
+} pink_SWNE_030_orient;
 
 array {
     bitmap {filename = "pink-SWNE-060.png"; description = "pink-SWNE-060";};
-    bitmap {filename = "45_pink-SWNE-060_farbe-left.png"; description = "45_pink-SWNE-060_farbe-left";};
-} pink_SWNE_060_farbe_left;
+    bitmap {filename = "23_pink-SWNE-060_farbe.png"; description = "23_pink-SWNE-060_farbe";};
+} pink_SWNE_060_farbe;
 
 array {
     bitmap {filename = "pink-SWNE-060.png"; description = "pink-SWNE-060";};
-    bitmap {filename = "46_pink-SWNE-060_farbe-right.png"; description = "46_pink-SWNE-060_farbe-right";};
-} pink_SWNE_060_farbe_right;
-
-array {
-    bitmap {filename = "pink-SWNE-060.png"; description = "pink-SWNE-060";};
-    bitmap {filename = "47_pink-SWNE-060_orient-left.png"; description = "47_pink-SWNE-060_orient-left";};
-} pink_SWNE_060_orient_left;
-
-array {
-    bitmap {filename = "pink-SWNE-060.png"; description = "pink-SWNE-060";};
-    bitmap {filename = "48_pink-SWNE-060_orient-right.png"; description = "48_pink-SWNE-060_orient-right";};
-} pink_SWNE_060_orient_right;
+    bitmap {filename = "24_pink-SWNE-060_orient.png"; description = "24_pink-SWNE-060_orient";};
+} pink_SWNE_060_orient;
 
 array {
     bitmap {filename = "orange-SENW-330.png"; description = "orange-SENW-330";};
-    bitmap {filename = "49_orange-SENW-330_farbe-left.png"; description = "49_orange-SENW-330_farbe-left";};
-} orange_SENW_330_farbe_left;
+    bitmap {filename = "25_orange-SENW-330_farbe.png"; description = "25_orange-SENW-330_farbe";};
+} orange_SENW_330_farbe;
 
 array {
     bitmap {filename = "orange-SENW-330.png"; description = "orange-SENW-330";};
-    bitmap {filename = "50_orange-SENW-330_farbe-right.png"; description = "50_orange-SENW-330_farbe-right";};
-} orange_SENW_330_farbe_right;
-
-array {
-    bitmap {filename = "orange-SENW-330.png"; description = "orange-SENW-330";};
-    bitmap {filename = "51_orange-SENW-330_orient-left.png"; description = "51_orange-SENW-330_orient-left";};
-} orange_SENW_330_orient_left;
-
-array {
-    bitmap {filename = "orange-SENW-330.png"; description = "orange-SENW-330";};
-    bitmap {filename = "52_orange-SENW-330_orient-right.png"; description = "52_orange-SENW-330_orient-right";};
-} orange_SENW_330_orient_right;
+    bitmap {filename = "26_orange-SENW-330_orient.png"; description = "26_orange-SENW-330_orient";};
+} orange_SENW_330_orient;
 
 array {
     bitmap {filename = "orange-SENW-300.png"; description = "orange-SENW-300";};
-    bitmap {filename = "53_orange-SENW-300_farbe-left.png"; description = "53_orange-SENW-300_farbe-left";};
-} orange_SENW_300_farbe_left;
+    bitmap {filename = "27_orange-SENW-300_farbe.png"; description = "27_orange-SENW-300_farbe";};
+} orange_SENW_300_farbe;
 
 array {
     bitmap {filename = "orange-SENW-300.png"; description = "orange-SENW-300";};
-    bitmap {filename = "54_orange-SENW-300_farbe-right.png"; description = "54_orange-SENW-300_farbe-right";};
-} orange_SENW_300_farbe_right;
-
-array {
-    bitmap {filename = "orange-SENW-300.png"; description = "orange-SENW-300";};
-    bitmap {filename = "55_orange-SENW-300_orient-left.png"; description = "55_orange-SENW-300_orient-left";};
-} orange_SENW_300_orient_left;
-
-array {
-    bitmap {filename = "orange-SENW-300.png"; description = "orange-SENW-300";};
-    bitmap {filename = "56_orange-SENW-300_orient-right.png"; description = "56_orange-SENW-300_orient-right";};
-} orange_SENW_300_orient_right;
+    bitmap {filename = "28_orange-SENW-300_orient.png"; description = "28_orange-SENW-300_orient";};
+} orange_SENW_300_orient;
 
 array {
     bitmap {filename = "orange-SWNE-030.png"; description = "orange-SWNE-030";};
-    bitmap {filename = "57_orange-SWNE-030_farbe-left.png"; description = "57_orange-SWNE-030_farbe-left";};
-} orange_SWNE_030_farbe_left;
+    bitmap {filename = "29_orange-SWNE-030_farbe.png"; description = "29_orange-SWNE-030_farbe";};
+} orange_SWNE_030_farbe;
 
 array {
     bitmap {filename = "orange-SWNE-030.png"; description = "orange-SWNE-030";};
-    bitmap {filename = "58_orange-SWNE-030_farbe-right.png"; description = "58_orange-SWNE-030_farbe-right";};
-} orange_SWNE_030_farbe_right;
-
-array {
-    bitmap {filename = "orange-SWNE-030.png"; description = "orange-SWNE-030";};
-    bitmap {filename = "59_orange-SWNE-030_orient-left.png"; description = "59_orange-SWNE-030_orient-left";};
-} orange_SWNE_030_orient_left;
-
-array {
-    bitmap {filename = "orange-SWNE-030.png"; description = "orange-SWNE-030";};
-    bitmap {filename = "60_orange-SWNE-030_orient-right.png"; description = "60_orange-SWNE-030_orient-right";};
-} orange_SWNE_030_orient_right;
+    bitmap {filename = "30_orange-SWNE-030_orient.png"; description = "30_orange-SWNE-030_orient";};
+} orange_SWNE_030_orient;
 
 array {
     bitmap {filename = "orange-SWNE-060.png"; description = "orange-SWNE-060";};
-    bitmap {filename = "61_orange-SWNE-060_farbe-left.png"; description = "61_orange-SWNE-060_farbe-left";};
-} orange_SWNE_060_farbe_left;
+    bitmap {filename = "31_orange-SWNE-060_farbe.png"; description = "31_orange-SWNE-060_farbe";};
+} orange_SWNE_060_farbe;
 
 array {
     bitmap {filename = "orange-SWNE-060.png"; description = "orange-SWNE-060";};
-    bitmap {filename = "62_orange-SWNE-060_farbe-right.png"; description = "62_orange-SWNE-060_farbe-right";};
-} orange_SWNE_060_farbe_right;
-
-array {
-    bitmap {filename = "orange-SWNE-060.png"; description = "orange-SWNE-060";};
-    bitmap {filename = "63_orange-SWNE-060_orient-left.png"; description = "63_orange-SWNE-060_orient-left";};
-} orange_SWNE_060_orient_left;
-
-array {
-    bitmap {filename = "orange-SWNE-060.png"; description = "orange-SWNE-060";};
-    bitmap {filename = "64_orange-SWNE-060_orient-right.png"; description = "64_orange-SWNE-060_orient-right";};
-} orange_SWNE_060_orient_right;
+    bitmap {filename = "32_orange-SWNE-060_orient.png"; description = "32_orange-SWNE-060_orient";};
+} orange_SWNE_060_orient;
 
 #
 # legend
@@ -461,7 +301,7 @@ trial {
 
     stimulus_event {
         picture {
-            bitmap farbe_left; x=0; y=0;
+            bitmap farbe; x=0; y=0;
             bitmap left; x=-300; y=-450;
             bitmap right; x=300; y=-450;
         } stim2;
