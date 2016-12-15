@@ -10,14 +10,18 @@
 #
 # VARS
 #
-readonly VERSION='1.0.0'
+readonly VERSION='2.0.0'
 readonly SCRIPT_NAME=${0##*/}
-
-FILE=''
+TUNE_FILE=''
 
 #
 # Functions
 #
+Fatal() {
+  printf '%s\n' "$*" >&2
+  exit 1
+}
+
 Help() {
   cat << EOF
 $SCRIPT_NAME v${VERSION}
@@ -32,17 +36,38 @@ OPTIONS:
 
   -f, --filename   = svgtune filename
 EXAMPLE:
-  $SCRIPT_NAME --filename MiSIT_layers.svgtune
+  $SCRIPT_NAME --filename COIN_layers.svgtune
 
 EOF
 }
 
-[ $# -ne 1 ] && printf "An .svgtune file is required as an argument.\n" && exit 1
-[ ! -f "$1" ] && printf "'$1' does not exist.\n" && exit 1
+# TODO: figure out why parse arguments causes script to fail
+#
+# Parse Arguments
+#
+
+# help out if there are no arguments
+[ -n "$1" ] || { Help; exit 1; }
+
+#while [ -n "$1" ]; do
+#  case "$1" in
+#    '-h'|'--help') Help; exit 0;;
+#    '-V'|'--version') printf '%s v%s\n' "$SCRIPT_NAME" "$VERSION"; exit 0;;
+#
+#    -*) Fatal "'$1' is not a valid '$SCRIPT_NAME' option.";;
+#    *) [ ! -f "$1" ] && Fatal "'$1' does not exist."
+#       TUNE_FILE=$1
+#       ;;
+#  esac
+#done
 
 TUNE_FILE=$1
-TUNE_DIR="${TUNE_FILE%.svgtune}_tuned"
+TUNE_DIR="${TUNE_FILE%.svgtune}_tuned" # match what svgtune does internally
 PNG_DIR="${TUNE_DIR%_tuned}_png"
+
+# TODO: check that both inkscape and svgtune are in the path
+
+# TODO: check that neither TUNE_DIR nor PNG_DIR exist, otherwise bail (with message
 
 # generate SVGs
 svgtune "$TUNE_FILE"
