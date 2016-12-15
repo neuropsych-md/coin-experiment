@@ -3,7 +3,7 @@
 # Laura Waite 2016
 
 #
-# MiSIT project
+# COIN project
 #   generate conan set files, conan results files, and presentation input files
 #
 # TODO: invert the above descirption so that it's more correct from the user's
