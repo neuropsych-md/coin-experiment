@@ -194,14 +194,13 @@ done
 for PNG in $PNG_FILES; do
     FILE=$PNG
 
-    # extract values from file-name (example: 02_green-SENW-330_farbe-left.png)
+    # extract values from file-name (example: 02_green-SENW-330_farbe.png)
     ID=${FILE%%_*} && FILE=${FILE#${ID}_} # stim index (in Presentation) e.g. 01
     PNGS[$ID,file]=$PNG
     PNGS[$ID,farbe]=${FILE%%-*}   && FILE=${FILE#*-} # color of stim e.g. green
     PNGS[$ID,orient]=${FILE%%-*}  && FILE=${FILE#*-} # hatching dir (cardinal directions) e.g. SWNE
     PNGS[$ID,degrees]=${FILE%%_*} && FILE=${FILE#*_} # degrees of origin of hatching (redundant to above, but more specific)
-    PNGS[$ID,feature]=${FILE%%-*} && FILE=${FILE#*-} # relevant feature e.g. farbe or orient
-    PNGS[$ID,cue]=${FILE%%.*}     && FILE=${FILE#*.} # cue side e.g. left or right
+    PNGS[$ID,feature]=${FILE%%.*} && FILE=${FILE#*.} # relevant feature e.g. farbe or orient
 
     # get answers for both features
     PNGS[$ID,ans_farbe]=$(LookupAnswer "$RULE_SET" 'farbe' "${PNGS[$ID,farbe]}")
