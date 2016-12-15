@@ -20,11 +20,11 @@ PNGS=''
 # a horrible name for output files, I know, but they've long been referred to as
 # "presentation input files" and they are so thusly dubbed.
 declare -A infiles
-infiles[gbNW_poNE_1]='neutralA incongruentA congruentA incongruentB congruentB congruentC neutralB incongruentC incongruentD congruentD'
-infiles[poNW_gbNE_1]='neutralA incongruentA congruentA incongruentB congruentB congruentC neutralB incongruentC incongruentD congruentD'
+infiles[gbNW_poNE_1]='neutralA orientA farbeA neutralB farbeB orientB neutralC farbeC orientC neutralD'
+infiles[poNW_gbNE_1]='neutralA orientA farbeA neutralB farbeB orientB neutralC farbeC orientC neutralD'
 
-infiles[gbNW_poNE_2]='neutralA congruentA incongruentA congruentB incongruentB incongruentC neutralB congruentC congruentD incongruentD'
-infiles[poNW_gbNE_2]='neutralA congruentA incongruentA congruentB incongruentB incongruentC neutralB congruentC congruentD incongruentD'
+infiles[gbNW_poNE_2]='neutralA farbeA orientA neutralB orientB farbeB neutralC orientC farbeC neutralD'
+infiles[poNW_gbNE_2]='neutralA farbeA orientA neutralB orientB farbeB neutralC orientC farbeC neutralD'
 
 #
 # Functions
@@ -103,25 +103,39 @@ mkdir -p "${TMP}"
 
 # loop over all ruleset and block combinations
 for ruleset in gbNW_poNE poNW_gbNE ; do
-    for block in neutralA neutralB incongruentA incongruentB incongruentC incongruentD congruentA congruentB congruentC congruentD; do
+    for block in neutralA neutralB neutralC neutralD farbeA farbeB farbeC orientA orientB orientC; do
         printf "Automagicating: $ruleset $block\n"
         case "$block" in
-             'neutralA'|'neutralB')                                       mode='--farbe-orient 50 50' ;;
-             'incongruentA'|'incongruentB'|'incongruentC'|'incongruentD') mode='--con-incon 25 75'   ;;
-             'congruentA'|'congruentB'|'congruentC'|'congruentD')         mode='--con-incon 75 25'   ;;
+             'neutralA'|'neutralB'|'neutralC'|'neutralD') mode='--farbe-orient 50 50' ;;
+             'farbeA'|'farbeB'|'farbeC')                  mode='--farbe-orient 75 25' ;;
+             'orientA'|'orientB'|'orientC')               mode='--farbe-orient 25 75' ;;
         esac
         # generate conan set files
         ./events-gen.sh --rule-set "$ruleset" $mode --pngs "${PNGS}" > "${TMP}/${ruleset}_${block}.set"
-
+        echo "post event"
         case "$block" in
-             'neutralA'|'neutralB')                                       cfg_file='neutral.cfg'     ;;
-             'incongruentA'|'incongruentB'|'incongruentC'|'incongruentD') cfg_file='incongruent.cfg' ;;
-             'congruentA'|'congruentB'|'congruentC'|'congruentD')         cfg_file='congruent.cfg'   ;;
+             'neutralA')                        cfg_file='neutralA.cfg' ;;
+             'neutralB')                        cfg_file='neutralB.cfg' ;;
+             'neutralC')                        cfg_file='neutralC.cfg' ;;
+             'neutralD')                        cfg_file='neutralD.cfg' ;;
+             'farbeA'|'farbeB'|'farbeC')        cfg_file='farbe.cfg'   ;;
+             'orientA'|'orientB'|'orientC')     cfg_file='orient.cfg'  ;;
         esac
         # generate result files for events and jitters
         # TODO: this should probably be written as conan blah || Fatal WTF
         conan "./cfgs/${cfg_file}" "${TMP}/${ruleset}_${block}.set" 1> "${TMP}/${ruleset}_${block}.results" 2> /dev/null
         conan ./cfgs/jitter.cfg "${TMP}/jitter.set" 1> "${TMP}/${ruleset}_${block}_jitter.results" 2> /dev/null
+        echo "post conan"
+
+        case "$block" in
+             'neutralB')   ./muss-up.sh --file "${TMP}/${ruleset}_${block}.results" > "${TMP}/${ruleset}_${block}.final" ;;
+             'neutralC')   ./muss-up.sh --file "${TMP}/${ruleset}_${block}.results" > "${TMP}/${ruleset}_${block}.final" ;;
+             'neutralD')   ./muss-up.sh --file "${TMP}/${ruleset}_${block}.results" > "${TMP}/${ruleset}_${block}.final" ;;
+             'neutralA')                    cp "${TMP}/${ruleset}_${block}.results" "${TMP}/${ruleset}_${block}.final" ;;
+             'farbeA'|'farbeB'|'farbeC')    cp "${TMP}/${ruleset}_${block}.results" "${TMP}/${ruleset}_${block}.final" ;;
+             'orientA'|'orientB'|'orientC') cp "${TMP}/${ruleset}_${block}.results" "${TMP}/${ruleset}_${block}.final" ;;
+        esac
+        echo "post muss-up"
     done
 done
 
@@ -137,7 +151,7 @@ for KEY in "${!infiles[@]}"; do
   printf "${KEY}\n"
   for BLOCK in ${infiles[${KEY}]}; do
     # convert into a presentation-ready format and join with jitter info and append block num
-    join "${TMP}/${RULE_SET}_${BLOCK}.results" "${TMP}/${RULE_SET}_${BLOCK}_jitter.results" | \
+    join "${TMP}/${RULE_SET}_${BLOCK}.final" "${TMP}/${RULE_SET}_${BLOCK}_jitter.results" | \
       sed -f ./conan2input.sed | sed -e "1,\$ s/\$/ ${BLOCK_NUM}/" \
       >> "${RESULTS_DIR}/${KEY}.txt"
 
