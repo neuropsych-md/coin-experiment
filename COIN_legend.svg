@@ -24,9 +24,34 @@
      id="defs4">
     <pattern
        inkscape:collect="always"
+       xlink:href="#pattern5650"
+       id="pattern4938"
+       patternTransform="matrix(9.9999995,0,0,9.9999998,31.744054,-522.93985)" />
+    <pattern
+       inkscape:collect="always"
+       xlink:href="#pattern4924"
+       id="pattern4932"
+       patternTransform="matrix(9.9999995,0,0,9.9999998,-288.96095,437.00718)" />
+    <pattern
+       inkscape:collect="always"
+       xlink:href="#pattern5644"
+       id="pattern4924"
+       patternTransform="matrix(10,0,0,9.9999993,-757.71212,670.98601)" />
+    <pattern
+       inkscape:collect="always"
+       xlink:href="#pattern5630"
+       id="pattern4922"
+       patternTransform="matrix(9.9999995,0,0,9.9999998,117.54709,-202.71832)" />
+    <pattern
+       inkscape:collect="always"
+       xlink:href="#pattern5628"
+       id="pattern4916"
+       patternTransform="matrix(9.9999994,0,0,9.9999998,-435.8501,-758.19564)" />
+    <pattern
+       inkscape:collect="always"
        xlink:href="#pattern5644"
        id="pattern5650"
-       patternTransform="matrix(10,0,0,10,-54.389291,-772.71737)" />
+       patternTransform="matrix(10,0,0,9.9999993,-202.23482,-991.69104)" />
     <pattern
        inkscape:collect="always"
        xlink:href="#Strips1_5"
@@ -36,12 +61,12 @@
        inkscape:collect="always"
        xlink:href="#pattern5622"
        id="pattern5630"
-       patternTransform="matrix(10,0,0,10,133.19212,-319.85575)" />
+       patternTransform="matrix(10,0,0,9.9999993,117.98667,-437.05108)" />
     <pattern
        inkscape:collect="always"
        xlink:href="#pattern5622"
        id="pattern5628"
-       patternTransform="matrix(10,0,0,10,-201.51733,-757.75606)" />
+       patternTransform="matrix(9.9999999,0,0,9.9999993,-201.51736,-757.756)" />
     <pattern
        inkscape:collect="always"
        xlink:href="#Strips1_5"
@@ -72,16 +97,16 @@
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
      inkscape:zoom="1.8101934"
-     inkscape:cx="133.25502"
-     inkscape:cy="16.838347"
+     inkscape:cx="39.066189"
+     inkscape:cy="-5.2587394"
      inkscape:document-units="px"
-     inkscape:current-layer="g4285"
+     inkscape:current-layer="g4934"
      showgrid="false"
      showborder="false"
      showguides="false"
      inkscape:guide-bbox="true"
      inkscape:window-width="1920"
-     inkscape:window-height="1018"
+     inkscape:window-height="1017"
      inkscape:window-x="-8"
      inkscape:window-y="-8"
      inkscape:window-maximized="1"
@@ -146,7 +171,7 @@
     <rect
        style="opacity:0.994;fill:#000000;fill-opacity:1"
        id="rect4138"
-       width="1920"
+       width="1280.502"
        height="640"
        x="1.4279853"
        y="252.29175"
@@ -221,34 +246,66 @@
   <g
      inkscape:groupmode="layer"
      id="layer3"
-     inkscape:label="circle1_SENW"
-     style="display:inline">
+     inkscape:label="circle1_300"
+     style="display:none">
     <rect
        style="opacity:0.994;fill:url(#pattern5628);fill-opacity:1"
        id="rect4901"
-       width="580"
-       height="580"
-       x="-172.01332"
-       y="-727.05109"
-       rx="280.63019"
-       ry="291.20117"
-       transform="matrix(-0.5,0.8660254,-0.8660254,-0.5,0,0)" />
+       width="580.00006"
+       height="579.99994"
+       x="-172.01334"
+       y="-727.05103"
+       rx="280.63022"
+       ry="291.20114"
+       transform="matrix(-0.49999996,0.86602542,-0.86602538,-0.50000004,0,0)" />
   </g>
   <g
-     inkscape:label="circle1_SWNE"
+     style="display:none"
+     inkscape:label="circle1_330"
+     id="g4912"
+     inkscape:groupmode="layer">
+    <rect
+       transform="matrix(-0.86602538,0.50000004,-0.49999996,-0.86602543,0,0)"
+       ry="291.20114"
+       rx="280.63022"
+       y="-727.49066"
+       x="-406.34607"
+       height="579.99994"
+       width="580"
+       id="rect4914"
+       style="opacity:0.994;fill:url(#pattern4916);fill-opacity:1" />
+  </g>
+  <g
+     inkscape:label="circle1_60"
      id="g5624"
      inkscape:groupmode="layer"
      style="display:none">
     <rect
-       ry="291.20117"
-       rx="280.63019"
-       y="-289.15076"
-       x="162.69612"
-       height="580"
-       width="580"
+       ry="291.20114"
+       rx="280.63022"
+       y="-406.3461"
+       x="147.49068"
+       height="579.99994"
+       width="580.00006"
        id="rect5626"
        style="opacity:0.994;fill:url(#pattern5630);fill-opacity:1"
-       transform="matrix(0.70710678,0.70710678,-0.70710678,0.70710678,0,0)" />
+       transform="matrix(0.49999996,0.86602542,-0.86602538,0.50000004,0,0)" />
+  </g>
+  <g
+     style="display:inline"
+     inkscape:groupmode="layer"
+     id="g4918"
+     inkscape:label="circle1_30">
+    <rect
+       transform="matrix(0.86602538,0.50000004,-0.49999996,0.86602543,0,0)"
+       style="opacity:0.994;fill:url(#pattern4922);fill-opacity:1"
+       id="rect4920"
+       width="580"
+       height="579.99994"
+       x="147.0511"
+       y="-172.01334"
+       rx="280.63022"
+       ry="291.20114" />
   </g>
   <g
      inkscape:groupmode="layer"
@@ -348,134 +405,65 @@
   <g
      inkscape:groupmode="layer"
      id="layer5"
-     inkscape:label="circle2_SENW"
+     inkscape:label="circle2_300"
      style="display:none">
     <rect
-       style="opacity:0.994;fill:url(#pattern5644);fill-opacity:1"
+       style="opacity:0.994;fill:url(#pattern4924);fill-opacity:1"
        id="rect5639"
-       width="580"
-       height="580"
-       x="162.01237"
-       y="615.55774"
-       rx="263.0686"
-       ry="319.80698"
-       transform="matrix(0.70710678,-0.70710678,0.70710678,0.70710678,0,0)" />
+       width="580.00006"
+       height="579.99994"
+       x="-87.765099"
+       y="701.69098"
+       rx="263.06863"
+       ry="319.80695"
+       transform="matrix(0.49999996,-0.86602542,0.86602538,0.50000004,0,0)" />
   </g>
   <g
-     inkscape:label="circle2_SWNE"
+     style="display:none"
+     inkscape:label="circle2_330"
+     id="g4926"
+     inkscape:groupmode="layer">
+    <rect
+       transform="matrix(0.86602538,-0.50000004,0.49999996,0.86602543,0,0)"
+       ry="319.80695"
+       rx="263.06863"
+       y="467.71216"
+       x="380.98602"
+       height="579.99994"
+       width="580"
+       id="rect4928"
+       style="opacity:0.994;fill:url(#pattern4932);fill-opacity:1" />
+  </g>
+  <g
+     inkscape:label="circle2_60"
      id="g5646"
      inkscape:groupmode="layer"
      style="display:none">
     <rect
-       ry="319.80698"
-       rx="263.0686"
-       y="-742.01239"
-       x="615.55774"
-       height="580"
-       width="580"
+       ry="319.80695"
+       rx="263.06863"
+       y="-960.98608"
+       x="467.71225"
+       height="579.99994"
+       width="580.00006"
        id="rect5648"
        style="opacity:0.994;fill:url(#pattern5650);fill-opacity:1"
-       transform="matrix(0.70710678,0.70710678,-0.70710678,0.70710678,0,0)" />
+       transform="matrix(0.49999996,0.86602542,-0.86602538,0.50000004,0,0)" />
   </g>
   <g
+     style="display:inline"
      inkscape:groupmode="layer"
-     id="g5664"
-     inkscape:label="circle3_green"
-     style="display:none">
-    <circle
-       transform="translate(-1.4279853,-252.43054)"
-       style="display:inline;fill:#8fbf35;fill-opacity:1"
-       id="circle5666"
-       cx="1600"
-       cy="573.13556"
-       r="290" />
-  </g>
-  <g
-     style="display:none"
-     inkscape:label="circle3_pink"
-     id="g5660"
-     inkscape:groupmode="layer">
-    <circle
-       r="290"
-       cy="573.13556"
-       cx="1600"
-       id="circle5662"
-       style="display:inline;fill:#d392b2;fill-opacity:1"
-       transform="translate(-1.4279853,-252.43054)" />
-  </g>
-  <g
-     inkscape:groupmode="layer"
-     id="g5656"
-     inkscape:label="circle3_orange"
-     style="display:inline">
-    <circle
-       transform="translate(-1.4279853,-252.43054)"
-       style="display:inline;fill:#cda277;fill-opacity:1"
-       id="circle5658"
-       cx="1600"
-       cy="573.13556"
-       r="290" />
-  </g>
-  <g
-     style="display:none"
-     inkscape:label="circle3_blue"
-     id="g5652"
-     inkscape:groupmode="layer">
-    <circle
-       r="290"
-       cy="573.13556"
-       cx="1600"
-       id="circle5654"
-       style="display:inline;fill:#7bb2d0;fill-opacity:1"
-       transform="translate(-1.4279853,-252.43054)" />
-  </g>
-  <g
-     inkscape:groupmode="layer"
-     id="layer7"
-     inkscape:label="circle3_grey"
-     style="display:none">
-    <circle
-       transform="translate(-1.4279853,-252.43054)"
-       style="display:inline;fill:#808080;fill-opacity:1"
-       id="path4304"
-       cx="1600"
-       cy="573.13556"
-       r="290" />
-  </g>
-  <g
-     inkscape:label="circle3_SENW"
-     inkscape:groupmode="layer"
-     id="g5638"
-     style="display:none"
-     transform="translate(-1.4279853,-252.43054)">
+     id="g4934"
+     inkscape:label="circle2_30">
     <rect
-       transform="matrix(-0.70710678,0.70710678,-0.70710678,-0.70710678,0,0)"
-       style="opacity:0.994;fill:url(#Strips1_5);fill-opacity:1"
-       id="rect5640"
-       width="601.04083"
-       height="615.18286"
-       x="-1024.5183"
-       y="-1837.9382"
-       ry="304.05582"
-       rx="300.52042"
-       inkscape:export-xdpi="89.918213"
-       inkscape:export-ydpi="89.918213" />
-  </g>
-  <g
-     id="g4197"
-     inkscape:groupmode="layer"
-     inkscape:label="circle3_SWNE"
-     style="display:none"
-     transform="translate(-1.4279853,-252.43054)">
-    <rect
-       rx="307.10941"
-       ry="303.98438"
-       y="-1036.8927"
-       x="1232.92"
-       height="615.18292"
-       width="615.18286"
-       id="rect4199"
-       style="opacity:0.994;fill:url(#Strips1_5);fill-opacity:1"
-       transform="matrix(0.70710678,0.70710678,-0.70710678,0.70710678,0,0)" />
+       transform="matrix(0.86602538,0.50000004,-0.49999996,0.86602543,0,0)"
+       style="opacity:0.994;fill:url(#pattern4938);fill-opacity:1"
+       id="rect4936"
+       width="580"
+       height="579.99994"
+       x="701.6911"
+       y="-492.23489"
+       rx="263.06863"
+       ry="319.80695" />
   </g>
 </svg>
