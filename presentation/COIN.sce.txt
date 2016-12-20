@@ -58,8 +58,8 @@
 pcl_file = "COIN.pcl";
 
 response_matching = simple_matching;
-active_buttons = 2;
-button_codes = 1,2;    # 1 = left; 2 = right
+active_buttons = 3;
+button_codes = 1,2,3;    # 1 = left; 2 = right
 
 #
 # EEG Triggers
@@ -255,6 +255,15 @@ array {
 } sounds;
 
 #
+# default picture
+#
+picture {
+    bitmap green_SENW; x=0; y=0;
+    bitmap left; x=-300; y=-450;
+    bitmap right; x=300; y=-450;
+} default;
+
+#
 # pause
 #
 trial {
@@ -283,46 +292,67 @@ trial {
 } finish;
 
 #
-# main trial
+# stimulus trial
 #
 trial {
-    trial_type = first_response;
-#    trial_type = fixed;
-    all_responses = false;
-
+    trial_type = fixed;
+    trial_duration = stimuli_length;
     stimulus_event {
         picture {
             bitmap green_SENW; x=0; y=0;
             bitmap left; x=-300; y=-450;
             bitmap right; x=300; y=-450;
         } stim;
-        time = 0;
+        duration = next_picture;
         code = "stim";
     } stim_event;
+} stim_trial;
 
+#
+# cue trial
+#
+trial {
+    trial_type = fixed;
+    trial_duration = stimuli_length;
     stimulus_event {
         picture {
             bitmap farbe; x=0; y=0;
             bitmap left; x=-300; y=-450;
             bitmap right; x=300; y=-450;
         } cue;
-        duration = 250;
-#        response_active = true;
+        duration = next_picture;
         code = "cue";
     } cue_event;
+} cue_trial;
 
-    stimulus_event {
-        picture {
-           bitmap green_SENW; x=0; y=0;
-           bitmap left; x=-300; y=-450;
-           bitmap right; x=300; y=-450;
-       } wait_pic;
-       time = 1000;
-       duration = 700;
-       response_active = true;
-       code = "wait";
-    } wait_event;
-} main_trial;
+#
+# response trial
+#
+trial {
+    trial_type = first_response;
+    trial_duration = 700;
+    picture {
+       bitmap green_SENW; x=0; y=0;
+       bitmap left; x=-300; y=-450;
+       bitmap right; x=300; y=-450;
+    } respond_pic;
+    code = "respond";
+} respond_trial;
+
+#
+# late response trial
+#
+trial {
+    trial_type = correct_response;
+    trial_duration = 500;
+    picture {
+       bitmap green_SENW; x=0; y=0;
+       bitmap left; x=-300; y=-450;
+       bitmap right; x=300; y=-450;
+    } wait_pic;
+    target_button = 3;
+    code = "wait";
+} wait_trial;
 
 #
 # feedback trial
@@ -341,7 +371,7 @@ trial {
 
     stimulus_event {
         sound no_sound;
-        time = 100;
+        time = 0;
         code = "beep";
     } beep_event;
 } feedback_trial;
