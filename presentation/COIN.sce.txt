@@ -64,9 +64,9 @@ button_codes = 1,2;    # 1 = left; 2 = right
 #
 # EEG Triggers
 #
-default_output_port = 1;
-write_codes = true;
-pulse_width = 5;
+#default_output_port = 1;
+#write_codes = true;
+#pulse_width = 5;
 
 begin;
 
@@ -294,21 +294,32 @@ trial {
             bitmap green_SENW; x=0; y=0;
             bitmap left; x=-300; y=-450;
             bitmap right; x=300; y=-450;
-        } stim1;
+        } stim;
         time = 0;
-        code = "stim1";
-    } stim_event1;
+        code = "stim";
+    } stim_event;
 
     stimulus_event {
         picture {
             bitmap farbe; x=0; y=0;
             bitmap left; x=-300; y=-450;
             bitmap right; x=300; y=-450;
-        } stim2;
-        duration = 1400;
-        code = "stim2";
-        response_active = true;
-    } stim_event2;
+        } cue;
+        duration = 250;
+        code = "cue";
+    } cue_event;
+
+    stimulus_event {
+        picture {
+           bitmap green_SENW; x=0; y=0;
+           bitmap left; x=-300; y=-450;
+           bitmap right; x=300; y=-450;
+       } wait_pic;
+       time = 1000;
+       duration = 700;
+       response_active = true;
+       code = "wait";
+    } wait_event;
 } main_trial;
 
 #
@@ -316,21 +327,19 @@ trial {
 #
 trial {
     trial_type = fixed;
-    all_responses = false;
-    trial_duration = stimuli_length;
     stimulus_event {
         picture {
            bitmap green_SENW; x=0; y=0;
            bitmap left; x=-300; y=-450;
            bitmap right; x=300; y=-450;
        } feedback_pic;
-       duration = 700;
-       code = "wait";
-    } wait_event;
+       duration = 500;
+       code = "feedback";
+    } feedback_event;
 
     stimulus_event {
         sound no_sound;
-        time = 0;
-        code = "feedback";
+        time = 100;
+        code = "beep";
     } beep_event;
 } feedback_trial;
