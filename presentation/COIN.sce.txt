@@ -287,6 +287,7 @@ trial {
 #
 trial {
     trial_type = first_response;
+#    trial_type = fixed;
     all_responses = false;
 
     stimulus_event {
@@ -306,6 +307,7 @@ trial {
             bitmap right; x=300; y=-450;
         } cue;
         duration = 250;
+#        response_active = true;
         code = "cue";
     } cue_event;
 
