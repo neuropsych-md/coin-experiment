@@ -56,22 +56,30 @@
 ############################################################################
 
 #
-# Variables
+# Reponse Evaluation Variables
 #
-int block_trl_num = 0;                     # Trial number of the current block
-int resp_cutoff = 1400;                    # Duration of stim2
-int correctcounter = 0;                    # Number of correct responses in the current block
-int incorrectcounter = 0;                  # Number of errors in the current block
-int misscounter = 0;                       # Number of misses in the current block
-int perc_incorrect = 0;                    # Percent errors in the current block
-int perc_miss = 0;                         # Percent misses in the current block
+int resp_cutoff = 700;                 # time window for subject to respond after cue presentation
+int resp_count;                        # determines if a response was given for the current trial
+int resp_given;                        # response given according to button presses: 1= left, 2=right, 0=miss
+int cue_onset;                         # onset time of the cue
+int cue_duration = 250;                # duration the cue is presented
+int resp_onset;                        # onset time of the response
+int RT;                                # reaction time
+int feedback_duration;                 # duration of the feedback trial
+int correctcounter;                    # number of correct responses
+int incorrectcounter;                  # number of errors
+int misscounter;                       # number of misses
+int perc_incorrect;                    # percent errors
+int perc_miss;                         # percent misses
+int beep_onset;                        # onset time for beep (1500ms after cue presented)         
+int end_resp_window;                   # time the response windows ends
 
 #
 # Portcode variables
 #
-int deg_trg;
-int pcode_stim1;
-int pcode_stim2;
+int deg_trg;                           # EEG trigger for the degrees of current stim
+int pcode_stim;                        # Stimulus port code
+int pcode_cue;                         # Cue port code 
 
 #
 # read input file
@@ -140,13 +148,13 @@ string fint = "%8d";        # output format int
 string subject = logfile.filename();
 output_file data = new output_file;
 data.open(subject + ".txt");
-# (headers) grn_ans  blu_ans  pnk_ans  org_ans  SENW_ans  SWNE_ans  trial  block  incon_freq  color_freq  congrueny   featr  color  color_ans  degrees  direc_ans  answer  stim1_onset  stim2_onset  reation_time  response   accuracy
-data.print("grn_ans\tblu_ans\tpnk_ans\torg_ans\tSENW_ans\tSWNE_ans\ttrial\tblock\tincon_freq\tcolor_freq\tcongruency\tfeatr\tcolor\tcolor_ans\tdegrees\tdirec_ans\tanswer\tstim1_onset\tstim2_onset\treaction_time\tresponse\taccuracy\n");
+# (headers) grn_ans  blu_ans  pnk_ans  org_ans  SENW_ans  SWNE_ans  trial  block  incon_freq  color_freq  congrueny   featr  color  color_ans  degrees  direc_ans  answer  stim_onset  cue_onset  resp_cutoff  reation_time  response   accuracy  errors  perc_errors  misses  perc_misses
+data.print("grn_ans\tblu_ans\tpnk_ans\torg_ans\tSENW_ans\tSWNE_ans\ttrial\tblock\tincon_freq\tcolor_freq\tcongruency\tfeatr\tcolor\tcolor_ans\tdegrees\tdirec_ans\tanswer\tstim_onset\tcue_onset\tresp_cutoff\treaction_time\tresponse\taccuracy\terrors\tperc_errors\tmisses\tperc_misses\n");
 
 #
 # load stimuli pair arrays into a single array
 #
-array<bitmap> avail_stims[64][0];
+array<bitmap> avail_stims[32][0];
 avail_stims[1].assign(green_SENW_330_farbe);
 avail_stims[2].assign(green_SENW_330_orient);
 avail_stims[3].assign(green_SENW_300_farbe);
@@ -183,7 +191,7 @@ avail_stims[32].assign(orange_SWNE_060_orient);
 #
 # load legend pair arrays into a single array
 #
-array<bitmap> avail_legends[4][0];
+array<bitmap> avail_legends[2][0];
 avail_legends[1].assign(gbNW_poNE);
 avail_legends[2].assign(poNW_gbNE);
 
@@ -205,20 +213,13 @@ begin
     # pause between blocks
     if (i != 1) then # but don't pause before the first trial
         if (block_num[i] != block_num[i-1]) then
-            if (misscounter > 10) || (incorrectcounter < 10) then
-                warn_txt.set_caption("Pause\n" + "Bitte schneller drücken!");
-            else
-                warn_txt.set_caption("Pause");
-            end;
+            warn_txt.set_caption("Pause");
             warn_txt.redraw();
             pause.present();
-            misscounter = 0;
-            incorrectcounter = 0;
-            correctcounter = 0;
         end;
     end;
 
-    #Setup Portcodes
+    # setup Portcodes
     if (degrees[i] == 330) then
         deg_trg = 3;
     elseif (degrees[i] == 300) then
@@ -229,56 +230,76 @@ begin
         deg_trg = 6;
     end;
 
-    pcode_stim1 = (direction[i]*100) + (color[i]*10) + deg_trg;
-    pcode_stim2 = (relevant_feature[i]*100) + (congruency[i]*10) + answer[i];
-    term.print(printf(pcode_stim1, fint) + "\n");
-    term.print(printf(pcode_stim2, fint) + "\n");
+    pcode_stim = (direc_answer[i]*100) + (color[i]*10) + deg_trg;             # portcode for stim
+    pcode_cue = (relevant_feature[i]*100) + (congruency[i]*10) + answer[i];   # portcode for cue
 
-    # set event code for stim1
-    # stim_event1.set_event_code(avail_stims[stimuli[i]][1].description());
-    # set stimulus for stim1
-    stim1.set_part(1, avail_stims[stimuli[i]][1]);
-    # set legend for stim1
-    stim1.set_part(2, avail_legends[which_legend][1]);
-    stim1.set_part(3, avail_legends[which_legend][2]);
-    # set portcode for stim1
-    stim_event1.set_port_code(pcode_stim1);
+    # setup stimulus presentation
+    stim.set_part(1, avail_stims[stimuli[i]][1]);              # set stimulus pic
+    stim.set_part(2, avail_legends[which_legend][1]);          # set legend pic for stim
+    stim.set_part(3, avail_legends[which_legend][2]);
+    stim_event.set_port_code(pcode_stim);                      # set portcode for stim
+  
+    # setup cue presentation
+    cue.set_part(1, avail_stims[stimuli[i]][2]);               # set cue pic
+    cue.set_part(2, avail_legends[which_legend][1]);           # set legend pic for cue
+    cue.set_part(3, avail_legends[which_legend][2]);
+    cue_event.set_time(jitter[i]);                             # set jitter before cue onset
+    cue_event.set_duration(cue_duration);                      # set cue duration
+    cue_event.set_port_code(pcode_cue);                        # set portcode for cue
 
-    # set event code for stim2
-    # stim_event2.set_event_code(avail_stims[stimuli[i]][2].description());
-    # set stimulus for stim2
-    stim2.set_part(1, avail_stims[stimuli[i]][2]);
-    # set legend for stim1
-    stim2.set_part(2, avail_legends[which_legend][1]);
-    stim2.set_part(3, avail_legends[which_legend][2]);
-    # set jitter before stim2 onset
-    stim_event2.set_time(jitter[i]);
-    # set duration of stim2
-    stim_event2.set_duration(resp_cutoff);
-    # set portcode stim2
-    stim_event2.set_port_code(pcode_stim2);
+    # setup wait period
+    wait_pic.set_part(1, avail_stims[stimuli[i]][1]);          # set wait pic
+    wait_pic.set_part(2, avail_legends[which_legend][1]);      # set legend pic for wait period
+    wait_pic.set_part(3, avail_legends[which_legend][2]);
+    wait_event.set_time(jitter[i] + cue_duration);             # set wait period onset
+    wait_event.set_duration(resp_cutoff);                      # set wait period duration
 
     main_trial.present();
 
-    # pull stimulus data for stim1
-    stimulus_data timing_stim1 = stimulus_manager.get_stimulus_data((i*4)-3);
-    # pull stimulus data for stim2
-    stimulus_data info_stim2 = stimulus_manager.get_stimulus_data((i*4)-2);
+    # pull stimulus and response data needed for response evaluation
+    stimulus_data info_stim = stimulus_manager.get_stimulus_data((i*5)-4);  # get stimulus data for stim
+    stimulus_data info_cue = stimulus_manager.get_stimulus_data((i*5)-3);   # get stimulus data for cue
+    stimulus_data info_wait = stimulus_manager.get_stimulus_data((i*5)-2);  # get stimulus data for wait period
+    resp_count = response_manager.response_count();                         # determine if a response was given 0 = no response; 1 = response
+    response_data last_resp = response_manager.last_response_data();        # get stimulus data for response
+    resp_given = response_manager.last_response();                          # response given according to button presses: 1= left, 2=right, 0=miss
+    cue_onset = info_cue.time();                                            # get cue onset time
+    end_resp_window = (cue_onset + resp_cutoff);                            # determine at which time the response windows ends
 
+    # setup feedback presentation
+    feedback_pic.set_part(1, avail_stims[stimuli[i]][1]);      # set feedback pic
+    feedback_pic.set_part(2, avail_legends[which_legend][1]);  # set legend pic for feedback
+    feedback_pic.set_part(3, avail_legends[which_legend][2]);
+    
     # give feedback
-    feedback_pic.set_part(1, avail_stims[stimuli[i]][1]);
-    if (info_stim2.button() == 0) then
-        beep_event.set_stimulus(sounds[2]);
+    if (resp_count == 0) then                                  # miss
+        beep_onset = (1500 - resp_cutoff);                     # determine onset time for beep (1500ms after cue presented)
+	     beep_event.set_time(beep_onset);                       # set time for beep onset
+	     beep_event.set_stimulus(sounds[2]);                    # set beep
+        beep_event.set_event_code("beep");                     # set eventcode for beep
+        beep_event.set_port_code(3);                           # set portcode for beep
+        
+        feedback_duration = (beep_onset + 500);                # determine duration for the feedback trial (time of beep onset + 500ms)
+        feedback_event.set_duration(feedback_duration);        # set duration for feedback trial
+        
     else
-        beep_event.set_stimulus(sounds[1]);
+	     resp_onset = last_resp.time();                         # get response onset time
+        RT = (resp_onset - cue_onset);                         # determine reaction time
+	     
+	     beep_event.set_time(100);                              # set time for no beep
+        beep_event.set_stimulus(sounds[1]);                    # set no beep
+        beep_event.set_event_code("no beep");                  # set eventcode for no beep
+        beep_event.set_port_code(0);                           # set portcode for no beep
+ 
+        feedback_event.set_duration(500);                      # set duration for feedback trial
     end;
     feedback_trial.present();
 
-    # pull stimulus data for wait event
-    stimulus_data info_stim3 = stimulus_manager.get_stimulus_data((i*4)-1);
 
+    # pull stimulus data for feeback event
+    stimulus_data info_feedback = stimulus_manager.get_stimulus_data((i*5)-1);
     # pull stimulus data for beep event
-    stimulus_data info_sound = stimulus_manager.get_stimulus_data(i*4);
+    stimulus_data info_beep = stimulus_manager.get_stimulus_data(i*5);
 
     # print to output file
     data.print(printf(green_answer[i], fint) + "\t");
@@ -288,7 +309,7 @@ begin
     data.print(printf(SENW_answer[i], fint) + "\t");
     data.print(printf(SWNE_answer[i], fint) + "\t");
 
-    data.print(printf(i, fint) + "\t");                     # trial number
+    data.print(printf(i, fint) + "\t");                        # trial number
 
     data.print(printf(block_num[i], fint) + "\t");
     data.print(printf(incon_freq[i], fint) + "\t");
@@ -305,72 +326,70 @@ begin
 
     data.print(printf(answer[i], fint) + "\t");
 
-    data.print(printf(timing_stim1.time(), fint) + "\t");   # stim1 onset
-    data.print(printf(info_stim2.time(), fint) + "\t");     # stim2 onset
+    data.print(printf(info_stim.time(), fint) + "\t");         # stim onset
+    data.print(printf(cue_onset, fint) + "\t");                # cue onset
+    data.print(printf(resp_cutoff, fint) + "\t");              # time subject has to respond
 
     # Reaction Time
-    if (info_stim2.button() == 0) then    # if no reponse or late reponse
+    if (resp_count == 0) then  # if no reponse or late response
         data.print("NaN" + "\t");
     else
-        data.print(printf(info_stim2.reaction_time(), fint) + "\t");
+        data.print(printf(RT, fint) + "\t");
     end;
 
     # Response
-    if (info_stim2.button() == 1) then
-        data.print(printf(-1, fint) + "\t");
-    elseif(info_stim2.button() == 2) then
-        data.print(printf(1, fint) + "\t");
-    elseif(info_stim2.button() == 0) then
+    if (resp_count == 0) then                     # miss
         data.print(printf(0, fint) + "\t");
+    else
+        if (resp_given == 1) then                 # left
+            data.print(printf(1, fint) + "\t");
+        elseif (resp_given == 2) then             # right
+            data.print(printf(2, fint) + "\t");
+        end;
     end;
 
     # Evaluate Response
-    if (answer[i] == -1) then
-        if (info_stim2.button() == 1) then
-            correctcounter = correctcounter + 1;
-            data.print(printf(1, fint) + "\t");
-        elseif(info_stim2.button() == 0) then
-            misscounter = misscounter + 1;
-            data.print("NaN" + "\t");
-        else
-            incorrectcounter = incorrectcounter + 1;
-            data.print(printf(-1, fint) + "\t");
-        end;
-    elseif (answer[i] == 1) then
-        if (info_stim2.button() == 2) then
-            correctcounter = correctcounter + 1;
-            data.print(printf(1, fint) + "\t");
-        elseif(info_stim2.button() == 0) then
-            misscounter = misscounter + 1;
-            data.print("NaN" + "\t");
-        else
-            incorrectcounter = incorrectcounter + 1;
-            data.print(printf(-1, fint) + "\t");
+    if (resp_count == 0) then
+        misscounter = misscounter + 1;
+        data.print("NaN" + "\t");
+    else
+        if (answer[i] == 1) then
+            if (resp_given == 1) then
+                correctcounter = correctcounter + 1;
+                data.print(printf(1, fint) + "\t");
+            elseif (resp_given == 2) then
+	             incorrectcounter = incorrectcounter + 1;
+                data.print(printf(2, fint) + "\t");
+            end;
+        elseif (answer[i] == 2) then
+            if (resp_given == 2) then
+                correctcounter = correctcounter + 1;
+                data.print(printf(1, fint) + "\t");
+            elseif (resp_given == 1) then
+                incorrectcounter = incorrectcounter + 1;
+                data.print(printf(2, fint) + "\t");
+            end;
         end;
     end;
 
-    block_trl_num = block_trl_num +1;
+    # determine current error rate
+    perc_incorrect = (incorrectcounter * 100) / i;
+    data.print(printf(incorrectcounter, fint) + "\t");
+    data.print(printf(perc_incorrect, fint) + "\t");
 
-    perc_incorrect = (incorrectcounter * 100) / block_trl_num;
-    perc_miss = (misscounter * 100) / block_trl_num;
+    # determine current miss rate
+    perc_miss = (misscounter * 100) / i;
+    data.print(printf(misscounter, fint) + "\t");
+    data.print(printf(perc_miss, fint) + "\t");
 
-    if ((perc_incorrect < 10) && (resp_cutoff > 249)) then
+    # set new resp_cutoff according to error rate and miss rate
+    if ((perc_incorrect < 10) && (perc_miss < 10) && (resp_cutoff > 350)) then
         resp_cutoff = resp_cutoff - 10;
     elseif ((perc_incorrect > 15) && (resp_cutoff < 1400)) then
         resp_cutoff = resp_cutoff + 10;
-    end;
-
-    if ((perc_miss > 10) && (resp_cutoff < 1400)) then
+    elseif ((perc_miss > 10) && (resp_cutoff < 1400)) then
         resp_cutoff = resp_cutoff + 10;
     end;
-
-    term.print("\n" + "resp_cutoff=" + string(resp_cutoff));
-    term.print("\n" + "incorrect_counter=" + string(incorrectcounter));
-    term.print("\n" + "correct_counter=" + string(correctcounter));
-    term.print("\n" + "miss_counter=" + string(misscounter));
-    term.print("\n" + "block_trl_num=" + string(block_trl_num));
-    term.print("\n" + "perc_incorrect=" + string(perc_incorrect));
-    term.print("\n" + "perc_miss=" + string(perc_miss));
 
     data.print( "\n" );
 
@@ -379,3 +398,36 @@ end;
 
 data.close(); # close output file
 finish.present();
+
+#### Port Codes: ############################
+#
+#	Break Trial:	99
+#
+#-------Stimuli:
+#	direction =  left:  1xx	 x determined by color (1-4) and degrees (3 or 6)
+#              right:  2xx
+#
+#	color =     green:  x1x  x determined by direction (1 or 2) and degrees (3 or 6)
+#               blue:  x2x
+#               pink:  x3x
+#             orange:  x4x
+#
+#  degrees =     330:  xx3  x determined by direction (1 or 2) and color (1-4)
+#                300:  xx6
+#                 60:  xx6
+#                 30:  xx3
+#
+#-------Cue:
+#  relevant feature =  color: 1xx
+#                     orient: 2xx
+#
+#  congruency =    congruent: x1x
+#                incongruent: x2x
+#
+#  answer =             left: xx1
+#                      right: xx2
+#
+#-------Response:
+#	Left = 1	
+#	Right = 2
+#	Miss = 3
