@@ -4,8 +4,8 @@
 # required files:
 #     COIN.pcl
 #     events files in the input\ folder
-#         gbNW_poNE_1.txt, gbNW_poNE_2.txt
-#         poNW_gbNE_1.txt, poNW_gbNE_2.txt
+#         gpNW_boNE_1.txt, gpNW_boNE_2.txt
+#         boNW_gpNE_1.txt, boNW_gpNE_2.txt
 #     stim1 PNGs in the stimuli\ folder
 #         green-SENW-330.png, green-SWNE-030.png
 #         green-SENW-300.png, green-SWNE-060.png
@@ -49,10 +49,12 @@
 #         31_orange-SWNE-060_farbe.png
 #         32_orange-SWNE-060_orient.png
 #     legend PNGs in the stimuli\ folder
-#         legend_gbNW.png, legend_poNE.png
-#         legend_poNW.png, legend_gbNE.png
+#         legend_g300.png, legend_b300.png
+#         legend_p330.png, legend_0330.png
+#         legend_b30.png, legend_g30.png
+#         legend_o60.png, legend_p60.png
 #
-# version 2.0.0 - 2016, Laura Waite
+# version 3.0.0 - 2016, Laura Waite
 ############################################################################
 
 #
@@ -61,16 +63,16 @@
 int resp_cutoff = 700;                 # time window for subject to respond after cue presentation
 int cue_duration = 250;                # duration the cue is presented
 int resp_window;                       # total time subject has to respond "in time" (cue_duration + resp_cutoff)
-int ttime; 	                           # cue onset time
-int rtime;	                           # response time
+int ttime;                             # cue onset time
+int rtime;                             # response time
 int RT;                                # reaction time
 int waittime;                          # duration of wait trial
 
-int buttonpress;	                     # index of first button press
+int buttonpress;                       # index of first button press
 int corrbutton;                        # index of correction(second) button press
 array<int> CORRECT[1000];              # accuracy of first button press
 array<int> CORRECTION[1000];           # accuracy of second button press
-bool missflag = false;	               # value is set to true if subject doesn't respond within response window
+bool missflag = false;                 # value is set to true if subject doesn't respond within response window
 int resp_count;                        # determines if a response was given for the current trial
 int wait_resp;
 int trial_resp_count;                  # total number of button press per trial
@@ -80,12 +82,12 @@ int incorrectcounter;                  # number of errors
 int misscounter;                       # number of misses
 int perc_incorrect;                    # percent errors
 int perc_miss;                         # percent misses
-int latecorrect;		                  # counts correct responses that were too late
-int lateincorrect;	                  # counts incorrect responses that were too late
+int latecorrect;                       # counts correct responses that were too late
+int lateincorrect;                     # counts incorrect responses that were too late
 
 int deg_trg;                           # EEG trigger for the degrees of current stim
 int pcode_stim;                        # Stimulus port code
-int pcode_cue;                         # Cue port code 
+int pcode_cue;                         # Cue port code
 
 #
 # read input file
@@ -112,8 +114,10 @@ array<int> green_answer[2000];
 array<int> blue_answer[2000];
 array<int> pink_answer[2000];
 array<int> orange_answer[2000];
-array<int> SENW_answer[2000];
-array<int> SWNE_answer[2000];
+array<int> answer_30[2000];
+array<int> answer_60[2000];
+array<int> answer_300[2000];
+array<int> answer_330[2000];
 array<int> jitter[2000];
 array<int> block_num[2000];
 array<int> total_trials[0];
@@ -136,8 +140,10 @@ begin
     blue_answer[i] = events.get_int();         # used only for output file
     pink_answer[i] = events.get_int();         # used only for output file
     orange_answer[i] = events.get_int();       # used only for output file
-    SENW_answer[i] = events.get_int();         # used only for output file
-    SWNE_answer[i] = events.get_int();         # used only for output file
+    answer_30[i] = events.get_int();           # used only for output file
+    answer_60[i] = events.get_int();           # used only for output file
+    answer_300[i] = events.get_int();          # used only for output file
+    answer_330[i] = events.get_int();          # used only for output file
     jitter[i] = events.get_int();
     block_num[i] = events.get_int();
     total_trials.add(i);
@@ -154,8 +160,8 @@ string fint = "%8d";        # output format int
 string subject = logfile.filename();
 output_file data = new output_file;
 data.open(subject + ".txt");
-# (headers) grn_ans  blu_ans  pnk_ans  org_ans  SENW_ans  SWNE_ans  trial  block  incon_freq  color_freq  congrueny   featr  color  color_ans  degrees  direc_ans  resp_window  cue_time  resp_time  reation_time   answer  1resp  1resp_accuracy  2resp  2resp_accuracy  total_buttonpresses  correct  latecorrect  lateinocrrect  incorrect  perc_incorrect  misses  perc_misses
-data.print("grn_ans\tblu_ans\tpnk_ans\torg_ans\tSENW_ans\tSWNE_ans\ttrial\tblock\tincon_freq\tcolor_freq\tcongruency\tfeatr\tcolor\tcolor_ans\tdegrees\tdirec_ans\tresp_window\tcue_time\tresp_time\treaction_time\tanswer\t1resp\t1resp_accuracy\t2resp\t2resp_accuracy\ttotal_buttonpresses\tcorrect\tlatecorrect\tlateincorrect\tincorrect\tperc_incorrect\tmisses\tperc_misses\n");
+# (headers) grn_ans  blu_ans  pnk_ans  org_ans  300_ans  330_ans  30_ans  60_ans  trial  block  incon_freq  color_freq  congrueny   featr  color  color_ans  degrees  deg_ans  resp_window  cue_time  resp_time  reation_time   answer  1resp  1resp_accuracy  2resp  2resp_accuracy  total_buttonpresses  correct  latecorrect  lateinocrrect  incorrect  perc_incorrect  misses  perc_misses
+data.print("grn_ans\tblu_ans\tpnk_ans\torg_ans\t300_ans\t330_ans\t30_ans\t60_ans\ttrial\tblock\tincon_freq\tcolor_freq\tcongruency\tfeatr\tcolor\tcolor_ans\tdegrees\tdeg_ans\tresp_window\tcue_time\tresp_time\treaction_time\tanswer\t1resp\t1resp_accuracy\t2resp\t2resp_accuracy\ttotal_buttonpresses\tcorrect\tlatecorrect\tlateincorrect\tincorrect\tperc_incorrect\tmisses\tperc_misses\n");
 
 #
 # load stimuli pair arrays into a single array
@@ -198,16 +204,16 @@ avail_stims[32].assign(orange_SWNE_060_orient);
 # load legend pair arrays into a single array
 #
 array<bitmap> avail_legends[2][0];
-avail_legends[1].assign(gbNW_poNE);
-avail_legends[2].assign(poNW_gbNE);
+avail_legends[1].assign(gpNW_boNE);
+avail_legends[2].assign(boNW_gpNE);
 
 #
 # declare which legend from avail_legends to be used
 #
 int which_legend;
-if (rule == "gbNW_poNE") then
+if (rule == "gpNW_boNE") then
     which_legend = 1;
-elseif (rule == "poNW_gbNE") then
+elseif (rule == "boNW_gpNE") then
     which_legend = 2;
 end;
 
@@ -216,9 +222,9 @@ end;
 #
 loop int i=1 until i > total_trials.count()
 begin
-	buttonpress = 0;
-	missflag = false;
-	
+    buttonpress = 0;
+    missflag = false;
+
     # pause between blocks
     if (i != 1) then # but don't pause before the first trial
         if (block_num[i] != block_num[i-1]) then
@@ -229,17 +235,17 @@ begin
     end;
 
     # setup Portcodes
-    if (degrees[i] == 330) then
-        deg_trg = 3;
-    elseif (degrees[i] == 300) then
+    if (degrees[i] == 300) then
         deg_trg = 6;
+    elseif (degrees[i] == 330) then
+        deg_trg = 7;
     elseif (degrees[i] == 30) then
-        deg_trg = 3;
+        deg_trg = 8;
     elseif (degrees[i] == 60) then
-        deg_trg = 6;
+        deg_trg = 9;
     end;
 
-    pcode_stim = (direc_answer[i]*100) + (color[i]*10) + deg_trg;             # portcode for stim
+    pcode_stim = (color[i]*10) + deg_trg;   # portcode for stim
     pcode_cue = (relevant_feature[i]*100) + (congruency[i]*10) + answer[i];   # portcode for cue
 
     resp_count = response_manager.total_response_count();
@@ -247,21 +253,27 @@ begin
     missflag = false;
 
     default.set_part(1, avail_stims[stimuli[i]][1]);
-    default.set_part(2, avail_legends[which_legend][1]);        
+    default.set_part(2, avail_legends[which_legend][1]);
     default.set_part(3, avail_legends[which_legend][2]);
+    default.set_part(4, avail_legends[which_legend][3]);
+    default.set_part(5, avail_legends[which_legend][4]);
 
     # present stimulus
     stim.set_part(1, avail_stims[stimuli[i]][1]);              # set stimulus pic
     stim.set_part(2, avail_legends[which_legend][1]);          # set legend pic for stim
     stim.set_part(3, avail_legends[which_legend][2]);
+    stim.set_part(4, avail_legends[which_legend][3]);
+    stim.set_part(5, avail_legends[which_legend][4]);
     stim_event.set_duration(jitter[i]);
     stim_event.set_port_code(pcode_stim);                      # set portcode for stim
     stim_trial.present();
-  
+
     # present cue
     cue.set_part(1, avail_stims[stimuli[i]][2]);               # set cue pic
     cue.set_part(2, avail_legends[which_legend][1]);           # set legend pic for cue
     cue.set_part(3, avail_legends[which_legend][2]);
+    cue.set_part(4, avail_legends[which_legend][3]);
+    cue.set_part(5, avail_legends[which_legend][4]);
     cue_event.set_duration(cue_duration);                      # set cue duration
     cue_event.set_port_code(pcode_cue);                        # set portcode for cue
     cue_trial.present();
@@ -274,6 +286,8 @@ begin
     respond_pic.set_part(1, avail_stims[stimuli[i]][1]);          # set pic
     respond_pic.set_part(2, avail_legends[which_legend][1]);      # set legend pic
     respond_pic.set_part(3, avail_legends[which_legend][2]);
+    respond_pic.set_part(4, avail_legends[which_legend][3]);
+    respond_pic.set_part(5, avail_legends[which_legend][4]);
     respond_trial.set_duration(resp_cutoff);                      # set respond period duration
     respond_trial.present();
 
@@ -283,18 +297,18 @@ begin
     # evaluate response
     if (resp_count == wait_resp) then		# one response has happened since start of trial
         response_data lbp = response_manager.last_response_data();	#last_button_press
-        if (response_manager.last_response() != 3) then
+        if (response_manager.last_response() != 5) then
             rtime = lbp.time();
             RT = rtime - ttime;
             buttonpress = lbp.code();
             if (RT < 0) then  # response was before cue presentation
-	             CORRECT[i] = 9;
-	             misscounter = misscounter +1;
-	             waittime = (1500 - (cue_duration + resp_cutoff));
-	             beep_event.set_stimulus(sounds[2]);                    # set beep
+                CORRECT[i] = 9;
+                misscounter = misscounter +1;
+                waittime = (1500 - (cue_duration + resp_cutoff));
+                beep_event.set_stimulus(sounds[2]);                    # set beep
                 beep_event.set_event_code("beep");                     # set eventcode for beep
-                beep_event.set_port_code(3);                           # set portcode for beep
-            elseif (answer[i] == 1) then # if left
+                beep_event.set_port_code(5);                           # set portcode for beep
+            elseif (answer[i] == 1) then # if left1
                 if (buttonpress == 1) then
                     CORRECT[i] = 1;
                     correctcounter = correctcounter + 1;
@@ -306,14 +320,38 @@ begin
                 beep_event.set_stimulus(sounds[1]);                    # set no beep
                 beep_event.set_event_code("no beep");                  # set eventcode for no beep
                 beep_event.set_port_code(0);                           # set portcode for no beep
-            elseif (answer[i] == 2) then # if right
+            elseif (answer[i] == 2) then # if right1
                 if (buttonpress == 2) then
                     CORRECT[i] = 1;
                     correctcounter = correctcounter + 1;
                 else
                     CORRECT[i] = 2;
                     incorrectcounter = incorrectcounter + 1;
-                end;	
+                end;
+                waittime = (1500 - RT);
+                beep_event.set_stimulus(sounds[1]);                    # set no beep
+                beep_event.set_event_code("no beep");                  # set eventcode for no beep
+                beep_event.set_port_code(0);                           # set portcode for no beep
+            elseif (answer[i] == 3) then # if left2
+                if (buttonpress == 3) then
+                    CORRECT[i] = 1;
+                    correctcounter = correctcounter + 1;
+                else
+                    CORRECT[i] = 2;
+                    incorrectcounter = incorrectcounter + 1;
+                end;
+                waittime = (1500 - RT);
+                beep_event.set_stimulus(sounds[1]);                    # set no beep
+                beep_event.set_event_code("no beep");                  # set eventcode for no beep
+                beep_event.set_port_code(0);                           # set portcode for no beep
+            elseif (answer[i] == 4) then # if right2
+                if (buttonpress == 4) then
+                    CORRECT[i] = 1;
+                    correctcounter = correctcounter + 1;
+                else
+                    CORRECT[i] = 2;
+                    incorrectcounter = incorrectcounter + 1;
+                end;
                 waittime = (1500 - RT);
                 beep_event.set_stimulus(sounds[1]);                    # set no beep
                 beep_event.set_event_code("no beep");                  # set eventcode for no beep
@@ -327,23 +365,23 @@ begin
         RT = 0;
         missflag = true;
         waittime = (1500 - (cue_duration + resp_cutoff));
-        beep_event.set_stimulus(sounds[2]);                    # set beep
-        beep_event.set_event_code("beep");                     # set eventcode for beep
-        beep_event.set_port_code(3);                           # set portcode for beep
+        beep_event.set_stimulus(sounds[2]);                            # set beep
+        beep_event.set_event_code("beep");                             # set eventcode for beep
+        beep_event.set_port_code(5);                                   # set portcode for beep
     elseif (resp_count > wait_resp) then	# more than one response has happened in this trial (subject responded at least once before cue appeared)
-        response_data lbp = response_manager.last_response_data();	#last_button_press
-        if (response_manager.last_response() != 3) then
+        response_data lbp = response_manager.last_response_data();     #last_button_press
+        if (response_manager.last_response() != 5) then
             rtime = lbp.time();
             RT = rtime - ttime;
             buttonpress = lbp.code();
             if (RT < 0) then  # subject only responded before cue appeared
-	             CORRECT[i] = 9;
-	             misscounter = misscounter +1;
-	             waittime = (1500 - (cue_duration + resp_cutoff));
-	             beep_event.set_stimulus(sounds[2]);                    # set beep
+                CORRECT[i] = 9;
+                misscounter = misscounter +1;
+                waittime = (1500 - (cue_duration + resp_cutoff));
+                beep_event.set_stimulus(sounds[2]);                    # set beep
                 beep_event.set_event_code("beep");                     # set eventcode for beep
-                beep_event.set_port_code(3);                           # set portcode for beep
-            elseif (answer[i] == 1) then # if left      subject responded before and after cue appeared
+                beep_event.set_port_code(5);                           # set portcode for beep
+            elseif (answer[i] == 1) then # if left1      subject responded before and after cue appeared
                 if (buttonpress == 1) then
                     CORRECT[i] = 1;
                     correctcounter = correctcounter + 1;
@@ -355,8 +393,32 @@ begin
                 beep_event.set_stimulus(sounds[1]);                    # set no beep
                 beep_event.set_event_code("no beep");                  # set eventcode for no beep
                 beep_event.set_port_code(0);                           # set portcode for no beep
-            elseif (answer[i] == 2) then # if right
+            elseif (answer[i] == 2) then # if right1
                 if (buttonpress == 2) then
+                    CORRECT[i] = 1;
+                    correctcounter = correctcounter + 1;
+                else
+                    CORRECT[i] = 2;
+                    incorrectcounter = incorrectcounter + 1;
+                end;
+                waittime = (1500 - RT);
+                beep_event.set_stimulus(sounds[1]);                    # set no beep
+                beep_event.set_event_code("no beep");                  # set eventcode for no beep
+                beep_event.set_port_code(0);                           # set portcode for no beep
+            elseif (answer[i] == 3) then # if left2
+                if (buttonpress == 3) then
+                    CORRECT[i] = 1;
+                    correctcounter = correctcounter + 1;
+                else
+                    CORRECT[i] = 2;
+                    incorrectcounter = incorrectcounter + 1;
+                end;
+                waittime = (1500 - RT);
+                beep_event.set_stimulus(sounds[1]);                    # set no beep
+                beep_event.set_event_code("no beep");                  # set eventcode for no beep
+                beep_event.set_port_code(0);                           # set portcode for no beep
+            elseif (answer[i] == 4) then # if right2
+                if (buttonpress == 4) then
                     CORRECT[i] = 1;
                     correctcounter = correctcounter + 1;
                 else
@@ -375,17 +437,19 @@ begin
     wait_pic.set_part(1, avail_stims[stimuli[i]][1]);          # set pic
     wait_pic.set_part(2, avail_legends[which_legend][1]);      # set legend pic
     wait_pic.set_part(3, avail_legends[which_legend][2]);
+    wait_pic.set_part(4, avail_legends[which_legend][3]);
+    wait_pic.set_part(5, avail_legends[which_legend][4]);
     wait_trial.set_duration(waittime);                         # set respond period duration
     wait_trial.present();
 
     # look for any responses that have happened later
     if (missflag == true && response_manager.response_count() > 0) then
         response_data fbp = response_manager.get_response_data(response_manager.response_data_count() - response_manager.response_count() + 1);	# get first button press during blank screen
-        if ( fbp.code() < 3 ) then # check for left or right button
+        if ( fbp.code() < 5 ) then # check for left or right button
             buttonpress = fbp.code();
             rtime = fbp.time();
             RT = rtime - ttime;
-            if (answer[i] == 1) then # if left
+            if (answer[i] == 1) then # if left1
                 if (buttonpress == 1) then
                     latecorrect = latecorrect + 1;
                     CORRECT[i] = 1;
@@ -393,43 +457,73 @@ begin
                     lateincorrect = lateincorrect + 1;
                     CORRECT[i] = 2;
                 end;
-            elseif (answer[i] == 2) then # if right
+            elseif (answer[i] == 2) then # if right1
                 if (buttonpress == 2) then
                     latecorrect = latecorrect + 1;
                     CORRECT[i] = 1;
                 else
                     lateincorrect = lateincorrect + 1;
                     CORRECT[i] = 2;
-                end;	
+                end;
+            elseif (answer[i] == 3) then # if left2
+                if (buttonpress == 3) then
+                    latecorrect = latecorrect + 1;
+                    CORRECT[i] = 1;
+                else
+                    lateincorrect = lateincorrect + 1;
+                    CORRECT[i] = 2;
+                end;
+            elseif (answer[i] == 4) then # if right2
+                if (buttonpress == 4) then
+                    latecorrect = latecorrect + 1;
+                    CORRECT[i] = 1;
+                else
+                    lateincorrect = lateincorrect + 1;
+                    CORRECT[i] = 2;
+                end;
             end;
         end;
     elseif (missflag == false && response_manager.response_count() > 0) then
         response_data fbp = response_manager.last_response_data();
         corrbutton = fbp.code();
-        if (answer[i] == 1) then # if left
+        if (answer[i] == 1) then # if left1
             if (corrbutton == 1 && CORRECT[i] == 2) then
                 CORRECTION[i] = 1;
             else
                 CORRECTION[i] = 2;
             end;
-        elseif (answer[i] == 2) then # if right
+        elseif (answer[i] == 2) then # if right1
             if (corrbutton == 2 && CORRECT[i] == 2) then
                 CORRECTION[i] = 1;
             else
                 CORRECTION[i] = 2;
-            end;	
+            end;
+        elseif (answer[i] == 3) then # if left2
+            if (corrbutton == 3 && CORRECT[i] == 2) then
+                CORRECTION[i] = 1;
+            else
+                CORRECTION[i] = 2;
+            end;
+        elseif (answer[i] == 4) then # if right2
+            if (corrbutton == 4 && CORRECT[i] == 2) then
+                CORRECTION[i] = 1;
+            else
+                CORRECTION[i] = 2;
+            end;
         end;
     elseif (missflag == false && response_manager.response_count() == 0) then  # if no response
         corrbutton = 0;
     elseif (missflag == true && response_manager.response_count() == 0) then  # if no response
-	     corrbutton = 0;
-	     rtime = 0;
+        corrbutton = 0;
+        rtime = 0;
     end;
 
     # present feedbacktrial
     feedback_pic.set_part(1, avail_stims[stimuli[i]][1]);      # set feedback pic
-    feedback_pic.set_part(2, avail_legends[which_legend][1]);  # set legend pic for feedback
+    feedback_pic.set_part(2, avail_legends[which_legend][1]);  # set legend pic
     feedback_pic.set_part(3, avail_legends[which_legend][2]);
+    feedback_pic.set_part(4, avail_legends[which_legend][3]);
+    feedback_pic.set_part(5, avail_legends[which_legend][4]);
     feedback_trial.present();
 
     # calculate total button presses for current trial
@@ -443,7 +537,7 @@ begin
     perc_miss = (misscounter * 100) / i;
 
     # set new resp_cutoff according to error rate and miss rate
-    if ((perc_incorrect < 8) && (perc_miss < 8) && (resp_window > 250)) then
+    if ((perc_incorrect < 8) && (perc_miss < 8) && (resp_window > 300)) then
         resp_cutoff = resp_cutoff - 10;
     elseif ((perc_incorrect > 20) && (resp_window < 1400)) then
         resp_cutoff = resp_cutoff + 10;
@@ -456,8 +550,10 @@ begin
     data.print(printf(blue_answer[i], fint) + "\t");
     data.print(printf(pink_answer[i], fint) + "\t");
     data.print(printf(orange_answer[i], fint) + "\t");
-    data.print(printf(SENW_answer[i], fint) + "\t");
-    data.print(printf(SWNE_answer[i], fint) + "\t");
+    data.print(printf(answer_30[i], fint) + "\t");
+    data.print(printf(answer_60[i], fint) + "\t");
+    data.print(printf(answer_300[i], fint) + "\t");
+    data.print(printf(answer_330[i], fint) + "\t");
 
     data.print(printf(i, fint) + "\t");                        # trial number
 
@@ -502,23 +598,20 @@ end;
 data.close(); # close output file
 finish.present();
 
-#### Port Codes: ############################
+#### Port Codes: ######################################
 #
-#	Break Trial:	99
+#   Break Trial:    99
 #
 #-------Stimuli:
-#	direction =  left:  1xx	 x determined by color (1-4) and degrees (3 or 6)
-#              right:  2xx
+#   color =     green: 1x  x degrees (6-9)
+#               blue:  2x
+#               pink:  3x
+#             orange:  4x
 #
-#	color =     green:  x1x  x determined by direction (1 or 2) and degrees (3 or 6)
-#               blue:  x2x
-#               pink:  x3x
-#             orange:  x4x
-#
-#  degrees =     330:  xx3  x determined by direction (1 or 2) and color (1-4)
-#                300:  xx6
-#                 60:  xx6
-#                 30:  xx3
+#  degrees =     300:  x6  x determined by color (1-4)
+#                330:  x7
+#                 60:  x8
+#                 30:  x9
 #
 #-------Cue:
 #  relevant feature =  color: 1xx
@@ -527,10 +620,14 @@ finish.present();
 #  congruency =    congruent: x1x
 #                incongruent: x2x
 #
-#  answer =             left: xx1
-#                      right: xx2
+#  answer =             left1: xx1
+#                      right1: xx2
+#                       left2: xx3
+#                      right2: xx4
 #
 #-------Response:
-#	Left = 1	
-#	Right = 2
-#	Miss = 3
+#   Left1 = 1
+#   Right1 = 2
+#   Left2 = 3
+#   Right2 = 4
+#   Miss = 5
