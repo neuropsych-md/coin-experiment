@@ -4,8 +4,8 @@
 # required files:
 #     COIN.pcl
 #     events files in the input\ folder
-#         gbNW_poNE_1.txt, gbNW_poNE_2.txt
-#         poNW_gbNE_1.txt, poNW_gbNE_2.txt
+#         gpNW_boNE_1.txt, gpNW_boNE_2.txt
+#         boNW_gpNE_1.txt, boNW_gpNE_2.txt
 #     stim1 PNGs in the stimuli\ folder
 #         green-SENW-330.png, green-SWNE-030.png
 #         green-SENW-300.png, green-SWNE-060.png
@@ -49,17 +49,19 @@
 #         31_orange-SWNE-060_farbe.png
 #         32_orange-SWNE-060_orient.png
 #     legend PNGs in the stimuli\ folder
-#         legend_gbNW.png, legend_poNE.png
-#         legend_poNW.png, legend_gbNE.png
+#         legend_g300.png, legend_b300.png
+#         legend_p330.png, legend_0330.png
+#         legend_b30.png, legend_g30.png
+#         legend_o60.png, legend_p60.png
 #
-# version 2.0.0 - 2016, Laura Waite
+# version 3.0.0 - 2016, Laura Waite
 #################################################################################
 
 pcl_file = "COIN.pcl";
 
 response_matching = simple_matching;
-active_buttons = 3;
-button_codes = 1,2,3;    # 1 = left; 2 = right
+active_buttons = 5;
+button_codes = 1,2,3,4,5;    # 1 = left1 (left index finger); 2 = right1 (right index finger); 3 = left2 (left middle finger); 4 = right2 (right middle finger)
 
 #
 # EEG Triggers
@@ -237,14 +239,18 @@ array {
 # legend
 #
 array {
-    bitmap {filename = "legend_gbNW.png";} left;
-    bitmap {filename = "legend_poNE.png";} right;
-} gbNW_poNE;
+    bitmap {filename = "legend_g300.png";} left2;
+    bitmap {filename = "legend_p330.png";} left1;
+    bitmap {filename = "legend_b30.png";} right1;
+    bitmap {filename = "legend_o60.png";} right2;
+} gpNW_boNE;
 
 array {
-    bitmap {filename = "legend_poNW.png";};
-    bitmap {filename = "legend_gbNE.png";};
-} poNW_gbNE;
+    bitmap {filename = "legend_b300.png";};
+    bitmap {filename = "legend_o330.png";};
+    bitmap {filename = "legend_g30.png";};
+    bitmap {filename = "legend_p60.png";};
+} boNW_gpNE;
 
 #
 # sound feedback
@@ -259,8 +265,10 @@ array {
 #
 picture {
     bitmap green_SENW; x=0; y=0;
-    bitmap left; x=-300; y=-450;
-    bitmap right; x=300; y=-450;
+    bitmap left2; x=-500; y=-450;
+    bitmap left1; x=-200; y=-450;
+    bitmap right1; x=300; y=-450;
+    bitmap right2; x=600; y=-450;
 } default;
 
 #
@@ -300,8 +308,10 @@ trial {
     stimulus_event {
         picture {
             bitmap green_SENW; x=0; y=0;
-            bitmap left; x=-300; y=-450;
-            bitmap right; x=300; y=-450;
+            bitmap left2; x=-500; y=-450;
+            bitmap left1; x=-200; y=-450;
+            bitmap right1; x=300; y=-450;
+            bitmap right2; x=600; y=-450;
         } stim;
         duration = next_picture;
         code = "stim";
@@ -317,8 +327,10 @@ trial {
     stimulus_event {
         picture {
             bitmap farbe; x=0; y=0;
-            bitmap left; x=-300; y=-450;
-            bitmap right; x=300; y=-450;
+            bitmap left2; x=-500; y=-450;
+            bitmap left1; x=-200; y=-450;
+            bitmap right1; x=300; y=-450;
+            bitmap right2; x=600; y=-450;
         } cue;
         duration = next_picture;
         code = "cue";
@@ -333,8 +345,10 @@ trial {
     trial_duration = 700;
     picture {
        bitmap green_SENW; x=0; y=0;
-       bitmap left; x=-300; y=-450;
-       bitmap right; x=300; y=-450;
+       bitmap left2; x=-500; y=-450;
+       bitmap left1; x=-200; y=-450;
+       bitmap right1; x=300; y=-450;
+       bitmap right2; x=600; y=-450;
     } respond_pic;
     code = "respond";
 } respond_trial;
@@ -347,10 +361,12 @@ trial {
     trial_duration = 500;
     picture {
        bitmap green_SENW; x=0; y=0;
-       bitmap left; x=-300; y=-450;
-       bitmap right; x=300; y=-450;
+       bitmap left2; x=-500; y=-450;
+       bitmap left1; x=-200; y=-450;
+       bitmap right1; x=300; y=-450;
+       bitmap right2; x=600; y=-450;
     } wait_pic;
-    target_button = 3;
+    target_button = 5;
     code = "wait";
 } wait_trial;
 
@@ -362,8 +378,10 @@ trial {
     stimulus_event {
         picture {
            bitmap green_SENW; x=0; y=0;
-           bitmap left; x=-300; y=-450;
-           bitmap right; x=300; y=-450;
+           bitmap left2; x=-500; y=-450;
+           bitmap left1; x=-200; y=-450;
+           bitmap right1; x=300; y=-450;
+           bitmap right2; x=600; y=-450;
        } feedback_pic;
        duration = 500;
        code = "feedback";
