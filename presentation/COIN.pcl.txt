@@ -2,7 +2,7 @@
 # --------------------------------------------------------------------------
 #
 # required files:
-#     COIN.pcl
+#     COIN.sce
 #     events files in the input\ folder
 #         gpNW_boNE_1.txt, gpNW_boNE_2.txt
 #         boNW_gpNE_1.txt, boNW_gpNE_2.txt
