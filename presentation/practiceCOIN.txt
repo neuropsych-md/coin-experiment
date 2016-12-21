@@ -626,20 +626,20 @@ begin
     ttime = cuetime.time();
 
     # present respond period
-    respond_pic.set_part(1, avail_stims[stimuli[i]][1]);       # set pic
-    respond_pic.set_part(2, avail_legends[which_legend][1]);   # set legend pic
+    respond_pic.set_part(1, avail_stims[stimuli[i]][1]);          # set pic
+    respond_pic.set_part(2, avail_legends[which_legend][1]);      # set legend pic
     respond_pic.set_part(3, avail_legends[which_legend][2]);
     respond_pic.set_part(4, avail_legends[which_legend][3]);
     respond_pic.set_part(5, avail_legends[which_legend][4]);
-    respond_trial.set_duration(resp_cutoff);                   # set respond period duration
+    respond_trial.set_duration(resp_cutoff);                      # set respond period duration
     respond_trial.present();
 
     # get response data
     resp_count = response_manager.total_response_count();
 
     # evaluate response
-    if (resp_count == wait_resp) then                          # one response has happened since start of trial
-        response_data lbp = response_manager.last_response_data();  # last_button_press
+    if (resp_count == wait_resp) then    # one response has happened since start of trial
+        response_data lbp = response_manager.last_response_data();    #last_button_press
         if (response_manager.last_response() != 5) then
             rtime = lbp.time();
             RT = rtime - ttime;
@@ -648,6 +648,7 @@ begin
                 CORRECT[i] = 9;
                 misscounter = misscounter +1;
                 waittime = (1500 - (cue_duration + resp_cutoff));
+                beep_event.set_stimulus(sounds[1]);                    # set no beep
                 feedback_pic.set_part(1, slow);
                 slow_txt.set_caption("Bitte schneller antworten!");
                 slow_txt.redraw();
@@ -716,24 +717,26 @@ begin
         RT = 0;
         missflag = true;
         waittime = (1500 - (cue_duration + resp_cutoff));
+        beep_event.set_stimulus(sounds[1]);                    # set no beep
         feedback_pic.set_part(1, slow);
         slow_txt.set_caption("Bitte schneller antworten!");
         slow_txt.redraw();
-    elseif (resp_count > wait_resp) then  # more than one response has happened in this trial (subject responded at least once before cue appeared)
+    elseif (resp_count > wait_resp) then	# more than one response has happened in this trial (subject responded at least once before cue appeared)
         response_data lbp = response_manager.last_response_data();	#last_button_press
         if (response_manager.last_response() != 5) then
             rtime = lbp.time();
             RT = rtime - ttime;
             buttonpress = lbp.code();
             if (RT < 0) then  # subject only responded before cue appeared
-	             CORRECT[i] = 9;
-	             buttonpress = 9;
-	             misscounter = misscounter +1;
-	             waittime = (1500 - (cue_duration + resp_cutoff));
+                CORRECT[i] = 9;
+                buttonpress = 9;
+                misscounter = misscounter +1;
+                waittime = (1500 - (cue_duration + resp_cutoff));
+                beep_event.set_stimulus(sounds[1]);                    # set no beep
                 feedback_pic.set_part(1, slow);
                 slow_txt.set_caption("Bitte schneller antworten!");
                 slow_txt.redraw();
-            elseif (answer[i] == 1) then # if left1    #  subject responded before and after cue appeared
+            elseif (answer[i] == 1) then # if left1      subject responded before and after cue appeared
                 if (buttonpress == 1) then
                     CORRECT[i] = 1;
                     correctcounter = correctcounter + 1;
@@ -809,6 +812,7 @@ begin
             buttonpress = fbp.code();
             rtime = fbp.time();
             RT = rtime - ttime;
+            beep_event.set_stimulus(sounds[1]);                    # set no beep
             feedback_pic.set_part(1, slow);
             slow_txt.set_caption("Bitte schneller antworten!");
             slow_txt.redraw();
