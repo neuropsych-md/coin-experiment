@@ -22,3 +22,5 @@ s/i/2/g
 # answer
 s/f/1/g
 s/j/2/g
+s/d/3/g
+s/k/4/g
