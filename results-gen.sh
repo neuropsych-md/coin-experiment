@@ -102,7 +102,7 @@ mkdir -p "${TMP}"
 ./jitter-gen.sh --total 100 --jitters 800 1000 1200 1400 1600 1800 | shuf > "${TMP}/jitter.set"
 
 # loop over all ruleset and block combinations
-for ruleset in gbNW_poNE poNW_gbNE ; do
+for ruleset in gpNW_boNE boNW_gpNE ; do
     for block in neutralA neutralB neutralC neutralD farbeA farbeB farbeC orientA orientB orientC; do
         printf "Automagicating: $ruleset $block\n"
         case "$block" in
