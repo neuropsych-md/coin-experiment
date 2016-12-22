@@ -20,11 +20,11 @@ PNGS=''
 # a horrible name for output files, I know, but they've long been referred to as
 # "presentation input files" and they are so thusly dubbed.
 declare -A infiles
-infiles[gbNW_poNE_1]='neutralA orientA farbeA neutralB farbeB orientB neutralC farbeC orientC neutralD'
-infiles[poNW_gbNE_1]='neutralA orientA farbeA neutralB farbeB orientB neutralC farbeC orientC neutralD'
+infiles[gpNW_boNE_1]='neutralA orientA farbeA neutralB farbeB orientB neutralC farbeC orientC neutralD'
+infiles[boNW_gpNE_1]='neutralA orientA farbeA neutralB farbeB orientB neutralC farbeC orientC neutralD'
 
-infiles[gbNW_poNE_2]='neutralA farbeA orientA neutralB orientB farbeB neutralC orientC farbeC neutralD'
-infiles[poNW_gbNE_2]='neutralA farbeA orientA neutralB orientB farbeB neutralC orientC farbeC neutralD'
+infiles[gpNW_boNE_2]='neutralA farbeA orientA neutralB orientB farbeB neutralC orientC farbeC neutralD'
+infiles[boNW_gpNE_2]='neutralA farbeA orientA neutralB orientB farbeB neutralC orientC farbeC neutralD'
 
 #
 # Functions
