@@ -104,7 +104,13 @@ while [ $COUNTER -lt 5 ]; do
   [ -n "${ORIG[$(($LINE1_INDEX + 1))]##* * * * * * * ${LINE2_ARR[7]} * * * * * * * * * *}" ] || continue
 
   # make sure the answers are the same
-  [ "${LINE1_ARR[6]}" == "${LINE2_ARR[6]}" ] || continue
+#  [ "${LINE1_ARR[6]}" == "${LINE2_ARR[6]}" ] || continue
+
+  # make sure the congruency is the same
+  [ "${LINE1_ARR[5]}" == "${LINE2_ARR[5]}" ] || continue
+
+  # make sure the color is the same
+  [ "${LINE1_ARR[2]}" == "${LINE2_ARR[2]}" ] || continue
 
   # make sure the rel. feat. are different
   [ "${LINE1_ARR[4]}" != "${LINE2_ARR[4]}" ] || continue
