@@ -192,8 +192,8 @@ done
 # Check if any required arguments are missing
 [ -z "$PNG_FILES" ]  && Fatal "-p/--pngs is required"
 [ -z "$RULE_SET" ]   && Fatal "-r/--rule-set is required"
-[ -z "$NUM_FARBE" ] && [ -z "$NUM_CON" ] && Fatal "either -ci or -fl are required"
-[ -n "$NUM_FARBE" ] && [ -n "$NUM_CON" ] && Fatal "you can only use -ci XOR -fl --- not both"
+[ -z "$NUM_FARBE" ] && [ -z "$NUM_CON" ] && Fatal "either -ci or -fo are required"
+[ -n "$NUM_FARBE" ] && [ -n "$NUM_CON" ] && Fatal "you can only use -ci XOR -fo --- not both"
 
 
 #
@@ -234,64 +234,74 @@ for PNG in $PNG_FILES; do
     PNGS[$ID,ans_pink]=$(LookupAnswer   "$RULE_SET" 'farbe' 'pink')
     PNGS[$ID,ans_orange]=$(LookupAnswer "$RULE_SET" 'farbe' 'orange')
     # and directions...
-    PNGS[$ID,ans_SENW]=$(LookupAnswer "$RULE_SET" 'orient' 'SENW')
-    PNGS[$ID,ans_SWNE]=$(LookupAnswer "$RULE_SET" 'orient' 'SWNE')
+    PNGS[$ID,ans_30]=$(LookupAnswer "$RULE_SET" 'orient' '030')
+    PNGS[$ID,ans_60]=$(LookupAnswer "$RULE_SET" 'orient' '060')
+    PNGS[$ID,ans_300]=$(LookupAnswer "$RULE_SET" 'orient' '300')
+    PNGS[$ID,ans_330]=$(LookupAnswer "$RULE_SET" 'orient' '330')
 
     # determine congruency of each file (irrelevant feature answer vs relevant feature answer)
-    IsCongruent "${PNGS[$ID,ans_irrel]}" "${PNGS[$ID,ans_rel]}"   && PNGS[$ID,con]='c'   || PNGS[$ID,con]='i'
+    IsCongruent "${PNGS[$ID,ans_irrel]}" "${PNGS[$ID,ans_rel]}" && PNGS[$ID,con]='c' || PNGS[$ID,con]='i'
 
-    # PNGs are only used if they are incongruent.
-    # This means, for any given rule-set, only half of the PNGs are used.
-    if [ "${PNGS[$ID,con]}" = 'i' ]; then
-      # categorize the PNG; it helps us easily match the user specified ratios
-      # while not falling into really gnarly corner-cases
-      case "${PNGS[$ID,feature]}-${PNGS[$ID,con]}" in
-        'farbe-i')  FARBE_INCON="${FARBE_INCON:+$FARBE_INCON }${ID}" ;;
-        'orient-i') ORIENT_INCON="${ORIENT_INCON:+$ORIENT_INCON }${ID}" ;;
-      esac
-    else # we're not interested in this PNG
-      continue
-    fi
+    # categorize the PNG; it helps us easily match the user specified ratios
+    # while not falling into really gnarly corner-cases
+    case "${PNGS[$ID,feature]}-${PNGS[$ID,con]}" in
+      'farbe-c')  FARBE_CON="${FARBE_CON:+$FARBE_CON }${ID}" ;;
+      'farbe-i')  FARBE_INCON="${FARBE_INCON:+$FARBE_INCON }${ID}" ;;
+      'orient-c') ORIENT_CON="${ORIENT_CON:+$ORIENT_CON }${ID}" ;;
+      'orient-i') ORIENT_INCON="${ORIENT_INCON:+$ORIENT_INCON }${ID}" ;;
+    esac
 done
 
 # shuffle/randomize the PNG category lists. This solves a /boatload/ of
 # statistical problems when invoking this script multiple times to eventually
 # concatenate into a larger whole
-FARBE_INCON=$(Shuffle "$FARBE_INCON")
-ORIENT_INCON=$(Shuffle "$ORIENT_INCON")
+FARBE_CON=$(Shuffle "$FARBE_CON") ; FARBE_INCON=$(Shuffle "$FARBE_INCON")
+ORIENT_CON=$(Shuffle "$ORIENT_CON") ; ORIENT_INCON=$(Shuffle "$ORIENT_INCON")
 
 # build a list of the PNG IDs according to the ratios provided by the user
-#   the ratio of the non-mode is 0/100 (so --farbe-orient 75 25 results in
-#   farbe=75, orient=25, congruent=0, incongruent=100)
-CLOCK='tock' # ensure the non-mode's 0/100 ratio across both halves of the mode
+#   the ratio of the non-mode is 25/75 (so --farbe-orient 75 25 results in
+#   farbe=75, orient=25, congruent=25, incongruent=75)
+CLOCK='tick' # ensure the non-mode's 25/75 ratio across both halves of the mode
 for M in $MODE ; do # e.g. 'farbe orient'
   case $M in
-    'farbe')  ARR1=$FARBE_INCON  ; NUM=$NUM_FARBE ;;
-    'orient') ARR1=$ORIENT_INCON ; NUM=$NUM_ORIENT ;;
+    'farbe')  ARR1=$FARBE_CON  ; ARR2=$FARBE_INCON  ; NUM=$NUM_FARBE ;;
+    'orient') ARR1=$ORIENT_CON ; ARR2=$ORIENT_INCON ; NUM=$NUM_ORIENT ;;
   esac
 
   I=0
+  con_count=0
+  incon_count=0
+  total_CON=0
+  perc_con=0
   while [ $I -lt $NUM ]; do
     #                        get first ID      rotate first ID to end
-    [ "$CLOCK" = 'tock' ] && ID=${ARR1%% *} && ARR1="${ARR1#${ID} } ${ID}"
+    [ "$CLOCK" = 'tick' ] && ID=${ARR1%% *} && ARR1="${ARR1#${ID} } ${ID}" && con_count=$(( $con_count + 1 ))
+    [ "$CLOCK" = 'tock' ] && ID=${ARR2%% *} && ARR2="${ARR2#${ID} } ${ID}" && incon_count=$(( $incon_count + 1 ))
 
     EVENTS="${EVENTS:+$EVENTS }${ID}"
 
+    total_CON=$(( $con_count + $incon_count ))
+    perc_con=$(( ($total_CON * 25) / 100 ))  ##TODO: Not possible to get and even distribution of farbe_con and orient con in only 25, so i choose 24 (12 each)
+
     # advance counters
-#    [ "$CLOCK" = 'tick' ] && CLOCK='tock' || CLOCK='tick'
+    if [ $con_count -lt $perc_con ]; then
+      [ "$CLOCK" = 'tick' ] && CLOCK='tock' || CLOCK='tick'
+    else
+      CLOCK='tock'
+    fi
     I=$(( $I + 1 ))
   done
 done
 
 # generate number of events for the unspecified mode --- for printing purposes
 if [ "$MODE" = 'farbe orient' ]; then
-  NUM_INCON=$(( $NUM_FARBE + $NUM_ORIENT ))
+  NUM_INCON='76'   ##TODO: put this elsewhere with fix above
 fi
 
 # now, finally, print out the events
 for ID in $EVENTS ; do
     # print out the event's set-line
-    printf '%s %s %s %s %s %s %s %s %s %s %s %s %s %s %s %s %s \n' \
+    printf '%s %s %s %s %s %s %s %s %s %s %s %s %s %s %s %s %s %s %s \n' \
       "$ID" \
       "${PNGS[$ID,farbe]:0:1}" \
       "${PNGS[$ID,orient]}" \
