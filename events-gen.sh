@@ -84,8 +84,10 @@ IsCongruent() {
   local i_answer=$1
   local r_answer=$2
 
-  [ "$i_answer" = 'f' ]  && [ "$r_answer" = 'f' ] && return 0 # congruent
+  [ "$i_answer" = 'd' ] && [ "$r_answer" = 'd' ] && return 0 # congruent
+  [ "$i_answer" = 'f' ] && [ "$r_answer" = 'f' ] && return 0 # congruent
   [ "$i_answer" = 'j' ] && [ "$r_answer" = 'j' ] && return 0 # congruent
+  [ "$i_answer" = 'k' ] && [ "$r_answer" = 'k' ] && return 0 # congruent
 
   return 1 # incongruent
 }
@@ -105,14 +107,25 @@ LookupAnswer() {
   case "$feature" in
      'farbe')
          local color_code=${question:0:1} # b/g/p/o
-         [ -z "${rule_set##*${color_code}*_*}" ] && answer='f' # left
-         [ -z "${rule_set##*_*${color_code}*}" ] && answer='j' # right
+         [ -z "${rule_set##${color_code}*_*}" ] && answer='d' # left
+         [ -z "${rule_set##?${color_code}*_*}" ] && answer='f' # left
+         [ -z "${rule_set##*_${color_code}*}" ] && answer='j' # right
+         [ -z "${rule_set##*_?${color_code}*}" ] && answer='k' # right
          ;;
      'orient')
-         local orient1=${question:0:2} # NE/SE/SW/NW
-         local orient2=${question:2:4} # NE/SE/SW/NW
-         [ -z "${rule_set##*${orient1}_*}" ] || [ -z "${rule_set##*${orient2}_*}" ] && answer='f' # left
-         [ -z "${rule_set##*_*${orient1}}" ] || [ -z "${rule_set##*_*${orient2}}" ] && answer='j' # right
+         local orient1='SW'
+         local orient2='NW'
+         if [ -z "${rule_set##*${orient1}_*}" ]; then # south
+             case "$question" in
+                 '030') answer='f' ;; '060') answer='d' ;;
+                 '300') answer='k' ;; '330') answer='j' ;;
+             esac
+         elif [ -z "${rule_set##*${orient2}_*}" ]; then # north
+             case "$question" in
+                 '030') answer='j' ;; '060') answer='k' ;;
+                 '300') answer='d' ;; '330') answer='f' ;;
+             esac
+         fi
          ;;
   esac
 
@@ -204,7 +217,7 @@ for PNG in $PNG_FILES; do
 
     # get answers for both features
     PNGS[$ID,ans_farbe]=$(LookupAnswer "$RULE_SET" 'farbe' "${PNGS[$ID,farbe]}")
-    PNGS[$ID,ans_orient]=$(LookupAnswer "$RULE_SET" 'orient' "${PNGS[$ID,orient]}")
+    PNGS[$ID,ans_orient]=$(LookupAnswer "$RULE_SET" 'orient' "${PNGS[$ID,degrees]}")
 
     # answer for both relevant and irrelevant features
     if [ "${PNGS[$ID,feature]}" = 'farbe' ]; then
@@ -294,8 +307,10 @@ for ID in $EVENTS ; do
       "${PNGS[$ID,ans_blue]}" \
       "${PNGS[$ID,ans_pink]}" \
       "${PNGS[$ID,ans_orange]}" \
-      "${PNGS[$ID,ans_SENW]}" \
-      "${PNGS[$ID,ans_SWNE]}"
+      "${PNGS[$ID,ans_30]}" \
+      "${PNGS[$ID,ans_60]}" \
+      "${PNGS[$ID,ans_300]}" \
+      "${PNGS[$ID,ans_330]}"
 done
 
 
