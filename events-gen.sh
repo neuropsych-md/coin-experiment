@@ -57,7 +57,7 @@ If the number of stimulus files is not evenly divisible into the number of
 events, then a randomized, best-effort is made to distribute across them.
 
 Syntax:
-$SCRIPT_NAME [-h] [-V] | [-v] -r rule_set -ci|-fl int int -p file [...]
+$SCRIPT_NAME [-h] [-V] | [-v] -r rule_set -ci|-fo int int -p file [...]
 
 OPTIONS:
   -h,  --help         = print this help and exit
@@ -65,7 +65,7 @@ OPTIONS:
 
   -ci, --con-incon    = number of congruent and incongruent events. Cannot be used
                         with --farbe-orient --- for which it'll use a 50/50 ratio.
-  -fl, --farbe-orient = number of farbe and orient events. Cannot be used with
+  -fo, --farbe-orient = number of farbe and orient events. Cannot be used with
                         --con-incon --- for which it will use a 50/50 ratio.
 
   -p,  --pngs         = stimulus images to be used
@@ -148,7 +148,7 @@ while [ -n "$1" ]; do
         NUM_INCON=$3
         shift 2
         ;;
-    '-fl'|'--farbe-orient')
+    '-fo'|'--farbe-orient')
         IsInt "$2" && IsInt "$3" || Fatal "'$1' requires two integers."
         MODE='farbe orient'
         NUM_FARBE=$2
