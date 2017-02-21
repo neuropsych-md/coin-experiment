@@ -20,11 +20,11 @@ PNGS=''
 # a horrible name for output files, I know, but they've long been referred to as
 # "presentation input files" and they are so thusly dubbed.
 declare -A infiles
-infiles[gpNW_boNE_1]='neutralA orientA farbeA neutralB farbeB orientB neutralC farbeC orientC neutralD'
-infiles[boNW_gpNE_1]='neutralA orientA farbeA neutralB farbeB orientB neutralC farbeC orientC neutralD'
+infiles[gpNW_boNE_1]='orientA farbeA farbeB orientB farbeC orientC'
+infiles[boNW_gpNE_1]='orientA farbeA farbeB orientB farbeC orientC'
 
-infiles[gpNW_boNE_2]='neutralA farbeA orientA neutralB orientB farbeB neutralC orientC farbeC neutralD'
-infiles[boNW_gpNE_2]='neutralA farbeA orientA neutralB orientB farbeB neutralC orientC farbeC neutralD'
+infiles[gpNW_boNE_2]='farbeA orientA orientB farbeB orientC farbeC'
+infiles[boNW_gpNE_2]='farbeA orientA orientB farbeB orientC farbeC'
 
 #
 # Functions
@@ -103,10 +103,10 @@ mkdir -p "${TMP}"
 
 # loop over all ruleset and block combinations
 for ruleset in gpNW_boNE boNW_gpNE ; do
-    for block in neutralA neutralB neutralC neutralD farbeA farbeB farbeC orientA orientB orientC; do
+    for block in farbeA farbeB farbeC orientA orientB orientC; do
         printf "Automagicating: $ruleset $block\n"
         case "$block" in
-             'neutralA'|'neutralB'|'neutralC'|'neutralD') mode='--farbe-orient 50 50' ;;
+#             'neutralA'|'neutralB'|'neutralC'|'neutralD') mode='--farbe-orient 50 50' ;;
              'farbeA'|'farbeB'|'farbeC')                  mode='--farbe-orient 75 25' ;;
              'orientA'|'orientB'|'orientC')               mode='--farbe-orient 25 75' ;;
         esac
@@ -114,10 +114,10 @@ for ruleset in gpNW_boNE boNW_gpNE ; do
         ./events-gen.sh --rule-set "$ruleset" $mode --pngs "${PNGS}" > "${TMP}/${ruleset}_${block}.set"
         echo "post event"
         case "$block" in
-             'neutralA')                        cfg_file='neutralA.cfg' ;;
-             'neutralB')                        cfg_file='neutralB.cfg' ;;
-             'neutralC')                        cfg_file='neutralC.cfg' ;;
-             'neutralD')                        cfg_file='neutralD.cfg' ;;
+#             'neutralA')                        cfg_file='neutralA.cfg' ;;
+#             'neutralB')                        cfg_file='neutralB.cfg' ;;
+#             'neutralC')                        cfg_file='neutralC.cfg' ;;
+#             'neutralD')                        cfg_file='neutralD.cfg' ;;
              'farbeA'|'farbeB'|'farbeC')        cfg_file='farbe.cfg'   ;;
              'orientA'|'orientB'|'orientC')     cfg_file='orient.cfg'  ;;
         esac
@@ -128,10 +128,10 @@ for ruleset in gpNW_boNE boNW_gpNE ; do
         echo "post conan"
 
         case "$block" in
-             'neutralB')   ./muss-up.sh --file "${TMP}/${ruleset}_${block}.results" > "${TMP}/${ruleset}_${block}.final" ;;
-             'neutralC')   ./muss-up.sh --file "${TMP}/${ruleset}_${block}.results" > "${TMP}/${ruleset}_${block}.final" ;;
-             'neutralD')   ./muss-up.sh --file "${TMP}/${ruleset}_${block}.results" > "${TMP}/${ruleset}_${block}.final" ;;
-             'neutralA')                    cp "${TMP}/${ruleset}_${block}.results" "${TMP}/${ruleset}_${block}.final" ;;
+#             'neutralB')   ./muss-up.sh --file "${TMP}/${ruleset}_${block}.results" > "${TMP}/${ruleset}_${block}.final" ;;
+#             'neutralC')   ./muss-up.sh --file "${TMP}/${ruleset}_${block}.results" > "${TMP}/${ruleset}_${block}.final" ;;
+#             'neutralD')   ./muss-up.sh --file "${TMP}/${ruleset}_${block}.results" > "${TMP}/${ruleset}_${block}.final" ;;
+#             'neutralA')                    cp "${TMP}/${ruleset}_${block}.results" "${TMP}/${ruleset}_${block}.final" ;;
              'farbeA'|'farbeB'|'farbeC')    cp "${TMP}/${ruleset}_${block}.results" "${TMP}/${ruleset}_${block}.final" ;;
              'orientA'|'orientB'|'orientC') cp "${TMP}/${ruleset}_${block}.results" "${TMP}/${ruleset}_${block}.final" ;;
         esac
