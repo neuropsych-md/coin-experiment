@@ -17,9 +17,9 @@
    version="1.1"
    inkscape:version="0.91 r13725"
    sodipodi:docname="COIN_stims.svg"
-   inkscape:export-filename="C:\Users\captain\Desktop\laura\MoST_stims\most_layers.png"
-   inkscape:export-xdpi="89.918213"
-   inkscape:export-ydpi="89.918213">
+   inkscape:export-filename="C:\Users\captain\Desktop\laura\Studies\COIN\svgs\orange.png"
+   inkscape:export-xdpi="90"
+   inkscape:export-ydpi="90">
   <defs
      id="defs4">
     <pattern
@@ -82,19 +82,19 @@
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
      inkscape:zoom="1.28"
-     inkscape:cx="422.45817"
+     inkscape:cx="300.58352"
      inkscape:cy="308.09407"
      inkscape:document-units="px"
-     inkscape:current-layer="layer5"
+     inkscape:current-layer="g6164"
      showgrid="false"
      showborder="false"
      showguides="false"
      inkscape:guide-bbox="true"
-     inkscape:window-width="1580"
-     inkscape:window-height="1329"
-     inkscape:window-x="969"
-     inkscape:window-y="35"
-     inkscape:window-maximized="0"
+     inkscape:window-width="1920"
+     inkscape:window-height="1017"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
      inkscape:snap-grids="true"
      fit-margin-top="0"
      fit-margin-left="0"
@@ -180,7 +180,7 @@
      inkscape:label="orange_circle"
      id="g4697"
      inkscape:groupmode="layer"
-     style="display:inline"
+     style="display:none"
      transform="translate(-1.4279853,-252.43054)">
     <circle
        r="290"
@@ -190,7 +190,7 @@
        style="opacity:0.994;fill:#cda277;fill-opacity:1" />
   </g>
   <g
-     style="display:inline"
+     style="display:none"
      inkscape:groupmode="layer"
      id="g4701"
      inkscape:label="pink_circle"
@@ -206,7 +206,7 @@
      inkscape:label="green_circle"
      id="g4705"
      inkscape:groupmode="layer"
-     style="display:none"
+     style="display:inline"
      transform="translate(-1.4279853,-252.43054)">
     <circle
        r="290"
@@ -303,7 +303,7 @@
   <g
      inkscape:groupmode="layer"
      id="layer5"
-     inkscape:label="F"
+     inkscape:label="C"
      style="display:none"
      transform="translate(-1.4279853,-252.43054)">
     <flowRoot
@@ -329,10 +329,10 @@
            y="546.75531"
            style="font-size:43.13313675px;fill:#ffffff" /></flowRegion><flowPara
          id="flowPara6200"
-         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:50.32199478px;font-family:'Open Sans';-inkscape-font-specification:'Open Sans Bold';text-align:center;text-anchor:middle">F</flowPara></flowRoot>  </g>
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:50.32199478px;font-family:'Open Sans';-inkscape-font-specification:'Open Sans Bold';text-align:center;text-anchor:middle">C</flowPara></flowRoot>  </g>
   <g
-     style="display:none"
-     inkscape:label="O"
+     style="display:inline"
+     inkscape:label="T"
      id="g6238"
      inkscape:groupmode="layer"
      transform="translate(-1.4279853,-252.43054)">
@@ -359,7 +359,7 @@
            width="72.38028"
            id="rect6252" /></flowRegion><flowPara
          style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:50.32199478px;font-family:'Open Sans';-inkscape-font-specification:'Open Sans Bold';text-align:center;text-anchor:middle"
-         id="flowPara6254">O</flowPara></flowRoot>  </g>
+         id="flowPara6254">T</flowPara></flowRoot>  </g>
   <g
      inkscape:groupmode="layer"
      id="layer4"

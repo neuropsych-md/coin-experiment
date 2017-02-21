@@ -1,5 +1,5 @@
 # Load the file we should use
-%file COIN_stims.svg
+%file COIN_stims-e.svg
 
 # Make all layers invisible
 layers style=display:none
@@ -17,7 +17,7 @@ layer label=black_background style=display:inline
 layer label=green_circle style=display:inline
 layer label=hatching_SENW_330 style=display:inline
 layer label=black_circle style=display:inline
-layer label=F style=display:inline
+layer label=C style=display:inline
 %save 01_green-SENW-330_farbe
 
 # Make all layers invisible
@@ -27,7 +27,7 @@ layer label=black_background style=display:inline
 layer label=green_circle style=display:inline
 layer label=hatching_SENW_330 style=display:inline
 layer label=black_circle style=display:inline
-layer label=O style=display:inline
+layer label=T style=display:inline
 %save 02_green-SENW-330_orient
 
 # Make all layers invisible
@@ -46,7 +46,7 @@ layer label=black_background style=display:inline
 layer label=green_circle style=display:inline
 layer label=hatching_SENW_300 style=display:inline
 layer label=black_circle style=display:inline
-layer label=F style=display:inline
+layer label=C style=display:inline
 %save 03_green-SENW-300_farbe
 
 # Make all layers invisible
@@ -56,7 +56,7 @@ layer label=black_background style=display:inline
 layer label=green_circle style=display:inline
 layer label=hatching_SENW_300 style=display:inline
 layer label=black_circle style=display:inline
-layer label=O style=display:inline
+layer label=T style=display:inline
 %save 04_green-SENW-300_orient
 
 # Make all layers invisible
@@ -75,7 +75,7 @@ layer label=black_background style=display:inline
 layer label=green_circle style=display:inline
 layer label=hatching_SWNE_030 style=display:inline
 layer label=black_circle style=display:inline
-layer label=F style=display:inline
+layer label=C style=display:inline
 %save 05_green-SWNE-030_farbe
 
 # Make all layers invisible
@@ -85,7 +85,7 @@ layer label=black_background style=display:inline
 layer label=green_circle style=display:inline
 layer label=hatching_SWNE_030 style=display:inline
 layer label=black_circle style=display:inline
-layer label=O style=display:inline
+layer label=T style=display:inline
 %save 06_green-SWNE-030_orient
 
 # Make all layers invisible
@@ -104,7 +104,7 @@ layer label=black_background style=display:inline
 layer label=green_circle style=display:inline
 layer label=hatching_SWNE_060 style=display:inline
 layer label=black_circle style=display:inline
-layer label=F style=display:inline
+layer label=C style=display:inline
 %save 07_green-SWNE-060_farbe
 
 # Make all layers invisible
@@ -114,7 +114,7 @@ layer label=black_background style=display:inline
 layer label=green_circle style=display:inline
 layer label=hatching_SWNE_060 style=display:inline
 layer label=black_circle style=display:inline
-layer label=O style=display:inline
+layer label=T style=display:inline
 %save 08_green-SWNE-060_orient
 
 # Make all layers invisible
@@ -133,7 +133,7 @@ layer label=black_background style=display:inline
 layer label=blue_circle style=display:inline
 layer label=hatching_SENW_330 style=display:inline
 layer label=black_circle style=display:inline
-layer label=F style=display:inline
+layer label=C style=display:inline
 %save 09_blue-SENW-330_farbe
 
 # Make all layers invisible
@@ -143,7 +143,7 @@ layer label=black_background style=display:inline
 layer label=blue_circle style=display:inline
 layer label=hatching_SENW_330 style=display:inline
 layer label=black_circle style=display:inline
-layer label=O style=display:inline
+layer label=T style=display:inline
 %save 10_blue-SENW-330_orient
 
 # Make all layers invisible
@@ -162,7 +162,7 @@ layer label=black_background style=display:inline
 layer label=blue_circle style=display:inline
 layer label=hatching_SENW_300 style=display:inline
 layer label=black_circle style=display:inline
-layer label=F style=display:inline
+layer label=C style=display:inline
 %save 11_blue-SENW-300_farbe
 
 # Make all layers invisible
@@ -172,7 +172,7 @@ layer label=black_background style=display:inline
 layer label=blue_circle style=display:inline
 layer label=hatching_SENW_300 style=display:inline
 layer label=black_circle style=display:inline
-layer label=O style=display:inline
+layer label=T style=display:inline
 %save 12_blue-SENW-300_orient
 
 # Make all layers invisible
@@ -191,7 +191,7 @@ layer label=black_background style=display:inline
 layer label=blue_circle style=display:inline
 layer label=hatching_SWNE_030 style=display:inline
 layer label=black_circle style=display:inline
-layer label=F style=display:inline
+layer label=C style=display:inline
 %save 13_blue-SWNE-030_farbe
 
 # Make all layers invisible
@@ -201,7 +201,7 @@ layer label=black_background style=display:inline
 layer label=blue_circle style=display:inline
 layer label=hatching_SWNE_030 style=display:inline
 layer label=black_circle style=display:inline
-layer label=O style=display:inline
+layer label=T style=display:inline
 %save 14_blue-SWNE-030_orient
 
 # Make all layers invisible
@@ -220,7 +220,7 @@ layer label=black_background style=display:inline
 layer label=blue_circle style=display:inline
 layer label=hatching_SWNE_060 style=display:inline
 layer label=black_circle style=display:inline
-layer label=F style=display:inline
+layer label=C style=display:inline
 %save 15_blue-SWNE-060_farbe
 
 # Make all layers invisible
@@ -230,7 +230,7 @@ layer label=black_background style=display:inline
 layer label=blue_circle style=display:inline
 layer label=hatching_SWNE_060 style=display:inline
 layer label=black_circle style=display:inline
-layer label=O style=display:inline
+layer label=T style=display:inline
 %save 16_blue-SWNE-060_orient
 
 # Make all layers invisible
@@ -249,7 +249,7 @@ layer label=black_background style=display:inline
 layer label=pink_circle style=display:inline
 layer label=hatching_SENW_330 style=display:inline
 layer label=black_circle style=display:inline
-layer label=F style=display:inline
+layer label=C style=display:inline
 %save 17_pink-SENW-330_farbe
 
 # Make all layers invisible
@@ -259,7 +259,7 @@ layer label=black_background style=display:inline
 layer label=pink_circle style=display:inline
 layer label=hatching_SENW_330 style=display:inline
 layer label=black_circle style=display:inline
-layer label=O style=display:inline
+layer label=T style=display:inline
 %save 18_pink-SENW-330_orient
 
 # Make all layers invisible
@@ -278,7 +278,7 @@ layer label=black_background style=display:inline
 layer label=pink_circle style=display:inline
 layer label=hatching_SENW_300 style=display:inline
 layer label=black_circle style=display:inline
-layer label=F style=display:inline
+layer label=C style=display:inline
 %save 19_pink-SENW-300_farbe
 
 # Make all layers invisible
@@ -288,7 +288,7 @@ layer label=black_background style=display:inline
 layer label=pink_circle style=display:inline
 layer label=hatching_SENW_300 style=display:inline
 layer label=black_circle style=display:inline
-layer label=O style=display:inline
+layer label=T style=display:inline
 %save 20_pink-SENW-300_orient
 
 # Make all layers invisible
@@ -307,7 +307,7 @@ layer label=black_background style=display:inline
 layer label=pink_circle style=display:inline
 layer label=hatching_SWNE_030 style=display:inline
 layer label=black_circle style=display:inline
-layer label=F style=display:inline
+layer label=C style=display:inline
 %save 21_pink-SWNE-030_farbe
 
 # Make all layers invisible
@@ -317,7 +317,7 @@ layer label=black_background style=display:inline
 layer label=pink_circle style=display:inline
 layer label=hatching_SWNE_030 style=display:inline
 layer label=black_circle style=display:inline
-layer label=O style=display:inline
+layer label=T style=display:inline
 %save 22_pink-SWNE-030_orient
 
 # Make all layers invisible
@@ -336,7 +336,7 @@ layer label=black_background style=display:inline
 layer label=pink_circle style=display:inline
 layer label=hatching_SWNE_060 style=display:inline
 layer label=black_circle style=display:inline
-layer label=F style=display:inline
+layer label=C style=display:inline
 %save 23_pink-SWNE-060_farbe
 
 # Make all layers invisible
@@ -346,7 +346,7 @@ layer label=black_background style=display:inline
 layer label=pink_circle style=display:inline
 layer label=hatching_SWNE_060 style=display:inline
 layer label=black_circle style=display:inline
-layer label=O style=display:inline
+layer label=T style=display:inline
 %save 24_pink-SWNE-060_orient
 
 # Make all layers invisible
@@ -365,7 +365,7 @@ layer label=black_background style=display:inline
 layer label=orange_circle style=display:inline
 layer label=hatching_SENW_330 style=display:inline
 layer label=black_circle style=display:inline
-layer label=F style=display:inline
+layer label=C style=display:inline
 %save 25_orange-SENW-330_farbe
 
 # Make all layers invisible
@@ -375,7 +375,7 @@ layer label=black_background style=display:inline
 layer label=orange_circle style=display:inline
 layer label=hatching_SENW_330 style=display:inline
 layer label=black_circle style=display:inline
-layer label=O style=display:inline
+layer label=T style=display:inline
 %save 26_orange-SENW-330_orient
 
 # Make all layers invisible
@@ -394,7 +394,7 @@ layer label=black_background style=display:inline
 layer label=orange_circle style=display:inline
 layer label=hatching_SENW_300 style=display:inline
 layer label=black_circle style=display:inline
-layer label=F style=display:inline
+layer label=C style=display:inline
 %save 27_orange-SENW-300_farbe
 
 # Make all layers invisible
@@ -404,7 +404,7 @@ layer label=black_background style=display:inline
 layer label=orange_circle style=display:inline
 layer label=hatching_SENW_300 style=display:inline
 layer label=black_circle style=display:inline
-layer label=O style=display:inline
+layer label=T style=display:inline
 %save 28_orange-SENW-300_orient
 
 # Make all layers invisible
@@ -423,7 +423,7 @@ layer label=black_background style=display:inline
 layer label=orange_circle style=display:inline
 layer label=hatching_SWNE_030 style=display:inline
 layer label=black_circle style=display:inline
-layer label=F style=display:inline
+layer label=C style=display:inline
 %save 29_orange-SWNE-030_farbe
 
 # Make all layers invisible
@@ -433,7 +433,7 @@ layer label=black_background style=display:inline
 layer label=orange_circle style=display:inline
 layer label=hatching_SWNE_030 style=display:inline
 layer label=black_circle style=display:inline
-layer label=O style=display:inline
+layer label=T style=display:inline
 %save 30_orange-SWNE-030_orient
 
 # Make all layers invisible
@@ -452,7 +452,7 @@ layer label=black_background style=display:inline
 layer label=orange_circle style=display:inline
 layer label=hatching_SWNE_060 style=display:inline
 layer label=black_circle style=display:inline
-layer label=F style=display:inline
+layer label=C style=display:inline
 %save 31_orange-SWNE-060_farbe
 
 # Make all layers invisible
@@ -462,5 +462,5 @@ layer label=black_background style=display:inline
 layer label=orange_circle style=display:inline
 layer label=hatching_SWNE_060 style=display:inline
 layer label=black_circle style=display:inline
-layer label=O style=display:inline
+layer label=T style=display:inline
 %save 32_orange-SWNE-060_orient
