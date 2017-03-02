@@ -1001,7 +1001,7 @@ begin
     perc_miss = (misscounter * 100) / i;
 
     # set new resp_cutoff according to error rate and miss rate
-    if ((perc_incorrect < 8) && (perc_miss < 10) && (resp_window > 300)) then
+    if ((perc_incorrect < 8) && (perc_miss < 10) && (resp_window > 900)) then
         resp_cutoff = resp_cutoff - 10;
     elseif ((perc_incorrect > 20) && (resp_window < 1400)) then
         resp_cutoff = resp_cutoff + 10;
