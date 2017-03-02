@@ -1,0 +1,402 @@
+# COIN (Color Orientation INterference Task)
+# --------------------------------------------------------------------------
+#
+# required files:
+#     COIN.pcl
+#     events files in the input\ folder
+#         gpNW_boNE_1.txt, gpNW_boNE_2.txt
+#         boNW_gpNE_1.txt, boNW_gpNE_2.txt
+#     stim1 PNGs in the stimuli\ folder
+#         green-SENW-330.png, green-SWNE-030.png
+#         green-SENW-300.png, green-SWNE-060.png
+#         blue-SENW-330.png, blue-SWNE-030.png
+#         blue-SENW-300.png, blue-SWNE-060.png
+#         pink-SENW-330.png, pink-SWNE-030.png
+#         pink-SENW-300.png, pink-SWNE-060.png
+#         orange-SENW-330.png, orange-SWNE-030.png
+#         orange-SENW-300.png, orange-SWNE-060.png
+#     stim2 PNGs in the stimuli\ folder
+#         01_green-SENW-330_farbe.png
+#         02_green-SENW-330_orient.png
+#         03_green-SENW-300_farbe.png
+#         04_green-SENW-300_orient.png
+#         05_green-SWNE-030_farbe.png
+#         06_green-SWNE-030_orient.png
+#         07_green-SWNE-060_farbe.png
+#         08_green-SWNE-060_orient.png
+#         09_blue-SENW-330_farbe.png
+#         10_blue-SENW-330_orient.png
+#         11_blue-SENW-300_farbe.png
+#         12_blue-SENW-300_orient.png
+#         13_blue-SWNE-030_farbe.png
+#         14_blue-SWNE-030_orient.png
+#         15_blue-SWNE-060_farbe.png
+#         16_blue-SWNE-060_orient.png
+#         17_pink-SENW-330_farbe.png
+#         18_pink-SENW-330_orient.png
+#         19_pink-SENW-300_farbe.png
+#         20_pink-SENW-300_orient.png
+#         21_pink-SWNE-030_farbe.png
+#         22_pink-SWNE-030_orient.png
+#         23_pink-SWNE-060_farbe.png
+#         24_pink-SWNE-060_orient.png
+#         25_orange-SENW-330_farbe.png
+#         26_orange-SENW-330_orient.png
+#         27_orange-SENW-300_farbe.png
+#         28_orange-SENW-300_orient.png
+#         29_orange-SWNE-030_farbe.png
+#         30_orange-SWNE-030_orient.png
+#         31_orange-SWNE-060_farbe.png
+#         32_orange-SWNE-060_orient.png
+#     legend PNGs in the stimuli\ folder
+#         legend_g300.png, legend_b300.png
+#         legend_p330.png, legend_0330.png
+#         legend_b30.png, legend_g30.png
+#         legend_o60.png, legend_p60.png
+#
+# version 4.0.0 - 2017, Laura Waite
+#################################################################################
+
+pcl_file = "COIN.pcl";
+
+response_matching = simple_matching;
+active_buttons = 5;
+button_codes = 1,2,3,4,5;    # 1 = left1 (left index finger); 2 = right1 (right index finger); 3 = left2 (left middle finger); 4 = right2 (right middle finger)
+
+#
+# EEG Triggers
+#
+#default_output_port = 1;
+#write_codes = true;
+#pulse_width = 5;
+
+begin;
+
+#
+# Stimulus Pairs
+#
+array {
+    bitmap {filename = "green-SENW-330.png"; description = "green-SENW-330";} green_SENW;
+    bitmap {filename = "01_green-SENW-330_farbe.png"; description = "01_green-SENW-330_farbe";} farbe;
+} green_SENW_330_farbe;
+
+array {
+    bitmap {filename = "green-SENW-330.png"; description = "green-SENW-330";};
+    bitmap {filename = "02_green-SENW-330_orient.png"; description = "02_green-SENW-330_orient";};
+} green_SENW_330_orient;
+
+array {
+    bitmap {filename = "green-SENW-300.png"; description = "green-SENW-300";};
+    bitmap {filename = "03_green-SENW-300_farbe.png"; description = "03_green-SENW-300_farbe";};
+} green_SENW_300_farbe;
+
+array {
+    bitmap {filename = "green-SENW-300.png"; description = "green-SENW-300";};
+    bitmap {filename = "04_green-SENW-300_orient.png"; description = "04_green-SENW-300_orient";};
+} green_SENW_300_orient;
+
+array {
+    bitmap {filename = "green-SWNE-030.png"; description = "green-SWNE-030";};
+    bitmap {filename = "05_green-SWNE-030_farbe.png"; description = "05_green-SWNE-030_farbe";};
+} green_SWNE_030_farbe;
+
+array {
+    bitmap {filename = "green-SWNE-030.png"; description = "green-SWNE-030";};
+    bitmap {filename = "06_green-SWNE-030_orient.png"; description = "06_green-SWNE-030_orient";};
+} green_SWNE_030_orient;
+
+array {
+    bitmap {filename = "green-SWNE-060.png"; description = "green-SWNE-060";};
+    bitmap {filename = "07_green-SWNE-060_farbe.png"; description = "07_green-SWNE-060_farbe";};
+} green_SWNE_060_farbe;
+
+array {
+    bitmap {filename = "green-SWNE-060.png"; description = "green-SWNE-060";};
+    bitmap {filename = "08_green-SWNE-060_orient.png"; description = "08_green-SWNE-060_orient";};
+} green_SWNE_060_orient;
+
+array {
+    bitmap {filename = "blue-SENW-330.png"; description = "blue-SENW-330";} blue_SENW;
+    bitmap {filename = "09_blue-SENW-330_farbe.png"; description = "09_blue-SENW-330_farbe";};
+} blue_SENW_330_farbe;
+
+array {
+    bitmap {filename = "blue-SENW-330.png"; description = "blue-SENW-330";};
+    bitmap {filename = "10_blue-SENW-330_orient.png"; description = "10_blue-SENW-330_orient";};
+} blue_SENW_330_orient;
+
+array {
+    bitmap {filename = "blue-SENW-300.png"; description = "blue-SENW-300";};
+    bitmap {filename = "11_blue-SENW-300_farbe.png"; description = "11_blue-SENW-300_farbe";};
+} blue_SENW_300_farbe;
+
+array {
+    bitmap {filename = "blue-SENW-300.png"; description = "blue-SENW-300";};
+    bitmap {filename = "12_blue-SENW-300_orient.png"; description = "12_blue-SENW-300_orient";};
+} blue_SENW_300_orient;
+
+array {
+    bitmap {filename = "blue-SWNE-030.png"; description = "blue-SWNE-030";};
+    bitmap {filename = "13_blue-SWNE-030_farbe.png"; description = "13_blue-SWNE-030_farbe";};
+} blue_SWNE_030_farbe;
+
+array {
+    bitmap {filename = "blue-SWNE-030.png"; description = "blue-SWNE-030";};
+    bitmap {filename = "14_blue-SWNE-030_orient.png"; description = "14_blue-SWNE-030_orient";};
+} blue_SWNE_030_orient;
+
+array {
+    bitmap {filename = "blue-SWNE-060.png"; description = "blue-SWNE-060";};
+    bitmap {filename = "15_blue-SWNE-060_farbe.png"; description = "15_blue-SWNE-060_farbe";};
+} blue_SWNE_060_farbe;
+
+array {
+    bitmap {filename = "blue-SWNE-060.png"; description = "blue-SWNE-060";};
+    bitmap {filename = "16_blue-SWNE-060_orient.png"; description = "16_blue-SWNE-060_orient";};
+} blue_SWNE_060_orient;
+
+array {
+    bitmap {filename = "pink-SENW-330.png"; description = "pink-SENW-330";};
+    bitmap {filename = "17_pink-SENW-330_farbe.png"; description = "17_pink-SENW-330_farbe";};
+} pink_SENW_330_farbe;
+
+array {
+    bitmap {filename = "pink-SENW-330.png"; description = "pink-SENW-330";};
+    bitmap {filename = "18_pink-SENW-330_orient.png"; description = "18_pink-SENW-330_orient";};
+} pink_SENW_330_orient;
+
+array {
+    bitmap {filename = "pink-SENW-300.png"; description = "pink-SENW-300";};
+    bitmap {filename = "19_pink-SENW-300_farbe.png"; description = "19_pink-SENW-300_farbe";};
+} pink_SENW_300_farbe;
+
+array {
+    bitmap {filename = "pink-SENW-300.png"; description = "pink-SENW-300";};
+    bitmap {filename = "20_pink-SENW-300_orient.png"; description = "20_pink-SENW-300_orient";};
+} pink_SENW_300_orient;
+
+array {
+    bitmap {filename = "pink-SWNE-030.png"; description = "pink-SWNE-030";};
+    bitmap {filename = "21_pink-SWNE-030_farbe.png"; description = "21_pink-SWNE-030_farbe";};
+} pink_SWNE_030_farbe;
+
+array {
+    bitmap {filename = "pink-SWNE-030.png"; description = "pink-SWNE-030";};
+    bitmap {filename = "22_pink-SWNE-030_orient.png"; description = "22_pink-SWNE-030_orient";};
+} pink_SWNE_030_orient;
+
+array {
+    bitmap {filename = "pink-SWNE-060.png"; description = "pink-SWNE-060";};
+    bitmap {filename = "23_pink-SWNE-060_farbe.png"; description = "23_pink-SWNE-060_farbe";};
+} pink_SWNE_060_farbe;
+
+array {
+    bitmap {filename = "pink-SWNE-060.png"; description = "pink-SWNE-060";};
+    bitmap {filename = "24_pink-SWNE-060_orient.png"; description = "24_pink-SWNE-060_orient";};
+} pink_SWNE_060_orient;
+
+array {
+    bitmap {filename = "orange-SENW-330.png"; description = "orange-SENW-330";};
+    bitmap {filename = "25_orange-SENW-330_farbe.png"; description = "25_orange-SENW-330_farbe";};
+} orange_SENW_330_farbe;
+
+array {
+    bitmap {filename = "orange-SENW-330.png"; description = "orange-SENW-330";};
+    bitmap {filename = "26_orange-SENW-330_orient.png"; description = "26_orange-SENW-330_orient";};
+} orange_SENW_330_orient;
+
+array {
+    bitmap {filename = "orange-SENW-300.png"; description = "orange-SENW-300";};
+    bitmap {filename = "27_orange-SENW-300_farbe.png"; description = "27_orange-SENW-300_farbe";};
+} orange_SENW_300_farbe;
+
+array {
+    bitmap {filename = "orange-SENW-300.png"; description = "orange-SENW-300";};
+    bitmap {filename = "28_orange-SENW-300_orient.png"; description = "28_orange-SENW-300_orient";};
+} orange_SENW_300_orient;
+
+array {
+    bitmap {filename = "orange-SWNE-030.png"; description = "orange-SWNE-030";};
+    bitmap {filename = "29_orange-SWNE-030_farbe.png"; description = "29_orange-SWNE-030_farbe";};
+} orange_SWNE_030_farbe;
+
+array {
+    bitmap {filename = "orange-SWNE-030.png"; description = "orange-SWNE-030";};
+    bitmap {filename = "30_orange-SWNE-030_orient.png"; description = "30_orange-SWNE-030_orient";};
+} orange_SWNE_030_orient;
+
+array {
+    bitmap {filename = "orange-SWNE-060.png"; description = "orange-SWNE-060";};
+    bitmap {filename = "31_orange-SWNE-060_farbe.png"; description = "31_orange-SWNE-060_farbe";};
+} orange_SWNE_060_farbe;
+
+array {
+    bitmap {filename = "orange-SWNE-060.png"; description = "orange-SWNE-060";};
+    bitmap {filename = "32_orange-SWNE-060_orient.png"; description = "32_orange-SWNE-060_orient";};
+} orange_SWNE_060_orient;
+
+#
+# legend
+#
+array {
+    bitmap {filename = "legend_g300.png";} left2;
+    bitmap {filename = "legend_p330.png";} left1;
+    bitmap {filename = "legend_b30.png";} right1;
+    bitmap {filename = "legend_o60.png";} right2;
+} gpNW_boNE;
+
+array {
+    bitmap {filename = "legend_b300.png";};
+    bitmap {filename = "legend_o330.png";};
+    bitmap {filename = "legend_g30.png";};
+    bitmap {filename = "legend_p60.png";};
+} boNW_gpNE;
+
+#
+# block cues
+#
+array {
+    bitmap {filename = "cue_T75-C25.png";} T75;
+    bitmap {filename = "cue_C75-T25.png";} C75;
+} block_cues;
+
+#
+# sound feedback
+#
+array {
+    sound { wavefile { filename = "no_sound.wav"; }; } no_sound;
+    sound { wavefile { filename = "too_slow.wav"; }; } too_slow;
+} sounds;
+
+#
+# default picture
+#
+picture {
+    bitmap green_SENW; x=0; y=0;
+} default;
+
+picture {
+    bitmap {filename = "post_cue.png";} post_cue; x=0; y=0;
+} post_cue_pic;
+
+#
+# pause
+#
+trial {
+    trial_duration = forever;
+    trial_type = first_response;
+    picture {
+        text {caption = "Continue with SPACE or quit with ESC"; font_size = 48;} warn_txt; x=0; y=0;
+        bitmap left2; x=-500; y=-450;
+        bitmap left1; x=-200; y=-450;
+        bitmap right1; x=300; y=-450;
+        bitmap right2; x=600; y=-450;
+    };
+    code = "pause";
+    port_code = 99;
+} pause;
+
+#
+# block cue
+#
+trial {
+    trial_type = fixed;
+    trial_duration = 2500;
+    stimulus_event {
+        picture {
+            bitmap T75; x=0; y=0;
+        } block_cue;
+        duration = 2000;
+        code = "block_cue";
+        port_code = 98;
+    } block_cue_event;
+} block_cue_trial;
+
+#
+# finish
+#
+trial {
+    trial_duration = forever;
+    trial_type = first_response;
+    picture {
+        text {caption = "Thank You!"; font_size = 48;};
+        x=0; y=0;
+    };
+    code = "finish";
+    port_code = 99;
+} finish;
+
+#
+# stimulus trial
+#
+trial {
+    trial_type = fixed;
+    trial_duration = stimuli_length;
+    stimulus_event {
+        picture {
+            bitmap green_SENW; x=0; y=0;
+        } stim;
+        duration = next_picture;
+        code = "stim";
+    } stim_event;
+} stim_trial;
+
+#
+# cue trial
+#
+trial {
+    trial_type = fixed;
+    trial_duration = stimuli_length;
+    stimulus_event {
+        picture {
+            bitmap farbe; x=0; y=0;
+        } cue;
+        duration = next_picture;
+        code = "cue";
+    } cue_event;
+} cue_trial;
+
+#
+# response trial
+#
+trial {
+    trial_type = first_response;
+    trial_duration = 700;
+    picture {
+       bitmap green_SENW; x=0; y=0;
+    } respond_pic;
+    code = "respond";
+} respond_trial;
+
+#
+# late response trial
+#
+trial {
+    trial_type = correct_response;
+    trial_duration = 500;
+    picture {
+       bitmap green_SENW; x=0; y=0;
+    } wait_pic;
+    target_button = 5;
+    code = "wait";
+} wait_trial;
+
+#
+# feedback trial
+#
+trial {
+    trial_type = fixed;
+    stimulus_event {
+        picture {
+           bitmap green_SENW; x=0; y=0;
+       } feedback_pic;
+       duration = 500;
+       code = "feedback";
+    } feedback_event;
+
+    stimulus_event {
+        sound no_sound;
+        time = 0;
+        code = "beep";
+    } beep_event;
+} feedback_trial;

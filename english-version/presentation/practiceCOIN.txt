@@ -1,0 +1,1064 @@
+# Practice COIN (Color Orientation INterference Task)
+# --------------------------------------------------------------------------
+#
+# required files:
+#     events files in the input\ folder
+#         practice_gpNW_boNE.txt
+#         practice_boNW_gpNE.txt
+#     stim1 PNGs in the stimuli\ folder
+#         green-SENW-330.png, green-SWNE-030.png
+#         green-SENW-300.png, green-SWNE-060.png
+#         blue-SENW-330.png, blue-SWNE-030.png
+#         blue-SENW-300.png, blue-SWNE-060.png
+#         pink-SENW-330.png, pink-SWNE-030.png
+#         pink-SENW-300.png, pink-SWNE-060.png
+#         orange-SENW-330.png, orange-SWNE-030.png
+#         orange-SENW-300.png, orange-SWNE-060.png
+#     stim2 PNGs in the stimuli\ folder
+#         01_green-SENW-330_farbe.png
+#         02_green-SENW-330_orient.png
+#         03_green-SENW-300_farbe.png
+#         04_green-SENW-300_orient.png
+#         05_green-SWNE-030_farbe.png
+#         06_green-SWNE-030_orient.png
+#         07_green-SWNE-060_farbe.png
+#         08_green-SWNE-060_orient.png
+#         09_blue-SENW-330_farbe.png
+#         10_blue-SENW-330_orient.png
+#         11_blue-SENW-300_farbe.png
+#         12_blue-SENW-300_orient.png
+#         13_blue-SWNE-030_farbe.png
+#         14_blue-SWNE-030_orient.png
+#         15_blue-SWNE-060_farbe.png
+#         16_blue-SWNE-060_orient.png
+#         17_pink-SENW-330_farbe.png
+#         18_pink-SENW-330_orient.png
+#         19_pink-SENW-300_farbe.png
+#         20_pink-SENW-300_orient.png
+#         21_pink-SWNE-030_farbe.png
+#         22_pink-SWNE-030_orient.png
+#         23_pink-SWNE-060_farbe.png
+#         24_pink-SWNE-060_orient.png
+#         25_orange-SENW-330_farbe.png
+#         26_orange-SENW-330_orient.png
+#         27_orange-SENW-300_farbe.png
+#         28_orange-SENW-300_orient.png
+#         29_orange-SWNE-030_farbe.png
+#         30_orange-SWNE-030_orient.png
+#         31_orange-SWNE-060_farbe.png
+#         32_orange-SWNE-060_orient.png
+#     legend PNGs in the stimuli\ folder
+#         legend_g300.png, legend_b300.png
+#         legend_p330.png, legend_0330.png
+#         legend_b30.png, legend_g30.png
+#         legend_o60.png, legend_p60.png
+#
+# version 4.0.0 - 2017, Laura Waite
+#################################################################################
+
+response_matching = simple_matching;
+active_buttons = 5;
+button_codes = 1,2,3,4,5;    # 1 = left1 (left index finger); 2 = right1 (right index finger); 3 = left2 (left middle finger); 4 = right2 (right middle finger)
+
+#
+# EEG Triggers
+#
+#default_output_port = 1;
+#write_codes = true;
+#pulse_width = 5;
+
+begin;
+
+#
+# Stimulus Pairs
+#
+array {
+    bitmap {filename = "green-SENW-330.png"; description = "green-SENW-330";} green_SENW;
+    bitmap {filename = "01_green-SENW-330_farbe.png"; description = "01_green-SENW-330_farbe";} farbe;
+} green_SENW_330_farbe;
+
+array {
+    bitmap {filename = "green-SENW-330.png"; description = "green-SENW-330";};
+    bitmap {filename = "02_green-SENW-330_orient.png"; description = "02_green-SENW-330_orient";};
+} green_SENW_330_orient;
+
+array {
+    bitmap {filename = "green-SENW-300.png"; description = "green-SENW-300";};
+    bitmap {filename = "03_green-SENW-300_farbe.png"; description = "03_green-SENW-300_farbe";};
+} green_SENW_300_farbe;
+
+array {
+    bitmap {filename = "green-SENW-300.png"; description = "green-SENW-300";};
+    bitmap {filename = "04_green-SENW-300_orient.png"; description = "04_green-SENW-300_orient";};
+} green_SENW_300_orient;
+
+array {
+    bitmap {filename = "green-SWNE-030.png"; description = "green-SWNE-030";};
+    bitmap {filename = "05_green-SWNE-030_farbe.png"; description = "05_green-SWNE-030_farbe";};
+} green_SWNE_030_farbe;
+
+array {
+    bitmap {filename = "green-SWNE-030.png"; description = "green-SWNE-030";};
+    bitmap {filename = "06_green-SWNE-030_orient.png"; description = "06_green-SWNE-030_orient";};
+} green_SWNE_030_orient;
+
+array {
+    bitmap {filename = "green-SWNE-060.png"; description = "green-SWNE-060";};
+    bitmap {filename = "07_green-SWNE-060_farbe.png"; description = "07_green-SWNE-060_farbe";};
+} green_SWNE_060_farbe;
+
+array {
+    bitmap {filename = "green-SWNE-060.png"; description = "green-SWNE-060";};
+    bitmap {filename = "08_green-SWNE-060_orient.png"; description = "08_green-SWNE-060_orient";};
+} green_SWNE_060_orient;
+
+array {
+    bitmap {filename = "blue-SENW-330.png"; description = "blue-SENW-330";} blue_SENW;
+    bitmap {filename = "09_blue-SENW-330_farbe.png"; description = "09_blue-SENW-330_farbe";};
+} blue_SENW_330_farbe;
+
+array {
+    bitmap {filename = "blue-SENW-330.png"; description = "blue-SENW-330";};
+    bitmap {filename = "10_blue-SENW-330_orient.png"; description = "10_blue-SENW-330_orient";};
+} blue_SENW_330_orient;
+
+array {
+    bitmap {filename = "blue-SENW-300.png"; description = "blue-SENW-300";};
+    bitmap {filename = "11_blue-SENW-300_farbe.png"; description = "11_blue-SENW-300_farbe";};
+} blue_SENW_300_farbe;
+
+array {
+    bitmap {filename = "blue-SENW-300.png"; description = "blue-SENW-300";};
+    bitmap {filename = "12_blue-SENW-300_orient.png"; description = "12_blue-SENW-300_orient";};
+} blue_SENW_300_orient;
+
+array {
+    bitmap {filename = "blue-SWNE-030.png"; description = "blue-SWNE-030";};
+    bitmap {filename = "13_blue-SWNE-030_farbe.png"; description = "13_blue-SWNE-030_farbe";};
+} blue_SWNE_030_farbe;
+
+array {
+    bitmap {filename = "blue-SWNE-030.png"; description = "blue-SWNE-030";};
+    bitmap {filename = "14_blue-SWNE-030_orient.png"; description = "14_blue-SWNE-030_orient";};
+} blue_SWNE_030_orient;
+
+array {
+    bitmap {filename = "blue-SWNE-060.png"; description = "blue-SWNE-060";};
+    bitmap {filename = "15_blue-SWNE-060_farbe.png"; description = "15_blue-SWNE-060_farbe";};
+} blue_SWNE_060_farbe;
+
+array {
+    bitmap {filename = "blue-SWNE-060.png"; description = "blue-SWNE-060";};
+    bitmap {filename = "16_blue-SWNE-060_orient.png"; description = "16_blue-SWNE-060_orient";};
+} blue_SWNE_060_orient;
+
+array {
+    bitmap {filename = "pink-SENW-330.png"; description = "pink-SENW-330";};
+    bitmap {filename = "17_pink-SENW-330_farbe.png"; description = "17_pink-SENW-330_farbe";};
+} pink_SENW_330_farbe;
+
+array {
+    bitmap {filename = "pink-SENW-330.png"; description = "pink-SENW-330";};
+    bitmap {filename = "18_pink-SENW-330_orient.png"; description = "18_pink-SENW-330_orient";};
+} pink_SENW_330_orient;
+
+array {
+    bitmap {filename = "pink-SENW-300.png"; description = "pink-SENW-300";};
+    bitmap {filename = "19_pink-SENW-300_farbe.png"; description = "19_pink-SENW-300_farbe";};
+} pink_SENW_300_farbe;
+
+array {
+    bitmap {filename = "pink-SENW-300.png"; description = "pink-SENW-300";};
+    bitmap {filename = "20_pink-SENW-300_orient.png"; description = "20_pink-SENW-300_orient";};
+} pink_SENW_300_orient;
+
+array {
+    bitmap {filename = "pink-SWNE-030.png"; description = "pink-SWNE-030";};
+    bitmap {filename = "21_pink-SWNE-030_farbe.png"; description = "21_pink-SWNE-030_farbe";};
+} pink_SWNE_030_farbe;
+
+array {
+    bitmap {filename = "pink-SWNE-030.png"; description = "pink-SWNE-030";};
+    bitmap {filename = "22_pink-SWNE-030_orient.png"; description = "22_pink-SWNE-030_orient";};
+} pink_SWNE_030_orient;
+
+array {
+    bitmap {filename = "pink-SWNE-060.png"; description = "pink-SWNE-060";};
+    bitmap {filename = "23_pink-SWNE-060_farbe.png"; description = "23_pink-SWNE-060_farbe";};
+} pink_SWNE_060_farbe;
+
+array {
+    bitmap {filename = "pink-SWNE-060.png"; description = "pink-SWNE-060";};
+    bitmap {filename = "24_pink-SWNE-060_orient.png"; description = "24_pink-SWNE-060_orient";};
+} pink_SWNE_060_orient;
+
+array {
+    bitmap {filename = "orange-SENW-330.png"; description = "orange-SENW-330";};
+    bitmap {filename = "25_orange-SENW-330_farbe.png"; description = "25_orange-SENW-330_farbe";};
+} orange_SENW_330_farbe;
+
+array {
+    bitmap {filename = "orange-SENW-330.png"; description = "orange-SENW-330";};
+    bitmap {filename = "26_orange-SENW-330_orient.png"; description = "26_orange-SENW-330_orient";};
+} orange_SENW_330_orient;
+
+array {
+    bitmap {filename = "orange-SENW-300.png"; description = "orange-SENW-300";};
+    bitmap {filename = "27_orange-SENW-300_farbe.png"; description = "27_orange-SENW-300_farbe";};
+} orange_SENW_300_farbe;
+
+array {
+    bitmap {filename = "orange-SENW-300.png"; description = "orange-SENW-300";};
+    bitmap {filename = "28_orange-SENW-300_orient.png"; description = "28_orange-SENW-300_orient";};
+} orange_SENW_300_orient;
+
+array {
+    bitmap {filename = "orange-SWNE-030.png"; description = "orange-SWNE-030";};
+    bitmap {filename = "29_orange-SWNE-030_farbe.png"; description = "29_orange-SWNE-030_farbe";};
+} orange_SWNE_030_farbe;
+
+array {
+    bitmap {filename = "orange-SWNE-030.png"; description = "orange-SWNE-030";};
+    bitmap {filename = "30_orange-SWNE-030_orient.png"; description = "30_orange-SWNE-030_orient";};
+} orange_SWNE_030_orient;
+
+array {
+    bitmap {filename = "orange-SWNE-060.png"; description = "orange-SWNE-060";};
+    bitmap {filename = "31_orange-SWNE-060_farbe.png"; description = "31_orange-SWNE-060_farbe";};
+} orange_SWNE_060_farbe;
+
+array {
+    bitmap {filename = "orange-SWNE-060.png"; description = "orange-SWNE-060";};
+    bitmap {filename = "32_orange-SWNE-060_orient.png"; description = "32_orange-SWNE-060_orient";};
+} orange_SWNE_060_orient;
+
+#
+# legend
+#
+array {
+    bitmap {filename = "legend_g300.png";} left2;
+    bitmap {filename = "legend_p330.png";} left1;
+    bitmap {filename = "legend_b30.png";} right1;
+    bitmap {filename = "legend_o60.png";} right2;
+} gpNW_boNE;
+
+array {
+    bitmap {filename = "legend_b300.png";};
+    bitmap {filename = "legend_o330.png";};
+    bitmap {filename = "legend_g30.png";};
+    bitmap {filename = "legend_p60.png";};
+} boNW_gpNE;
+
+array {
+    bitmap {filename = "no_legend.png";};
+    bitmap {filename = "no_legend.png";};
+    bitmap {filename = "no_legend.png";};
+    bitmap {filename = "no_legend.png";};
+} no_legend;
+
+#
+# feedback stims
+#
+bitmap {filename = "happy.png"; height = 150; scale_factor = scale_to_height;} happy;
+bitmap {filename = "sad.png"; height = 150; scale_factor = scale_to_height;} sad;
+bitmap {filename = "slow.png"; height = 150; scale_factor = scale_to_height;} slow;
+
+#
+# sound feedback
+#
+array {
+    sound { wavefile { filename = "no_sound.wav"; }; } no_sound;
+    sound { wavefile { filename = "too_slow.wav"; }; } too_slow;
+} sounds;
+
+#
+# intruction pictures
+#
+array {
+    bitmap {filename = "welcome_txt.png";} welcome;
+    bitmap {filename = "tilt-no-legend_txt.png";} tilt_nolegend;
+    bitmap {filename = "tilt-time-limit_txt.png";} tilt_limit;
+    bitmap {filename = "color-legend_txt.png";} color_legend;
+    bitmap {filename = "color-no-legend_txt.png";} color_nolegend;
+    bitmap {filename = "color-time-limit_txt.png";} color_limit;
+    bitmap {filename = "mix-legend_txt.png";} mix_legend;
+    bitmap {filename = "mix-no-legend_txt.png";} mix_nolegend;
+    bitmap {filename = "end_txt.png";} end;
+} instructions;
+
+#
+# default picture
+#
+picture {
+    bitmap green_SENW; x=0; y=0;
+    bitmap left2; x=-500; y=-450;
+    bitmap left1; x=-200; y=-450;
+    bitmap right1; x=300; y=-450;
+    bitmap right2; x=600; y=-450;
+} default;
+
+#
+# instructions trial
+#
+trial {
+    trial_duration = forever;
+    trial_type = first_response;
+    stimulus_event {
+        picture {
+            bitmap welcome; x=0; y=0;
+        } instruction_pic;
+        code = "instructions";
+        port_code = 99;
+    } instruction_event;
+} instruction_trial;
+
+#
+# finish trial
+#
+trial {
+    trial_duration = forever;
+    trial_type = first_response;
+    picture {
+        text {caption = "Any Questions?"; font_size = 48;};
+        x=0; y=0;
+    };
+    code = "finish";
+    port_code = 99;
+} finish;
+
+#
+# stimulus trial
+#
+trial {
+    trial_type = fixed;
+    trial_duration = stimuli_length;
+    stimulus_event {
+        picture {
+            bitmap green_SENW; x=0; y=0;
+            bitmap left2; x=-500; y=-450;
+            bitmap left1; x=-200; y=-450;
+            bitmap right1; x=300; y=-450;
+            bitmap right2; x=600; y=-450;
+        } stim;
+        duration = next_picture;
+        code = "stim";
+    } stim_event;
+} stim_trial;
+
+#
+# cue trial
+#
+trial {
+    trial_type = fixed;
+    trial_duration = stimuli_length;
+    stimulus_event {
+        picture {
+            bitmap farbe; x=0; y=0;
+            bitmap left2; x=-500; y=-450;
+            bitmap left1; x=-200; y=-450;
+            bitmap right1; x=300; y=-450;
+            bitmap right2; x=600; y=-450;
+        } cue;
+        duration = next_picture;
+        code = "cue";
+    } cue_event;
+} cue_trial;
+
+#
+# response trial
+#
+trial {
+    trial_type = first_response;
+    trial_duration = 700;
+    picture {
+       bitmap green_SENW; x=0; y=0;
+       bitmap left2; x=-500; y=-450;
+       bitmap left1; x=-200; y=-450;
+       bitmap right1; x=300; y=-450;
+       bitmap right2; x=600; y=-450;
+    } respond_pic;
+    code = "respond";
+} respond_trial;
+
+#
+# late response trial
+#
+trial {
+    trial_type = correct_response;
+    trial_duration = 500;
+    picture {
+       bitmap green_SENW; x=0; y=0;
+       bitmap left2; x=-500; y=-450;
+       bitmap left1; x=-200; y=-450;
+       bitmap right1; x=300; y=-450;
+       bitmap right2; x=600; y=-450;
+    } wait_pic;
+    target_button = 3;
+    code = "wait";
+} wait_trial;
+
+#
+# feedback trial
+#
+trial {
+    trial_type = fixed;
+    stimulus_event {
+        picture {
+           bitmap happy; x=0; y=0;
+           text {caption = " "; font_size = 42;} slow_txt; x=0; y=-150;
+       } feedback_pic;
+       duration = 1000;
+       code = "feedback";
+    } feedback_event;
+
+    stimulus_event {
+        sound no_sound;
+        time = 0;
+        code = "beep";
+    } beep_event;
+} feedback_trial;
+
+#
+# PCL
+#
+begin_pcl;
+
+#
+# Variables
+#
+int resp_cutoff = 950;                 # time window for subject to respond after cue presentation
+int cue_duration = 250;                # duration the cue is presented
+int resp_window;                       # total time subject has to respond "in time" (cue_duration + resp_cutoff)
+int ttime;                             # cue onset time
+int rtime;                             # response time
+int RT;                                # reaction time
+int waittime;                          # duration of wait trial
+
+int buttonpress;                       # index of first button press
+int corrbutton;                        # index of correction(second) button press
+array<int> CORRECT[1000];              # accuracy of first button press
+array<int> CORRECTION[1000];           # accuracy of second button press
+bool missflag = false;                 # value is set to true if subject doesn't respond within response window
+int resp_count;                        # determines if a response was given for the current trial
+int wait_resp;
+int trial_resp_count;                  # total number of button press per trial
+
+int correctcounter;                    # number of correct responses
+int incorrectcounter;                  # number of errors
+int misscounter;                       # number of misses
+int perc_incorrect;                    # percent errors
+int perc_miss;                         # percent misses
+int latecorrect;                       # counts correct responses that were too late
+int lateincorrect;                     # counts incorrect responses that were too late
+
+int deg_trg;                           # EEG trigger for the degrees of current stim
+int pcode_stim;                        # Stimulus port code
+int pcode_cue;                         # Cue port code
+
+#
+# read input file
+#
+preset string rule ;
+#preset string version;
+string eventfile = "input\\practice_" + rule + ".txt";
+input_file events = new input_file;
+events.open(eventfile);
+
+array<int> event_num[2000];
+array<int> stimuli[2000];    # avail_stims array number
+array<int> color[2000];
+array<string> direction[2000];
+array<int> relevant_feature[2000];
+array<int> congruency[2000];
+array<int> answer[2000];
+array<int> degrees[2000];
+array<int> incon_freq[2000];
+array<int> color_freq[2000];
+array<int> color_answer[2000];
+array<int> direc_answer[2000];
+array<int> green_answer[2000];
+array<int> blue_answer[2000];
+array<int> pink_answer[2000];
+array<int> orange_answer[2000];
+array<int> answer_30[2000];
+array<int> answer_60[2000];
+array<int> answer_300[2000];
+array<int> answer_330[2000];
+array<int> jitter[2000];
+array<int> block_num[2000];
+array<int> show_legend[2000];
+array<int> time_limit[2000];
+array<int> total_trials[0];
+
+loop int i=1 until events.end_of_file()
+begin
+    event_num[i] = events.get_int();           # used only for input file
+    stimuli[i] = events.get_int();
+    color[i] = events.get_int();               # used only for output file
+    direction[i] = events.get_string();        # used only for output file
+    relevant_feature[i] = events.get_int();    # used only for output file
+    congruency[i] = events.get_int();          # used only for output file
+    answer[i] = events.get_int();
+    degrees[i] = events.get_int();             # used only for output file
+    incon_freq[i] = events.get_int();          # used only for output file
+    color_freq[i] = events.get_int();          # used only for output file
+    color_answer[i] = events.get_int();        # used only for output file
+    direc_answer[i] = events.get_int();        # used only for output file
+    green_answer[i] = events.get_int();        # used only for output file
+    blue_answer[i] = events.get_int();         # used only for output file
+    pink_answer[i] = events.get_int();         # used only for output file
+    orange_answer[i] = events.get_int();       # used only for output file
+    answer_30[i] = events.get_int();           # used only for output file
+    answer_60[i] = events.get_int();           # used only for output file
+    answer_300[i] = events.get_int();          # used only for output file
+    answer_330[i] = events.get_int();          # used only for output file
+    jitter[i] = events.get_int();
+    block_num[i] = events.get_int();
+    show_legend[i] = events.get_int();
+    time_limit[i] = events.get_int();
+    total_trials.add(i);
+    i=i+1;
+end;
+events.close();
+
+#
+# Set-up output file
+#
+string fdouble = "%10.3f";  # output format double
+string fint = "%8d";        # output format int
+
+string subject = logfile.filename();
+output_file data = new output_file;
+data.open(subject + ".txt");
+# (headers) grn_ans  blu_ans  pnk_ans  org_ans  30_ans  60_ans  300_ans  330_ans  trial  block  incon_freq  color_freq  congrueny   featr  color  color_ans  degrees  direc_ans  resp_window  cue_time  resp_time  reation_time   answer  1resp  1resp_accuracy  2resp  2resp_accuracy  total_buttonpresses  correct  latecorrect  lateinocrrect  incorrect  perc_incorrect  misses  perc_misses
+data.print("grn_ans\tblu_ans\tpnk_ans\torg_ans\t30_ans\t60_ans\t300_ans\t330_ans\ttrial\tblock\tincon_freq\tcolor_freq\tcongruency\tfeatr\tcolor\tcolor_ans\tdegrees\tdirec_ans\tresp_window\tcue_time\tresp_time\treaction_time\tanswer\t1resp\t1resp_accuracy\t2resp\t2resp_accuracy\ttotal_buttonpresses\tcorrect\tlatecorrect\tlateincorrect\tincorrect\tperc_incorrect\tmisses\tperc_misses\n");
+#
+# load stimuli pair arrays into a single array
+#
+array<bitmap> avail_stims[32][0];
+avail_stims[1].assign(green_SENW_330_farbe);
+avail_stims[2].assign(green_SENW_330_orient);
+avail_stims[3].assign(green_SENW_300_farbe);
+avail_stims[4].assign(green_SENW_300_orient);
+avail_stims[5].assign(green_SWNE_030_farbe);
+avail_stims[6].assign(green_SWNE_030_orient);
+avail_stims[7].assign(green_SWNE_060_farbe);
+avail_stims[8].assign(green_SWNE_060_orient);
+avail_stims[9].assign(blue_SENW_330_farbe);
+avail_stims[10].assign(blue_SENW_330_orient);
+avail_stims[11].assign(blue_SENW_300_farbe);
+avail_stims[12].assign(blue_SENW_300_orient);
+avail_stims[13].assign(blue_SWNE_030_farbe);
+avail_stims[14].assign(blue_SWNE_030_orient);
+avail_stims[15].assign(blue_SWNE_060_farbe);
+avail_stims[16].assign(blue_SWNE_060_orient);
+avail_stims[17].assign(pink_SENW_330_farbe);
+avail_stims[18].assign(pink_SENW_330_orient);
+avail_stims[19].assign(pink_SENW_300_farbe);
+avail_stims[20].assign(pink_SENW_300_orient);
+avail_stims[21].assign(pink_SWNE_030_farbe);
+avail_stims[22].assign(pink_SWNE_030_orient);
+avail_stims[23].assign(pink_SWNE_060_farbe);
+avail_stims[24].assign(pink_SWNE_060_orient);
+avail_stims[25].assign(orange_SENW_330_farbe);
+avail_stims[26].assign(orange_SENW_330_orient);
+avail_stims[27].assign(orange_SENW_300_farbe);
+avail_stims[28].assign(orange_SENW_300_orient);
+avail_stims[29].assign(orange_SWNE_030_farbe);
+avail_stims[30].assign(orange_SWNE_030_orient);
+avail_stims[31].assign(orange_SWNE_060_farbe);
+avail_stims[32].assign(orange_SWNE_060_orient);
+
+#
+# load legend pair arrays into a single array
+#
+array<bitmap> avail_legends[3][0];
+avail_legends[1].assign(gpNW_boNE);
+avail_legends[2].assign(boNW_gpNE);
+avail_legends[3].assign(no_legend);
+
+#
+# declare which legend from avail_legends to be used
+#
+int which_legend;
+if (rule == "gpNW_boNE") then
+    which_legend = 1;
+elseif (rule == "boNW_gpNE") then
+    which_legend = 2;
+end;
+
+
+#
+# Main
+#
+loop int i=1 until i > total_trials.count()
+begin
+    buttonpress = 0;
+    missflag = false;
+
+    # welcome
+    if (i == 1) then
+        instruction_pic.set_part(1, instructions[1]);
+        instruction_trial.present();
+    end;
+
+    # instructions between blocks
+    if (i != 1) then # but don't pause before the first trial
+        if (block_num[i] != block_num[i-1]) then
+	         if (block_num[i] == 2) then
+                instruction_pic.set_part(1, instructions[2]);
+            elseif (block_num[i] == 3) then
+                instruction_pic.set_part(1, instructions[3]);
+            elseif (block_num[i] == 4) then
+                instruction_pic.set_part(1, instructions[4]);
+            elseif (block_num[i] == 5) then
+                instruction_pic.set_part(1, instructions[5]);
+            elseif (block_num[i] == 6) then
+                instruction_pic.set_part(1, instructions[6]);
+            elseif (block_num[i] == 7) then
+                instruction_pic.set_part(1, instructions[7]);
+            elseif (block_num[i] == 8) then
+                instruction_pic.set_part(1, instructions[8]);
+            end;
+            instruction_trial.present();
+        end;
+    end;
+
+    # setup Portcodes
+    if (degrees[i] == 300) then
+        deg_trg = 6;
+    elseif (degrees[i] == 330) then
+        deg_trg = 7;
+    elseif (degrees[i] == 30) then
+        deg_trg = 8;
+    elseif (degrees[i] == 60) then
+        deg_trg = 9;
+    end;
+
+    pcode_stim = (color[i]*10) + deg_trg;   # portcode for stim
+    pcode_cue = (relevant_feature[i]*100) + (congruency[i]*10) + answer[i];   # portcode for cue
+
+    resp_count = response_manager.total_response_count();
+    wait_resp = resp_count +1;
+    missflag = false;
+
+    default.set_part(1, avail_stims[stimuli[i]][1]);
+    if (show_legend[i] == 1) then
+        default.set_part(2, avail_legends[which_legend][1]);   # set legend
+        default.set_part(3, avail_legends[which_legend][2]);
+        default.set_part(4, avail_legends[which_legend][3]);
+        default.set_part(5, avail_legends[which_legend][4]);
+    elseif (show_legend[i] == 2) then
+	     default.set_part(2, avail_legends[3][1]);              # no legend
+        default.set_part(3, avail_legends[3][2]);
+        default.set_part(4, avail_legends[3][3]);
+        default.set_part(5, avail_legends[3][4]);
+    end;
+
+    # present stimulus
+    stim.set_part(1, avail_stims[stimuli[i]][1]);              # set stimulus pic
+    if (show_legend[i] == 1) then
+        stim.set_part(2, avail_legends[which_legend][1]);      # set legend pic for stim
+        stim.set_part(3, avail_legends[which_legend][2]);
+        stim.set_part(4, avail_legends[which_legend][3]);
+        stim.set_part(5, avail_legends[which_legend][4]);
+    elseif (show_legend[i] == 2) then
+	     stim.set_part(2, avail_legends[3][1]);                 # no legend
+        stim.set_part(3, avail_legends[3][2]);
+        stim.set_part(4, avail_legends[3][3]);
+        stim.set_part(5, avail_legends[3][4]);
+    end;
+    stim_event.set_duration(jitter[i]);
+    stim_event.set_port_code(pcode_stim);                      # set portcode for stim
+    stim_trial.present();
+
+    # present cue
+    cue.set_part(1, avail_stims[stimuli[i]][2]);               # set cue pic
+    if (show_legend[i] == 1) then
+        cue.set_part(2, avail_legends[which_legend][1]);       # set legend pic for cue
+        cue.set_part(3, avail_legends[which_legend][2]);
+        cue.set_part(4, avail_legends[which_legend][3]);
+        cue.set_part(5, avail_legends[which_legend][4]);
+    elseif (show_legend[i] == 2) then
+	     cue.set_part(2, avail_legends[3][1]);                  # no legend
+        cue.set_part(3, avail_legends[3][2]);
+        cue.set_part(4, avail_legends[3][3]);
+        cue.set_part(5, avail_legends[3][4]);
+    end;
+    cue_event.set_duration(cue_duration);                      # set cue duration
+    cue_event.set_port_code(pcode_cue);                        # set portcode for cue
+    cue_trial.present();
+
+    # get trial start time
+    stimulus_data cuetime = stimulus_manager.last_stimulus_data();
+    ttime = cuetime.time();
+
+    # present respond period
+    respond_pic.set_part(1, avail_stims[stimuli[i]][1]);          # set pic
+    if (show_legend[i] == 1) then
+        respond_pic.set_part(2, avail_legends[which_legend][1]);  # set legend pic
+        respond_pic.set_part(3, avail_legends[which_legend][2]);
+        respond_pic.set_part(4, avail_legends[which_legend][3]);
+        respond_pic.set_part(5, avail_legends[which_legend][4]);
+    elseif (show_legend[i] == 2) then
+	     respond_pic.set_part(2, avail_legends[3][1]);             # no legend
+        respond_pic.set_part(3, avail_legends[3][2]);
+        respond_pic.set_part(4, avail_legends[3][3]);
+        respond_pic.set_part(5, avail_legends[3][4]);
+    end;
+    if (time_limit[i] == 1) then
+	     respond_trial.set_duration(30000);
+	 elseif (time_limit[i] == 2) then
+        respond_trial.set_duration(resp_cutoff);                  # set respond period duration
+    end;
+    respond_trial.present();
+
+    # get response data
+    resp_count = response_manager.total_response_count();
+
+    # evaluate response
+    if (resp_count == wait_resp) then    # one response has happened since start of trial
+        response_data lbp = response_manager.last_response_data();    #last_button_press
+        if (response_manager.last_response() != 5) then
+            rtime = lbp.time();
+            RT = rtime - ttime;
+            buttonpress = lbp.code();
+            if (RT < 0) then  # response was before cue presentation
+                CORRECT[i] = 9;
+                misscounter = misscounter +1;
+                waittime = (1500 - (cue_duration + resp_cutoff));
+                beep_event.set_stimulus(sounds[1]);                    # set no beep
+                feedback_pic.set_part(1, slow);
+                slow_txt.set_caption("Please respond faster!");
+                slow_txt.redraw();
+            elseif (answer[i] == 1) then # if left1
+                if (buttonpress == 1) then
+                    CORRECT[i] = 1;
+                    correctcounter = correctcounter + 1;
+                    feedback_pic.set_part(1, happy);
+                else
+                    CORRECT[i] = 2;
+                    incorrectcounter = incorrectcounter + 1;
+                    feedback_pic.set_part(1, sad);
+                end;
+                waittime = (1500 - RT);
+                beep_event.set_stimulus(sounds[1]);                    # set no beep
+                beep_event.set_event_code("no beep");                  # set eventcode for no beep
+                beep_event.set_port_code(0);                           # set portcode for no beep
+            elseif (answer[i] == 2) then # if right1
+                if (buttonpress == 2) then
+                    CORRECT[i] = 1;
+                    correctcounter = correctcounter + 1;
+                    feedback_pic.set_part(1, happy);
+                else
+                    CORRECT[i] = 2;
+                    incorrectcounter = incorrectcounter + 1;
+                    feedback_pic.set_part(1, sad);
+                end;
+                waittime = (1500 - RT);
+                beep_event.set_stimulus(sounds[1]);                    # set no beep
+                beep_event.set_event_code("no beep");                  # set eventcode for no beep
+                beep_event.set_port_code(0);                           # set portcode for no beep
+            elseif (answer[i] == 3) then # if left2
+                if (buttonpress == 3) then
+                    CORRECT[i] = 1;
+                    correctcounter = correctcounter + 1;
+                    feedback_pic.set_part(1, happy);
+                else
+                    CORRECT[i] = 2;
+                    incorrectcounter = incorrectcounter + 1;
+                    feedback_pic.set_part(1, sad);
+                end;
+                waittime = (1500 - RT);
+                beep_event.set_stimulus(sounds[1]);                    # set no beep
+                beep_event.set_event_code("no beep");                  # set eventcode for no beep
+                beep_event.set_port_code(0);                           # set portcode for no beep
+            elseif (answer[i] == 4) then # if right2
+                if (buttonpress == 4) then
+                    CORRECT[i] = 1;
+                    correctcounter = correctcounter + 1;
+                    feedback_pic.set_part(1, happy);
+                else
+                    CORRECT[i] = 2;
+                    incorrectcounter = incorrectcounter + 1;
+                    feedback_pic.set_part(1, sad);
+                end;
+                waittime = (1500 - RT);
+                beep_event.set_stimulus(sounds[1]);                    # set no beep
+                beep_event.set_event_code("no beep");                  # set eventcode for no beep
+                beep_event.set_port_code(0);                           # set portcode for no beep
+            end;
+        end;
+    elseif (resp_count < wait_resp) then	# no response has happened in this trial
+        misscounter = misscounter +1;
+        buttonpress = 0;
+        CORRECT[i]=0;
+        RT = 0;
+        missflag = true;
+        waittime = (1500 - (cue_duration + resp_cutoff));
+        beep_event.set_stimulus(sounds[1]);                    # set no beep
+        feedback_pic.set_part(1, slow);
+        slow_txt.set_caption("Please respond faster!");
+        slow_txt.redraw();
+    elseif (resp_count > wait_resp) then	# more than one response has happened in this trial (subject responded at least once before cue appeared)
+        response_data lbp = response_manager.last_response_data();	#last_button_press
+        if (response_manager.last_response() != 5) then
+            rtime = lbp.time();
+            RT = rtime - ttime;
+            buttonpress = lbp.code();
+            if (RT < 0) then  # subject only responded before cue appeared
+                CORRECT[i] = 9;
+                buttonpress = 9;
+                misscounter = misscounter +1;
+                waittime = (1500 - (cue_duration + resp_cutoff));
+                beep_event.set_stimulus(sounds[1]);                    # set no beep
+                feedback_pic.set_part(1, slow);
+                slow_txt.set_caption("Please respond faster!");
+                slow_txt.redraw();
+            elseif (answer[i] == 1) then # if left1      subject responded before and after cue appeared
+                if (buttonpress == 1) then
+                    CORRECT[i] = 1;
+                    correctcounter = correctcounter + 1;
+                    feedback_pic.set_part(1, happy);
+                else
+                    CORRECT[i] = 2;
+                    incorrectcounter = incorrectcounter + 1;
+                    feedback_pic.set_part(1, sad);
+                end;
+                waittime = (1500 - RT);
+                beep_event.set_stimulus(sounds[1]);                    # set no beep
+                beep_event.set_event_code("no beep");                  # set eventcode for no beep
+                beep_event.set_port_code(0);                           # set portcode for no beep
+            elseif (answer[i] == 2) then # if right1
+                if (buttonpress == 2) then
+                    CORRECT[i] = 1;
+                    correctcounter = correctcounter + 1;
+                    feedback_pic.set_part(1, happy);
+                else
+                    CORRECT[i] = 2;
+                    incorrectcounter = incorrectcounter + 1;
+                    feedback_pic.set_part(1, sad);
+                end;
+                waittime = (1500 - RT);
+                beep_event.set_stimulus(sounds[1]);                    # set no beep
+                beep_event.set_event_code("no beep");                  # set eventcode for no beep
+                beep_event.set_port_code(0);                           # set portcode for no beep
+            elseif (answer[i] == 3) then # if left2
+                if (buttonpress == 3) then
+                    CORRECT[i] = 1;
+                    correctcounter = correctcounter + 1;
+                    feedback_pic.set_part(1, happy);
+                else
+                    CORRECT[i] = 2;
+                    incorrectcounter = incorrectcounter + 1;
+                    feedback_pic.set_part(1, sad);
+                end;
+                waittime = (1500 - RT);
+                beep_event.set_stimulus(sounds[1]);                    # set no beep
+                beep_event.set_event_code("no beep");                  # set eventcode for no beep
+                beep_event.set_port_code(0);                           # set portcode for no beep
+            elseif (answer[i] == 4) then # if right2
+                if (buttonpress == 4) then
+                    CORRECT[i] = 1;
+                    correctcounter = correctcounter + 1;
+                    feedback_pic.set_part(1, happy);
+                else
+                    CORRECT[i] = 2;
+                    incorrectcounter = incorrectcounter + 1;
+                    feedback_pic.set_part(1, sad);
+                end;
+                waittime = (1500 - RT);
+                beep_event.set_stimulus(sounds[1]);                    # set no beep
+                beep_event.set_event_code("no beep");                  # set eventcode for no beep
+                beep_event.set_port_code(0);                           # set portcode for no beep
+            end;
+        end;
+    end;
+
+    # present wait trial
+    wait_pic.set_part(1, avail_stims[stimuli[i]][1]);                  # set pic
+    if (show_legend[i] == 1) then
+        wait_pic.set_part(2, avail_legends[which_legend][1]);          # set legend pic
+        wait_pic.set_part(3, avail_legends[which_legend][2]);
+        wait_pic.set_part(4, avail_legends[which_legend][3]);
+        wait_pic.set_part(5, avail_legends[which_legend][4]);
+    elseif (show_legend[i] == 2) then
+	     wait_pic.set_part(2, avail_legends[3][1]);                     # no legend
+        wait_pic.set_part(3, avail_legends[3][2]);
+        wait_pic.set_part(4, avail_legends[3][3]);
+        wait_pic.set_part(5, avail_legends[3][4]);
+    end;
+    if (time_limit[i] == 1) then
+	     wait_trial.set_duration(500);
+	 elseif (time_limit[i] ==2) then
+        wait_trial.set_duration(waittime);                             # set wait period duration
+    end;
+    wait_trial.present();
+
+    # look for any responses that have happened later
+    if (missflag == true && response_manager.response_count() > 0) then
+        response_data fbp = response_manager.get_response_data(response_manager.response_data_count() - response_manager.response_count() + 1);	# get first button press during blank screen
+        if ( fbp.code() < 5 ) then # check for left or right button
+            buttonpress = fbp.code();
+            rtime = fbp.time();
+            RT = rtime - ttime;
+            beep_event.set_stimulus(sounds[1]);                    # set no beep
+            feedback_pic.set_part(1, slow);
+            slow_txt.set_caption("Please respond faster!");
+            slow_txt.redraw();
+            if (answer[i] == 1) then # if left1
+                if (buttonpress == 1) then
+                    latecorrect = latecorrect + 1;
+                    CORRECT[i] = 1;
+                else
+                    lateincorrect = lateincorrect + 1;
+                    CORRECT[i] = 2;
+                end;
+            elseif (answer[i] == 2) then # if right1
+                if (buttonpress == 2) then
+                    latecorrect = latecorrect + 1;
+                    CORRECT[i] = 1;
+                else
+                    lateincorrect = lateincorrect + 1;
+                    CORRECT[i] = 2;
+                end;
+            elseif (answer[i] == 3) then # if left2
+                if (buttonpress == 3) then
+                    latecorrect = latecorrect + 1;
+                    CORRECT[i] = 1;
+                else
+                    lateincorrect = lateincorrect + 1;
+                    CORRECT[i] = 2;
+                end;
+            elseif (answer[i] == 4) then # if right2
+                if (buttonpress == 4) then
+                    latecorrect = latecorrect + 1;
+                    CORRECT[i] = 1;
+                else
+                    lateincorrect = lateincorrect + 1;
+                    CORRECT[i] = 2;
+                end;
+            end;
+        end;
+    elseif (missflag == false && response_manager.response_count() > 0) then
+        response_data fbp = response_manager.last_response_data();
+        corrbutton = fbp.code();
+        if (answer[i] == 1) then # if left1
+            if (corrbutton == 1 && CORRECT[i] == 2) then
+                CORRECTION[i] = 1;
+            else
+                CORRECTION[i] = 2;
+            end;
+        elseif (answer[i] == 2) then # if right1
+            if (corrbutton == 2 && CORRECT[i] == 2) then
+                CORRECTION[i] = 1;
+            else
+                CORRECTION[i] = 2;
+            end;
+        elseif (answer[i] == 3) then # if left2
+            if (corrbutton == 3 && CORRECT[i] == 2) then
+                CORRECTION[i] = 1;
+            else
+                CORRECTION[i] = 2;
+            end;
+        elseif (answer[i] == 4) then # if right2
+            if (corrbutton == 4 && CORRECT[i] == 2) then
+                CORRECTION[i] = 1;
+            else
+                CORRECTION[i] = 2;
+            end;
+        end;
+    elseif (missflag == false && response_manager.response_count() == 0) then  # if no second response
+        corrbutton = 0;
+    elseif (missflag == true && response_manager.response_count() == 0) then  # if no response
+        corrbutton = 0;
+        rtime = 0;
+    end;
+
+    # set beep for last 5 trials
+    if (i == 74) || (i == 78) then
+        beep_event.set_stimulus(sounds[2]);                    # set beep
+        beep_event.set_event_code("beep");                     # set eventcode for beep
+        beep_event.set_port_code(5);                           # set portcode for beep
+        feedback_pic.set_part(1, slow);
+        slow_txt.set_caption("Please respond faster!");
+        slow_txt.redraw();
+    end;
+
+    # present feedbacktrial
+    feedback_trial.present();
+    slow_txt.set_caption(" ");
+    slow_txt.redraw();
+
+    # calculate total button presses for current trial
+    trial_resp_count = (response_manager.total_response_count() - (wait_resp - 1));
+    # calculate time subject had to respond
+    resp_window = (resp_cutoff + cue_duration);
+
+    # determine current error rate
+    perc_incorrect = (incorrectcounter * 100) / i;
+    # determine current miss rate
+    perc_miss = (misscounter * 100) / i;
+
+    # set new resp_cutoff according to error rate and miss rate
+    if ((perc_incorrect < 8) && (perc_miss < 10) && (resp_window > 300)) then
+        resp_cutoff = resp_cutoff - 10;
+    elseif ((perc_incorrect > 20) && (resp_window < 1400)) then
+        resp_cutoff = resp_cutoff + 10;
+    elseif ((perc_miss > 10) && (resp_window < 1400)) then
+        resp_cutoff = resp_cutoff + 10;
+    end;
+
+    # print to output file
+    data.print(printf(green_answer[i], fint) + "\t");
+    data.print(printf(blue_answer[i], fint) + "\t");
+    data.print(printf(pink_answer[i], fint) + "\t");
+    data.print(printf(orange_answer[i], fint) + "\t");
+    data.print(printf(answer_30[i], fint) + "\t");
+    data.print(printf(answer_60[i], fint) + "\t");
+    data.print(printf(answer_300[i], fint) + "\t");
+    data.print(printf(answer_330[i], fint) + "\t");
+
+    data.print(printf(i, fint) + "\t");                        # trial number
+
+    data.print(printf(block_num[i], fint) + "\t");
+    data.print(printf(incon_freq[i], fint) + "\t");
+    data.print(printf(color_freq[i], fint) + "\t");
+
+    data.print(printf(congruency[i], fint) + "\t");
+    data.print(printf(relevant_feature[i], fint) + "\t");
+
+    data.print(printf(color[i], fint) + "\t");
+    data.print(printf(color_answer[i], fint) + "\t");
+
+    data.print(printf(degrees[i], fint) + "\t");
+    data.print(printf(direc_answer[i], fint) + "\t");
+
+    data.print(printf(resp_window, fint) + "\t");              # time subject has to respond
+    data.print(printf(ttime, fint) + "\t");                    # cue time
+    data.print(printf(rtime, fint) + "\t");                    # first response time
+    data.print(printf(RT, fint) + "\t");                       # reaction time
+
+    data.print(printf(answer[i], fint) + "\t");
+    data.print(printf(buttonpress, fint) + "\t");              # first button press
+    data.print(printf(CORRECT[i], fint) + "\t");               # first button press accuracy (1 = correct; 2 = incorrect; 0 = no response)
+    data.print(printf(corrbutton, fint) + "\t");               # second button press
+    data.print(printf(CORRECTION[i], fint) + "\t");            # second button press accuracy (1 = correct; 2 = incorrect; 0 = no response)
+    data.print(printf(trial_resp_count, fint) + "\t");         # total number of button presses for the current trial
+
+    data.print(printf(correctcounter, fint) + "\t");
+    data.print(printf(latecorrect, fint) + "\t");
+    data.print(printf(lateincorrect, fint) + "\t");
+    data.print(printf(incorrectcounter, fint) + "\t");
+    data.print(printf(perc_incorrect, fint) + "\t");
+    data.print(printf(misscounter, fint) + "\t");
+    data.print(printf(perc_miss, fint) + "\t");
+
+    data.print( "\n" );
+
+    i=i+1;
+end;
+
+data.close(); # close output file
+instruction_pic.set_part(1, instructions[9]);
+instruction_trial.present();
