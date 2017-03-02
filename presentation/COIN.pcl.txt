@@ -65,7 +65,9 @@ int cue_duration = 250;                # duration the cue is presented
 int resp_window;                       # total time subject has to respond "in time" (cue_duration + resp_cutoff)
 int ttime;                             # cue onset time
 int rtime;                             # response time
+int rtime2;                            # response time for 2nd button press
 int RT;                                # reaction time
+int RT2;                               # reaction time for 2nd button press
 int waittime;                          # duration of wait trial
 
 int buttonpress;                       # index of first button press
@@ -160,8 +162,8 @@ string fint = "%8d";        # output format int
 string subject = logfile.filename();
 output_file data = new output_file;
 data.open(subject + ".txt");
-# (headers) grn_ans  blu_ans  pnk_ans  org_ans  300_ans  330_ans  30_ans  60_ans  trial  block  incon_freq  color_freq  congrueny   featr  color  color_ans  degrees  deg_ans  resp_window  cue_time  resp_time  reation_time   answer  1resp  1resp_accuracy  2resp  2resp_accuracy  total_buttonpresses  correct  latecorrect  lateinocrrect  incorrect  perc_incorrect  misses  perc_misses
-data.print("grn_ans\tblu_ans\tpnk_ans\torg_ans\t300_ans\t330_ans\t30_ans\t60_ans\ttrial\tblock\tincon_freq\tcolor_freq\tcongruency\tfeatr\tcolor\tcolor_ans\tdegrees\tdeg_ans\tresp_window\tcue_time\tresp_time\treaction_time\tanswer\t1resp\t1resp_accuracy\t2resp\t2resp_accuracy\ttotal_buttonpresses\tcorrect\tlatecorrect\tlateincorrect\tincorrect\tperc_incorrect\tmisses\tperc_misses\n");
+# (headers) grn_ans  blu_ans  pnk_ans  org_ans  300_ans  330_ans  30_ans  60_ans  trial  block  incon_freq  color_freq  congrueny   featr  color  color_ans  degrees  deg_ans  resp_window  cue_time  1resp_time  1reation_time   2resp_time  2reaction_time  answer  1resp  1resp_accuracy  2resp  2resp_accuracy  total_buttonpresses  correct  latecorrect  lateinocrrect  incorrect  perc_incorrect  misses  perc_misses
+data.print("grn_ans\tblu_ans\tpnk_ans\torg_ans\t300_ans\t330_ans\t30_ans\t60_ans\ttrial\tblock\tincon_freq\tcolor_freq\tcongruency\tfeatr\tcolor\tcolor_ans\tdegrees\tdeg_ans\tresp_window\tcue_time\t1resp_time\t1reaction_time\t2resp_time\t2reaction_time\tanswer\t1resp\t1resp_accuracy\t2resp\t2resp_accuracy\ttotal_buttonpresses\tcorrect\tlatecorrect\tlateincorrect\tincorrect\tperc_incorrect\tmisses\tperc_misses\n");
 
 #
 # load stimuli pair arrays into a single array
@@ -308,54 +310,56 @@ begin
                 beep_event.set_stimulus(sounds[2]);                    # set beep
                 beep_event.set_event_code("beep");                     # set eventcode for beep
                 beep_event.set_port_code(5);                           # set portcode for beep
-            elseif (answer[i] == 1) then # if left1
-                if (buttonpress == 1) then
-                    CORRECT[i] = 1;
-                    correctcounter = correctcounter + 1;
-                else
-                    CORRECT[i] = 2;
-                    incorrectcounter = incorrectcounter + 1;
+            elseif (RT > 0) then  # response was after cue presentation
+                if (answer[i] == 1) then # if left1
+                    if (buttonpress == 1) then
+                        CORRECT[i] = 1;
+                        correctcounter = correctcounter + 1;
+                    else
+                        CORRECT[i] = 2;
+                        incorrectcounter = incorrectcounter + 1;
+                    end;
+                    waittime = (1500 - RT);
+                    beep_event.set_stimulus(sounds[1]);                    # set no beep
+                    beep_event.set_event_code("no beep");                  # set eventcode for no beep
+                    beep_event.set_port_code(0);                           # set portcode for no beep
+                elseif (answer[i] == 2) then # if right1
+                    if (buttonpress == 2) then
+                        CORRECT[i] = 1;
+                        correctcounter = correctcounter + 1;
+                    else
+                        CORRECT[i] = 2;
+                        incorrectcounter = incorrectcounter + 1;
+                    end;
+                    waittime = (1500 - RT);
+                    beep_event.set_stimulus(sounds[1]);                    # set no beep
+                    beep_event.set_event_code("no beep");                  # set eventcode for no beep
+                    beep_event.set_port_code(0);                           # set portcode for no beep
+                elseif (answer[i] == 3) then # if left2
+                    if (buttonpress == 3) then
+                        CORRECT[i] = 1;
+                        correctcounter = correctcounter + 1;
+                    else
+                        CORRECT[i] = 2;
+                        incorrectcounter = incorrectcounter + 1;
+                    end;
+                    waittime = (1500 - RT);
+                    beep_event.set_stimulus(sounds[1]);                    # set no beep
+                    beep_event.set_event_code("no beep");                  # set eventcode for no beep
+                    beep_event.set_port_code(0);                           # set portcode for no beep
+                elseif (answer[i] == 4) then # if right2
+                    if (buttonpress == 4) then
+                        CORRECT[i] = 1;
+                        correctcounter = correctcounter + 1;
+                    else
+                        CORRECT[i] = 2;
+                        incorrectcounter = incorrectcounter + 1;
+                    end;
+                    waittime = (1500 - RT);
+                    beep_event.set_stimulus(sounds[1]);                    # set no beep
+                    beep_event.set_event_code("no beep");                  # set eventcode for no beep
+                    beep_event.set_port_code(0);                           # set portcode for no beep
                 end;
-                waittime = (1500 - RT);
-                beep_event.set_stimulus(sounds[1]);                    # set no beep
-                beep_event.set_event_code("no beep");                  # set eventcode for no beep
-                beep_event.set_port_code(0);                           # set portcode for no beep
-            elseif (answer[i] == 2) then # if right1
-                if (buttonpress == 2) then
-                    CORRECT[i] = 1;
-                    correctcounter = correctcounter + 1;
-                else
-                    CORRECT[i] = 2;
-                    incorrectcounter = incorrectcounter + 1;
-                end;
-                waittime = (1500 - RT);
-                beep_event.set_stimulus(sounds[1]);                    # set no beep
-                beep_event.set_event_code("no beep");                  # set eventcode for no beep
-                beep_event.set_port_code(0);                           # set portcode for no beep
-            elseif (answer[i] == 3) then # if left2
-                if (buttonpress == 3) then
-                    CORRECT[i] = 1;
-                    correctcounter = correctcounter + 1;
-                else
-                    CORRECT[i] = 2;
-                    incorrectcounter = incorrectcounter + 1;
-                end;
-                waittime = (1500 - RT);
-                beep_event.set_stimulus(sounds[1]);                    # set no beep
-                beep_event.set_event_code("no beep");                  # set eventcode for no beep
-                beep_event.set_port_code(0);                           # set portcode for no beep
-            elseif (answer[i] == 4) then # if right2
-                if (buttonpress == 4) then
-                    CORRECT[i] = 1;
-                    correctcounter = correctcounter + 1;
-                else
-                    CORRECT[i] = 2;
-                    incorrectcounter = incorrectcounter + 1;
-                end;
-                waittime = (1500 - RT);
-                beep_event.set_stimulus(sounds[1]);                    # set no beep
-                beep_event.set_event_code("no beep");                  # set eventcode for no beep
-                beep_event.set_port_code(0);                           # set portcode for no beep
             end;
         end;
     elseif (resp_count < wait_resp) then	# no response has happened in this trial
@@ -484,38 +488,45 @@ begin
             end;
         end;
     elseif (missflag == false && response_manager.response_count() > 0) then
-        response_data fbp = response_manager.last_response_data();
-        corrbutton = fbp.code();
+        response_data lbp = response_manager.last_response_data();
+        corrbutton = lbp.code();
+        term.print(corrbutton);
+        rtime2 = lbp.time();
+        term.print(rtime2);
+        RT2 = rtime2 - ttime;
+        term.print(RT2);
         if (answer[i] == 1) then # if left1
-            if (corrbutton == 1 && CORRECT[i] == 2) then
+            if (corrbutton == 1) then
                 CORRECTION[i] = 1;
             else
                 CORRECTION[i] = 2;
             end;
         elseif (answer[i] == 2) then # if right1
-            if (corrbutton == 2 && CORRECT[i] == 2) then
+            if (corrbutton == 2) then
                 CORRECTION[i] = 1;
             else
                 CORRECTION[i] = 2;
             end;
         elseif (answer[i] == 3) then # if left2
-            if (corrbutton == 3 && CORRECT[i] == 2) then
+            if (corrbutton == 3) then
                 CORRECTION[i] = 1;
             else
                 CORRECTION[i] = 2;
             end;
         elseif (answer[i] == 4) then # if right2
-            if (corrbutton == 4 && CORRECT[i] == 2) then
+            if (corrbutton == 4) then
                 CORRECTION[i] = 1;
             else
                 CORRECTION[i] = 2;
             end;
         end;
-    elseif (missflag == false && response_manager.response_count() == 0) then  # if no response
+    elseif (missflag == false && response_manager.response_count() == 0) then  # if no corrective response
         corrbutton = 0;
+        rtime2 = 0;
     elseif (missflag == true && response_manager.response_count() == 0) then  # if no response
         corrbutton = 0;
         rtime = 0;
+        rtime2 = 0;
     end;
 
     # present feedbacktrial
@@ -574,6 +585,8 @@ begin
     data.print(printf(ttime, fint) + "\t");                    # cue time
     data.print(printf(rtime, fint) + "\t");                    # first response time
     data.print(printf(RT, fint) + "\t");                       # reaction time
+    data.print(printf(rtime2, fint) + "\t");                   # second response time
+    data.print(printf(RT2, fint) + "\t");                      # second reaction time
 
     data.print(printf(answer[i], fint) + "\t");
     data.print(printf(buttonpress, fint) + "\t");              # first button press
