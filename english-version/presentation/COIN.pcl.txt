@@ -231,6 +231,10 @@ begin
     if (i == 1) then
 	     warn_txt.set_caption("Press a button to begin");
         warn_txt.redraw();
+        pause_pic.set_part(2, avail_legends[which_legend][1]);      # set legend pic for pause
+        pause_pic.set_part(3, avail_legends[which_legend][2]);
+        pause_pic.set_part(4, avail_legends[which_legend][3]);
+        pause_pic.set_part(5, avail_legends[which_legend][4]);
         pause.present();
         if (color_freq[i] == 25) then
 	         block_cue.set_part(1, block_cues[1]);
@@ -250,6 +254,10 @@ begin
         if (block_num[i] != block_num[i-1]) then
             warn_txt.set_caption("Break");
             warn_txt.redraw();
+            pause_pic.set_part(2, avail_legends[which_legend][1]);      # set legend pic for pause
+            pause_pic.set_part(3, avail_legends[which_legend][2]);
+            pause_pic.set_part(4, avail_legends[which_legend][3]);
+            pause_pic.set_part(5, avail_legends[which_legend][4]);
             pause.present();
             if (color_freq[i] == 25) then
 	             block_cue.set_part(1, block_cues[1]);
