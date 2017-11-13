@@ -1,7 +1,7 @@
 Stimuli
 -------
 
-There are 40 unique stimuli: 16 core-stimuli and 64 cue-stimuli. Each stimulus
+There are 48 unique stimuli: 16 core-stimuli and 32 cue-stimuli. Each stimulus
 is 640x640 pixels.
 
 The core-stimuli consists of a colored circle on a black background. The colored
@@ -12,34 +12,32 @@ used are: blue(RGB:123, 178, 208), orange(RGB:205, 162, 119), pink(RGB:211, 146,
 then tilted 30° or 60° to the left or 30° or 60° to the right.
 
 The cue-stimuli are the same as the core-stimuli, but also have a cue that is
-located to the left or the right of the center fixation point. The cue indicates
-to the subject which stimulus feature is relevant for the response. The cue is a
-small black circle with a white letter "F" or "O" in the center. The "F" stands
-for "Farbe" (color) and the "O" stands for "Orient" (direction), which are the
-two possible relevant features of the stimuli that the subject needs to pay
-attention to. The currently relevant stimulus feature can map to the same or the
-opposite response as the irrelevant feature, thereby creating congruent and
-incongruent stimuli. A stimuli is congruent if the currently relevant stimulus
-feature's answer is the same as the irrelevant feature's answer.
-
-The cue location is always on the side of the correct response for the currently
-irrelevant stimulus feature. This means that only 32 out of the 64 stimuli will
-be used for a given rule-set. The events-gen.sh script filters for the
-appropriate stimuli for a given rule-set according to this condition.
+located in the center of the colored circle. The cue indicates to the subject
+which stimulus feature is relevant for the response. The cue is a small black
+circle with a white letter "F" or "O" in the center. The "F" stands for "Farbe"
+(color) and the "O" stands for "Orient" (direction), which are the two possible
+relevant features of the stimuli that the subject needs to pay attention to. The
+currently relevant stimulus feature can map to the same or the opposite response
+as the irrelevant feature, thereby creating congruent and incongruent stimuli. A
+stimuli is congruent if the currently relevant stimulus feature's answer is the
+same as the irrelevant feature's answer.
 
 Legend
 ------
 A legend, which is located at the bottom of the screen underneath the stimulus
 in each trial, is used to inform the subject what the rules are. While the
 rule-set varies from subject to subject, it does /not/ change within a given
-experiment-run. The rules indicate which response (left or right) is associated
-with each of the colors, either direction of the tilted hatching, and whether
-the top or the bottom of the hatching indicates the direction.
+experiment-run. The rules indicate which of the 4 possible responses (left1,
+left2, right1, or right2) is associated with each of the colors, degrees of the
+tilted hatching, and whether the top or the bottom of the hatching indicates the
+direction.
+
+TODO: add section for answer mapping with fingers
 
 Generation of Stimuli & Legend
 ------------------------------
-Inkscape was used to create the stimuli(MiSIT_stims.sgv) and the
-legend(MiSIT_legend.svg) svg files. The svgs for the stimuli and legend both
+Inkscape was used to create the stimuli(COIN_stims.sgv) and the
+legend(COIN_legend.svg) svg files. The svgs for the stimuli and legend both
 have several layers which contain the unique features of the stimuli (color,
 hatching, etc). Each of these layers can be individually enabled and disabled to
 create all needed variations of the stimuli and legends.
@@ -68,32 +66,26 @@ core-stimuli: <color>-<direction>-<degrees>
       green-SWNE-060
 
 cue-stimuli: <index>_<color>-<direction>-<degrees>_<relevant feature>-<cue location>
-  ex: 01_green-SENW-330_farbe-left
-      02_green-SENW-330_farbe-right
-      03_green-SENW-330_orient-left
-      04_green-SENW-330_orient-right
-
-TODO: cleanup the descriptions below to match the first pair
+  ex: 01_green-SENW-330_farbe
+      02_green-SENW-330_orient
+      03_green-SENW-300_farbe
+      04_green-SENW-300_orient
 
 rules: <color><color><direction>_<color><color><direction>
-  ex: gbNW_poNE green, blue, and hatching tilted north-west
-                pink, orange, and hatching tilted north-east
+  ex: gpNW_boNE green, pink, and hatching tilted north-west
+                blue, orange, and hatching tilted north-east
 
-      poNW_gbNE pink, orange, and the hatching tilted to the north-west map left
-                green, blue, and the hatching tilted to the north-east map right
+      boNW_gpNE blue, orange, and hatching tilted north-west
+                green, pink, and hatching tilted north-east
 
-      bpSW_goSE blue, pink, and the hatching tilted to the south-west map left
-                green, orange, and the hatching tilted to the south-east map right
-
-      goSW_bpSE green, orange, and the hatching tilted to the south-west map left
-                blue, pink, and the hatching tilted to the south-east map right
-
-legend: legend_<color><color><direction>
-  ex: legend_gbNW (the colors green and blue map to the left)
-      legend_poNE (the colors pink and orange map to the right)
+legend: legend_<color><degrees>
+  ex: legend_g300 (the color green and 300° map together to left2)
+      legend_p330 (the color pink and 330° map together to left1)
+      legend_b30  (the color blue and 30° map together to right1)
+      legend_o60  (the color orange and 60° map together to right2)
 
 ********************************************************************************
-* index: 01-64
+* index: 01-32
 *
 * color: green = g
 *        blue = b
